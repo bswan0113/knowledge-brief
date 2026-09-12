@@ -1,8 +1,21 @@
-<title>Knowledge Brief 2026-09-11</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,500;1,6..72,600&family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+<!--
+  Knowledge Brief 아카이브 목록 페이지 (index.html).
 
-  :root {
+  이 페이지는 브리프 본문이 아니라 **지금까지 발행된 브리프의 목록**이다.
+  그날 브리프의 정본은 <날짜>.html이고, 카카오 알림도 그 날짜 URL로 직접 연결한다.
+  (2026-09-12 변경 — 이전에는 index가 최신본을 통째로 복사한 사본이었다.)
+
+  갱신 규칙: 매일 밤 <ul class="archive"> 맨 위에 <li class="entry"> 한 줄만 추가한다.
+  목록 전체를 매일 다시 만들지 않는다.
+  CSS 토큰·폰트는 templates/knowledge_brief_template.html과 동일하게 유지한다.
+  이 페이지의 텍스트에도 GUIDE.md § Output Policy의 어휘 규칙이 그대로 적용된다.
+-->
+<title>Knowledge Brief — 전체 목록</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📡</text></svg>">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,500;1,6..72,600&family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root {
     --paper: #eef0f4;
     --surface: #ffffff;
     --ink: #131722;
@@ -14,7 +27,7 @@
     --line-strong: rgba(19, 23, 34, 0.22);
   }
 
-  @media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
       --paper: #0e1116;
       --surface: #171b22;
@@ -28,7 +41,7 @@
     }
   }
 
-  :root[data-theme="dark"] {
+:root[data-theme="dark"] {
     --paper: #0e1116;
     --surface: #171b22;
     --ink: #e7e9ee;
@@ -40,9 +53,9 @@
     --line-strong: rgba(231, 233, 238, 0.24);
   }
 
-  * { box-sizing: border-box; }
+* { box-sizing: border-box; }
 
-  body {
+body {
     margin: 0;
     background: var(--paper);
     color: var(--ink);
@@ -52,13 +65,13 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  .page {
+.page {
     max-width: 700px;
     margin: 0 auto;
     padding: 56px 24px 96px;
   }
 
-  .eyebrow {
+.eyebrow {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 12.5px;
     letter-spacing: 0.12em;
@@ -66,19 +79,19 @@
     color: var(--signal-deep);
   }
 
-  header.masthead {
+header.masthead {
     border-bottom: 1px solid var(--line-strong);
     padding-bottom: 28px;
     margin-bottom: 40px;
   }
 
-  header.masthead .eyebrow {
+header.masthead .eyebrow {
     display: flex;
     justify-content: space-between;
     gap: 12px;
   }
 
-  h1.headline {
+h1.headline {
     font-family: 'Newsreader', Georgia, serif;
     font-style: italic;
     font-weight: 500;
@@ -89,234 +102,81 @@
     text-wrap: balance;
   }
 
-  .masthead .subhead {
+.masthead .subhead {
     color: var(--ink-soft);
     font-size: 15px;
     max-width: 56ch;
   }
 
-  .masthead .subhead b {
+.masthead .subhead b {
     color: var(--ink);
     font-weight: 600;
   }
 
-  article.item {
-    background: var(--surface);
-    border: 1px solid var(--line);
-    border-radius: 3px;
-    padding: 32px 32px 28px;
-    margin-bottom: 32px;
+  .archive {
+    list-style: none;
+    margin: 0;
+    padding: 0;
   }
 
-  .tag-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    align-items: center;
-    margin-bottom: 16px;
-  }
-
-  .tag {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11.5px;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    padding: 3px 8px;
-    border-radius: 2px;
-    border: 1px solid var(--line-strong);
-    color: var(--ink-soft);
-  }
-
-  .tag.priority {
-    border-color: var(--signal);
-    color: var(--signal-deep);
-    background: var(--signal-soft);
-  }
-
-  h2.item-title {
-    font-family: 'Newsreader', Georgia, serif;
-    font-weight: 500;
-    font-size: 26px;
-    line-height: 1.3;
-    margin: 0 0 18px;
-    text-wrap: balance;
-  }
-
-  .section-label {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-    margin: 22px 0 8px;
-  }
-
-  .section-label:first-of-type { margin-top: 0; }
-
-  article.item p {
-    margin: 0 0 4px;
-    max-width: 62ch;
-  }
-
-  article.item .for-you {
-    padding: 14px 16px;
-    background: var(--signal-soft);
-    border-left: 2px solid var(--signal);
-    border-radius: 0 3px 3px 0;
-  }
-
-  figure.diagram {
-    margin: 26px 0 6px;
-    padding: 18px 6px 8px;
-    border-top: 1px solid var(--line);
+  .entry {
     border-bottom: 1px solid var(--line);
   }
 
-  figure.diagram svg { width: 100%; height: auto; display: block; color: var(--ink-soft); }
-  figure.diagram .accent { color: var(--signal); }
-  figure.diagram text { font-family: 'IBM Plex Mono', monospace; fill: currentColor; }
-
-  figcaption {
-    font-size: 13px;
-    color: var(--ink-soft);
-    margin-top: 10px;
+  .entry:first-child {
+    border-top: 1px solid var(--line-strong);
   }
 
-  .source-row {
-    margin-top: 24px;
-    padding-top: 16px;
-    border-top: 1px solid var(--line);
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 12px;
-    flex-wrap: wrap;
+  .entry a {
+    display: block;
+    padding: 22px 4px;
+    text-decoration: none;
+    color: inherit;
   }
 
-  .source-row a {
-    color: var(--ink);
-    text-decoration-color: var(--signal);
-    text-decoration-thickness: 1.5px;
+  .entry a:hover .entry-headline {
+    color: var(--signal-deep);
+    text-decoration: underline;
     text-underline-offset: 3px;
   }
 
-  .source-row .domain {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 12px;
-    color: var(--ink-soft);
-  }
-
-  .addendum {
-    margin-top: 22px;
-    padding-top: 18px;
-    border-top: 1px solid var(--line);
-  }
-
-  ol.tri-summary {
-    margin: 0;
-    padding-left: 1.3em;
-  }
-
-  ol.tri-summary li {
-    margin-bottom: 6px;
-    max-width: 62ch;
-  }
-
-  dl.glossary {
-    margin: 0;
-    display: grid;
-    grid-template-columns: max-content 1fr;
-    column-gap: 14px;
-    row-gap: 10px;
-  }
-
-  dl.glossary dt {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--signal-deep);
-    white-space: nowrap;
-  }
-
-  dl.glossary dd {
-    margin: 0;
-    max-width: 56ch;
-    color: var(--ink-soft);
-  }
-
-  section.radar {
-    margin-top: 40px;
-    padding-top: 26px;
-    border-top: 1px solid var(--line-strong);
-  }
-
-  section.radar > p.radar-note {
-    margin: 0 0 18px;
-    font-size: 13.5px;
-    color: var(--ink-soft);
-    max-width: 62ch;
-  }
-
-  .radar-group {
-    margin-bottom: 20px;
-  }
-
-  .radar-group h3 {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11.5px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-    font-weight: 500;
-    margin: 0 0 8px;
-  }
-
-  ul.radar-list {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  ul.radar-list li {
-    position: relative;
-    padding-left: 16px;
-    margin-bottom: 7px;
-    font-size: 14.5px;
-    line-height: 1.6;
-    max-width: 66ch;
-    color: var(--ink);
-  }
-
-  ul.radar-list li::before {
-    content: "·";
-    position: absolute;
-    left: 3px;
-    color: var(--ink-soft);
-  }
-
-  ul.radar-list li a {
-    color: inherit;
-    text-decoration: none;
-    border-bottom: 1px solid var(--line-strong);
-  }
-
-  ul.radar-list li a:hover { border-bottom-color: var(--signal); }
-
-  footer.status {
+  .entry-date {
+    display: block;
     font-family: 'IBM Plex Mono', monospace;
     font-size: 12.5px;
+    letter-spacing: 0.08em;
+    color: var(--signal-deep);
+    margin-bottom: 6px;
+  }
+
+  .entry-headline {
+    display: block;
+    font-family: 'Newsreader', Georgia, serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 21px;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+    margin-bottom: 6px;
+    text-wrap: balance;
+  }
+
+  .entry-meta {
+    display: block;
+    font-size: 13.5px;
     color: var(--ink-soft);
-    border-top: 1px solid var(--line-strong);
-    padding-top: 18px;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 8px;
+  }
+
+  footer.colophon {
+    margin-top: 48px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+    font-size: 13px;
+    color: var(--ink-soft);
   }
 
   @media (max-width: 480px) {
-    article.item { padding: 24px 20px; }
-    h1.headline { font-size: 30px; }
+    .entry-headline { font-size: 19px; }
   }
 </style>
 
@@ -325,209 +185,92 @@
   <header class="masthead">
     <div class="eyebrow">
       <span>KNOWLEDGE BRIEF</span>
-      <span>2026-09-11 · 22:00</span>
+      <span>전체 목록</span>
     </div>
-    <h1 class="headline">하네스가 상품이 되고, 안전장치가 벤더 경계에서 끝난다</h1>
-    <p class="subhead">오늘 조사한 항목 중 <b>knowledge_profile.md</b> 기준으로 학습 가치가 있다고 판단된 것만 남겼습니다. 나머지는 이미 아는 내용이거나 가치가 낮아 걸러냈습니다.</p>
+    <h1 class="headline">지금까지의 브리프</h1>
+    <p class="subhead">매일 밤 22:00에 한 건씩 발행됩니다. <b>맨 위가 가장 최근 것</b>이고, 날짜를 누르면 그날 내용이 열립니다.</p>
   </header>
 
-  <article class="item">
-    <div class="tag-row">
-      <span class="tag priority">P1 · AGENT_HARNESS_ENGINEERING</span>
-      <span class="tag">공식 발표</span>
-      <span class="tag">FAST-MOVING</span>
-    </div>
+  <ul class="archive">
+    <li class="entry">
+      <a href="2026-09-11.html">
+        <span class="entry-date">2026-09-11 (금)</span>
+        <span class="entry-headline">하네스가 상품이 되고, 안전장치가 벤더 경계에서 끝난다</span>
+        <span class="entry-meta">신호 2건 · 레이더 10건</span>
+      </a>
+    </li>
+    <li class="entry">
+      <a href="2026-09-10.html">
+        <span class="entry-date">2026-09-10 (목)</span>
+        <span class="entry-headline">임계선을 넘은 AI, 검증은 남았다</span>
+        <span class="entry-meta">신호 2건 · 레이더 7건</span>
+      </a>
+    </li>
+    <li class="entry">
+      <a href="2026-09-09.html">
+        <span class="entry-date">2026-09-09 (수)</span>
+        <span class="entry-headline">에이전트에게 무엇을 읽히고, 어디까지 맡기나</span>
+        <span class="entry-meta">신호 2건 · 레이더 6건</span>
+      </a>
+    </li>
+    <li class="entry">
+      <a href="2026-09-08.html">
+        <span class="entry-date">2026-09-08 (화)</span>
+        <span class="entry-headline">&quot;모델이 하겠다는 것&quot;과 &quot;실제로 실행되는 것&quot; 사이, 업계가 이름을 붙였다</span>
+        <span class="entry-meta">신호 1건 · 레이더 4건</span>
+      </a>
+    </li>
+    <li class="entry">
+      <a href="2026-09-06.html">
+        <span class="entry-date">2026-09-06 (일)</span>
+        <span class="entry-headline">권한 밖이 아니라, 아무도 안 보던 문 — 에이전트가 스스로 찾아낸 두 개의 틈</span>
+        <span class="entry-meta">신호 2건 · 레이더 5건</span>
+      </a>
+    </li>
+    <li class="entry">
+      <a href="2026-09-05.html">
+        <span class="entry-date">2026-09-05 (토)</span>
+        <span class="entry-headline">허용목록은 경계가 아니다 — AI 코딩 에이전트가 반복해서 증명한 방식</span>
+        <span class="entry-meta">신호 1건 · 레이더 11건</span>
+      </a>
+    </li>
+    <li class="entry">
+      <a href="2026-09-04.html">
+        <span class="entry-date">2026-09-04 (금)</span>
+        <span class="entry-headline">셋이 똑같이 뚫린 이유: 허용목록과 강제 사이의 틈</span>
+        <span class="entry-meta">신호 1건 · 레이더 7건</span>
+      </a>
+    </li>
+    <li class="entry">
+      <a href="2026-09-03.html">
+        <span class="entry-date">2026-09-03 (목)</span>
+        <span class="entry-headline">판단을 어디에 배치할 것인가 — 권한과 컨텍스트, 두 사례</span>
+        <span class="entry-meta">신호 2건 · 레이더 8건</span>
+      </a>
+    </li>
+    <li class="entry">
+      <a href="2026-09-02-2200.html">
+        <span class="entry-date">2026-09-02 (수) · 밤 정규분</span>
+        <span class="entry-headline">경계를 규칙이 아니라 판사가 지킬 때</span>
+        <span class="entry-meta">신호 1건 · 레이더 7건</span>
+      </a>
+    </li>
+    <li class="entry">
+      <a href="2026-09-02.html">
+        <span class="entry-date">2026-09-02 (수) · 오전 보충분</span>
+        <span class="entry-headline">조용한 밤, 대신 HTTPS의 진짜 의미</span>
+        <span class="entry-meta">신호 1건</span>
+      </a>
+    </li>
+    <li class="entry">
+      <a href="2026-08-30.html">
+        <span class="entry-date">2026-08-30 (일)</span>
+        <span class="entry-headline">안전 한계를, 에이전트의 판단이 아니라 하드웨어 앞에서 강제하는 법</span>
+        <span class="entry-meta">신호 1건</span>
+      </a>
+    </li>
+  </ul>
 
-    <h2 class="item-title">OpenAI, Codex Harness를 API 한 번으로 여는 &ldquo;Agents API&rdquo; 공개 베타 출시</h2>
-
-    <p class="section-label">WHAT</p>
-    <p>2026-09-10 OpenAI가 오픈소스 Codex harness(코딩 에이전트 런타임) 위에 구축한 관리형 API &ldquo;Agents API&rdquo;를 공개 베타로 출시했다. 개발자가 직접 구현해야 했던 세션 유지, 오케스트레이션, 컨텍스트 압축, 복구 로직을 OpenAI가 대신 관리한다. 구조는 네 객체로 나뉜다 — <b>Agent</b>(모델, 지시사항, 도구, MCP 서버를 정의), <b>Environment</b>(파일 접근·명령 실행이 실제로 일어나는 샌드박스), <b>Session</b>(작업을 수행하고 입력에 응답하는 지속가능한 에이전트 인스턴스), <b>Events/Items</b>(에이전트로 들어오고 나가는 입출력). 핵심 기능은 네 가지다: 세션이 토큰 한도에 가까워지면 자동으로 이전 컨텍스트를 압축하는 기능, 필요한 시점에만 도구 정의를 불러와 토큰 비용을 줄이고 프롬프트 캐시를 보존하는 Tool Search, 도구 호출을 병렬 실행·체이닝하고 결과를 코드로 필터링해 관련 데이터만 컨텍스트로 반환하는 프로그래매틱 도구 호출, 그리고 메인 에이전트가 작업을 나눠 각자 컨텍스트를 유지한 채 병렬로 처리하는 서브에이전트 기능이다. 같은 날 OpenAI는 이 인프라와는 별개로 금융서비스 특화 제품 &ldquo;ChatGPT for Financial Services&rdquo;도 출시했다.</p>
-
-    <p class="section-label">WHY</p>
-    <p>지금까지 &ldquo;에이전트 하네스&rdquo;는 각 팀이 스스로 설계해야 하는 인프라였다 — 컨텍스트가 넘칠 때 무엇을 버리고 무엇을 남길지, 도구 목록이 늘어날 때 프롬프트 캐시를 어떻게 지킬지, 서브에이전트 간 결과를 어떻게 병합할지는 전부 하네스 설계자의 판단 영역이었다. Agents API는 그 판단 로직 자체를 OpenAI가 관리형 서비스로 표준화해 판다는 선언이다. 단순 기능 추가가 아니라 &ldquo;에이전트 하네스&rdquo;라는 계층 자체가 하나의 독립 제품 카테고리로 굳어지고 있다는 신호이며, Anthropic Claude Agent SDK나 이 Knowledge Agent가 매일 쓰는 subagent 오케스트레이션과 같은 문제를 상업 API 뒤로 감춘 사례다.</p>
-
-    <figure class="diagram">
-      <svg viewBox="0 0 640 200" role="img" aria-label="Agent가 만드는 것은 구조화된 요청이고, 그 요청이 Environment 샌드박스에서 실행되기까지 Session이 개입한다는 계층 분리">
-        <rect x="20" y="20" width="200" height="56" fill="none" stroke="currentColor" stroke-width="1.2" rx="3"/>
-        <text x="120" y="44" text-anchor="middle" font-size="13" font-weight="500">Agent</text>
-        <text x="120" y="62" text-anchor="middle" font-size="10.5">모델·지시사항·도구 정의</text>
-
-        <text x="250" y="30" font-size="10.5">&ldquo;이 도구를</text>
-        <text x="250" y="44" font-size="10.5">이렇게 호출하고</text>
-        <text x="250" y="58" font-size="10.5">싶다&rdquo; (요청)</text>
-        <line x1="220" y1="48" x2="330" y2="48" stroke="currentColor" stroke-width="1.2"/>
-        <polygon points="330,48 322,44 322,52" fill="currentColor"/>
-
-        <rect x="330" y="20" width="150" height="56" class="accent" fill="none" stroke="currentColor" stroke-width="1.4" rx="3"/>
-        <text x="405" y="44" text-anchor="middle" font-size="13" font-weight="500" class="accent">Session</text>
-        <text x="405" y="62" text-anchor="middle" font-size="10">압축·오케스트레이션</text>
-
-        <line x1="480" y1="48" x2="590" y2="48" stroke="currentColor" stroke-width="1.2"/>
-        <polygon points="590,48 582,44 582,52" fill="currentColor"/>
-
-        <rect x="480" y="110" width="140" height="56" fill="none" stroke="currentColor" stroke-width="1.2" rx="3"/>
-        <text x="550" y="134" text-anchor="middle" font-size="13" font-weight="500">Environment</text>
-        <text x="550" y="152" text-anchor="middle" font-size="10">실제 실행 샌드박스</text>
-
-        <line x1="555" y1="76" x2="555" y2="110" stroke="currentColor" stroke-width="1.2"/>
-        <polygon points="555,110 551,102 559,102" fill="currentColor"/>
-
-        <text x="20" y="130" font-size="11" class="accent">모델 의도(Agent)와 실제 실행(Environment)이</text>
-        <text x="20" y="146" font-size="11" class="accent">서로 다른 계층에, Session을 거쳐서만 연결된다</text>
-      </svg>
-      <figcaption>Agent가 내보내는 것은 실행이 아니라 &ldquo;구조화된 요청&rdquo;이고, Session이라는 별도 계층을 거쳐야만 Environment(실제 실행)에 닿는다.</figcaption>
-    </figure>
-
-    <p class="section-label">FOR YOU</p>
-    <div class="for-you">
-      <p>agent_harness_engineering은 이미 confirmed_known 수준이 높은 도메인이지만, tool_calling_runtime_architecture는 여전히 partial 상태로 남아 있다 — &ldquo;모델이 보내는 것은 실행이 아니라 구조화된 요청이며, 그 사이에 하네스가 거부·변형·승인을 끼워 넣을 수 있다&rdquo;는 지점이 residual gap으로 기록돼 있다. Agents API의 네 객체 구조가 정확히 그 지점을 실제 제품으로 구현한 사례다: Agent가 만드는 건 &ldquo;이 도구를 이렇게 호출하고 싶다&rdquo;는 요청일 뿐이고, 그 요청이 실제로 파일에 닿고 명령이 실행되는 곳은 별도 계층인 Environment(샌드박스)다. 그 둘 사이에 Session이 앉아 컨텍스트 압축·오케스트레이션이라는 형태로 개입한다 — &ldquo;모델의 의도&rdquo;와 &ldquo;실행&rdquo;이 물리적으로 다른 계층에, 다른 신뢰 경계 안에 있다는 걸 실물 API 설계로 보여준다. system_design_architecture.development_targets.logical_boundary_vs_runtime_boundary에서 &ldquo;강제 지점을 계층(아래)으로 낮추는&rdquo; 방향을 아직 스스로 도출하지 못했다고 기록돼 있는데, 이 Environment가 바로 그 &ldquo;아래 계층&rdquo;의 실물 사례다.</p>
-    </div>
-
-    <p class="section-label">LEARN</p>
-    <p>이 주제는 codex_features/fast_moving 카테고리라 API 세부 스펙(가격, rate limit, SDK 문법)까지 깊게 따라갈 필요는 없다 — 몇 달 안에 또 바뀐다. 다만 &ldquo;에이전트 하네스가 관리형 서비스로 표준화되는 방향&rdquo;이라는 구조적 흐름 자체는 evolving_practice로 계속 지켜볼 가치가 있다. ME_HEAD/Knowledge Agent 같은 자체 하네스를 설계할 때, Agent/Environment/Session/Events라는 네 객체 분리를 참고 아키텍처로 삼을 만하다.</p>
-
-    <div class="source-row">
-      <a href="https://openai.com/index/introducing-the-agents-api/" target="_blank" rel="noopener">OpenAI 공식 발표 원문 보기 →</a>
-      <span class="domain">openai.com</span>
-    </div>
-
-    <div class="addendum">
-      <p class="section-label">3줄 요약</p>
-      <ol class="tri-summary">
-        <li>이 API는 개발자가 컨텍스트 압축, 도구 관리, 세션 유지 로직을 직접 구현하지 않아도 되도록 지원하는 관리형 에이전트 API이다.</li>
-        <li>자동 컨텍스트 압축, 필요 시에만 도구를 불러오는 Tool Search, 병렬 도구 호출 및 서브에이전트 처리 등의 기능을 제공한다.</li>
-        <li>같은 날 금융서비스 특화 제품인 &ldquo;ChatGPT for Financial Services&rdquo;도 별도로 공개되었다.</li>
-      </ol>
-    </div>
-
-    <div class="addendum">
-      <p class="section-label">용어 해설</p>
-      <dl class="glossary">
-        <dt>프롬프트 캐시</dt>
-        <dd>모델이 이전에 처리한 프롬프트의 앞부분(시스템 지시문, 도구 정의 등 반복되는 내용)을 재사용해 매번 처음부터 다시 계산하지 않도록 하는 기법. 이번 Tool Search 기능은 도구 정의를 필요할 때만 불러와 이 캐시가 깨지지 않게 유지하는 것이 핵심이다.</dd>
-      </dl>
-    </div>
-  </article>
-
-  <article class="item">
-    <div class="tag-row">
-      <span class="tag priority">P0 · SECURITY</span>
-      <span class="tag">공식 발표</span>
-      <span class="tag">EVOLVING_PRACTICE</span>
-    </div>
-
-    <h2 class="item-title">Anthropic 위협 정보 보고서 — 생물무기 연구 지원 요청은 막았지만, 경쟁 모델로 우회당했다</h2>
-
-    <p class="section-label">WHAT</p>
-    <p>Anthropic이 2026-09-10, 2025년 12월~2026년 8월 사이 자사 Threat Intelligence 팀이 탐지·차단한 Claude 오용 사례를 7개 영역(사이버 작전, 영향력 작전, 감시, 사기, 생물학적 오용, 재래식 무기 개발, 불법 증류)으로 정리한 보고서를 공개했다. 가장 눈에 띄는 사례는 생물학적 오용 영역이다 — 2026년 5월, 군사 연구기관을 위한 치쿤구니야 바이러스 기능획득(gain-of-function) 연구 보조금 신청서 작성을 돕는 요청이 들어오자 Anthropic의 생물학적 안전 분류기가 이를 차단했다. 요청자는 곧바로 우회 플랫폼을 거쳐 다시 접근을 시도했고, 그 우회 플랫폼에는 Claude가 거부한 프롬프트를 자동으로 경쟁사 모델에 재전송하는 폴백 기능이 내장돼 있었다는 사실이 Anthropic 조사에서 드러났다. 이 밖에 말리 소재 컨설턴트 한 명이 Claude로 자국 정보기관용 SIM카드 약 2,500만 개 모니터링 플랫폼(&ldquo;Lakana 360&rdquo;)을 구축한 사례, 중국 정부 연계 행위자가 시리아 내 위구르족 추적·프로파일링에 활용한 사례, 연애 앱 20여 개를 운영하며 AI 페르소나 4,700여 개가 2주간 약 2만5천 명과 236만 건의 메시지를 주고받은 사기 사례(실제 인력과 AI 페르소나를 3:1로 섞고 자동화 사실은 밝히지 말라고 지시), ShinyHunters(GTG-50014)가 APK 파일 150만 개 이상에서 하드코딩된 비밀정보를 스캔한 사이버 작전 사례가 담겼다. 오용에 쓰인 모델은 대부분 Claude Haiku/Sonnet/Opus였고, 최신 세대인 Fable/Mythos는 불법 증류 사건 한 건을 제외하면 등장하지 않았다.</p>
-
-    <p class="section-label">WHY</p>
-    <p>이 보고서가 가치 있는 건 &ldquo;AI가 위험하다&rdquo;는 추상적 경고가 아니라, 실제로 걸러진 요청과 그걸 우회하려던 시도까지 함께 공개했기 때문이다. 안전장치가 서류상 존재한다는 것과 실제로 그 순간에 작동했다는 것은 다른 얘기인데, 이 보고서는 후자의 구체적 증거(생물무기 연구 지원 요청이 실제로 차단됨)를 제시한다. 동시에 그 안전장치의 한계도 같은 사례 안에서 드러난다 — Anthropic의 분류기는 Anthropic 서비스 경계 안에서만 작동하고, 사용자가 그 경계를 벗어나 경쟁사 모델로 가면 그 즉시 무력화된다. &ldquo;안전장치가 실제로 작동하는가&rdquo;라는 질문 바로 다음에 &ldquo;그 작동 범위가 어디까지인가&rdquo;라는 두 번째 질문이 따라붙는 사례다.</p>
-
-    <figure class="diagram">
-      <svg viewBox="0 0 640 190" role="img" aria-label="Anthropic의 안전 분류기는 자사 서비스 경계 안에서만 작동하고, 그 경계를 벗어나면 무력화된다">
-        <text x="20" y="26" font-size="11">요청: 치쿤구니야 GoF 연구 보조금 초안 지원</text>
-
-        <rect x="20" y="46" width="230" height="56" fill="none" stroke="currentColor" stroke-width="1.2" rx="3"/>
-        <text x="135" y="68" text-anchor="middle" font-size="13" font-weight="500">Claude (Anthropic)</text>
-        <text x="135" y="86" text-anchor="middle" font-size="10">+ 생물학적 안전 분류기</text>
-
-        <line x1="135" y1="102" x2="135" y2="140" stroke="currentColor" stroke-width="1.2"/>
-        <text x="150" y="150" font-size="12" font-weight="500">✕ 차단됨</text>
-
-        <line x1="250" y1="74" x2="390" y2="74" stroke="currentColor" stroke-width="1" stroke-dasharray="3,3"/>
-        <text x="270" y="66" font-size="10">우회 재시도</text>
-        <polygon points="390,74 382,70 382,78" fill="currentColor"/>
-
-        <rect x="390" y="46" width="230" height="56" class="accent" fill="none" stroke="currentColor" stroke-width="1.4" rx="3"/>
-        <text x="505" y="68" text-anchor="middle" font-size="13" font-weight="500" class="accent">우회 플랫폼 → 경쟁 모델</text>
-        <text x="505" y="86" text-anchor="middle" font-size="10">(생물학적 안전 분류기 없음)</text>
-
-        <line x1="505" y1="102" x2="505" y2="140" stroke="currentColor" stroke-width="1.2" class="accent"/>
-        <text x="475" y="150" font-size="12" font-weight="500" class="accent">응답 생성됨</text>
-
-        <text x="20" y="176" font-size="10.5" class="accent">강제 지점이 &ldquo;한 벤더의 서비스 경계&rdquo;에 있으면, 그 경계 밖에서는 강제가 아니다</text>
-      </svg>
-      <figcaption>같은 요청이 Anthropic 안에서는 막히지만, 경계를 벗어나 다른 벤더로 가면 그대로 통과한다.</figcaption>
-    </figure>
-
-    <p class="section-label">FOR YOU</p>
-    <div class="for-you">
-      <p>security 도메인은 현재 overall mid로, 서버단 권한 검증이나 SQL Injection 같은 애플리케이션 계층 기본기는 이미 confirmed_known이지만 &ldquo;벤더가 모델 위험을 등급화해 배포 조건에 직접 연결한다&rdquo;는 거버넌스 축은 2026-09-10 브리프(GPT-6 Astra의 Preparedness Framework &ldquo;Critical&rdquo; 등급)에서 막 다루기 시작한 참이다. 이번 사례는 그 축에 두 번째 조각을 더한다: GPT-6 Astra 건이 &ldquo;사전 평가에서 위험 능력을 측정해 배포를 막는다&rdquo;(배포 전 게이트)를 보여줬다면, 이번 건은 &ldquo;배포된 뒤에도 실시간으로 요청을 걸러낸다&rdquo;(런타임 게이트)는 걸 보여주고, 동시에 그 런타임 게이트가 한 회사의 서비스 경계에서 끝난다는 것도 보여준다. 이건 system_design_architecture.development_targets.logical_boundary_vs_runtime_boundary에서 이미 다루는 &ldquo;강제 지점이 어디에 있어야 실제로 강제되는가&rdquo;와 정확히 같은 질문의 새 층위다 — 지금까지는 &ldquo;한 시스템 안에서 강제 지점을 어느 계층에 두는가&rdquo;였다면, 이번 건은 &ldquo;그 강제 지점이 여러 벤더로 이뤄진 생태계 전체에서 뚫리지 않으려면 무엇이 더 필요한가&rdquo;(업계 공동 차단 리스트, 규제 기반 강제 등)라는 상위 질문을 보여준다. AX 강의에서 &ldquo;기업이 AI 리스크를 판단할 때 벤더 하나의 안전장치만 믿으면 안 되는 이유&rdquo;를 설명할 구체적 실화 사례로 쓸 수 있다.</p>
-    </div>
-
-    <p class="section-label">LEARN</p>
-    <p>security는 사용자의 실무·강의 양쪽에 직결되는 P0/P1 우선순위 도메인이라 이 흐름은 계속 따라갈 가치가 있다(evolving_practice) — 다만 이번 건에서 새로 배워야 할 &ldquo;메커니즘&rdquo;은 분류기 자체의 기술적 구현이 아니라 위에서 정리한 &ldquo;단일 벤더 강제의 경계&rdquo; 개념이다. 개별 위협 그룹(GTG 코드)이나 사건 하나하나를 암기할 필요는 없다.</p>
-
-    <div class="source-row">
-      <a href="https://www.anthropic.com/threat-intelligence-report-september-2026" target="_blank" rel="noopener">Anthropic 공식 보고서 원문 보기 →</a>
-      <span class="domain">anthropic.com</span>
-    </div>
-
-    <div class="addendum">
-      <p class="section-label">3줄 요약</p>
-      <ol class="tri-summary">
-        <li>Anthropic이 2026년 9월 10일 2025년 12월부터 2026년 8월까지 탐지·차단한 Claude 오용 사례를 7개 위협 영역으로 정리한 Threat Intelligence Report를 공개했다.</li>
-        <li>보고서에는 기능획득 생물학 연구 지원 요청 차단, 말리·시리아 관련 감시 플랫폼 구축, 연애 앱을 통한 대규모 사기, ShinyHunters의 APK 비밀정보 스캔 등의 구체 사례가 포함됐다.</li>
-        <li>악용된 모델은 대부분 Haiku·Sonnet·Opus였으며, 대다수 작전은 실제 피해 확산 전 단계에서 적발되어 계정 비활성화와 정보 공유 등으로 대응됐다.</li>
-      </ol>
-    </div>
-
-    <div class="addendum">
-      <p class="section-label">용어 해설</p>
-      <dl class="glossary">
-        <dt>gain-of-function</dt>
-        <dd>병원체가 감염력·전파력·치명률 등을 더 강하게 갖도록 실험실에서 개량하는 연구(기능획득 연구). 백신·치료제 개발에 쓰이기도 하지만 유출·악용 시 위험한 병원체를 만들 수 있어 안전 논쟁의 대상이다.</dd>
-        <dt>생물학적 안전 분류기</dt>
-        <dd>모델이 생물무기·병원체 관련 위험 요청인지 자동으로 판별해 차단하는 필터 시스템. 사람이 일일이 검토하지 않아도 위험 신호가 감지되면 즉시 요청을 걸러낸다.</dd>
-        <dt>불법 증류</dt>
-        <dd>상위 모델의 응답을 대량 수집해 그 지식을 다른(주로 더 작은) 모델에 학습시키는 &ldquo;모델 증류&rdquo; 기법을, 이용약관을 어기고 몰래 수행하는 것. 타사 모델을 훈련시키려고 Claude의 출력을 부정 사용하는 행위다.</dd>
-      </dl>
-    </div>
-  </article>
-
-  <section class="radar">
-    <p class="section-label">레이더</p>
-    <p class="radar-note">학습 대상이 아니라 <b>인지 대상</b>입니다. 훑고 지나가세요 — 나중에 필요한 순간에 &ldquo;그거 있었지&rdquo;가 나오게 하는 것이 목적입니다.</p>
-
-    <div class="radar-group">
-      <h3>내가 쓰는 도구</h3>
-      <ul class="radar-list">
-        <li>Claude Code v2.1.267(9/9)~v2.1.268(9/10) — 267은 maxEffortLevel(모델별 effort 상한 강제), --system-prompt-snapshot off(시스템 프롬프트를 매 요청 새로 렌더링), Cowork 예약작업이 샌드박스 강제 조직에서 시작 실패하던 버그, /context 등 모바일 출력 공백 버그 수정. 268은 게이트웨이 가격을 로그인 클라이언트에 노출, gatewayInternalNetworks 옵션 추가, BASE_URL 커스텀 엔드포인트의 Artifact 스키마 HTTP 400 오류 수정, WebFetch 300초 타임아웃(CLAUDE_CODE_WEBFETCH_DEADLINE_MS로 조정 가능) 추가</li>
-        <li>Codex CLI — GPT-6-Astra가 모델 선택기·Bedrock 카탈로그에 정식 노출, --worktree/​/worktree로 세션별 격리 체크아웃 생성, 작업 중에도 제안 선택지·직접 입력으로 인라인 질문에 답변 가능, Vim 검색 지원, /plugins가 OpenAI Curated/Workspace/Shared로 재편, 서버가 승인한 URL만 접근 허용하는 인덱스형 웹검색 모드, 예약된 UTC 리마인더·현재 시각 조회 기능 추가</li>
-      </ul>
-    </div>
-
-    <div class="radar-group">
-      <h3>주변 생태계</h3>
-      <ul class="radar-list">
-        <li>OpenAI ChatGPT for Financial Services(9/10) — GPT-6 Astra에 LSEG News·PitchBook·Daloopa·Crunchbase 등 금융 데이터를 결합한 업무 워크스페이스, Morgan Stanley·Evercore와 파트너십으로 설계, 투자은행 주니어 애널리스트 업무(리서치·재무모델·고객자료 작성)를 우선 타깃</li>
-        <li>OpenAI가 미국 연방정부와 27개월 OneGov 계약 체결(9/10) — 10/1부터 토큰 기반 요금 50% 할인, 플랫폼 접근료·최소 주문 없음, 약 2,300만 명까지 ChatGPT 접근 자격 확대</li>
-        <li>Stilla가 Meta에 합류 — 미션크리티컬 업무용 AI 에이전트 플랫폼팀이 Meta의 AI 제품 조직에 편입</li>
-        <li>Gartner: 2026년 말까지 기업 애플리케이션의 40%가 특화 AI 에이전트를 포함할 전망(2025년 5% 미만에서 급증), McKinsey: 응답 조직 23%가 이미 에이전틱 AI를 실제 스케일로 운영 중·39%는 실험 단계. 별도 조사에서는 응답 조직 1/3이 &ldquo;AI 코딩 에이전트로 직접 만들 수 있어서&rdquo; 외부 소프트웨어 구매를 포기한 적이 있다고 응답</li>
-      </ul>
-    </div>
-
-    <div class="radar-group">
-      <h3>보안</h3>
-      <ul class="radar-list">
-        <li>DeepSeek Harness 샌드박스 우회(CVE-2026-59346, CVSS 9.3) — 정수 오버플로 결함으로 샌드박스 안의 에이전트가 명령 하나로 자기 자신의 샌드박스를 꺼버릴 수 있음. AWS Kiro 자가수정 사고와 같은 &ldquo;권한이 통제 대상 자신의 쓰기 범위 안에 있다&rdquo; 패턴의 새 인스턴스</li>
-        <li>Orkes Conductor 인증 전 원격코드실행(CVE-2026-58138) — 원래 범용 워크플로우 오케스트레이션 엔진인데 최근 AI 에이전트 오케스트레이션 용도로도 널리 쓰이기 시작하면서, 인증 없이 워크플로우 정의에 악성 JS/Python 표현식을 넣어 임의 OS 명령을 실행할 수 있는 취약점이 새로운 공격면으로 지목됨</li>
-        <li>OWASP Top 10 for Agentic Applications 2026(ASI01~10, 2025-12-09 공개) — 9/8 브리프에서 다룬 &ldquo;LLM Top 10&rdquo;(모델 출력 자체의 위험)과 별개로, 자율적으로 계획하고 도구를 호출하고 위임된 권한으로 행동하는 에이전트 특유의 위험(목표 탈취, 도구 오남용, 정체성/권한 남용, 공급망 침해, 메모리·컨텍스트 오염, 에이전트 간 통신 취약, 연쇄 실패, 폭주 에이전트 등)을 별도 10개 범주로 정리한 표준</li>
-      </ul>
-    </div>
-
-    <div class="radar-group">
-      <h3>정책</h3>
-      <ul class="radar-list">
-        <li>캘리포니아 AB 1405·SB 813(9/9 뉴섬 주지사 서명) — 미국 최초로 AI 감사기관(auditor) 국가 등록제를 만들고, 2029-01-01부터 등록번호 없는 주체는 공식 AI 감사를 수행할 수 없도록 규정. AI 시스템에 대한 독립 검증기관 프레임워크를 법제화한 첫 사례</li>
-      </ul>
-    </div>
-  </section>
-
-  <footer class="status">
-    <span>오늘 조사 후 2건 전달 · 레이더 10건 · MCP 로드맵 재확인·일반 RAG/영상생성 라운드업·&lsquo;모두의 AI&rsquo; 일정 반복 보도 등은 중복/저가치로 폐기</span>
-    <span>Knowledge Agent v0.1</span>
-  </footer>
+  <footer class="colophon">Knowledge Agent v0.1</footer>
 
 </div>
