@@ -1,0 +1,530 @@
+<title>Knowledge Brief 2026-09-15</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📡</text></svg>">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,500;1,6..72,600&family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  :root {
+    --paper: #eef0f4;
+    --surface: #ffffff;
+    --ink: #131722;
+    --ink-soft: #5b6472;
+    --signal: #c97a1a;
+    --signal-deep: #8a5313;
+    --signal-soft: #f3e3cc;
+    --line: rgba(19, 23, 34, 0.12);
+    --line-strong: rgba(19, 23, 34, 0.22);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #0e1116;
+      --surface: #171b22;
+      --ink: #e7e9ee;
+      --ink-soft: #9aa3b2;
+      --signal: #f0b15c;
+      --signal-deep: #f5c685;
+      --signal-soft: rgba(240, 177, 92, 0.14);
+      --line: rgba(231, 233, 238, 0.14);
+      --line-strong: rgba(231, 233, 238, 0.24);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --paper: #0e1116;
+    --surface: #171b22;
+    --ink: #e7e9ee;
+    --ink-soft: #9aa3b2;
+    --signal: #f0b15c;
+    --signal-deep: #f5c685;
+    --signal-soft: rgba(240, 177, 92, 0.14);
+    --line: rgba(231, 233, 238, 0.14);
+    --line-strong: rgba(231, 233, 238, 0.24);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans KR', 'IBM Plex Sans', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 56px 24px 96px;
+  }
+
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--signal-deep);
+  }
+
+  header.masthead {
+    border-bottom: 1px solid var(--line-strong);
+    padding-bottom: 28px;
+    margin-bottom: 40px;
+  }
+
+  header.masthead .eyebrow {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  h1.headline {
+    font-family: 'Newsreader', Georgia, serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(32px, 6vw, 44px);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin: 14px 0 10px;
+    text-wrap: balance;
+  }
+
+  .masthead .subhead {
+    color: var(--ink-soft);
+    font-size: 15px;
+    max-width: 56ch;
+  }
+
+  .masthead .subhead b {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  article.item {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 32px 32px 28px;
+    margin-bottom: 32px;
+  }
+
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  .tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+    border: 1px solid var(--line-strong);
+    color: var(--ink-soft);
+  }
+
+  .tag.priority {
+    border-color: var(--signal);
+    color: var(--signal-deep);
+    background: var(--signal-soft);
+  }
+
+  h2.item-title {
+    font-family: 'Newsreader', Georgia, serif;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 1.3;
+    margin: 0 0 18px;
+    text-wrap: balance;
+  }
+
+  .section-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin: 22px 0 8px;
+  }
+
+  .section-label:first-of-type { margin-top: 0; }
+
+  article.item p {
+    margin: 0 0 4px;
+    max-width: 62ch;
+  }
+
+  article.item ul {
+    margin: 0 0 4px;
+    padding-left: 1.2em;
+    max-width: 62ch;
+  }
+
+  article.item .for-you {
+    padding: 14px 16px;
+    background: var(--signal-soft);
+    border-left: 2px solid var(--signal);
+    border-radius: 0 3px 3px 0;
+  }
+
+  figure.diagram {
+    margin: 26px 0 6px;
+    padding: 18px 6px 8px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  figure.diagram svg { width: 100%; height: auto; display: block; color: var(--ink-soft); }
+  figure.diagram .accent { color: var(--signal); }
+  figure.diagram text { font-family: 'IBM Plex Mono', monospace; fill: currentColor; }
+
+  figcaption {
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-top: 10px;
+  }
+
+  .source-row {
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .source-row a {
+    color: var(--ink);
+    text-decoration-color: var(--signal);
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 3px;
+  }
+
+  .source-row .domain {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+
+  .addendum {
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+  }
+
+  ol.tri-summary {
+    margin: 0;
+    padding-left: 1.3em;
+  }
+
+  ol.tri-summary li {
+    margin-bottom: 6px;
+    max-width: 62ch;
+  }
+
+  dl.glossary {
+    margin: 0;
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    column-gap: 14px;
+    row-gap: 10px;
+  }
+
+  dl.glossary dt {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--signal-deep);
+    white-space: nowrap;
+  }
+
+  dl.glossary dd {
+    margin: 0;
+    max-width: 56ch;
+    color: var(--ink-soft);
+  }
+
+  section.radar {
+    margin-top: 40px;
+    padding-top: 26px;
+    border-top: 1px solid var(--line-strong);
+  }
+
+  section.radar > p.radar-note {
+    margin: 0 0 18px;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    max-width: 62ch;
+  }
+
+  .radar-group {
+    margin-bottom: 20px;
+  }
+
+  .radar-group h3 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 500;
+    margin: 0 0 8px;
+  }
+
+  ul.radar-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  ul.radar-list li {
+    position: relative;
+    padding-left: 16px;
+    margin-bottom: 7px;
+    font-size: 14.5px;
+    line-height: 1.6;
+    max-width: 66ch;
+    color: var(--ink);
+  }
+
+  ul.radar-list li::before {
+    content: "·";
+    position: absolute;
+    left: 3px;
+    color: var(--ink-soft);
+  }
+
+  ul.radar-list li a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid var(--line-strong);
+  }
+
+  ul.radar-list li a:hover { border-bottom-color: var(--signal); }
+
+  footer.status {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    border-top: 1px solid var(--line-strong);
+    padding-top: 18px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  @media (max-width: 480px) {
+    article.item { padding: 24px 20px; }
+    h1.headline { font-size: 30px; }
+  }
+</style>
+
+<div class="page">
+
+  <header class="masthead">
+    <div class="eyebrow">
+      <span>KNOWLEDGE BRIEF</span>
+      <span>2026-09-15 · 22:00</span>
+    </div>
+    <h1 class="headline">강제는 멀리 두는 게 아니라 아래에 둬야 무너지지 않는다</h1>
+    <p class="subhead">오늘 조사한 것 중 <b>지금 당신에게 학습 가치가 있다고 판단한 것</b>만 남겼습니다. 나머지는 이미 아는 내용이거나 가치가 낮아 걸러냈습니다.</p>
+  </header>
+
+  <article class="item">
+    <div class="tag-row">
+      <span class="tag priority">하네스 설계 · 오늘의 핵심</span>
+      <span class="tag">공식 릴리스</span>
+      <span class="tag">빨리 바뀜</span>
+    </div>
+
+    <h2 class="item-title">Claude Code, 허용 도메인을 세션이 아니라 명령 하나마다 다시 매기다</h2>
+
+    <p class="section-label">WHAT</p>
+    <p>Claude Code v2.1.271이 9월 14일 나왔습니다. 사람 승인 없이 자동으로 명령을 실행하는 모드에서, 이제 Bash·PowerShell·Monitor 각 명령이 실제로 뜨는 순간에 그 명령이 필요로 하는 네트워크 주소만 그 명령 하나에 한해 열립니다. 그 명령이 끝나면 열렸던 접근도 함께 닫힙니다.</p>
+
+    <p class="section-label">WHY</p>
+    <p>이전에는 세션을 시작할 때 정한 허용 목록 하나가 그 세션 안의 모든 명령에 똑같이 적용됐습니다. 그러면 세션 안의 어느 명령이든 목록에 있는 주소 전부에 접근할 수 있었습니다. 명령 단위로 좁히면 한 명령이 쓸 주소 하나만 그 순간에 열립니다. 공격 표면이 눈에 띄게 줄어듭니다.</p>
+
+    <p class="section-label">FOR YOU</p>
+    <div class="for-you">
+      <p>당신은 이미 "권한 설정이 통제 대상 자신의 쓰기 권한 안에 있으면 그건 통제가 아니다"라는 원칙을 스스로 도출했습니다. 이번 변경은 그 원칙을 실행 계층에서 보여주는 실물 사례입니다.</p>
+      <ul>
+        <li>기존 방식: 세션이라는, 모델이 계속 관여하는 단위에 허용 목록이 걸려 있었습니다.</li>
+        <li>새 방식: 그 강제를 명령이 실제로 실행되는 순간, 모델과 무관한 OS 샌드박스 계층으로 내렸습니다.</li>
+      </ul>
+      <p>모델이 어떤 텍스트를 생성하든 이 강제는 흔들리지 않습니다. 결정(어떤 권한을 줄지)은 그대로 두고, 강제 지점만 모델보다 낮은 계층으로 옮긴 것입니다.</p>
+    </div>
+
+    <p class="section-label">LEARN</p>
+    <p>이 업데이트 자체를 깊이 팔 필요는 없습니다. 다만 이 사례는 오늘 함께 다루는 백로그 항목("강제 지점을 어디에 둘 것인가")의 답을 실물로 보여주므로, 두 항목을 이어서 읽으면 훨씬 구체적으로 이해됩니다.</p>
+
+    <div class="source-row">
+      <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog 원문 보기 →</a>
+      <span class="domain">code.claude.com</span>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">3줄 요약</p>
+      <ol class="tri-summary">
+        <li>Claude Code v2.1.271(2026-09-14)은 Remote 세션에 fast mode 지원을 추가하고, 자동 승인 샌드박스 모드에서 Bash/PowerShell/Monitor의 네트워크 허용 도메인을 세션 단위가 아닌 명령 단위로 좁혔다.</li>
+        <li>이와 함께 fast mode 관련 버그(/fast off 오작동, 환경변수 설정 시 재전송, watchdog 폴백)와 Bash 권한 검사 누락 버그를 수정했다.</li>
+        <li>참고로 직전 v2.1.270은 v2.1.269에서 발생한 장시간 세션 시 읽기전용 git 명령 재승인 요구 회귀를 수정했다.</li>
+      </ol>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">용어 해설</p>
+      <dl class="glossary">
+        <dt>auto mode</dt>
+        <dd>Claude Code에서 매 명령마다 사람이 승인 버튼을 누르지 않고, 미리 정한 규칙에 따라 에이전트가 곧바로 명령을 실행하는 운영 모드입니다.</dd>
+        <dt>allowed_domains의 실제 위치</dt>
+        <dd>이건 "허용 주소 목록"이라는 정책 문서가 아니라, 명령이 실제 프로세스로 뜰 때 OS가 실행하는 네트워크 필터링 규칙입니다. 모델이 텍스트로 뭐라 하든 그 외 주소로의 연결은 OS가 물리적으로 막습니다.</dd>
+      </dl>
+    </div>
+  </article>
+
+  <article class="item">
+    <div class="tag-row">
+      <span class="tag priority">보안 · 강의에 바로 쓸 것</span>
+      <span class="tag">기술매체 교차확인</span>
+      <span class="tag">계속 바뀌는 중</span>
+    </div>
+
+    <h2 class="item-title">Anthropic·OpenAI·Google, 경쟁사끼리 배포 전 검증 절차를 맞추는 논의가 수면 위로</h2>
+
+    <p class="section-label">WHAT</p>
+    <p>세 회사의 최고경영자 바로 아래급 실무진이 7월부터 정기적으로 만나 업계 주도의 AI 표준기구를 논의해왔다는 사실이 9월 14일 보도됐습니다. 목표는 최신 모델을 공개하기 전에 세 회사가 공통으로 거치는 절차를 만드는 것입니다 — 이해관계 없는 외부의 독립 검증, 배포 전 안전성 리뷰, 통일된 위험 평가입니다.</p>
+
+    <p class="section-label">WHY</p>
+    <p>정부가 법으로 강제하는 방식이 아니라, 회사들이 스스로 정하고 스스로 지키는 방식이 기본 구상입니다. 다만 정부 개입을 어디까지 받아들일지는 회사마다 온도차가 있습니다. 이 논의가 공개된 계기는 Anthropic CEO Dario Amodei가 9월 12일 에세이에서 "속도를 늦추지 않으면 통제 불능 에이전트가 인터넷을 장악할 수 있다"고 경고하며 자발적 감속을 촉구한 것입니다. Microsoft도 자사 모델에 대한 별도 행동강령을 공개하며 같은 흐름에 합류했습니다.</p>
+
+    <p class="section-label">FOR YOU</p>
+    <div class="for-you">
+      <p>지난 브리프에서 다룬 사례들은 한 회사 안의 이야기였습니다. 모델 능력을 등급으로 나누고, 배포 후 오용을 탐지해 막는 것 모두 한 벤더의 서비스 경계 안에서 벌어졌습니다.</p>
+      <p>이번 건은 그 위에 한 층을 더 얹습니다. 서로 경쟁하는 회사들이 같은 검증 절차를 공유하자는 합의입니다. 당신이 이미 짚었던 "통제가 한 벤더의 경계 안에서만 걸리면 그 경계 밖에서는 무력하다"는 관찰을 업계 수준으로 그대로 옮기면, 이 논의가 왜 나왔는지 보입니다.</p>
+      <p>다만 지금은 합의 단계일 뿐 실제 강제력은 없습니다. AX 강의에서 "기업이 AI 도입 리스크를 어떻게 판단해야 하는가"를 설명할 때 쓸 수 있는 가장 최신 사례입니다.</p>
+    </div>
+
+    <p class="section-label">LEARN</p>
+    <p>지금 메커니즘을 깊이 팔 단계는 아닙니다. 이 논의가 실제 합의문이나 공식 표준으로 나오면, 그때 "배포 전 검증"이 구체적으로 무엇을 요구하는지 살펴볼 시점입니다.</p>
+
+    <div class="source-row">
+      <a href="https://en.sedaily.com/international/2026/09/14/rivals-unite-anthropic-openai-google-push-ai-standards-body" target="_blank" rel="noopener">서울경제 영문판 원문 보기 →</a>
+      <span class="domain">en.sedaily.com</span>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">3줄 요약</p>
+      <ol class="tri-summary">
+        <li>Anthropic, OpenAI, Google 임원급 실무진이 2026년 7월부터 프론티어 모델 배포 전 공통 검증 절차(독립 평가, 배포 전 안전성 리뷰, 표준화된 위험 평가)를 만드는 업계 주도 AI 표준기구 논의를 이어왔다는 사실이 2026년 9월 14일 보도됐다.</li>
+        <li>기본 방향은 정부 개입 없는 산업계 자율규제이나, 정부 관여를 얼마나 받아들일지에는 회사별 온도차가 존재한다.</li>
+        <li>이 논의는 Anthropic CEO가 9월 12일 통제 불능 AI 에이전트 위험을 경고하며 감속을 촉구한 데 이어 Microsoft도 정렬을 위한 속도 조절을 환영하고 자사 모델 행동강령을 공개하면서 수면 위로 드러났다.</li>
+      </ol>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">용어 해설</p>
+      <dl class="glossary">
+        <dt>프론티어 모델</dt>
+        <dd>특정 제품명이 아니라 "현재 가장 크고 성능이 앞선 최신 세대 AI 모델군"을 가리키는 업계·정책 공통 분류입니다. 규제 논의에서 "이 등급 이상만 별도 심사 대상"이라는 기준선으로 자주 쓰입니다.</dd>
+        <dt>업계 표준기구</dt>
+        <dd>법적 처벌 권한이 없는, 회원사들이 자발적으로 합의한 절차를 만들고 공표하는 민간 협의체입니다. 정부기관이 아니며, 안 지켜도 법적 제재는 없습니다.</dd>
+        <dt>자율규제 vs 법제화</dt>
+        <dd>자율규제는 업계가 스스로 규칙을 정하고 스스로 지키는 방식이고, 법제화는 정부가 법률로 강제해 위반 시 실제 제재가 따르는 방식입니다. 지금은 아직 자율규제 단계입니다.</dd>
+      </dl>
+    </div>
+  </article>
+
+  <article class="item">
+    <div class="tag-row">
+      <span class="tag priority">시스템 설계 · 오늘의 백로그 보완</span>
+      <span class="tag">내부 정리</span>
+      <span class="tag">오래 가는 기초</span>
+    </div>
+
+    <h2 class="item-title">강제 지점을 옮길 땐 "멀리"가 아니라 "아래로"</h2>
+
+    <p class="section-label">왜 지금 이걸 다루는지</p>
+    <p>지난 재평가에서 당신은 "그 통제를 어디에 두면 실제로 강제되는가"라는 질문에 "가장 멀리 떨어진 서버"라고 답한 적이 있습니다. 통제 대상의 권한 밖에 둬야 한다는 방향은 맞았지만, 그 답이 가리키는 축은 거리였지 계층이 아니었습니다. 오늘 함께 다룬 Claude Code 업데이트가 그 축을 실물로 보여줍니다.</p>
+
+    <p class="section-label">FOR YOU</p>
+    <div class="for-you">
+      <p>어떤 권한을 누구에게 줄지 정하는 것과, 그 결정을 실제로 어느 계층에서 강제할지는 다른 문제입니다. 논리적으로는 완벽히 분리된 것처럼 보여도, 강제가 그 분리 대상과 같은 프로세스·같은 쓰기 권한 안에 있으면 분리는 쉽게 무너집니다.</p>
+      <ul>
+        <li>기존 Claude Code 방식: 세션을 시작할 때 "이 세션은 이 주소들에 접근 가능하다"는 목록 하나를 정합니다. 이 목록은 모델이 계속 관여하는 세션이라는 단위에 걸려 있습니다.</li>
+        <li>바뀐 방식: 그 강제를 명령이 실제로 실행되는 순간, OS가 담당하는 샌드박스 계층으로 내립니다. 결정 자체는 그대로 두고 강제 지점만 모델보다 낮은 곳으로 옮긴 것입니다.</li>
+      </ul>
+      <p>강제 지점이 모델과 같은 계층에 있으면 — 예를 들어 시스템 프롬프트로 "이 주소만 써"라고 지시하는 방식이면 — 모델이 그 지시를 우회하는 텍스트를 생성하는 순간 강제가 무너집니다. 강제 지점이 모델보다 아래 계층에 있으면 모델이 무엇을 출력하든 물리적으로 막힙니다. 핵심은 거리가 아니라 계층입니다.</p>
+    </div>
+
+    <p class="section-label">LEARN</p>
+    <p>다음에 통제 지점을 설계할 때는 "얼마나 멀리 두었나"가 아니라 "모델보다 몇 계층 아래에 있나"로 스스로 점검해보세요. 이 축이 잡히면 남은 질문은 대부분 이 원칙을 각 상황에 적용하는 문제로 좁혀집니다.</p>
+
+    <div class="source-row">
+      <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">앵커로 쓴 Claude Code changelog 다시 보기 →</a>
+      <span class="domain">code.claude.com</span>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">3줄 요약</p>
+      <ol class="tri-summary">
+        <li>"강제 지점을 논리적으로 어디에 둘 것인가"와 "그 강제가 실제 런타임에서 어느 계층에서 실행되는가"는 별개의 질문이며, 논리적 역할 분리가 완벽해도 강제 지점이 분리 대상과 같은 프로세스·권한 안에 있으면 그 분리는 무너질 수 있다.</li>
+        <li>Claude Code v2.1.271의 "명령별 allowed_domains" 기능은 이전에 세션 단위로 걸려 있던 호스트 접근 허용을 명령 실행 순간의 OS/커널 샌드박스 계층으로 옮겨, 논리적 결정은 그대로 두고 강제 지점만 모델과 더 낮은 계층으로 이동시킨 사례다.</li>
+        <li>강제 지점이 모델과 같은 계층(예: 시스템 프롬프트 지시)에 있으면 모델의 우회 텍스트만으로 강제가 무너지지만, 모델보다 아래 계층(OS의 실제 패킷 차단)에 있으면 모델의 출력과 무관하게 물리적으로 막히므로 핵심은 "거리"가 아니라 "계층"이다.</li>
+      </ol>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">용어 해설</p>
+      <dl class="glossary">
+        <dt>시스템 프롬프트</dt>
+        <dd>모델에게 대화 시작 전에 미리 주입되는 지시문으로, "이런 규칙을 지켜라" 같은 내용을 텍스트로 전달하는 방식입니다. 텍스트 지시이기 때문에 모델이 그 지시를 무시하는 출력을 생성하면 지켜지지 않을 수 있습니다.</dd>
+      </dl>
+    </div>
+  </article>
+
+  <section class="radar">
+    <p class="section-label">레이더</p>
+    <p class="radar-note">학습 대상이 아니라 <b>인지 대상</b>입니다. 훑고 지나가세요 — 나중에 필요한 순간에 &ldquo;그거 있었지&rdquo;가 나오게 하는 것이 목적입니다.</p>
+
+    <div class="radar-group">
+      <h3>내가 쓰는 도구</h3>
+      <ul class="radar-list">
+        <li>Claude Code v2.1.270~271 — 리모트(클라우드·셀프호스팅) 세션에도 Fast 모드가 적용되도록 확장. 세션이 오래 지속되면 읽기전용 git 명령도 다시 승인을 요구하던 회귀 버그도 수정.</li>
+      </ul>
+    </div>
+
+    <div class="radar-group">
+      <h3>주변 생태계</h3>
+      <ul class="radar-list">
+        <li>OpenAI GPT-Live-1 API — 지연 300ms 이하로 사람처럼 끼어들며 대화하는 풀듀플렉스 음성 AI를 다른 앱에 넣을 수 있게 만든 API, 9/10 공개(분당 5센트).</li>
+        <li>Google Lyria 3.5 — 보컬과 다중 악기 편곡까지 갖춘 최대 3분짜리 완성곡을 텍스트 한 줄이나 이미지 한 장으로 만드는 음악 생성 모델, 9/4 Gemini 앱·API 전면 공개.</li>
+        <li>Salesforce Agentforce — 영업·서비스·커머스·IT/HR·공급망 업무마다 이름을 붙인 AI 에이전트 7종 출시(9/11). Anthropic과 함께 Claude를 Salesforce 안에 심는 "Claudeforce" 파트너십도 발표.</li>
+        <li>뤼튼(Wrtn) — (국내, 재발굴) GPT·Claude·Gemini를 한 곳에서 쓰는 AI 포털이자 캐릭터 챗 서비스 "크랙" 운영사. 국내 AI 서비스 스타트업 최초로 유니콘(기업가치 1조원대)에 등극했고, 해외 매출이 국내 매출을 앞질렀다.</li>
+        <li>OpenAI DevDay 2026 — 9/29 샌프란시스코 개최 예고.</li>
+      </ul>
+    </div>
+
+    <div class="radar-group">
+      <h3>가격·정책</h3>
+      <ul class="radar-list">
+        <li>Sam Altman — 2026년 안에 기업공개(IPO)를 하지는 않을 것이라고 공개 부인.</li>
+        <li>Microsoft — 자사 MAI 모델 전용 행동강령(Code of Conduct) 공개, "정렬을 위한 의도적 속도 조절"을 환영한다고 밝힘. 오늘 다룬 업계 표준기구 논의와 같은 흐름.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer class="status">
+    <span>오늘 조사 후 뉴스 2건 + 백로그 보완 1건 전달 · 레이더 8건 · 3건은 반복/가치낮음으로 폐기</span>
+    <span>Knowledge Agent v0.1</span>
+  </footer>
+
+</div>
