@@ -1,0 +1,479 @@
+<title>Knowledge Brief 2026-09-17 (22:00)</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,500;1,6..72,600&family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  :root {
+    --paper: #eef0f4;
+    --surface: #ffffff;
+    --ink: #131722;
+    --ink-soft: #5b6472;
+    --signal: #c97a1a;
+    --signal-deep: #8a5313;
+    --signal-soft: #f3e3cc;
+    --line: rgba(19, 23, 34, 0.12);
+    --line-strong: rgba(19, 23, 34, 0.22);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #0e1116;
+      --surface: #171b22;
+      --ink: #e7e9ee;
+      --ink-soft: #9aa3b2;
+      --signal: #f0b15c;
+      --signal-deep: #f5c685;
+      --signal-soft: rgba(240, 177, 92, 0.14);
+      --line: rgba(231, 233, 238, 0.14);
+      --line-strong: rgba(231, 233, 238, 0.24);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --paper: #0e1116;
+    --surface: #171b22;
+    --ink: #e7e9ee;
+    --ink-soft: #9aa3b2;
+    --signal: #f0b15c;
+    --signal-deep: #f5c685;
+    --signal-soft: rgba(240, 177, 92, 0.14);
+    --line: rgba(231, 233, 238, 0.14);
+    --line-strong: rgba(231, 233, 238, 0.24);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans KR', 'IBM Plex Sans', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 56px 24px 96px;
+  }
+
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--signal-deep);
+  }
+
+  header.masthead {
+    border-bottom: 1px solid var(--line-strong);
+    padding-bottom: 28px;
+    margin-bottom: 40px;
+  }
+
+  header.masthead .eyebrow {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  h1.headline {
+    font-family: 'Newsreader', Georgia, serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(32px, 6vw, 44px);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin: 14px 0 10px;
+    text-wrap: balance;
+  }
+
+  .masthead .subhead {
+    color: var(--ink-soft);
+    font-size: 15px;
+    max-width: 56ch;
+  }
+
+  .masthead .subhead b {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  article.item {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 32px 32px 28px;
+    margin-bottom: 32px;
+  }
+
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  .tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+    border: 1px solid var(--line-strong);
+    color: var(--ink-soft);
+  }
+
+  .tag.priority {
+    border-color: var(--signal);
+    color: var(--signal-deep);
+    background: var(--signal-soft);
+  }
+
+  h2.item-title {
+    font-family: 'Newsreader', Georgia, serif;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 1.3;
+    margin: 0 0 18px;
+    text-wrap: balance;
+  }
+
+  .section-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin: 22px 0 8px;
+  }
+
+  .section-label:first-of-type { margin-top: 0; }
+
+  article.item p {
+    margin: 0 0 4px;
+    max-width: 62ch;
+  }
+
+  article.item ul {
+    margin: 8px 0 12px;
+    padding-left: 1.2em;
+    max-width: 62ch;
+  }
+
+  article.item li {
+    margin-bottom: 6px;
+  }
+
+  article.item .for-you {
+    padding: 14px 16px;
+    background: var(--signal-soft);
+    border-left: 2px solid var(--signal);
+    border-radius: 0 3px 3px 0;
+  }
+
+  figure.diagram {
+    margin: 26px 0 6px;
+    padding: 18px 6px 8px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  figure.diagram svg { width: 100%; height: auto; display: block; color: var(--ink-soft); }
+  figure.diagram .accent { color: var(--signal); }
+  figure.diagram text { font-family: 'IBM Plex Mono', monospace; fill: currentColor; }
+
+  figcaption {
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-top: 10px;
+  }
+
+  .source-row {
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .source-row a {
+    color: var(--ink);
+    text-decoration-color: var(--signal);
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 3px;
+  }
+
+  .source-row .domain {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+
+  .addendum {
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+  }
+
+  ol.tri-summary {
+    margin: 0;
+    padding-left: 1.3em;
+  }
+
+  ol.tri-summary li {
+    margin-bottom: 6px;
+    max-width: 62ch;
+  }
+
+  dl.glossary {
+    margin: 0;
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    column-gap: 14px;
+    row-gap: 10px;
+  }
+
+  dl.glossary dt {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--signal-deep);
+    white-space: nowrap;
+  }
+
+  dl.glossary dd {
+    margin: 0;
+    max-width: 56ch;
+    color: var(--ink-soft);
+  }
+
+  section.radar {
+    margin-top: 40px;
+    padding-top: 26px;
+    border-top: 1px solid var(--line-strong);
+  }
+
+  section.radar > p.radar-note {
+    margin: 0 0 18px;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    max-width: 62ch;
+  }
+
+  .radar-group {
+    margin-bottom: 20px;
+  }
+
+  .radar-group h3 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 500;
+    margin: 0 0 8px;
+  }
+
+  ul.radar-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  ul.radar-list li {
+    position: relative;
+    padding-left: 16px;
+    margin-bottom: 7px;
+    font-size: 14.5px;
+    line-height: 1.6;
+    max-width: 66ch;
+    color: var(--ink);
+  }
+
+  ul.radar-list li::before {
+    content: "·";
+    position: absolute;
+    left: 3px;
+    color: var(--ink-soft);
+  }
+
+  ul.radar-list li a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid var(--line-strong);
+  }
+
+  ul.radar-list li a:hover { border-bottom-color: var(--signal); }
+
+  footer.status {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    border-top: 1px solid var(--line-strong);
+    padding-top: 18px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  @media (max-width: 480px) {
+    article.item { padding: 24px 20px; }
+    h1.headline { font-size: 30px; }
+  }
+</style>
+
+<div class="page">
+
+  <header class="masthead">
+    <div class="eyebrow">
+      <span>KNOWLEDGE BRIEF</span>
+      <span>2026-09-17 · 22:00</span>
+    </div>
+    <h1 class="headline">실패는 하나가 아니라 세 가지다</h1>
+    <p class="subhead">오늘 조사한 것 중 <b>지금 당신에게 학습 가치가 있다고 판단한 것</b>만 남겼습니다. 나머지는 이미 아는 내용이거나 가치가 낮아 걸러냈습니다.</p>
+  </header>
+
+  <article class="item">
+    <div class="tag-row">
+      <span class="tag priority">API 통신 · 오늘의 핵심</span>
+      <span class="tag">내부 백로그 보완</span>
+      <span class="tag">오래 가는 기초</span>
+    </div>
+
+    <h2 class="item-title">상태 코드가 알려주는 것 — 재시도할지 말지는 감이 아니라 신호로 정한다</h2>
+
+    <p class="section-label">왜 지금 이걸 다루는지</p>
+    <p>오늘 새벽 브리프에서 재시도 정책과 회로차단기 같은 장애 대응 패턴을 처음 소개했습니다.</p>
+    <p>그 패턴들이 실제로 작동하는 자리는 API 요청과 응답입니다.</p>
+    <p>그런데 그 요청과 응답 자체를 세분화해서 읽는 법은 아직 다루지 않았습니다.</p>
+    <p>지금이 그 다음 단계를 밟을 차례입니다.</p>
+
+    <p class="section-label">FOR YOU</p>
+    <div class="for-you">
+      <p>예전에 API 호출이 30초간 멈췄다가 실패하는 상황을 겪은 적이 있습니다.</p>
+      <p>그때 원인을 정확히 구분하지 못했습니다 — 연결 자체가 안 된 것인지, 연결은 됐는데 응답이 없는 것인지, 응답은 왔는데 거절당한 것인지가 하나로 뭉쳐 있었습니다.</p>
+      <p>이 세 가지는 겉보기엔 비슷해도 각각 다른 신호를 남깁니다. 그 신호를 읽는 도구가 HTTP 상태 코드입니다.</p>
+      <ul>
+        <li>연결 자체 실패 — 서버가 아예 응답하지 않는 상태. 상태 코드 자체가 없습니다.</li>
+        <li>연결은 됐지만 응답 없음 — 타임아웃. 오늘 새벽 다룬 재시도 정책이 걸리는 지점이 정확히 여기입니다.</li>
+        <li>응답은 왔지만 거절 — 4xx(요청 자체의 문제, 재시도해도 소용없음)와 5xx(서버 쪽 문제, 재시도하면 나아질 수 있음)로 갈립니다.</li>
+      </ul>
+      <p>이 구분이 서면 재시도할지 말지를 감으로 정하지 않아도 됩니다. 상태 코드가 이미 답을 알려주기 때문입니다.</p>
+    </div>
+
+    <p class="section-label">더 알아둘 것</p>
+    <p>HTTP 메서드(GET/POST/PUT/DELETE)에는 "멱등성"이라는 성질이 있습니다.</p>
+    <p>같은 요청을 여러 번 보내도 결과가 한 번 보낸 것과 같으면 멱등입니다.</p>
+    <p>GET·PUT·DELETE는 멱등합니다. 같은 삭제 요청을 두 번 보내도 최종 상태는 "삭제됨" 하나뿐입니다.</p>
+    <p>POST는 멱등하지 않습니다. 같은 결제 요청을 두 번 보내면 결제가 두 번 될 수 있습니다.</p>
+    <p>그래서 재시도 정책은 이 구분을 먼저 확인합니다 — 멱등한 요청만 안전하게 자동 재시도할 수 있습니다. 멱등하지 않은 요청은 별도의 안전장치(멱등키)가 먼저 필요합니다.</p>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 640 220" role="img" aria-label="요청이 실패했을 때 상태 코드에 따라 재시도 여부가 갈리는 흐름">
+        <text x="20" y="30" font-size="13">요청 전송</text>
+        <path class="accent" d="M100 25 H180" stroke="currentColor" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+        <text x="190" y="30" font-size="13">응답?</text>
+
+        <path d="M190 40 V80 H90 V110" stroke="currentColor" stroke-width="1.2" fill="none" marker-end="url(#arrow2)"/>
+        <text x="20" y="128" font-size="12">무응답(타임아웃)</text>
+        <text x="20" y="146" font-size="12" class="accent">→ 재시도 + 지수 백오프</text>
+
+        <path d="M230 40 V80 H340 V110" stroke="currentColor" stroke-width="1.2" fill="none" marker-end="url(#arrow2)"/>
+        <text x="270" y="128" font-size="12">5xx(서버 문제)</text>
+        <text x="270" y="146" font-size="12" class="accent">→ 재시도 + 지수 백오프</text>
+
+        <path d="M230 40 V60 H560 V110" stroke="currentColor" stroke-width="1.2" fill="none" marker-end="url(#arrow2)"/>
+        <text x="500" y="128" font-size="12">4xx(요청 문제)</text>
+        <text x="500" y="146" font-size="12">→ 재시도 안 함</text>
+
+        <path d="M190 40 V60 H460 V80" stroke="currentColor" stroke-width="1.2" fill="none" marker-end="url(#arrow2)"/>
+        <text x="420" y="98" font-size="12">2xx(성공)</text>
+        <text x="420" y="116" font-size="12">→ 종료</text>
+
+        <text x="20" y="190" font-size="12" fill="currentColor" opacity="0.7">재시도는 멱등한 요청에만 안전합니다. 매 실패마다 대기 시간을 늘립니다(지수 백오프).</text>
+
+        <defs>
+          <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="currentColor"/></marker>
+          <marker id="arrow2" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="currentColor"/></marker>
+        </defs>
+      </svg>
+      <figcaption>상태 코드가 재시도 여부를 결정한다 — 무응답과 5xx는 재시도 대상, 4xx는 재시도해도 소용없다.</figcaption>
+    </figure>
+
+    <p>당신이 설계하는 에이전트 하네스도 결국 이 판단을 어딘가에서 내려야 합니다.</p>
+    <p>도구 호출이 실패했을 때 상태 코드를 보고 재시도할지, 포기할지, 사람에게 넘길지를 정하는 지점이 필요합니다. 그 지점이 오늘 새벽 다룬 회로차단기가 들어설 자리입니다.</p>
+
+    <div class="addendum">
+      <p class="section-label">3줄 요약</p>
+      <ol class="tri-summary">
+        <li>HTTP 요청 실패는 무응답, 타임아웃, 응답 거절(4xx/5xx) 세 가지로 구분된다.</li>
+        <li>재시도는 결과가 같은 멱등 요청에만 자동 적용하고, 비멱등 요청은 별도 안전장치가 필요하다.</li>
+        <li>재시도 간격은 지수 백오프로 점차 늘려 서버 과부하를 방지한다.</li>
+      </ol>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">용어 해설</p>
+      <dl class="glossary">
+        <dt>타임아웃</dt>
+        <dd>요청을 보냈지만 서버가 정해진 시간 안에 응답을 주지 않아 연결을 포기하는 상황을 말합니다.</dd>
+        <dt>4xx/5xx 상태 코드</dt>
+        <dd>HTTP 응답에 붙는 번호로, 4xx는 요청 자체에 문제가 있다는 뜻(예: 잘못된 요청)이고 5xx는 서버 쪽에서 처리 중 문제가 생겼다는 뜻입니다.</dd>
+        <dt>멱등성</dt>
+        <dd>같은 요청을 여러 번 반복해도 결과가 한 번 보낸 것과 똑같이 유지되는 성질을 말합니다.</dd>
+        <dt>멱등키</dt>
+        <dd>POST처럼 반복 실행하면 결과가 달라지는(멱등하지 않은) 요청에, 중복 실행을 막기 위해 요청마다 붙이는 고유 식별값입니다.</dd>
+        <dt>지수 백오프</dt>
+        <dd>요청이 실패할 때마다 바로 재시도하지 않고 대기 시간을 점점 두 배씩 늘려가며 다시 시도하는 방식입니다.</dd>
+      </dl>
+    </div>
+  </article>
+
+  <section class="radar">
+    <p class="section-label">레이더</p>
+    <p class="radar-note">학습 대상이 아니라 <b>인지 대상</b>입니다. 훑고 지나가세요 — 나중에 필요한 순간에 &ldquo;그거 있었지&rdquo;가 나오게 하는 것이 목적입니다.</p>
+
+    <div class="radar-group">
+      <h3>내가 쓰는 도구</h3>
+      <ul class="radar-list">
+        <li>Claude Code v2.1.274 — 최근 중 가장 큰 릴리스(변경 항목 약 100개). 메모리 위험 시 경고 표시, MCP 서버 연결 대기시간 조절 옵션, 관측용 OTel 항목 확장, 에이전트 SDK에 커스텀 시스템 프롬프트 API 추가.</li>
+        <li>Codex CLI 최신 빌드 — MCP 서버 이름에 콜론·골뱅이·슬래시·점을 허용해 패키지 형식 이름을 쓸 수 있게 됨. 개별 MCP 도구마다 응답 길이 제한(output_token_limit) 설정 지원.</li>
+        <li>MCP 프로토콜 7.28 — 무거운 커스텀 연동 코드 없이 표준 스펙만으로 기업 규모까지 확장하도록 스펙을 단순화하는 방향 논의.</li>
+        <li>Claude Cowork가 별도 앱에서 일반 채팅으로 통합됨 — 이후 Claude는 "채팅"과 "코드" 두 모드로 단순화될 예정. Claude Docs·Claude Slides(문서·슬라이드 생성) 신설.</li>
+        <li>Claude Design(리서치 프리뷰) — Opus 4.7 기반으로 대화하며 디자인 시안·프로토타입·슬라이드 등 시각 결과물을 함께 만드는 도구.</li>
+        <li>Claude for Financial Advisors — Schwab·BlackRock·Vanguard 등 자문사가 이미 쓰는 11개 플랫폼을 Claude에 연결하는 상품.</li>
+        <li>Salesforce in Claude — 영업 담당자의 계정·거래·파이프라인 정보를 Claude 안으로 가져오는 플러그인. 미리 만들어진 영업용 스킬 37개 포함(통화 준비, 거래 검토, 파이프라인 대시보드 등).</li>
+        <li>GitSpawn(9/1 최초 공개, Claude Code·Codex·Cursor 등 7개 코딩 에이전트가 저장소의 .git/config를 통해 승인 없이 명령을 실행당하는 결함) — Codex·Cursor는 패치 완료, 나머지는 진행 중이라는 업데이트.</li>
+      </ul>
+    </div>
+
+    <div class="radar-group">
+      <h3>주변 생태계</h3>
+      <ul class="radar-list">
+        <li>GPT-6 Astra 컴퓨터 사용 모델이 일부 기업 파트너 대상 실제 배포를 시작함 — 양식 작성, 업무용 앱 갱신, 일정 관리, 여러 단계짜리 업무 자동화를 대행. API 가격은 입력 100만 토큰당 10달러, 출력 100만 토큰당 50달러.</li>
+      </ul>
+    </div>
+
+    <div class="radar-group">
+      <h3>가격·정책</h3>
+      <ul class="radar-list">
+        <li>Google Workspace 기본 요금이 Gemini 기능 비용을 반영해 17~22% 인상됨(예: Standard 월 12달러 → 18달러).</li>
+        <li>Microsoft Copilot Business 요금제가 정가 21달러 대신 9월 30일까지 18달러 프로모션가로 제공 중.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer class="status">
+    <span>오늘 조사 후 신규 뉴스 0건 · 백로그 보완 1건으로 브리프 구성 · 레이더 11건</span>
+    <span>Knowledge Agent v0.1</span>
+  </footer>
+
+</div>
