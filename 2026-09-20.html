@@ -1,0 +1,528 @@
+<title>Knowledge Brief 2026-09-20</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,500;1,6..72,600&family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  :root {
+    --paper: #eef0f4;
+    --surface: #ffffff;
+    --ink: #131722;
+    --ink-soft: #5b6472;
+    --signal: #c97a1a;
+    --signal-deep: #8a5313;
+    --signal-soft: #f3e3cc;
+    --line: rgba(19, 23, 34, 0.12);
+    --line-strong: rgba(19, 23, 34, 0.22);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #0e1116;
+      --surface: #171b22;
+      --ink: #e7e9ee;
+      --ink-soft: #9aa3b2;
+      --signal: #f0b15c;
+      --signal-deep: #f5c685;
+      --signal-soft: rgba(240, 177, 92, 0.14);
+      --line: rgba(231, 233, 238, 0.14);
+      --line-strong: rgba(231, 233, 238, 0.24);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --paper: #0e1116;
+    --surface: #171b22;
+    --ink: #e7e9ee;
+    --ink-soft: #9aa3b2;
+    --signal: #f0b15c;
+    --signal-deep: #f5c685;
+    --signal-soft: rgba(240, 177, 92, 0.14);
+    --line: rgba(231, 233, 238, 0.14);
+    --line-strong: rgba(231, 233, 238, 0.24);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans KR', 'IBM Plex Sans', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 56px 24px 96px;
+  }
+
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--signal-deep);
+  }
+
+  header.masthead {
+    border-bottom: 1px solid var(--line-strong);
+    padding-bottom: 28px;
+    margin-bottom: 40px;
+  }
+
+  header.masthead .eyebrow {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  h1.headline {
+    font-family: 'Newsreader', Georgia, serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(32px, 6vw, 44px);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin: 14px 0 10px;
+    text-wrap: balance;
+  }
+
+  .masthead .subhead {
+    color: var(--ink-soft);
+    font-size: 15px;
+    max-width: 56ch;
+  }
+
+  .masthead .subhead b {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  article.item {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 32px 32px 28px;
+    margin-bottom: 32px;
+  }
+
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  .tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+    border: 1px solid var(--line-strong);
+    color: var(--ink-soft);
+  }
+
+  .tag.priority {
+    border-color: var(--signal);
+    color: var(--signal-deep);
+    background: var(--signal-soft);
+  }
+
+  h2.item-title {
+    font-family: 'Newsreader', Georgia, serif;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 1.3;
+    margin: 0 0 18px;
+    text-wrap: balance;
+  }
+
+  .section-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin: 22px 0 8px;
+  }
+
+  .section-label:first-of-type { margin-top: 0; }
+
+  article.item p {
+    margin: 0 0 4px;
+    max-width: 62ch;
+  }
+
+  article.item ul {
+    margin: 0 0 8px;
+    padding-left: 1.2em;
+    max-width: 62ch;
+  }
+
+  article.item ul li {
+    margin-bottom: 6px;
+  }
+
+  article.item .for-you {
+    padding: 14px 16px;
+    background: var(--signal-soft);
+    border-left: 2px solid var(--signal);
+    border-radius: 0 3px 3px 0;
+  }
+
+  figure.diagram {
+    margin: 26px 0 6px;
+    padding: 18px 6px 8px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  figure.diagram svg { width: 100%; height: auto; display: block; color: var(--ink-soft); }
+  figure.diagram .accent { color: var(--signal); }
+  figure.diagram text { font-family: 'IBM Plex Mono', monospace; fill: currentColor; }
+
+  figcaption {
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-top: 10px;
+  }
+
+  .source-row {
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .source-row a {
+    color: var(--ink);
+    text-decoration-color: var(--signal);
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 3px;
+  }
+
+  .source-row .domain {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+
+  .addendum {
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+  }
+
+  ol.tri-summary {
+    margin: 0;
+    padding-left: 1.3em;
+  }
+
+  ol.tri-summary li {
+    margin-bottom: 6px;
+    max-width: 62ch;
+  }
+
+  dl.glossary {
+    margin: 0;
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    column-gap: 14px;
+    row-gap: 10px;
+  }
+
+  dl.glossary dt {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--signal-deep);
+    white-space: nowrap;
+  }
+
+  dl.glossary dd {
+    margin: 0;
+    max-width: 56ch;
+    color: var(--ink-soft);
+  }
+
+  section.radar {
+    margin-top: 40px;
+    padding-top: 26px;
+    border-top: 1px solid var(--line-strong);
+  }
+
+  section.radar > p.radar-note {
+    margin: 0 0 18px;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    max-width: 62ch;
+  }
+
+  .radar-group {
+    margin-bottom: 20px;
+  }
+
+  .radar-group h3 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 500;
+    margin: 0 0 8px;
+  }
+
+  ul.radar-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  ul.radar-list li {
+    position: relative;
+    padding-left: 16px;
+    margin-bottom: 7px;
+    font-size: 14.5px;
+    line-height: 1.6;
+    max-width: 66ch;
+    color: var(--ink);
+  }
+
+  ul.radar-list li::before {
+    content: "·";
+    position: absolute;
+    left: 3px;
+    color: var(--ink-soft);
+  }
+
+  ul.radar-list li a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid var(--line-strong);
+  }
+
+  ul.radar-list li a:hover { border-bottom-color: var(--signal); }
+
+  footer.status {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    border-top: 1px solid var(--line-strong);
+    padding-top: 18px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  @media (max-width: 480px) {
+    article.item { padding: 24px 20px; }
+    h1.headline { font-size: 30px; }
+  }
+</style>
+
+<div class="page">
+
+  <header class="masthead">
+    <div class="eyebrow">
+      <span>KNOWLEDGE BRIEF</span>
+      <span>2026-09-20 · 22:00</span>
+    </div>
+    <h1 class="headline">검증은 통과했는데 뚫렸다 — 거리가 아니라 계층의 문제</h1>
+    <p class="subhead">오늘 조사한 것 중 <b>지금 당신에게 학습 가치가 있다고 판단한 것</b>만 남겼습니다. 나머지는 이미 아는 내용이거나 가치가 낮아 걸러냈습니다.</p>
+  </header>
+
+  <article class="item">
+    <div class="tag-row">
+      <span class="tag priority">보안 · 오늘의 핵심</span>
+      <span class="tag">보안 연구기관 발표</span>
+      <span class="tag">빨리 바뀜</span>
+    </div>
+
+    <h2 class="item-title">Plugin4Shell — 클로드 코드까지 뚫은 플러그인 공급망 제로클릭 취약점</h2>
+
+    <p class="section-label">WHAT</p>
+    <p>보안 연구기관 AIR가 2026-09-18 공개한 Plugin4Shell은 Claude Code, OpenAI Codex, GitHub Copilot, Google Gemini CLI 네 개 코딩 에이전트에서 동시에 발견된 취약점입니다.</p>
+    <p>이 에이전트들은 플러그인을 설치할 때 커밋 해시(SHA)로 버전을 고정해 신뢰할 수 있는 코드만 받도록 검증합니다. 그런데 플러그인 저장소를 통제하는 공격자가 그 해시와 이름이 똑같은 Git 브랜치를 만들면, Git이 커밋 객체보다 이름이 일치하는 브랜치를 우선 체크아웃하는 특성 때문에 문제가 생깁니다. 에이전트는 "검증 통과"라고 보고하지만 실제로는 공격자가 만든 브랜치 내용을 설치합니다.</p>
+    <p>사용자의 클릭이나 승인은 전혀 필요 없습니다. 이 플러그인은 보통 개발자와 같은 권한을 물려받으므로 로컬 코드, 클라우드 자격증명, SSH 키까지 노출될 수 있습니다. Anthropic은 Claude Code 2.1.179에서, OpenAI는 Codex 0.146.0에서 패치했습니다. Google은 Gemini CLI를 패치하지 않고 후속 제품으로 유도했고, GitHub Copilot은 아직 패치가 없습니다.</p>
+
+    <p class="section-label">WHY</p>
+    <p>지금까지 에이전트 보안 사고 대부분은 "에이전트가 나쁜 프롬프트에 속아 잘못된 명령을 실행했다"는 형태였습니다. 이번엔 다릅니다 — 에이전트의 판단 자체는 정상이었고, 그 판단이 근거로 삼은 검증 절차가 조작됐습니다.</p>
+
+    <p class="section-label">FOR YOU</p>
+    <div class="for-you">
+      <p>2026-09-02에 당신이 스스로 도출한 원칙이 하나 있습니다. 통제가 데이터로 존재하고 그 데이터가 통제 대상의 쓰기 권한 안에 있으면 통제가 아니라는 것입니다. 이번 사례는 그 원칙의 변형입니다 — 검증 로직 자체는 통제 대상(공격자)의 손이 안 닿는 곳에 있었지만, 그 검증이 무엇을 참조하는지(Git 브랜치 이름)는 공격자가 채워 넣을 수 있는 자리였습니다.</p>
+      <p>자세한 원리 비교는 이번 브리프의 세 번째 항목에서 다룹니다.</p>
+    </div>
+
+    <p class="section-label">LEARN</p>
+    <p>Claude Code에서 공식 마켓플레이스가 아닌 곳(GitHub 개인 저장소, Bitbucket 등)의 플러그인을 쓰고 있다면 버전이 2.1.179 이상인지 확인할 가치가 있습니다. Git ref resolution 규칙 자체를 깊게 팔 필요는 없습니다 — "SHA 고정"이 실제로 무엇을 검증하는지 한 번 뜯어본 것으로 충분합니다.</p>
+
+    <div class="source-row">
+      <a href="https://www.air.security/blog-posts/plugin4shell" target="_blank" rel="noopener">AIR Security 원문 보기 →</a>
+      <span class="domain">air.security</span>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">3줄 요약</p>
+      <ol class="tri-summary">
+        <li>Plugin4Shell은 AI 코딩 에이전트 4종에서 SHA 고정을 우회하는 제로클릭 원격코드실행 취약점이다.</li>
+        <li>공격자가 커밋 해시와 이름이 같은 브랜치를 만들면 검증을 통과한 것처럼 악성 코드가 설치된다.</li>
+        <li>Claude Code와 Codex는 패치됐으나 Gemini CLI와 Copilot은 아직 완전한 해결책이 없다.</li>
+      </ol>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">용어 해설</p>
+      <dl class="glossary">
+        <dt>제로클릭 원격코드실행</dt>
+        <dd>사용자가 링크를 클릭하거나 파일을 여는 등 별도 행동을 하지 않아도, 정상 절차(플러그인 설치)만으로 공격자가 임의의 코드를 실행시킬 수 있는 취약점입니다.</dd>
+        <dt>SHA 고정(SHA pinning)</dt>
+        <dd>나중에 다른 커밋을 가리키도록 바뀔 수 있는 브랜치 이름 대신, 특정 시점의 코드를 고유하게 식별하는 커밋 해시값을 고정 지정해 "이 정확한 코드만 받겠다"고 못 박는 방식입니다.</dd>
+        <dt>Git 참조 우선순위 규칙</dt>
+        <dd>Git은 입력된 이름이 커밋 해시인지 브랜치인지 여러 후보 중 정해진 순서로 판단해 하나를 고릅니다. 공격자가 해시와 이름이 같은 브랜치를 만들면 이 규칙 때문에 검증 대상과 실제 설치 대상이 어긋납니다.</dd>
+        <dt>공급망 공격</dt>
+        <dd>최종 사용자를 직접 노리는 대신, 그가 신뢰하고 가져다 쓰는 배포 경로(플러그인 마켓플레이스 등) 자체를 오염시켜 간접적으로 침투하는 공격 유형입니다.</dd>
+      </dl>
+    </div>
+  </article>
+
+  <article class="item">
+    <div class="tag-row">
+      <span class="tag priority">거버넌스 · 오늘의 핵심</span>
+      <span class="tag">공식 발표</span>
+      <span class="tag">계속 바뀌는 중</span>
+    </div>
+
+    <h2 class="item-title">Anthropic이 회사 안에 '내부자 평가팀'을 심는다 — Accenture와 총 20억 달러 베팅</h2>
+
+    <p class="section-label">WHAT</p>
+    <p>Anthropic이 2026-09-18 Accenture의 AI 자회사 Faculty를 자사 최초의 "임베디드 평가자"로 선정했다고 발표했습니다. 양사는 앞으로 5년간 각각 최소 10억 달러(총 20억 달러 이상)를 투입해, 모델을 레드팀 테스트하고 정렬 평가를 수행하고 안전장치를 검증하는 평가자 팀을 Anthropic 내부에 상주시킵니다.</p>
+    <p>기존 외부 감사와 다른 점은 접근 권한입니다. 이 평가자들은 직원과 동등한 수준의 접근권으로 모델이 학습되는 과정을 직접 지켜보고, 배포를 결정하는 회의에 참여하고, 직원과 직접 대화할 수 있습니다. Anthropic CEO Dario Amodei가 최근 제안한 "AI 개발 속도 완화 3단계 계획"의 첫 단계로 소개됐습니다.</p>
+
+    <p class="section-label">WHY</p>
+    <p>이건 "외부 감사"와 "내부 통제"의 중간 지점을 만드는 실험입니다. 감사는 밖에 있어야 독립적이라는 게 기존 통념이었지만, 밖에 있으면 실제로 무슨 일이 벌어지는지 볼 수 없어 형식적인 감사가 된다는 반론도 있었습니다. Anthropic의 해법은 "안으로 들여보내되, 그 사람들의 월급은 다른 회사가 준다"는 방식으로 독립성과 접근성을 동시에 얻으려는 시도입니다.</p>
+
+    <p class="section-label">FOR YOU</p>
+    <div class="for-you">
+      <p>2026-09-02 인터뷰에서 당신은 "통제가 강제되려면 어디에 둬야 하는가"라는 질문에 "멀리 두면 된다"고 답했고, 그게 거리와 계층을 혼동한 답이라고 기록됐습니다. 이 사례는 그 잔여 질문을 정면으로 건드립니다 — Accenture 평가자는 거리로는 Anthropic 내부에 있지만, 급여와 보고 라인은 바깥에 남습니다.</p>
+      <p>왜 이게 "거리가 아니라 계층"의 증거가 되는지는 이번 브리프의 세 번째 항목에서 이어서 다룹니다.</p>
+    </div>
+
+    <p class="section-label">LEARN</p>
+    <p>이 구조가 실제로 작동하는지는 아직 증거가 없습니다. Accenture의 평가 결과가 Anthropic의 배포 결정을 실제로 막은 사례가 나와야 검증됩니다. 지금은 설계 원리를 눈여겨볼 시점이고, 결과가 나오면 그때 다시 볼 가치가 있습니다.</p>
+
+    <div class="source-row">
+      <a href="https://www.anthropic.com/news/accenture-embedded-evaluation" target="_blank" rel="noopener">Anthropic 공식 발표 보기 →</a>
+      <span class="domain">anthropic.com</span>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">3줄 요약</p>
+      <ol class="tri-summary">
+        <li>Anthropic이 Accenture 자회사 Faculty를 첫 임베디드 평가자로 선정해 모델 안전 검증에 상주시키기로 했다.</li>
+        <li>양사는 5년간 최소 20억 달러를 투입하며, 평가자는 직원급 접근권으로 학습 과정과 의사결정 회의에 참여한다.</li>
+        <li>현재 비용은 Anthropic이 부담하지만 장기적으로는 여러 기업이나 정부 재원 분담이 필요하다고 밝혔다.</li>
+      </ol>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">용어 해설</p>
+      <dl class="glossary">
+        <dt>레드팀 테스트</dt>
+        <dd>공격자 입장에서 모델을 일부러 악용·오작동시켜 보안 취약점이나 위험한 답변을 유도해보는 테스트 방식입니다. 소프트웨어 침투 테스트와 비슷하지만 대상이 AI 모델의 답변 자체라는 점이 다릅니다.</dd>
+        <dt>정렬 평가</dt>
+        <dd>모델의 답변과 행동이 개발자가 의도한 목표·가치와 실제로 일치하는지 검증하는 평가입니다. 모델이 지시를 몰래 무시하거나 사용자를 속이는 방향으로 행동하지 않는지 확인하는 작업이 여기 포함됩니다.</dd>
+        <dt>안전장치 검증</dt>
+        <dd>모델에 내장된 필터링·차단 장치(유해 콘텐츠 생성 방지, 위험한 요청 거부 등)가 실제로 의도대로 작동하는지 확인하는 절차입니다.</dd>
+      </dl>
+    </div>
+  </article>
+
+  <article class="item">
+    <div class="tag-row">
+      <span class="tag priority">시스템 설계 · 오늘의 백로그</span>
+      <span class="tag">사례 재구성</span>
+      <span class="tag">오래 가는 기초</span>
+    </div>
+
+    <h2 class="item-title">언제 넣어야 진짜로 막히는가 — 거리와 계층을 가르는 질문</h2>
+
+    <p class="section-label">WHAT</p>
+    <p>오늘 뉴스 두 건이 같은 질문을 다른 각도에서 건드렸습니다. Plugin4Shell은 "검증이 어디를 참조해야 하는가"를, Accenture 파트너십은 "평가자가 어디에 있어야 하는가"를 물었습니다. 둘 다 최근 두 차례 인터뷰(2026-09-02, 2026-09-11)에서 당신이 미완으로 남긴 질문 — 통제 지점을 어느 계층에 둬야 실제로 강제되는가 — 의 반쪽입니다.</p>
+
+    <p class="section-label">WHY</p>
+    <p>당신은 이미 절반을 갖고 있습니다. "통제가 데이터로 존재하고 그 데이터가 통제 대상의 쓰기 권한 안에 있으면 그것은 통제가 아니다"는 원칙을 2026-09-02에 스스로 도출했습니다. 문제는 반대편이었습니다. "그럼 어디에 두면 강제되는가"라는 질문에 9/2엔 "앤트로픽 서버"(멀리), 9/11엔 "모델과 같은 프로세스"(가까이)라고 답했는데, 두 답 모두 축을 거리로 잡고 있었습니다. 오늘 두 사례를 나란히 놓으면 거리가 아니라 계층이 기준이라는 게 드러납니다.</p>
+    <ul>
+      <li><strong>Plugin4Shell</strong> — SHA 검증 로직은 실행 경로 위, 거리로는 가까운 곳에 있었습니다. 하지만 그 검증이 비교하는 대상(Git이 커밋 해시보다 우선 참조하는 브랜치 이름)은 공격자가 채워 넣을 수 있는 자리였습니다. 거리는 맞았는데 계층이 뚫렸습니다.</li>
+      <li><strong>Accenture 임베디드 평가자</strong> — 접근 권한으로는 Anthropic 내부, 거리로는 가까운 곳까지 들어갑니다. 하지만 급여와 보고 라인은 Anthropic 바깥, 계층으로는 분리돼 있습니다. 거리는 가까운데 계층은 갈랐습니다.</li>
+    </ul>
+
+    <p class="section-label">FOR YOU</p>
+    <div class="for-you">
+      <p>두 사례를 겹쳐 보면 기준이 선명해집니다. 통제 지점이 얼마나 가까이 있는지가 아니라, 그 지점이 "통제 대상의 지시(쓰기 권한, 급여, 보고 라인)를 받는가"가 핵심입니다.</p>
+      <p>Plugin4Shell은 검증 로직이 물리적으로 가까웠지만, 참조하는 데이터가 통제 대상(공격자가 밀어넣을 수 있는 저장소)의 지시를 받고 있었기 때문에 뚫렸습니다. Accenture 구조는 접근권은 가깝게 주되 지시 계통을 분리해 같은 문제를 피해가려는 설계입니다. "멀리 둔다"와 "낮은 계층에 둔다"를 같은 것으로 여기던 지난 혼동이 여기서 풀립니다 — 정답은 "누구의 지시를 받는 계층에 속해 있는가"입니다.</p>
+    </div>
+
+    <p class="section-label">LEARN</p>
+    <p>이 원칙이 실제로 얼마나 견고한지는 다음 재평가에서 직접 새 시나리오로 물어볼 가치가 있습니다. 지금은 설명을 들은 것과 스스로 적용하는 것 사이에 아직 검증되지 않은 간극이 있습니다.</p>
+
+    <div class="addendum">
+      <p class="section-label">3줄 요약</p>
+      <ol class="tri-summary">
+        <li>통제 지점의 실질적 강제력은 물리적 거리가 아니라 지시 계통의 소속 여부로 결정된다.</li>
+        <li>Plugin4Shell 사례는 검증 로직이 가까이 있어도 참조 데이터를 공격자가 통제하면 무력화됨을 보여준다.</li>
+        <li>Anthropic-Accenture 사례는 접근 권한은 가까워도 급여·보고 라인이 분리되면 통제가 유지될 수 있음을 보여준다.</li>
+      </ol>
+    </div>
+  </article>
+
+  <section class="radar">
+    <p class="section-label">레이더</p>
+    <p class="radar-note">학습 대상이 아니라 <b>인지 대상</b>입니다. 훑고 지나가세요 — 나중에 필요한 순간에 &ldquo;그거 있었지&rdquo;가 나오게 하는 것이 목적입니다.</p>
+
+    <div class="radar-group">
+      <h3>내가 쓰는 도구</h3>
+      <ul class="radar-list">
+        <li>Claude Code — 플러그인 설치 시 <code>--marketplace &lt;source&gt;</code> 옵션으로 마켓플레이스를 직접 지정 가능, 설치된 플러그인에 새 버전이 있으면 알려주는 기능, GitHub 마켓플레이스 로컬 사본 삭제 버그 수정.</li>
+        <li>Codex CLI — 음성으로 대화하며 작업 지시하는 실험 기능, 추론 과정을 실시간 요약해 보여주는 기능, 작업 목록을 스스로 만들어 진행 상황을 추적, Mac Touch ID로 민감 작업 승인, Amazon Bedrock 자격증명 지원.</li>
+        <li>Codex — 연구용 모델 GPT-5.3-Codex-Spark 퇴역, <code>codex mcp-server</code> 단독 명령 제거하고 Codex 앱 서버로 통합.</li>
+        <li>Google Workspace의 Gemini — Asana·Atlassian Rovo·HubSpot·Intuit(Mailchimp/QuickBooks)·Monday·Salesforce와 MCP로 직접 연동, 9/21까지 순차 전면 배포. 실시간 음성 대화 모델 Gemini 3.8 Live/Live Extended Thinking 정식 출시.</li>
+      </ul>
+    </div>
+
+    <div class="radar-group">
+      <h3>주변 생태계</h3>
+      <ul class="radar-list">
+        <li>Recraft — 텍스트 프롬프트만으로 편집 가능한 SVG 벡터 파일을 직접 생성하는 이미지 생성 AI. Figma·Illustrator·Sketch에서 바로 편집 가능해 로고·아이콘·브랜드 에셋 제작에 특화.</li>
+        <li>Ideogram — 포스터·배너·간판처럼 긴 문장의 텍스트를 정확하게 렌더링하는 데 특화된 이미지 생성 AI.</li>
+        <li>네이버클라우드 '클로바 스튜디오 포 거브' — 공무원이 코딩 없이 아이디어와 데이터만으로 AI 에이전트를 만들 수 있는 공공기관 전용 플랫폼(국내). 3월 출시 후 40개 이상 부처·기관으로 확산.</li>
+        <li>뤼튼 — IPO 준비 착수, 국내 증권사에 주관사 선정 제안요청서 발송(국내). 국내 AI 서비스 스타트업 최초로 기업가치 1조원 인정, 최근 시리즈C 1000억원 유치.</li>
+      </ul>
+    </div>
+
+    <div class="radar-group">
+      <h3>가격·정책</h3>
+      <ul class="radar-list">
+        <li>Suno — 남용 방지를 위해 무료·유료 등급별 다운로드 횟수 제한 신설.</li>
+        <li>Anthropic·OpenAI·Google DeepMind·Microsoft·xAI CEO들이 이례적으로 한목소리로 AI 개발 속도 완화를 공개 촉구.</li>
+        <li>미국 트럼프 대통령이 AI 총괄직("AI czar") 임명과 우주군을 본뜬 "AI Force" 신설 방침을 밝히며 AI 안전 우려를 "과장"이라 언급.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer class="status">
+    <span>오늘 조사 후 신호 2건 + 백로그 1건 전달 · 레이더 11건 · 나머지는 반복 보도로 폐기</span>
+    <span>Knowledge Agent v0.1</span>
+  </footer>
+
+</div>
