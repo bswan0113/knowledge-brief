@@ -1,0 +1,428 @@
+<title>Knowledge Brief 2026-09-21</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,500;1,6..72,600&family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  :root {
+    --paper: #eef0f4;
+    --surface: #ffffff;
+    --ink: #131722;
+    --ink-soft: #5b6472;
+    --signal: #c97a1a;
+    --signal-deep: #8a5313;
+    --signal-soft: #f3e3cc;
+    --line: rgba(19, 23, 34, 0.12);
+    --line-strong: rgba(19, 23, 34, 0.22);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #0e1116;
+      --surface: #171b22;
+      --ink: #e7e9ee;
+      --ink-soft: #9aa3b2;
+      --signal: #f0b15c;
+      --signal-deep: #f5c685;
+      --signal-soft: rgba(240, 177, 92, 0.14);
+      --line: rgba(231, 233, 238, 0.14);
+      --line-strong: rgba(231, 233, 238, 0.24);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --paper: #0e1116;
+    --surface: #171b22;
+    --ink: #e7e9ee;
+    --ink-soft: #9aa3b2;
+    --signal: #f0b15c;
+    --signal-deep: #f5c685;
+    --signal-soft: rgba(240, 177, 92, 0.14);
+    --line: rgba(231, 233, 238, 0.14);
+    --line-strong: rgba(231, 233, 238, 0.24);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans KR', 'IBM Plex Sans', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 56px 24px 96px;
+  }
+
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--signal-deep);
+  }
+
+  header.masthead {
+    border-bottom: 1px solid var(--line-strong);
+    padding-bottom: 28px;
+    margin-bottom: 40px;
+  }
+
+  header.masthead .eyebrow {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  h1.headline {
+    font-family: 'Newsreader', Georgia, serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(32px, 6vw, 44px);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin: 14px 0 10px;
+    text-wrap: balance;
+  }
+
+  .masthead .subhead {
+    color: var(--ink-soft);
+    font-size: 15px;
+    max-width: 56ch;
+  }
+
+  .masthead .subhead b {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  article.item {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 32px 32px 28px;
+    margin-bottom: 32px;
+  }
+
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  .tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+    border: 1px solid var(--line-strong);
+    color: var(--ink-soft);
+  }
+
+  .tag.priority {
+    border-color: var(--signal);
+    color: var(--signal-deep);
+    background: var(--signal-soft);
+  }
+
+  h2.item-title {
+    font-family: 'Newsreader', Georgia, serif;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 1.3;
+    margin: 0 0 18px;
+    text-wrap: balance;
+  }
+
+  .section-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin: 22px 0 8px;
+  }
+
+  .section-label:first-of-type { margin-top: 0; }
+
+  article.item p {
+    margin: 0 0 4px;
+    max-width: 62ch;
+  }
+
+  article.item .for-you {
+    padding: 14px 16px;
+    background: var(--signal-soft);
+    border-left: 2px solid var(--signal);
+    border-radius: 0 3px 3px 0;
+  }
+
+  article.item .for-you p { margin: 0 0 8px; }
+  article.item .for-you p:last-child { margin-bottom: 0; }
+
+  article.item ul.learn-list {
+    margin: 0 0 8px;
+    padding-left: 1.2em;
+    max-width: 62ch;
+  }
+
+  article.item ul.learn-list li { margin-bottom: 6px; }
+
+  figure.diagram {
+    margin: 26px 0 6px;
+    padding: 18px 6px 8px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  figure.diagram svg { width: 100%; height: auto; display: block; color: var(--ink-soft); }
+  figure.diagram .accent { color: var(--signal); }
+  figure.diagram text { font-family: 'IBM Plex Mono', monospace; fill: currentColor; }
+
+  figcaption {
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-top: 10px;
+  }
+
+  .source-row {
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .source-row a {
+    color: var(--ink);
+    text-decoration-color: var(--signal);
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 3px;
+  }
+
+  .source-row .domain {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+
+  .addendum {
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+  }
+
+  ol.tri-summary {
+    margin: 0;
+    padding-left: 1.3em;
+  }
+
+  ol.tri-summary li {
+    margin-bottom: 6px;
+    max-width: 62ch;
+  }
+
+  dl.glossary {
+    margin: 0;
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    column-gap: 14px;
+    row-gap: 10px;
+  }
+
+  dl.glossary dt {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--signal-deep);
+    white-space: nowrap;
+  }
+
+  dl.glossary dd {
+    margin: 0;
+    max-width: 56ch;
+    color: var(--ink-soft);
+  }
+
+  /* 레이더 — 인지 채널. 본 브리프(학습 채널)와 시각적으로 명확히 구분되어야 한다:
+     카드가 아니라 목록, 강조색 없음, 본문보다 작은 글씨. 훑고 지나가는 영역이다. */
+  section.radar {
+    margin-top: 40px;
+    padding-top: 26px;
+    border-top: 1px solid var(--line-strong);
+  }
+
+  section.radar > p.radar-note {
+    margin: 0 0 18px;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    max-width: 62ch;
+  }
+
+  .radar-group {
+    margin-bottom: 20px;
+  }
+
+  .radar-group h3 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 500;
+    margin: 0 0 8px;
+  }
+
+  ul.radar-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  ul.radar-list li {
+    position: relative;
+    padding-left: 16px;
+    margin-bottom: 7px;
+    font-size: 14.5px;
+    line-height: 1.6;
+    max-width: 66ch;
+    color: var(--ink);
+  }
+
+  ul.radar-list li::before {
+    content: "·";
+    position: absolute;
+    left: 3px;
+    color: var(--ink-soft);
+  }
+
+  ul.radar-list li a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid var(--line-strong);
+  }
+
+  ul.radar-list li a:hover { border-bottom-color: var(--signal); }
+
+  footer.status {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    border-top: 1px solid var(--line-strong);
+    padding-top: 18px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  @media (max-width: 480px) {
+    article.item { padding: 24px 20px; }
+    h1.headline { font-size: 30px; }
+  }
+</style>
+
+<div class="page">
+
+  <header class="masthead">
+    <div class="eyebrow">
+      <span>KNOWLEDGE BRIEF</span>
+      <span>2026-09-21 · 22:00</span>
+    </div>
+    <h1 class="headline">매일 본 가격표의 단위를, 오늘 처음 열어봤다</h1>
+    <p class="subhead">오늘 조사한 것 중 <b>지금 당신에게 학습 가치가 있다고 판단한 것</b>만 남겼습니다. 나머지는 이미 아는 내용이거나 가치가 낮아 걸러냈습니다.</p>
+  </header>
+
+  <article class="item">
+    <div class="tag-row">
+      <span class="tag priority">LLM 기초 · 오늘의 핵심</span>
+      <span class="tag">지식 공백 보완</span>
+      <span class="tag">오래 가는 기초</span>
+    </div>
+
+    <h2 class="item-title">토큰 하나가 정확히 무엇을 세는 단위인가</h2>
+
+    <p class="section-label">왜 지금 이걸 다루는지</p>
+    <p>매일 밤 이 브리프에는 &ldquo;백만 토큰당 3달러&rdquo; 같은 가격 표시가 계속 나옵니다. 그런데 그 &ldquo;토큰&rdquo;이 정확히 무엇을 세는 단위인지는 아직 한 번도 다루지 않았습니다. 이 단위를 모르면 컨텍스트 창 크기, API 비용, 문서 분할 방식이 전부 &ldquo;어쨌든 큰 숫자&rdquo;로만 남습니다.</p>
+
+    <p class="section-label">FOR YOU</p>
+    <div class="for-you">
+      <p>당신은 이미 컨텍스트 용량과 그것을 활용하는 능력이 서로 다른 변수라는 결론을 스스로 낸 적이 있습니다. 토큰은 바로 그 컨텍스트 용량을 채우는 실제 단위입니다. &ldquo;1M 컨텍스트&rdquo;라는 숫자는 글자 수가 아니라 토큰 수의 상한을 가리킵니다.</p>
+      <p>아래 용어 해설의 서브워드 분할 방식 때문에, 같은 문장도 언어와 기호에 따라 토큰 수가 달라집니다. 이건 당신이 아직 다루지 않은 RAG 문서 분할과 바로 연결됩니다 — 분할 크기는 결국 토큰 수로 정해지기 때문입니다.</p>
+      <p>당신의 야간 브리프 시스템도 매일 지식 로그와 프로필 파일을 프롬프트에 얹습니다. 그 파일들이 계속 길어지면 토큰 수가 늘어나 컨텍스트 상한에 더 빨리 가까워집니다. &ldquo;로그를 요약해서 압축한다&rdquo;는 설계 판단은 사실 토큰 예산을 관리하는 일입니다.</p>
+    </div>
+
+    <p class="section-label">LEARN</p>
+    <ul class="learn-list">
+      <li>토큰 — 모델이 텍스트를 읽고 쓸 때 실제로 다루는 최소 단위입니다.</li>
+      <li>토큰화 — 원문 텍스트를 이 토큰들로 잘라내는 전처리 단계입니다.</li>
+      <li>모델 파라미터 vs 컨텍스트 — 파라미터는 학습 때 고정되는 값이고, 컨텍스트는 요청마다 달라지는 입력 토큰 수입니다. 서로 다른 두 숫자입니다.</li>
+    </ul>
+    <p>이 세 가지는 오래 가는 기초라 유행을 타지 않습니다. 한 번 자리 잡으면 다시 설명할 필요가 없는 지식입니다.</p>
+
+    <div class="addendum">
+      <p class="section-label">3줄 요약</p>
+      <ol class="tri-summary">
+        <li>토큰은 모델이 텍스트를 처리하는 최소 단위이며, 같은 글자 수라도 언어에 따라 토큰 수가 달라진다.</li>
+        <li>토큰화는 원문 텍스트를 사전에 등록된 어휘 목록 기준으로 토큰 단위로 쪼개는 전처리 단계다.</li>
+        <li>&ldquo;1M 컨텍스트&rdquo; 표현과 API 가격은 문자 수가 아닌 토큰 수를 기준으로 하며, 모델 파라미터와는 별개의 값이다.</li>
+      </ol>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">용어 해설</p>
+      <dl class="glossary">
+        <dt>서브워드</dt>
+        <dd>단어를 통째로 쓰지 않고 더 작은 조각으로 나누는 토큰화 방식으로, 흔치 않은 단어도 여러 조각의 조합으로 표현할 수 있게 합니다.</dd>
+        <dt>어휘</dt>
+        <dd>토큰화에 쓸 수 있는 조각들을 미리 등록해 둔 사전 목록으로, 이 목록에 있는 조각 단위로만 텍스트가 쪼개집니다.</dd>
+      </dl>
+    </div>
+  </article>
+
+  <section class="radar">
+    <p class="section-label">레이더</p>
+    <p class="radar-note">학습 대상이 아니라 <b>인지 대상</b>입니다. 훑고 지나가세요 — 나중에 필요한 순간에 &ldquo;그거 있었지&rdquo;가 나오게 하는 것이 목적입니다.</p>
+
+    <div class="radar-group">
+      <h3>내가 쓰는 도구</h3>
+      <ul class="radar-list">
+        <li>Claude Code — 무인 실행 첫 턴에서 MCP 서버 연결을 기다리는 시간에 상한을 두는 옵션(CLAUDE_CODE_MCP_STARTUP_WAIT_MS)을 추가하고, 메모리 사용량이 임계치에 닿으면 화면에 경고와 조치 방법을 띄우는 기능을 넣었다.</li>
+      </ul>
+    </div>
+
+    <div class="radar-group">
+      <h3>주변 생태계</h3>
+      <ul class="radar-list">
+        <li>Solmi AI — 립싱크 보컬 합성과 14개 언어 가사 인식, 편집 가능한 스토리보드를 갖춘 AI 뮤직비디오 생성 툴. 웹과 iOS·Android 앱에서 모두 동작한다.</li>
+        <li>Kaiber Music Video Montage — 완성된 곡과 짧은 텍스트 설명만 넣으면 1~3분짜리 뮤직비디오 편집본을 만들어 주고, 샷 단위로 다시 다듬을 수 있다.</li>
+        <li>LTX Studio — Google DeepMind의 Veo 3 모델을 통합해, 립싱크·주변음까지 포함한 AI 생성 오디오가 붙은 영상을 스토리보드 방식으로 만드는 영상 제작 툴.</li>
+      </ul>
+    </div>
+
+    <div class="radar-group">
+      <h3>가격·정책</h3>
+      <ul class="radar-list">
+        <li>미국에서 소비자 4인이 Anthropic·OpenAI·xAI·Google을 상대로 반독점 소송을 제기했다(9/18). 9/12 아모데이의 &ldquo;속도 조절&rdquo; 에세이 이후 경쟁사 CEO들이 한 시간 안에 잇달아 동의한 것을 &ldquo;AI 개발 속도를 일부러 늦추기로 담합했다&rdquo;는 근거로 삼았다.</li>
+        <li>과학기술정보통신부가 2027년 예산안에 AI 대전환 예산 9.4조원을 편성했다(전년 대비 +84.3%) — 국내 AI 투자 확대 신호.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer class="status">
+    <span>오늘 조사 후 뉴스 0건 · 지식 공백 보완 1건 · 레이더 6건</span>
+    <span>Knowledge Agent v0.1</span>
+  </footer>
+
+</div>
