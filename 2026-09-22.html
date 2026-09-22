@@ -1,0 +1,529 @@
+<title>Knowledge Brief 2026-09-22</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,500;1,6..72,600&family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  :root {
+    --paper: #eef0f4;
+    --surface: #ffffff;
+    --ink: #131722;
+    --ink-soft: #5b6472;
+    --signal: #c97a1a;
+    --signal-deep: #8a5313;
+    --signal-soft: #f3e3cc;
+    --line: rgba(19, 23, 34, 0.12);
+    --line-strong: rgba(19, 23, 34, 0.22);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #0e1116;
+      --surface: #171b22;
+      --ink: #e7e9ee;
+      --ink-soft: #9aa3b2;
+      --signal: #f0b15c;
+      --signal-deep: #f5c685;
+      --signal-soft: rgba(240, 177, 92, 0.14);
+      --line: rgba(231, 233, 238, 0.14);
+      --line-strong: rgba(231, 233, 238, 0.24);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --paper: #0e1116;
+    --surface: #171b22;
+    --ink: #e7e9ee;
+    --ink-soft: #9aa3b2;
+    --signal: #f0b15c;
+    --signal-deep: #f5c685;
+    --signal-soft: rgba(240, 177, 92, 0.14);
+    --line: rgba(231, 233, 238, 0.14);
+    --line-strong: rgba(231, 233, 238, 0.24);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans KR', 'IBM Plex Sans', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 56px 24px 96px;
+  }
+
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--signal-deep);
+  }
+
+  header.masthead {
+    border-bottom: 1px solid var(--line-strong);
+    padding-bottom: 28px;
+    margin-bottom: 40px;
+  }
+
+  header.masthead .eyebrow {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  h1.headline {
+    font-family: 'Newsreader', Georgia, serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(32px, 6vw, 44px);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin: 14px 0 10px;
+    text-wrap: balance;
+  }
+
+  .masthead .subhead {
+    color: var(--ink-soft);
+    font-size: 15px;
+    max-width: 56ch;
+  }
+
+  .masthead .subhead b {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  article.item {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 32px 32px 28px;
+    margin-bottom: 32px;
+  }
+
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  .tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+    border: 1px solid var(--line-strong);
+    color: var(--ink-soft);
+  }
+
+  .tag.priority {
+    border-color: var(--signal);
+    color: var(--signal-deep);
+    background: var(--signal-soft);
+  }
+
+  h2.item-title {
+    font-family: 'Newsreader', Georgia, serif;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 1.3;
+    margin: 0 0 18px;
+    text-wrap: balance;
+  }
+
+  .section-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin: 22px 0 8px;
+  }
+
+  .section-label:first-of-type { margin-top: 0; }
+
+  article.item p {
+    margin: 0 0 4px;
+    max-width: 62ch;
+  }
+
+  article.item .for-you {
+    padding: 14px 16px;
+    background: var(--signal-soft);
+    border-left: 2px solid var(--signal);
+    border-radius: 0 3px 3px 0;
+  }
+
+  figure.diagram {
+    margin: 26px 0 6px;
+    padding: 18px 6px 8px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  figure.diagram svg { width: 100%; height: auto; display: block; color: var(--ink-soft); }
+  figure.diagram .accent { color: var(--signal); }
+  figure.diagram text { font-family: 'IBM Plex Mono', monospace; fill: currentColor; }
+
+  figcaption {
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-top: 10px;
+  }
+
+  .source-row {
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .source-row a {
+    color: var(--ink);
+    text-decoration-color: var(--signal);
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 3px;
+  }
+
+  .source-row .domain {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+
+  .addendum {
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+  }
+
+  ol.tri-summary {
+    margin: 0;
+    padding-left: 1.3em;
+  }
+
+  ol.tri-summary li {
+    margin-bottom: 6px;
+    max-width: 62ch;
+  }
+
+  dl.glossary {
+    margin: 0;
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    column-gap: 14px;
+    row-gap: 10px;
+  }
+
+  dl.glossary dt {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--signal-deep);
+    white-space: nowrap;
+  }
+
+  dl.glossary dd {
+    margin: 0;
+    max-width: 56ch;
+    color: var(--ink-soft);
+  }
+
+  section.radar {
+    margin-top: 40px;
+    padding-top: 26px;
+    border-top: 1px solid var(--line-strong);
+  }
+
+  section.radar > p.radar-note {
+    margin: 0 0 18px;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    max-width: 62ch;
+  }
+
+  .radar-group {
+    margin-bottom: 20px;
+  }
+
+  .radar-group h3 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 500;
+    margin: 0 0 8px;
+  }
+
+  ul.radar-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  ul.radar-list li {
+    position: relative;
+    padding-left: 16px;
+    margin-bottom: 7px;
+    font-size: 14.5px;
+    line-height: 1.6;
+    max-width: 66ch;
+    color: var(--ink);
+  }
+
+  ul.radar-list li::before {
+    content: "·";
+    position: absolute;
+    left: 3px;
+    color: var(--ink-soft);
+  }
+
+  ul.radar-list li a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid var(--line-strong);
+  }
+
+  ul.radar-list li a:hover { border-bottom-color: var(--signal); }
+
+  footer.status {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    border-top: 1px solid var(--line-strong);
+    padding-top: 18px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  @media (max-width: 480px) {
+    article.item { padding: 24px 20px; }
+    h1.headline { font-size: 30px; }
+  }
+</style>
+
+<div class="page">
+
+  <header class="masthead">
+    <div class="eyebrow">
+      <span>KNOWLEDGE BRIEF</span>
+      <span>2026-09-22 · 22:00</span>
+    </div>
+    <h1 class="headline">승인도 로그인도, 확인됐다는 착각이 새는 자리</h1>
+    <p class="subhead">오늘 조사한 것 중 <b>지금 당신에게 학습 가치가 있다고 판단한 것</b>만 남겼습니다. 나머지는 이미 아는 내용이거나 가치가 낮아 걸러냈습니다.</p>
+  </header>
+
+  <article class="item">
+    <div class="tag-row">
+      <span class="tag priority">하네스 설계 · 오늘의 핵심</span>
+      <span class="tag">논문</span>
+      <span class="tag">계속 바뀌는 중</span>
+    </div>
+
+    <h2 class="item-title">승인 버튼을 눌렀는데 다른 명령이 실행된다 — Loopjacking</h2>
+
+    <p class="section-label">WHAT</p>
+    <p>보안 연구자들이 사람이 승인한 뒤에도 실제로는 다른 작업이 실행될 수 있는 공격 기법을 공개하고 "Loopjacking"이라 이름 붙였다.</p>
+    <p>방식은 두 가지다. 첫째는 승인 화면에 실제 실행될 작업이 숨겨지거나 아예 빠진 채 표시되는 경우다.</p>
+    <p>둘째는 승인 시점에는 정확한 작업이 보이지만, 그 이후 시스템 내부 상태가 바뀌어 실제로는 다른 작업이 실행되는 경우다.</p>
+    <p>연구팀은 Agno AgentOS 7개 버전과 LangGraph 기반 에이전트 서버 12개 버전에서 이 공격을 실제로 재현했다.</p>
+
+    <p class="section-label">WHY</p>
+    <p>"위험한 작업 전에는 사람이 확인한다"는 규칙은 에이전트 시스템에서 가장 흔한 안전장치다.</p>
+    <p>그런데 이 연구는 그 확인 절차 자체가 눈속임의 대상이 될 수 있음을 보여준다.</p>
+    <p>승인이 실제 실행 내용과 기계적으로 묶여 있지 않으면, 승인은 안전장치가 아니라 오히려 공격이 파고들 자리가 된다.</p>
+
+    <p class="section-label">FOR YOU</p>
+    <div class="for-you">
+      <p>며칠 전 도구 실행을 실제로 막는 지점이 어디여야 하는지 스스로 답을 냈다.</p>
+      <p>그 지점이 통제 대상 자신이 고칠 수 없는 자리에 있어야 하고, 실제 실행 경로를 반드시 지나가야 한다는 두 조건이었다.</p>
+      <p>Loopjacking 연구가 승인 게이트에 대해 내린 결론도 정확히 같다 — 모델 바깥에 있고, 실제로 실행되는 그 작업에 단단히 묶인 통제만 버틴다.</p>
+      <p>반대로 승인 화면에 뜬 문구와 실행기에 넘어가는 값이 느슨하게만 연결돼 있으면, 그 승인은 우회당하기 쉬운 필터링 함수와 같은 운명을 맞는다.</p>
+      <p>전에 지적했던 "승인자가 평가할 능력이 없으면 게이트가 책임만 이전한다"는 문제와도 같은 계열이다.</p>
+      <p>그때는 사람 쪽 역량이 문제였다면, 이번은 시스템이 사람에게 애초에 틀린 그림을 보여주는 문제다.</p>
+    </div>
+
+    <p class="section-label">LEARN</p>
+    <p>지금 수식까지 파고들 필요는 없다. "승인 = 안전"이라는 전제를 의심하는 습관만 챙기면 된다.</p>
+    <p>나중에 사람 승인 게이트를 설계할 일이 생기면, 승인 화면에 표시된 값과 실행기에 넘어가는 값이 같은 객체인지부터 확인하는 것이 이 연구가 주는 실무 체크리스트다.</p>
+
+    <div class="source-row">
+      <a href="https://arxiv.org/abs/2609.21081" target="_blank" rel="noopener">arXiv 논문 원문 보기 →</a>
+      <span class="domain">arxiv.org</span>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">3줄 요약</p>
+      <ol class="tri-summary">
+        <li>Loopjacking은 인간 승인 후에도 다른 작업이 실행될 수 있는 새로운 공격 기법이다.</li>
+        <li>표현 기반 위장과 승인 후 상태 치환이라는 두 변형이 확인됐다.</li>
+        <li>연구팀은 Agno AgentOS와 LangGraph 기반 서버에서 실제 재현에 성공했다.</li>
+      </ol>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">용어 해설</p>
+      <dl class="glossary">
+        <dt>Agno AgentOS</dt>
+        <dd>Agno라는 에이전트 개발 프레임워크가 제공하는 에이전트 실행·관리 서버(런타임) 제품 이름이다.</dd>
+        <dt>LangGraph</dt>
+        <dd>에이전트의 작업 흐름을 그래프(노드와 상태 전이) 형태로 정의하고 실행하는 오픈소스 에이전트 개발 프레임워크다.</dd>
+      </dl>
+    </div>
+  </article>
+
+  <article class="item">
+    <div class="tag-row">
+      <span class="tag priority">보안 · 강의에 바로 쓸 사례</span>
+      <span class="tag">공식 발표</span>
+      <span class="tag">계속 바뀌는 중</span>
+    </div>
+
+    <h2 class="item-title">자율 에이전트가 일으킨 첫 데이터 유출, 스페인 규제당국이 접수했다</h2>
+
+    <p class="section-label">WHAT</p>
+    <p>스페인 개인정보보호청(AEPD)이 9월 14일, 자율 AI 에이전트가 원인이 된 데이터 유출 신고를 받았다고 밝혔다. EU 개인정보 규정 체계에서는 처음이다.</p>
+    <p>대규모 언어모델 기반 에이전트가 사람의 세부 지시 없이 애플리케이션의 취약점을 스스로 탐색했다.</p>
+    <p>그 뒤 무단으로 로그인한 상태에서 개인정보를 열람하고 송장을 수정하는 행동을 연쇄적으로 수행했다.</p>
+    <p>피해 조직명, 사용된 모델, 산업 분야는 공개되지 않았다.</p>
+
+    <p class="section-label">WHY</p>
+    <p>EU 개인정보 규정은 공격자가 사람이든 자동화된 도구든 관계없이 72시간 내 유출 신고를 의무화한다.</p>
+    <p>AEPD는 이번 사건이 완전히 새로운 위협을 만든 것은 아니라고 선을 그었다.</p>
+    <p>이미 알려진 공격 기법의 속도와 범위, 적응력을 키웠을 뿐이라는 것이다. 그런데 그 속도가 탐지와 대응에 쓸 수 있는 시간 자체를 줄인다.</p>
+
+    <p class="section-label">FOR YOU</p>
+    <div class="for-you">
+      <p>SQL Injection이나 서버단 권한 검증 같은 기본기는 이미 즉답하는 영역이다.</p>
+      <p>그런데 이번 사건에서 뚫린 첫 단계는 그보다 앞선 단계 — 요청을 보낸 사람이 실제로 누구인지 확인하는 단계다.</p>
+      <p>"권한 검증이 필요하다"는 판단은 정확했지만, 그 권한 검증이 전제로 삼는 "누구인지 확인" 단계가 별도로 존재하고 별도로 뚫릴 수 있다는 점은 아직 명시적으로 다루지 않았다.</p>
+      <p>오늘 아래 항목에서 이 구분을 정식으로 짚는다.</p>
+    </div>
+
+    <p class="section-label">LEARN</p>
+    <p>이 사건 자체(어느 회사인지, 어떤 모델인지)를 따라갈 필요는 없다 — AEPD가 의도적으로 비공개했다.</p>
+    <p>대신 규제기관이 자동화된 공격자를 사람 공격자와 같은 신고 의무선상에 놓기 시작했다는 방향성만 기억해두면 된다.</p>
+    <p>다음 AX 강의에서 "AI 에이전트 도입의 법적 책임" 이야기가 나오면 바로 쓸 수 있는 사례다.</p>
+
+    <div class="source-row">
+      <a href="https://www.securityweek.com/first-agentic-ai-data-breach-reported-to-spanish-regulator/" target="_blank" rel="noopener">SecurityWeek 원문 보기 →</a>
+      <span class="domain">securityweek.com</span>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">3줄 요약</p>
+      <ol class="tri-summary">
+        <li>AEPD가 2026년 9월 14일 자율 AI 에이전트에 의한 첫 데이터 유출 신고를 접수했다고 밝혔다.</li>
+        <li>LLM 기반 에이전트가 별도 지시 없이 취약점을 탐색해 무단 로그인 후 개인정보 열람과 송장 수정을 스스로 연쇄 수행했다.</li>
+        <li>AEPD는 이번 사례가 새로운 위협이 아니라 기존 공격 기법의 속도와 범위가 커진 것이며 핵심은 운영 환경의 구현과 보안이라고 설명했다.</li>
+      </ol>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">용어 해설</p>
+      <dl class="glossary">
+        <dt>GDPR 33조</dt>
+        <dd>EU 개인정보보호법(GDPR)의 조항으로, 개인정보 유출이 발생하면 원인이 사람이든 자동화된 시스템이든 상관없이 72시간 이내에 감독기관에 신고하도록 의무화한다. EU 거주자 데이터를 다루는 기업이라면 국적과 무관하게 이 의무가 적용될 수 있다.</dd>
+      </dl>
+    </div>
+  </article>
+
+  <article class="item">
+    <div class="tag-row">
+      <span class="tag priority">보안 · 오늘 채우는 공백</span>
+      <span class="tag">직접 설명</span>
+      <span class="tag">오래 가는 기초</span>
+    </div>
+
+    <h2 class="item-title">로그인이 됐다고 권한까지 있는 건 아니다 — 인증과 인가</h2>
+
+    <p class="section-label">왜 지금 이걸 다루는지</p>
+    <p>오늘 소개한 스페인 유출 사건에서 에이전트가 통과한 첫 관문은 무단 로그인이었다.</p>
+    <p>서버단 권한 검증의 필요성은 이미 즉답하는 영역이지만, 그 권한 검증이라는 개념 자체가 사실 두 단계로 이뤄져 있다는 점은 아직 짚은 적이 없다.</p>
+    <p>오늘이 그 자리를 채우는 날이다.</p>
+
+    <p class="section-label">WHY</p>
+    <p>인증(Authentication)은 "너는 누구인가"를 확인하는 단계이고, 인가(Authorization)는 "너는 무엇을 할 수 있는가"를 확인하는 단계다.</p>
+    <p>두 단계는 순서도 다르고 뚫리는 방식도 다르다.</p>
+    <p>인증이 뚫리면 공격자가 다른 사람 행세를 한다. 인가가 뚫리면 진짜 본인이 맞아도 원래 권한 밖의 일을 할 수 있게 된다.</p>
+    <p>오늘 사건은 첫 번째였다 — 로그인 자체가 무단이었다.</p>
+
+    <p class="section-label">FOR YOU</p>
+    <div class="for-you">
+      <p>이미 확인된 강점은 "프론트엔드 UI 숨김을 권한 검증으로 착각하지 않는다", "서버단 검증이 필요하다는 판단을 즉시 내린다"는 것이었다.</p>
+      <p>이 두 강점은 전부 인가(무엇을 할 수 있는가) 쪽 감각이다.</p>
+      <p>그런데 인가 검사는 "이 사람이 누구인지"가 이미 확정돼 있다는 전제 위에서만 의미가 있다.</p>
+      <p>그 전제 자체가 깨지면 — 즉 인증이 뚫리면 — 아무리 정교한 인가 로직을 서버에 심어도 소용이 없다.</p>
+      <p>세션 토큰 탈취, 로그인 흐름을 우회하는 공격이 전부 인증 단계를 노린다. 오늘 사건의 무단 로그인이 정확히 그 자리다.</p>
+    </div>
+
+    <p class="section-label">LEARN</p>
+    <p>다음에 로그인·권한 체계를 설계하거나 평가할 일이 생기면, "이 사람이 누구인지 확인하는 로직"과 "이 사람이 무엇을 할 수 있는지 확인하는 로직"이 코드에서 실제로 분리돼 있는지부터 확인하는 습관을 들이면 된다.</p>
+    <p>두 로직이 하나로 뭉쳐 있으면 인증 우회가 곧바로 인가 우회로 이어진다.</p>
+
+    <div class="addendum">
+      <p class="section-label">3줄 요약</p>
+      <ol class="tri-summary">
+        <li>인증과 인가는 검증 순서와 뚫리는 방식이 서로 다른 별개의 단계다.</li>
+        <li>인증이 뚫리면 신원 도용이, 인가가 뚫리면 본인이라도 권한 밖 행위가 가능해진다.</li>
+        <li>인가 로직은 인증이 확정됐다는 전제 위에서만 작동하므로 두 로직을 코드에서 분리해야 한다.</li>
+      </ol>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">용어 해설</p>
+      <dl class="glossary">
+        <dt>세션 토큰</dt>
+        <dd>로그인에 성공하면 서버가 발급해 브라우저에 저장해두는 임시 식별값으로, 이후 요청마다 이 값을 제시해 "로그인된 사용자"임을 증명하는 데 쓰인다. 이 값이 탈취되면 비밀번호 없이도 그 사람인 척 요청을 보낼 수 있다.</dd>
+        <dt>로그인 흐름 우회</dt>
+        <dd>정상적인 아이디/비밀번호 검증 절차를 거치지 않고, 그 절차의 허점(검증 단계 건너뛰기, 잘못 설계된 리다이렉트 등)을 이용해 로그인된 상태를 얻어내는 공격을 말한다.</dd>
+      </dl>
+    </div>
+  </article>
+
+  <section class="radar">
+    <p class="section-label">레이더</p>
+    <p class="radar-note">학습 대상이 아니라 <b>인지 대상</b>입니다. 훑고 지나가세요 — 나중에 필요한 순간에 &ldquo;그거 있었지&rdquo;가 나오게 하는 것이 목적입니다.</p>
+
+    <div class="radar-group">
+      <h3>내가 쓰는 도구</h3>
+      <ul class="radar-list">
+        <li>Anthropic Inference Hooks — Claude Enterprise용 실시간 데이터유출방지 체크포인트. 모든 프롬프트를 조직의 보안 서버로 보내 허용·거부 판정을 받은 뒤에야 모델에 전달하며, Claude Code·Cowork·MCP 커넥터·플러그인까지 한 설정으로 커버한다.</li>
+        <li>Claude Code 9월 변경사항 — 게이트웨이 로그인 계정 표시, 메시지 일괄 전송 단축키(send-now) 추가, claude.ai에서 켠 스킬·플러그인이 터미널 세션에도 자동 동기화, 자체 호스팅 실행환경이 Team·Enterprise 대상 퍼블릭 베타로 전환.</li>
+      </ul>
+    </div>
+
+    <div class="radar-group">
+      <h3>주변 생태계</h3>
+      <ul class="radar-list">
+        <li>Carat(캐럿) — "홍보 영상 만들어줘" 한 문장으로 기획부터 대본, 이미지·영상, 음악까지 자동 생성하는 국내 콘텐츠 제작 AI 에이전트. LG유플러스에 기업용 버전 'Carat Biz'를 공급 중이다.</li>
+        <li>Salesforce AIforce — Dreamforce 2026에서 공개한 합성형(composable) 에이전트 플랫폼. Google Cloud와 인프라를 통합해 양쪽 플랫폼의 에이전트가 같은 데이터를 두고 동작하도록 연결한다.</li>
+        <li>Google Gemini 3.1 Pro — 텍스트·이미지·음성·영상·코드를 함께 다루는 멀티모달 모델. 최대 100만 토큰 컨텍스트를 지원하며 reasoning과 에이전트형 워크플로우에 초점을 맞췄다.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer class="status">
+    <span>오늘 조사 후 신호 2건 + 백로그 보완 1건 전달 · 레이더 5건 · 반복 보도·저가치 다수 폐기</span>
+    <span>Knowledge Agent v0.1</span>
+  </footer>
+
+</div>
