@@ -1,0 +1,473 @@
+<title>Knowledge Brief 2026-09-27</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,500;1,6..72,600&family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  :root {
+    --paper: #eef0f4;
+    --surface: #ffffff;
+    --ink: #131722;
+    --ink-soft: #5b6472;
+    --signal: #c97a1a;
+    --signal-deep: #8a5313;
+    --signal-soft: #f3e3cc;
+    --line: rgba(19, 23, 34, 0.12);
+    --line-strong: rgba(19, 23, 34, 0.22);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #0e1116;
+      --surface: #171b22;
+      --ink: #e7e9ee;
+      --ink-soft: #9aa3b2;
+      --signal: #f0b15c;
+      --signal-deep: #f5c685;
+      --signal-soft: rgba(240, 177, 92, 0.14);
+      --line: rgba(231, 233, 238, 0.14);
+      --line-strong: rgba(231, 233, 238, 0.24);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --paper: #0e1116;
+    --surface: #171b22;
+    --ink: #e7e9ee;
+    --ink-soft: #9aa3b2;
+    --signal: #f0b15c;
+    --signal-deep: #f5c685;
+    --signal-soft: rgba(240, 177, 92, 0.14);
+    --line: rgba(231, 233, 238, 0.14);
+    --line-strong: rgba(231, 233, 238, 0.24);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans KR', 'IBM Plex Sans', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 56px 24px 96px;
+  }
+
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--signal-deep);
+  }
+
+  header.masthead {
+    border-bottom: 1px solid var(--line-strong);
+    padding-bottom: 28px;
+    margin-bottom: 40px;
+  }
+
+  header.masthead .eyebrow {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  h1.headline {
+    font-family: 'Newsreader', Georgia, serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(32px, 6vw, 44px);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin: 14px 0 10px;
+    text-wrap: balance;
+  }
+
+  .masthead .subhead {
+    color: var(--ink-soft);
+    font-size: 15px;
+    max-width: 56ch;
+  }
+
+  .masthead .subhead b {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  article.item {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 32px 32px 28px;
+    margin-bottom: 32px;
+  }
+
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  .tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+    border: 1px solid var(--line-strong);
+    color: var(--ink-soft);
+  }
+
+  .tag.priority {
+    border-color: var(--signal);
+    color: var(--signal-deep);
+    background: var(--signal-soft);
+  }
+
+  h2.item-title {
+    font-family: 'Newsreader', Georgia, serif;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 1.3;
+    margin: 0 0 18px;
+    text-wrap: balance;
+  }
+
+  .section-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin: 22px 0 8px;
+  }
+
+  .section-label:first-of-type { margin-top: 0; }
+
+  article.item p {
+    margin: 0 0 4px;
+    max-width: 62ch;
+  }
+
+  article.item ul {
+    margin: 0 0 8px;
+    padding-left: 1.2em;
+    max-width: 62ch;
+  }
+
+  article.item li {
+    margin-bottom: 4px;
+  }
+
+  article.item .for-you {
+    padding: 14px 16px;
+    background: var(--signal-soft);
+    border-left: 2px solid var(--signal);
+    border-radius: 0 3px 3px 0;
+  }
+
+  figure.diagram {
+    margin: 26px 0 6px;
+    padding: 18px 6px 8px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  figure.diagram svg { width: 100%; height: auto; display: block; color: var(--ink-soft); }
+  figure.diagram .accent { color: var(--signal); }
+  figure.diagram text { font-family: 'IBM Plex Mono', monospace; fill: currentColor; }
+
+  figcaption {
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-top: 10px;
+  }
+
+  .source-row {
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .source-row a {
+    color: var(--ink);
+    text-decoration-color: var(--signal);
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 3px;
+  }
+
+  .source-row .domain {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+
+  .addendum {
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+  }
+
+  ol.tri-summary {
+    margin: 0;
+    padding-left: 1.3em;
+  }
+
+  ol.tri-summary li {
+    margin-bottom: 6px;
+    max-width: 62ch;
+  }
+
+  dl.glossary {
+    margin: 0;
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    column-gap: 14px;
+    row-gap: 10px;
+  }
+
+  dl.glossary dt {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--signal-deep);
+    white-space: nowrap;
+  }
+
+  dl.glossary dd {
+    margin: 0;
+    max-width: 56ch;
+    color: var(--ink-soft);
+  }
+
+  /* 레이더 — 인지 채널. 본 브리프(학습 채널)와 시각적으로 명확히 구분되어야 한다:
+     카드가 아니라 목록, 강조색 없음, 본문보다 작은 글씨. 훑고 지나가는 영역이다. */
+  section.radar {
+    margin-top: 40px;
+    padding-top: 26px;
+    border-top: 1px solid var(--line-strong);
+  }
+
+  section.radar > p.radar-note {
+    margin: 0 0 18px;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    max-width: 62ch;
+  }
+
+  .radar-group {
+    margin-bottom: 20px;
+  }
+
+  .radar-group h3 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 500;
+    margin: 0 0 8px;
+  }
+
+  ul.radar-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  ul.radar-list li {
+    position: relative;
+    padding-left: 16px;
+    margin-bottom: 7px;
+    font-size: 14.5px;
+    line-height: 1.6;
+    max-width: 66ch;
+    color: var(--ink);
+  }
+
+  ul.radar-list li::before {
+    content: "·";
+    position: absolute;
+    left: 3px;
+    color: var(--ink-soft);
+  }
+
+  ul.radar-list li a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid var(--line-strong);
+  }
+
+  ul.radar-list li a:hover { border-bottom-color: var(--signal); }
+
+  footer.status {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    border-top: 1px solid var(--line-strong);
+    padding-top: 18px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  @media (max-width: 480px) {
+    article.item { padding: 24px 20px; }
+    h1.headline { font-size: 30px; }
+  }
+</style>
+
+<div class="page">
+
+  <header class="masthead">
+    <div class="eyebrow">
+      <span>KNOWLEDGE BRIEF</span>
+      <span>2026-09-27 · 22:00</span>
+    </div>
+    <h1 class="headline">Claude가 확장 기능 접수창구를 열었다, 그런데 위임한 일은 누가 지켜보는가</h1>
+    <p class="subhead">오늘 조사한 것 중 <b>지금 당신에게 학습 가치가 있다고 판단한 것</b>만 남겼습니다. 나머지는 이미 아는 내용이거나 가치가 낮아 걸러냈습니다.</p>
+  </header>
+
+  <article class="item">
+    <div class="tag-row">
+      <span class="tag priority">확장 생태계 · 오늘의 핵심</span>
+      <span class="tag">공식 발표</span>
+      <span class="tag">계속 바뀌는 중</span>
+    </div>
+
+    <h2 class="item-title">Claude 확장 기능, 이제 누구나 셀프서비스로 제출한다</h2>
+
+    <p class="section-label">WHAT</p>
+    <p>Anthropic이 9월 25일, 개발자가 직접 자신의 확장 기능을 Claude 공식 디렉터리에 제출할 수 있는 셀프서비스 포털을 열었다. 유료 플랜 사용자라면 누구나 쓸 수 있다.</p>
+    <p>제출 방식은 두 가지다. 서버 하나만 연결하는 단일 커넥터 제출과, 여러 구성요소를 GitHub 저장소 하나로 묶어 내는 번들 제출이다.</p>
+    <p>번들에는 데이터·도구 연결, 작업 지침, 대화 내 UI, 그리고 이름 붙은 명령이나 에이전트(특정 업무 전체를 떠맡는 전문가 역할)까지 조합해 담을 수 있다.</p>
+    <p>제출 즉시 자동 검증과 안전성 검사가 돌고, 검토 진행 상황을 그 자리에서 확인한다. 승인되면 공개 시점은 개발자가 정한다.</p>
+
+    <p class="section-label">WHY</p>
+    <p>지금까지는 Claude용 확장 기능을 만들어도 널리 쓰이게 하려면 Anthropic과 개별적으로 조율해야 했다. 이번 포털은 그 절차를 앱스토어형 셀프서비스로 바꿨다는 뜻이다.</p>
+    <p>동시에 "누구나 제출 가능"은 검증되지 않은 제3자 코드가 Claude 안에서 실제 권한을 갖고 돌아갈 수 있다는 뜻이기도 하다. 그래서 자동 안전성 검사가 이 구조 전체의 핵심 안전장치다.</p>
+
+    <p class="section-label">FOR YOU</p>
+    <div class="for-you">
+      <p>당신은 이미 "통제 장치는 통제 대상의 쓰기 권한 밖에 있어야 하고, 실제 실행 경로 위에 있어야 한다"는 원칙을 여러 차례 스스로 확인했다. 이번 안전성 검사가 정확히 그 자리에 있다 — 제출된 코드 자체가 아니라 그걸 감시하는 별도 계층이 검사한다.</p>
+      <p>다만 여기엔 아직 당신이 다루지 않은 질문이 하나 남는다. 이 번들에는 "에이전트"까지 들어갈 수 있다 — Claude가 업무 하나를 통째로 넘기는 전문가 역할이다. 그 위임이 실행되는 동안 결과가 이상해져도, 원래 대화가 그걸 알아채고 개입할 방법은 이 제출·검토 단계만으로는 보장되지 않는다.</p>
+      <p>이 질문을 오늘 gap 항목에서 이어서 다룬다.</p>
+    </div>
+
+    <p class="section-label">LEARN</p>
+    <p>이 포털 자체의 세부 기능(제출 절차, 권한 구분)은 사실로만 알아두면 되고 매일 갱신을 좇을 필요는 없다. 반면 "위임한 작업의 결과를 어떻게 확인하는가"는 에이전트 구조가 늘어날수록 계속 중요해지는 축이라 더 파고들 가치가 있다.</p>
+
+    <div class="source-row">
+      <a href="https://claude.com/blog/build-plugins-for-claude" target="_blank" rel="noopener">Anthropic 공식 블로그 원문 보기 →</a>
+      <span class="domain">claude.com/blog</span>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">3줄 요약</p>
+      <ol class="tri-summary">
+        <li>Anthropic이 2026년 9월 25일 개발자용 셀프서비스 포털을 열어 확장 기능을 공식 디렉터리에 직접 제출할 수 있게 했다.</li>
+        <li>이용은 유료 플랜 사용자만 가능하며, 단일 커넥터 제출과 여러 구성요소를 묶은 번들 제출 두 방식을 지원한다.</li>
+        <li>제출 즉시 자동 검증과 안전성 검사가 실행되고, 승인 후 공개 시점과 사용 통계는 개발자가 직접 관리한다.</li>
+      </ol>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">용어 해설</p>
+      <dl class="glossary">
+        <dt>작업 지침(스킬)</dt>
+        <dd>Claude에게 특정 작업을 어떤 순서와 방식으로 처리할지 알려주는 지침 묶음으로, 일종의 매뉴얼이다.</dd>
+        <dt>대화 내 UI(MCP 앱)</dt>
+        <dd>대화 중에 버튼이나 입력창 같은 간단한 상호작용 화면을 띄워주는 기능이다.</dd>
+        <dt>번들</dt>
+        <dd>여러 구성요소를 하나의 GitHub 저장소로 묶어 한 번에 제출하는 배포 단위다.</dd>
+        <dt>안전성 검사</dt>
+        <dd>제출된 확장 기능이 악성 코드를 담거나 사용자 데이터를 위험하게 다루지 않는지 자동으로 점검하는 절차다.</dd>
+      </dl>
+    </div>
+  </article>
+
+  <article class="item">
+    <div class="tag-row">
+      <span class="tag priority">에이전트 실행 흐름 · 오늘의 핵심</span>
+      <span class="tag">내부 학습 점검</span>
+      <span class="tag">오래 가는 기초</span>
+    </div>
+
+    <h2 class="item-title">위임한 작업이 끝났다는 신호는 누가 주는가</h2>
+
+    <p class="section-label">WHAT</p>
+    <p>오늘 위 항목에서 다룬 확장 기능 구조에는 "에이전트"라는 단위가 들어 있다 — Claude가 업무 하나를 통째로 떠맡기는 전문가 역할이다. 이런 위임 구조에는 사실 서로 다른 세 단계의 확인 지점이 있다.</p>
+    <ul>
+      <li>위임 전 확인 — 이 작업을 시킬지 말지 승인하는 단계</li>
+      <li>실행 중 관찰 — 지금 무엇을 하고 있는지 실시간으로 보는 단계</li>
+      <li>실행 후 검증 — 끝난 뒤 결과가 실제로 맞는지 확인하는 단계</li>
+    </ul>
+    <p>당신이 최근 재평가에서 확실히 답한 것은 이 중 첫 번째, 위임 전 확인이다. 오늘은 그 뒤 두 단계를 다룬다.</p>
+
+    <p class="section-label">WHY</p>
+    <p>실행 중 관찰과 실행 후 검증이 없으면, 승인은 제대로 받았는데도 일이 잘못되고 있다는 걸 아무도 알아채지 못하는 상황이 생긴다.</p>
+    <p>실제 사례가 있다. 한 금융회사의 회계 처리 에이전트가 깨진 데이터 하나 때문에 스스로 멈추지 못하는 오류 루프에 빠졌고, 한 시간도 안 되는 사이 클라우드 비용이 5만 달러 급증했다. 이 사고에는 위임 전 승인은 있었지만, 문제가 반복될 때 전체를 멈추는 실행 중 관찰 장치가 없었다.</p>
+
+    <p class="section-label">FOR YOU</p>
+    <div class="for-you">
+      <p>당신은 위임받은 결과물을 읽고 판정하는 능력을 이미 한 번 스스로 보여준 적이 있다 — 요청하지 않았는데도 코드 설계 결함을 지적한 사례다. 이건 "실행 후 검증" 능력의 증거다.</p>
+      <p>그런데 그 검증이 언제 일어나는가는 완전히 다른 설계 문제다. 사람이 나중에 결과를 보고 판단하는 것과, 시스템이 실행 도중 자동으로 관찰하다가 이상 신호에 스스로 멈추는 것은 전혀 다른 장치다. 위 금융회사 사고는 후자가 없었던 경우였다.</p>
+      <p>확장 기능에 "에이전트"를 끼워 넣는 구조가 늘어날수록, 위임했다는 사실과 그 위임이 실제로 잘 끝났다는 사실 사이의 간격이 커진다. 그 간격을 메우는 장치가 무엇인지가 앞으로 계속 중요해질 질문이다.</p>
+    </div>
+
+    <p class="section-label">LEARN</p>
+    <p>이건 특정 제품의 기능이 아니라 에이전트 아키텍처 자체의 원리라 오래 쓰인다. 사실을 외우기보다 실제로 설계할 때 세 확인 지점을 구분해 적용해보는 쪽이 더 남는다.</p>
+
+    <div class="addendum">
+      <p class="section-label">3줄 요약</p>
+      <ol class="tri-summary">
+        <li>에이전트 위임 구조에는 위임 전 승인, 실행 중 관찰, 실행 후 검증이라는 세 단계의 확인 지점이 있다.</li>
+        <li>지금까지는 위임 전 승인에 관심이 집중되어 왔지만, 나머지 두 단계가 없으면 문제가 생겨도 알아채기 어렵다.</li>
+        <li>한 금융회사 사례에서는 실행 중 관찰 장치의 부재로 에이전트가 오류 루프에 빠져 한 시간 내 클라우드 비용이 5만 달러 급증했다.</li>
+      </ol>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">용어 해설</p>
+      <dl class="glossary">
+        <dt>재귀적 오류 루프</dt>
+        <dd>에이전트가 오류를 처리하다가 같은 실수를 스스로 계속 반복하며 멈추지 못하는 상태로, 개입이 없으면 비용·자원이 급격히 늘어난다.</dd>
+        <dt>실행 중 관찰</dt>
+        <dd>결과가 나온 뒤 로그를 뒤늦게 보는 일반적인 방식과 달리, 작업이 진행되는 동안 실시간으로 지켜보다 이상 징후에 즉시 멈추게 하는 감시 장치다.</dd>
+      </dl>
+    </div>
+  </article>
+
+  <section class="radar">
+    <p class="section-label">레이더</p>
+    <p class="radar-note">학습 대상이 아니라 <b>인지 대상</b>입니다. 훑고 지나가세요 — 나중에 필요한 순간에 &ldquo;그거 있었지&rdquo;가 나오게 하는 것이 목적입니다.</p>
+
+    <div class="radar-group">
+      <h3>주변 생태계</h3>
+      <ul class="radar-list">
+        <li>LiteLLM 공급망 공격 — 여러 AI 프레임워크가 공용으로 쓰는 LLM 라우팅 라이브러리 LiteLLM이 2026년 3월 침해당해 악성 코드가 심긴 버전이 배포된 사건. 자율 AI 봇("hackerbot-claw")이 GitHub Actions 설정 오류를 스스로 찾아 침투 경로를 만든 것으로 뒤늦게 알려짐 — AI 에이전트가 실제 공급망 공격을 수행한 초기 사례로 재조명됨.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer class="status">
+    <span>오늘 조사 후 2건 전달 · 레이더 1건 · 나머지는 이미 다룬 사건이거나 반복 재보도로 폐기</span>
+    <span>Knowledge Agent v0.1</span>
+  </footer>
+
+</div>
