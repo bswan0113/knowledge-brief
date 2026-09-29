@@ -1,0 +1,513 @@
+<title>Knowledge Brief 2026-09-30</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📡</text></svg>">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,500;1,6..72,600&family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  :root {
+    --paper: #eef0f4;
+    --surface: #ffffff;
+    --ink: #131722;
+    --ink-soft: #5b6472;
+    --signal: #c97a1a;
+    --signal-deep: #8a5313;
+    --signal-soft: #f3e3cc;
+    --line: rgba(19, 23, 34, 0.12);
+    --line-strong: rgba(19, 23, 34, 0.22);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #0e1116;
+      --surface: #171b22;
+      --ink: #e7e9ee;
+      --ink-soft: #9aa3b2;
+      --signal: #f0b15c;
+      --signal-deep: #f5c685;
+      --signal-soft: rgba(240, 177, 92, 0.14);
+      --line: rgba(231, 233, 238, 0.14);
+      --line-strong: rgba(231, 233, 238, 0.24);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --paper: #0e1116;
+    --surface: #171b22;
+    --ink: #e7e9ee;
+    --ink-soft: #9aa3b2;
+    --signal: #f0b15c;
+    --signal-deep: #f5c685;
+    --signal-soft: rgba(240, 177, 92, 0.14);
+    --line: rgba(231, 233, 238, 0.14);
+    --line-strong: rgba(231, 233, 238, 0.24);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans KR', 'IBM Plex Sans', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 56px 24px 96px;
+  }
+
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--signal-deep);
+  }
+
+  header.masthead {
+    border-bottom: 1px solid var(--line-strong);
+    padding-bottom: 28px;
+    margin-bottom: 40px;
+  }
+
+  header.masthead .eyebrow {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  h1.headline {
+    font-family: 'Newsreader', Georgia, serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(32px, 6vw, 44px);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin: 14px 0 10px;
+    text-wrap: balance;
+  }
+
+  .masthead .subhead {
+    color: var(--ink-soft);
+    font-size: 15px;
+    max-width: 56ch;
+  }
+
+  .masthead .subhead b {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  article.item {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 32px 32px 28px;
+    margin-bottom: 32px;
+  }
+
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  .tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+    border: 1px solid var(--line-strong);
+    color: var(--ink-soft);
+  }
+
+  .tag.priority {
+    border-color: var(--signal);
+    color: var(--signal-deep);
+    background: var(--signal-soft);
+  }
+
+  h2.item-title {
+    font-family: 'Newsreader', Georgia, serif;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 1.3;
+    margin: 0 0 18px;
+    text-wrap: balance;
+  }
+
+  .section-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin: 22px 0 8px;
+  }
+
+  .section-label:first-of-type { margin-top: 0; }
+
+  article.item p {
+    margin: 0 0 4px;
+    max-width: 62ch;
+  }
+
+  article.item .for-you {
+    padding: 14px 16px;
+    background: var(--signal-soft);
+    border-left: 2px solid var(--signal);
+    border-radius: 0 3px 3px 0;
+  }
+
+  figure.diagram {
+    margin: 26px 0 6px;
+    padding: 18px 6px 8px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  figure.diagram svg { width: 100%; height: auto; display: block; color: var(--ink-soft); }
+  figure.diagram .accent { color: var(--signal); }
+  figure.diagram text { font-family: 'IBM Plex Mono', monospace; fill: currentColor; }
+
+  figcaption {
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-top: 10px;
+  }
+
+  .source-row {
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .source-row a {
+    color: var(--ink);
+    text-decoration-color: var(--signal);
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 3px;
+  }
+
+  .source-row .domain {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+
+  .addendum {
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+  }
+
+  ol.tri-summary {
+    margin: 0;
+    padding-left: 1.3em;
+  }
+
+  ol.tri-summary li {
+    margin-bottom: 6px;
+    max-width: 62ch;
+  }
+
+  dl.glossary {
+    margin: 0;
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    column-gap: 14px;
+    row-gap: 10px;
+  }
+
+  dl.glossary dt {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--signal-deep);
+    white-space: nowrap;
+  }
+
+  dl.glossary dd {
+    margin: 0;
+    max-width: 56ch;
+    color: var(--ink-soft);
+  }
+
+  section.radar {
+    margin-top: 40px;
+    padding-top: 26px;
+    border-top: 1px solid var(--line-strong);
+  }
+
+  section.radar > p.radar-note {
+    margin: 0 0 18px;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    max-width: 62ch;
+  }
+
+  .radar-group {
+    margin-bottom: 20px;
+  }
+
+  .radar-group h3 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 500;
+    margin: 0 0 8px;
+  }
+
+  ul.radar-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  ul.radar-list li {
+    position: relative;
+    padding-left: 16px;
+    margin-bottom: 7px;
+    font-size: 14.5px;
+    line-height: 1.6;
+    max-width: 66ch;
+    color: var(--ink);
+  }
+
+  ul.radar-list li::before {
+    content: "·";
+    position: absolute;
+    left: 3px;
+    color: var(--ink-soft);
+  }
+
+  ul.radar-list li a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid var(--line-strong);
+  }
+
+  ul.radar-list li a:hover { border-bottom-color: var(--signal); }
+
+  footer.status {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    border-top: 1px solid var(--line-strong);
+    padding-top: 18px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  @media (max-width: 480px) {
+    article.item { padding: 24px 20px; }
+    h1.headline { font-size: 30px; }
+  }
+</style>
+
+<div class="page">
+
+  <header class="masthead">
+    <div class="eyebrow">
+      <span>KNOWLEDGE BRIEF</span>
+      <span>2026-09-30 · 22:00</span>
+    </div>
+    <h1 class="headline">형식 검증 하나가 빠지자 실행까지 뚫렸다 — TLS는 어디에 서 있는가</h1>
+    <p class="subhead">오늘 조사한 것 중 <b>지금 당신에게 학습 가치가 있다고 판단한 것</b>만 남겼습니다. 나머지는 이미 아는 내용이거나 가치가 낮아 걸러냈습니다.</p>
+  </header>
+
+  <article class="item">
+    <div class="tag-row">
+      <span class="tag priority">보안 · 강의에 바로 쓸 것</span>
+      <span class="tag">기술매체 보도</span>
+      <span class="tag">오래 가는 기초</span>
+    </div>
+
+    <h2 class="item-title">AI 코딩 에이전트 OpenCode, 웹페이지만 열어도 코드가 실행되는 취약점</h2>
+
+    <p class="section-label">WHAT</p>
+    <p>OpenCode는 AI 코딩 에이전트다. 이 도구의 자동 업그레이드 API가 요청의 형식(Content-Type)을 확인하지 않고 본문을 그대로 JSON으로 해석했다.</p>
+    <p>공격자는 이 틈을 이용해 브라우저의 요청 차단 규칙(CORS)을 우회하면서도 유효한 JSON 요청을 만들어 보냈다. 그 요청에는 공격자가 지정한 원격 패키지 주소가 업그레이드 대상으로 들어 있었다.</p>
+    <p>사용자가 악성 웹페이지를 열기만 해도 이 요청이 전송되고, 그 패키지가 설치되는 과정에서 자동 실행 스크립트(preinstall)를 통해 공격자의 코드가 그대로 실행됐다. 클릭도, 승인도 필요 없었다.</p>
+
+    <p class="section-label">WHY</p>
+    <p>이 취약점은 사용자가 뭔가를 잘못 눌러서 생긴 사고가 아니다. 로컬에서 OpenCode가 돌고 있는 상태로 웹페이지를 열기만 하면 성립한다.</p>
+    <p>취약했던 82개 릴리스가 조사 기간(2026년 9월 17~23일) 다운로드의 38.9%(64만7천회 이상)를 차지했다. 이건 극소수의 예외적 설정이 아니라, 실제로 널리 깔려 있던 기본 상태였다는 뜻이다.</p>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 640 200" role="img" aria-label="형식 확인이 빠진 자리를 공격자가 그대로 통과한 경로">
+        <rect x="10" y="20" width="620" height="42" fill="none" stroke="currentColor" stroke-width="1.2" rx="3"/>
+        <text x="26" y="46" font-size="14">① 악성 웹페이지 — form을 text/plain으로 제출 (CORS 우회)</text>
+
+        <rect x="10" y="80" width="620" height="42" fill="none" stroke="#c97a1a" stroke-width="1.6" rx="3"/>
+        <text x="26" y="106" font-size="14" fill="#8a5313">② /global/upgrade API — Content-Type 확인 없음 (뚫린 자리)</text>
+
+        <rect x="10" y="140" width="620" height="42" fill="none" stroke="currentColor" stroke-width="1.2" rx="3"/>
+        <text x="26" y="166" font-size="14">③ preinstall 스크립트 자동 실행 — 공격자 코드 실행</text>
+
+        <line x1="320" y1="62" x2="320" y2="80" stroke="currentColor" stroke-width="1.2" marker-end="url(#arrow)"/>
+        <line x1="320" y1="122" x2="320" y2="140" stroke="currentColor" stroke-width="1.2" marker-end="url(#arrow)"/>
+        <defs>
+          <marker id="arrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+            <path d="M0,0 L8,4 L0,8 Z" fill="currentColor"/>
+          </marker>
+        </defs>
+      </svg>
+      <figcaption>형식 확인이 있어야 할 자리(②)가 비어 있어, ①의 위장이 그대로 ③의 실행으로 이어졌다.</figcaption>
+    </figure>
+
+    <p class="section-label">FOR YOU</p>
+    <div class="for-you">
+      <p>당신은 이미 SQL Injection을 볼 때 "위험 문자열을 걸러내는 것"보다 "입력이 쿼리의 구조 자체를 바꿀 수 있는가"를 판단 축으로 쓴다. 이번 사고는 정확히 같은 구조다.</p>
+      <p>여기서 구조를 바꾼 대상은 SQL문이 아니라 "이 요청을 진짜 JSON으로 처리해도 되는가"라는 판단이었다. Content-Type 확인이 그 판단을 맡는 자리였는데, 그 자리가 비어 있었다.</p>
+      <p>당신이 도구 실행 경계에서 이미 확인한 "통제 지점은 실제 실행 경로 위에 있어야 한다"는 원칙도 그대로 적용된다. 이번엔 실행 경로 위에 있어야 했던 확인이 "이 본문이 정말 JSON인가"였을 뿐이다.</p>
+    </div>
+
+    <p class="section-label">LEARN</p>
+    <p>이 CVE 자체를 외울 필요는 없다. 다만 "형식을 검증하지 않으면 그 형식에 실린 것이 곧바로 다음 단계의 신뢰를 넘겨받는다"는 패턴은 API를 설계하거나 검토할 때마다 계속 마주칠 것이다.</p>
+
+    <div class="source-row">
+      <a href="https://cybersecuritynews.com/opencode-ai-coding-agent-flaw/" target="_blank" rel="noopener">Cyber Security News 원문 보기 →</a>
+      <span class="domain">cybersecuritynews.com</span>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">3줄 요약</p>
+      <ol class="tri-summary">
+        <li>콘텐츠 타입 검증 누락과 원격 tarball 패키지 허용이 결합해, 방문만으로 실행되는 제로클릭 RCE 취약점이 발생했다.</li>
+        <li>영향은 OpenCode 1.14.30~1.18.21이며, 9월 17~23일 다운로드의 38.9%(64만7천회 이상)가 취약 버전이었다.</li>
+        <li>2026년 8월 24일 배포된 1.18.22는 업그레이드 패키지를 시맨틱 버전만 허용하고 text/plain 요청에 415를 반환하도록 수정했다.</li>
+      </ol>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">용어 해설</p>
+      <dl class="glossary">
+        <dt>CORS</dt>
+        <dd>웹사이트가 다른 도메인의 서버에 요청을 보낼 때, 브라우저가 "이 요청을 보내도 되는지" 확인하는 보안 규칙이다. 보통은 이 규칙 때문에 악성 페이지가 다른 사이트 서버에 함부로 요청을 못 보낸다.</dd>
+        <dt>enctype="text/plain" 제출</dt>
+        <dd>웹페이지 입력 양식을 "일반 텍스트로 보낸다"는 설정으로 제출하는 방식이다. CORS 검사를 덜 엄격하게 받기 때문에, 검사를 피해가면서도 서버가 JSON처럼 해석하게 만드는 요청을 몰래 보낼 수 있다.</dd>
+        <dt>tarball</dt>
+        <dd>여러 파일을 하나로 압축·묶은 배포용 파일이다. 여기서는 공격자가 "이 주소에 있는 파일을 설치 대상으로 써라"라고 지정한 것이다.</dd>
+        <dt>preinstall 스크립트</dt>
+        <dd>패키지를 설치하는 과정 중 "설치 전"에 자동으로 실행되도록 미리 정해둔 코드다. 사용자가 따로 실행하지 않아도 설치만 되면 자동으로 돌아간다.</dd>
+        <dt>zero-click</dt>
+        <dd>사용자가 링크를 클릭하거나 뭔가를 입력하는 등 별도 행동을 하지 않아도, 페이지를 열기만 해도 공격이 성립한다는 뜻이다.</dd>
+        <dt>시맨틱 버전</dt>
+        <dd>"1.18.22"처럼 숫자를 점으로 구분해 표기하는 버전 표기 규칙이다. 패치에서는 업그레이드 대상이 이 정해진 숫자 형식에 맞는지만 확인하도록 검증을 강화했다.</dd>
+      </dl>
+    </div>
+  </article>
+
+  <article class="item">
+    <div class="tag-row">
+      <span class="tag priority">TLS · 오늘의 보완 학습</span>
+      <span class="tag">직접 학습 (지식 공백 보완)</span>
+      <span class="tag">오래 가는 기초</span>
+    </div>
+
+    <h2 class="item-title">인증서 유무가 아니라, TLS가 어디에 서 있는지</h2>
+
+    <p class="section-label">왜 지금 이걸 다루는지</p>
+    <p>이 주제를 세 번째로 다시 꺼낸다. 8월 27일, 9월 11일, 9월 21일 모두 같은 자리에서 멈췄다 — "TLS는 인증서가 있다 없다는 것"이라는 설명 이상으로 나가지 못했다.</p>
+    <p>추상적인 계층 설명(아래에서 위로 쌓아 올리는 방식)을 세 번 시도했으니 이번엔 방향을 뒤집는다. 당신이 실제로 겪은 사건에서 거꾸로 올라간다.</p>
+    <p>당신은 예전에 HTTP/2로 알림을 보내다가, 하드웨어에 저장된 인증서 협상 단계에서 연결이 그대로 멈춘 사건을 겪었다. 연결도 안 되고 에러도 안 뜨는, 이상한 정지 상태였다. 그 멈춘 자리가 바로 TLS다.</p>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 640 190" role="img" aria-label="TCP와 HTTP 사이, TLS 핸드셰이크가 서 있는 자리">
+        <rect x="10" y="15" width="620" height="42" fill="none" stroke="currentColor" stroke-width="1.2" rx="3"/>
+        <text x="26" y="41" font-size="14">HTTP — 실제 요청/응답이 오가는 자리</text>
+
+        <rect x="10" y="72" width="620" height="52" fill="none" stroke="#c97a1a" stroke-width="1.6" rx="3"/>
+        <text x="26" y="94" font-size="14" fill="#8a5313">TLS 핸드셰이크 — 서버 인증 · 암호화 방식 합의 · 키 교환</text>
+        <text x="26" y="114" font-size="12.5" fill="#8a5313">(APNs 사건: 여기서 클라이언트 인증서·ALPN 합의가 얽혀 정지)</text>
+
+        <rect x="10" y="139" width="620" height="42" fill="none" stroke="currentColor" stroke-width="1.2" rx="3"/>
+        <text x="26" y="165" font-size="14">TCP — 연결 자체가 맺어지는 자리</text>
+
+        <line x1="320" y1="139" x2="320" y2="124" stroke="currentColor" stroke-width="1.2" marker-end="url(#arrow2)"/>
+        <line x1="320" y1="72" x2="320" y2="57" stroke="currentColor" stroke-width="1.2" marker-end="url(#arrow2)"/>
+        <defs>
+          <marker id="arrow2" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+            <path d="M0,0 L8,4 L0,8 Z" fill="currentColor"/>
+          </marker>
+        </defs>
+      </svg>
+      <figcaption>TCP로 연결이 맺어진 다음, HTTP가 오가기 전에 TLS 핸드셰이크가 먼저 끝나야 한다.</figcaption>
+    </figure>
+
+    <p class="section-label">무엇을 보장하는가</p>
+    <p>TLS가 실제로 보장하는 것은 세 가지다. 서버가 진짜 그 서버인지 확인하는 것, 통신 내용을 암호화하는 것, 전송 중 내용이 바뀌면 감지하는 것이다.</p>
+    <p>"인증서 유무"는 이 중 첫 번째의 일부일 뿐이다. 암호화와 무결성 보호는 인증서와 별개의 축이며, 인증서가 있다고 해서 자동으로 따라오는 것이 아니다.</p>
+
+    <p class="section-label">FOR YOU</p>
+    <div class="for-you">
+      <p>당신은 이미 SQL Injection에서 "입력이 구조 자체에 개입할 수 있는가"로 안전/불안전을 가르는 판단 축을 갖고 있다.</p>
+      <p>TLS도 같은 방식으로 보면 된다. 그 계층에서 정확히 무엇이 검증되고 무엇이 암호화되는지를 나누면, "인증서 유무"라는 하나의 축으로 뭉쳐 있던 것이 서버 인증·암호화·무결성이라는 세 개의 별도 질문으로 풀린다.</p>
+    </div>
+
+    <p class="section-label">LEARN</p>
+    <p>다음에 이 자리로 돌아올 좋은 기회는, 실제로 당신 시스템이 만드는 HTTPS 연결(카카오 API 호출, GitHub Pages push)의 handshake 로그를 한 번 직접 들여다보는 것이다. 설명으로는 세 번 막혔으니, 다음은 직접 확인이 나을 것이다.</p>
+
+    <div class="addendum">
+      <p class="section-label">3줄 요약</p>
+      <ol class="tri-summary">
+        <li>TLS는 TCP 연결 이후 HTTP 통신 전에 핸드셰이크를 거쳐 암호화 방식 합의, 서버 인증, 키 교환을 수행한다.</li>
+        <li>TLS가 보장하는 것은 서버 인증, 전송 내용 암호화, 무결성 보호 세 가지이며 인증서 유무는 그중 서버 인증의 일부일 뿐이다.</li>
+        <li>핸드셰이크의 클라이언트 인증서 협상 단계에서 하드웨어 보안 모듈 접근과 ALPN 버전 합의가 얽혀 연결이 멈추는 사고가 발생할 수 있다.</li>
+      </ol>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">용어 해설</p>
+      <dl class="glossary">
+        <dt>PKCS#11</dt>
+        <dd>스마트카드나 USB 보안키 같은 하드웨어 장치에 저장된 인증서·키를 프로그램이 표준화된 방식으로 쓸 수 있게 해주는 인터페이스 규격이다.</dd>
+        <dt>ALPN</dt>
+        <dd>TLS 핸드셰이크 도중 클라이언트와 서버가 이후 HTTP/1.1을 쓸지 HTTP/2를 쓸지 미리 합의하는 확장 기능이다.</dd>
+      </dl>
+    </div>
+  </article>
+
+  <section class="radar">
+    <p class="section-label">레이더</p>
+    <p class="radar-note">학습 대상이 아니라 <b>인지 대상</b>입니다. 훑고 지나가세요 — 나중에 필요한 순간에 &ldquo;그거 있었지&rdquo;가 나오게 하는 것이 목적입니다.</p>
+
+    <div class="radar-group">
+      <h3>내가 쓰는 도구</h3>
+      <ul class="radar-list">
+        <li><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code</a> — 9월 28일부터 Sonnet 5.5가 기본 모델이 되며 컨텍스트 창이 100만 토큰으로 늘었다. auto 모드에서 작업 폴더 밖 파일을 읽을 때 "이번만 허용"을 고를 수 있게 됐고, 관리자가 특정 모델 버전만 쓰게 강제하거나 특정 모델을 차단하는 설정도 추가됐다.</li>
+        <li>Codex — GPT-6 Sol/Luna가 아마존 베드록에서도 쓸 수 있게 됐고, 시각 인식 품질을 떨어뜨리던 이미지 인코딩 버그가 고쳐졌다(컴퓨터 사용 작업 포함). macOS 보안 취약점(CVE-2026-100754)도 패치됐다.</li>
+      </ul>
+    </div>
+
+    <div class="radar-group">
+      <h3>주변 생태계</h3>
+      <ul class="radar-list">
+        <li><a href="https://www.hpcwire.com/aiwire/2026/09/28/ninjatech-ai-launches-enterprise-ai-workforce-platform-using-open-weight-models/" target="_blank" rel="noopener">NinjaTech AI SuperNinja Enterprise</a> — 고객사 클라우드 안에서 24시간 돌아가는 "AI 직원" 플랫폼. 모델·서빙 인프라·GPU 컴퓨팅까지 통째로 묶어 고정 연간 요금으로 제공하는 게 특징.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer class="status">
+    <span>오늘 조사 후 신호 2건(뉴스 1 + 보완 1) · 레이더 3건 · 나머지는 이미 다룬 사건의 재확인이거나 학습 가치보다 인지 가치가 커 레이더로 돌림</span>
+    <span>Knowledge Agent v0.1</span>
+  </footer>
+
+</div>
