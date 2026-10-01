@@ -1,0 +1,531 @@
+<title>과 favicon(📡)은 매일 동일한 형식 유지: "Knowledge Brief 2026-10-02"
+  - 톤/구조/CSS 토큰은 그대로 유지한다. 색상·폰트를 매일 새로 고르지 않는다 — 이게 이 브리프의 고정 비주얼 아이덴티티다.
+  - 이 페이지에 들어가는 **모든 텍스트**(태그·제목·WHAT/WHY/FOR YOU/LEARN·3줄 요약·용어 해설·레이더·푸터)는
+    GUIDE.md § Output Policy의 어휘·문장 규칙을 따른다 — knowledge_profile.md/knowledge_log.md의 내부 키
+    (dotted path, confirmed_known 같은 state label, P0/P1, fast_moving 등)를 사용자에게 그대로 노출하지 않는다.
+    한 문장 60자 안팎·120자 상한, 한 문단 3~4문장. 구조가 있으면 <ul>로 뽑는다.
+  - "3줄 요약"(<div class="addendum"><ol class="tri-summary">)은 뉴스 항목마다 항상 포함(GUIDE.md 모드 A 6.5 — 전용 서브에이전트 결과, 개인화하지 않은 중립 요약 3줄).
+  - "용어 해설"(<dl class="glossary">)은 그 항목에 실제로 생소할 만한 용어가 있을 때만 포함 — 없으면 그 <div class="addendum"> 전체를 생략한다. 이미 사용자가 아는 용어는 넣지 않는다.
+  - "레이더"(<section class="radar">)는 본 브리프를 통과하지 못한 항목 중 "실재하는 변화"를 한 줄씩 싣는 별도 인지 채널이다(GUIDE.md 모드 A 6.7). 분량 상한 없음. 실을 게 없으면 섹션 전체를 생략한다. 본 브리프 항목과 절대 섞지 않는다.
+-->
+<title>Knowledge Brief 2026-10-02</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,500;1,6..72,600&family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  :root {
+    --paper: #eef0f4;
+    --surface: #ffffff;
+    --ink: #131722;
+    --ink-soft: #5b6472;
+    --signal: #c97a1a;
+    --signal-deep: #8a5313;
+    --signal-soft: #f3e3cc;
+    --line: rgba(19, 23, 34, 0.12);
+    --line-strong: rgba(19, 23, 34, 0.22);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #0e1116;
+      --surface: #171b22;
+      --ink: #e7e9ee;
+      --ink-soft: #9aa3b2;
+      --signal: #f0b15c;
+      --signal-deep: #f5c685;
+      --signal-soft: rgba(240, 177, 92, 0.14);
+      --line: rgba(231, 233, 238, 0.14);
+      --line-strong: rgba(231, 233, 238, 0.24);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --paper: #0e1116;
+    --surface: #171b22;
+    --ink: #e7e9ee;
+    --ink-soft: #9aa3b2;
+    --signal: #f0b15c;
+    --signal-deep: #f5c685;
+    --signal-soft: rgba(240, 177, 92, 0.14);
+    --line: rgba(231, 233, 238, 0.14);
+    --line-strong: rgba(231, 233, 238, 0.24);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans KR', 'IBM Plex Sans', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 56px 24px 96px;
+  }
+
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--signal-deep);
+  }
+
+  header.masthead {
+    border-bottom: 1px solid var(--line-strong);
+    padding-bottom: 28px;
+    margin-bottom: 40px;
+  }
+
+  header.masthead .eyebrow {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  h1.headline {
+    font-family: 'Newsreader', Georgia, serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(32px, 6vw, 44px);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin: 14px 0 10px;
+    text-wrap: balance;
+  }
+
+  .masthead .subhead {
+    color: var(--ink-soft);
+    font-size: 15px;
+    max-width: 56ch;
+  }
+
+  .masthead .subhead b {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  article.item {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 32px 32px 28px;
+    margin-bottom: 32px;
+  }
+
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  .tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+    border: 1px solid var(--line-strong);
+    color: var(--ink-soft);
+  }
+
+  .tag.priority {
+    border-color: var(--signal);
+    color: var(--signal-deep);
+    background: var(--signal-soft);
+  }
+
+  h2.item-title {
+    font-family: 'Newsreader', Georgia, serif;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 1.3;
+    margin: 0 0 18px;
+    text-wrap: balance;
+  }
+
+  .section-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin: 22px 0 8px;
+  }
+
+  .section-label:first-of-type { margin-top: 0; }
+
+  article.item p {
+    margin: 0 0 4px;
+    max-width: 62ch;
+  }
+
+  article.item .for-you {
+    padding: 14px 16px;
+    background: var(--signal-soft);
+    border-left: 2px solid var(--signal);
+    border-radius: 0 3px 3px 0;
+  }
+
+  figure.diagram {
+    margin: 26px 0 6px;
+    padding: 18px 6px 8px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  figure.diagram svg { width: 100%; height: auto; display: block; color: var(--ink-soft); }
+  figure.diagram .accent { color: var(--signal); }
+  figure.diagram text { font-family: 'IBM Plex Mono', monospace; fill: currentColor; }
+
+  figcaption {
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-top: 10px;
+  }
+
+  .source-row {
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .source-row a {
+    color: var(--ink);
+    text-decoration-color: var(--signal);
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 3px;
+  }
+
+  .source-row .domain {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+
+  .addendum {
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+  }
+
+  ol.tri-summary {
+    margin: 0;
+    padding-left: 1.3em;
+  }
+
+  ol.tri-summary li {
+    margin-bottom: 6px;
+    max-width: 62ch;
+  }
+
+  dl.glossary {
+    margin: 0;
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    column-gap: 14px;
+    row-gap: 10px;
+  }
+
+  dl.glossary dt {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--signal-deep);
+    white-space: nowrap;
+  }
+
+  dl.glossary dd {
+    margin: 0;
+    max-width: 56ch;
+    color: var(--ink-soft);
+  }
+
+  /* 레이더 — 인지 채널. 본 브리프(학습 채널)와 시각적으로 명확히 구분되어야 한다:
+     카드가 아니라 목록, 강조색 없음, 본문보다 작은 글씨. 훑고 지나가는 영역이다. */
+  section.radar {
+    margin-top: 40px;
+    padding-top: 26px;
+    border-top: 1px solid var(--line-strong);
+  }
+
+  section.radar > p.radar-note {
+    margin: 0 0 18px;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    max-width: 62ch;
+  }
+
+  .radar-group {
+    margin-bottom: 20px;
+  }
+
+  .radar-group h3 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 500;
+    margin: 0 0 8px;
+  }
+
+  ul.radar-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  ul.radar-list li {
+    position: relative;
+    padding-left: 16px;
+    margin-bottom: 7px;
+    font-size: 14.5px;
+    line-height: 1.6;
+    max-width: 66ch;
+    color: var(--ink);
+  }
+
+  ul.radar-list li::before {
+    content: "·";
+    position: absolute;
+    left: 3px;
+    color: var(--ink-soft);
+  }
+
+  ul.radar-list li a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid var(--line-strong);
+  }
+
+  ul.radar-list li a:hover { border-bottom-color: var(--signal); }
+
+  footer.status {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    border-top: 1px solid var(--line-strong);
+    padding-top: 18px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  @media (max-width: 480px) {
+    article.item { padding: 24px 20px; }
+    h1.headline { font-size: 30px; }
+  }
+</style>
+
+<div class="page">
+
+  <header class="masthead">
+    <div class="eyebrow">
+      <span>KNOWLEDGE BRIEF</span>
+      <span>2026-10-02 · 08:41</span>
+    </div>
+    <h1 class="headline">24시간 일하는 에이전트와, 검색의 기초가 되는 임베딩</h1>
+    <p class="subhead">오늘 조사한 것 중 <b>지금 당신에게 학습 가치가 있다고 판단한 것</b>만 남겼습니다. 나머지는 이미 아는 내용이거나 가치가 낮아 걸러냈습니다.</p>
+  </header>
+
+  <article class="item">
+    <div class="tag-row">
+      <span class="tag priority">하네스 설계 · 오늘의 핵심</span>
+      <span class="tag">기술매체</span>
+      <span class="tag">빨리 바뀜</span>
+    </div>
+
+    <h2 class="item-title">OpenAI의 상시형 에이전트 dots, 안전장치를 어디에 두었나</h2>
+
+    <p class="section-label">WHAT</p>
+    <p>OpenAI가 9월 29일 DevDay에서 dots를 공개했다. 사용자가 없는 동안에도 계속 일하는 에이전트다.</p>
+    <p>dots는 각자 전용 클라우드 컴퓨터와 브라우저를 가진다. 4,000개 이상의 앱에 플러그인으로 연결된다. ChatGPT와 Slack, Teams에서 말을 걸 수 있다.</p>
+    <p>사용자가 자리에 없을 때 하는 일은 &ldquo;선제 조사&rdquo;다. 이때는 연결된 앱에 읽기 전용으로만 접근한다. 메시지를 보내거나 내용을 고칠 수 없다.</p>
+    <p>통제 장치는 네 가지가 보도됐다.</p>
+    <ul>
+      <li>허용·차단·승인 요구를 정하는 사용자 규칙(Custom Rules)</li>
+      <li>중요한 행동을 점검하는 자동 검토(auto-review)</li>
+      <li>위험이 보이면 dot을 멈추는 모니터링</li>
+      <li>비밀번호 변경 같은 일은 항상 사람이 직접 수행</li>
+    </ul>
+    <p>저장된 비밀번호로 로그인은 하지만 그 값이 모델에는 보이지 않는다고 한다. ChatGPT Pro와 Business Premium부터 순차 제공된다. Enterprise는 관리자가 켜야 베타로 쓴다.</p>
+
+    <p class="section-label">WHY</p>
+    <p>에이전트가 &ldquo;요청하면 일하는 도구&rdquo;에서 &ldquo;알아서 계속 일하는 동료&rdquo;로 바뀌고 있다. 사람이 매번 지켜보지 않으니 안전장치가 사람의 눈을 대신해야 한다.</p>
+    <p>그래서 이 제품의 핵심은 기능 목록이 아니라 통제 설계다. 어떤 행동이 읽기이고 어떤 행동이 쓰기인지 먼저 갈랐다. 쓰기는 승인 뒤에 두었다.</p>
+    <p>OpenAI도 &ldquo;dots는 실수할 수 있으니 중요한 결과는 검토하라&rdquo;고 밝혔다. 사고 가능성을 전제로 한 설계라는 뜻이다.</p>
+
+    <p class="section-label">FOR YOU</p>
+    <div class="for-you">
+      <p>당신은 통제가 통제 대상의 수정 권한 밖에 있고, 실제 실행 경로 위에 있어야 한다는 기준을 이미 갖고 있다. 이 기준으로 dots의 네 장치를 그대로 재볼 수 있다.</p>
+      <p>비밀번호가 모델에 보이지 않는 구조는 기준에 맞는 쪽이다. 모델이 고칠 수 없는 자리에 비밀을 두기 때문이다.</p>
+      <p>반대로 확인이 필요한 질문이 둘 있다.</p>
+      <ul>
+        <li>사용자 규칙이 모델 바깥에서 강제되는가, 아니면 모델이 읽고 지키는 지시문인가?</li>
+        <li>자동 검토는 모델과 다른 층에 있는가, 같은 모델 계열이 스스로를 검토하는가?</li>
+      </ul>
+      <p>이 두 답에 따라 같은 &ldquo;승인 규칙&rdquo;이 진짜 통제가 되기도 하고 권고에 그치기도 한다. 지난 9월 AI 코딩 도구의 자동 승인 모드가 인젝션에 뚫린 사례와 같은 질문이다.</p>
+      <p>또 하나는 당신이 현장 경험으로 지적했던 승인 문제다. 승인자가 내용을 평가할 수 없으면 승인은 책임만 옮긴다. 기업이 dots에 &ldquo;승인 요구&rdquo; 규칙을 걸 때 그 승인자가 누구인지가 같은 함정이다. 강의에서 이 질문을 수강생에게 던질 수 있다.</p>
+    </div>
+
+    <p class="section-label">LEARN</p>
+    <p>새 개념을 배울 일은 아니다. 이미 가진 판별 기준을 새 제품에 적용해 보는 연습이면 충분하다. 공식 문서가 풀리면 위 두 질문의 답이 어디 적혀 있는지만 확인하면 된다.</p>
+
+    <div class="source-row">
+      <a href="https://thenextweb.com/news/openai-dots-always-on-ai-agents-cloud-computers-devday" target="_blank" rel="noopener">The Next Web 원문 보기 →</a>
+      <span class="domain">thenextweb.com</span>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">3줄 요약</p>
+      <ol class="tri-summary">
+        <li>OpenAI가 DevDay에서 공개한 dots는 전용 클라우드 컴퓨터와 브라우저로 4,000여 개 앱을 연결해 24시간 작업하는 에이전트다.</li>
+        <li>ChatGPT와 Slack·Teams에서 쓰며 피드백으로 선호를 학습하고, 사용자가 없을 때도 읽기 전용으로 백그라운드 조사를 한다.</li>
+        <li>Custom Rules, auto-review, 모니터링 중단으로 통제하고 민감 작업은 직접 해야 하며, Pro·Business Premium에 순차 제공된다.</li>
+      </ol>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">용어 해설</p>
+      <dl class="glossary">
+        <dt>auto-review</dt>
+        <dd>중요한 행동을 실행하기 전후에 별도 장치가 자동으로 점검하는 기능이다. 사람 승인 없이도 위험한 동작을 한 번 더 걸러낸다.</dd>
+      </dl>
+    </div>
+  </article>
+
+  <article class="item">
+    <div class="tag-row">
+      <span class="tag priority">검색 증강(RAG) · 오늘의 보충</span>
+      <span class="tag">직접 정리한 설명</span>
+      <span class="tag">오래 가는 기초</span>
+    </div>
+
+    <h2 class="item-title">임베딩: 글이 숫자 목록이 되어 &ldquo;가까운 글&rdquo;을 찾는 과정</h2>
+
+    <p class="section-label">왜 지금 다루나</p>
+    <p>어제 다룬 토큰의 바로 다음 단계가 임베딩이다. 토큰은 글을 정수 번호로 쪼갠 것이었다. 임베딩은 그 글 전체를 의미가 담긴 숫자 목록으로 바꾼 것이다.</p>
+    <p>당신은 최근 임베딩·벡터는 모델 쪽 원리이고 청킹·검색은 파이프라인 쪽이라고 스스로 구분했다. 그 구분은 맞는 방향이다. 이제 빈 곳은 &ldquo;그 숫자 목록으로 어떻게 찾는가&rdquo;다.</p>
+
+    <p class="section-label">WHAT</p>
+    <p>임베딩 모델은 글을 받아 수백~수천 개의 숫자를 내놓는다. 이 숫자 목록이 벡터다. 뜻이 비슷한 글은 비슷한 숫자 패턴을 갖는다.</p>
+    <p>RAG 안에서는 이렇게 쓰인다.</p>
+    <ul>
+      <li>문서를 청크로 자르고, 각 청크를 임베딩 모델에 통과시켜 벡터로 저장한다.</li>
+      <li>질문이 들어오면 같은 모델로 질문도 벡터로 만든다.</li>
+      <li>질문 벡터와 가장 가까운 청크 벡터 몇 개를 고른다.</li>
+      <li>고른 청크를 답을 쓰는 LLM의 입력에 붙인다.</li>
+    </ul>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 640 200" role="img" aria-label="질문과 문서 청크가 같은 임베딩 모델을 거쳐 벡터가 되고, 가까운 청크가 생성 모델 입력으로 가는 흐름">
+        <rect x="10" y="20" width="120" height="40" rx="3" fill="none" stroke="currentColor"/>
+        <text x="70" y="45" font-size="12" text-anchor="middle">문서 청크</text>
+        <rect x="10" y="130" width="120" height="40" rx="3" fill="none" stroke="currentColor"/>
+        <text x="70" y="155" font-size="12" text-anchor="middle">사용자 질문</text>
+        <g class="accent">
+          <rect x="200" y="75" width="130" height="50" rx="3" fill="none" stroke="currentColor" stroke-width="2"/>
+          <text x="265" y="97" font-size="12" text-anchor="middle">임베딩 모델</text>
+          <text x="265" y="114" font-size="11" text-anchor="middle">(같은 모델)</text>
+        </g>
+        <line x1="130" y1="40" x2="200" y2="90" stroke="currentColor"/>
+        <line x1="130" y1="150" x2="200" y2="110" stroke="currentColor"/>
+        <rect x="400" y="75" width="110" height="50" rx="3" fill="none" stroke="currentColor"/>
+        <text x="455" y="97" font-size="12" text-anchor="middle">벡터 공간</text>
+        <text x="455" y="114" font-size="11" text-anchor="middle">가까운 것 찾기</text>
+        <line x1="330" y1="100" x2="400" y2="100" stroke="currentColor"/>
+        <rect x="550" y="75" width="85" height="50" rx="3" fill="none" stroke="currentColor"/>
+        <text x="592" y="97" font-size="12" text-anchor="middle">생성 LLM</text>
+        <text x="592" y="114" font-size="11" text-anchor="middle">입력에 첨부</text>
+        <line x1="510" y1="100" x2="550" y2="100" stroke="currentColor"/>
+      </svg>
+      <figcaption>질문과 문서가 같은 변환기를 지나야 같은 좌표계에서 거리를 잴 수 있다.</figcaption>
+    </figure>
+
+    <p class="section-label">WHY</p>
+    <p>임베딩 덕분에 단어가 하나도 겹치지 않아도 찾아진다. &ldquo;연차 신청 방법&rdquo;이라는 질문이 &ldquo;휴가 신청 절차&rdquo;라는 문서를 찾는다. 글자가 아니라 뜻이 가깝기 때문이다.</p>
+    <p>두 가지 사실은 설계 실수와 직결된다. 임베딩 모델은 보통 답을 쓰는 LLM과 별개의 모델이다. 그리고 질문과 문서는 반드시 같은 임베딩 모델로 변환해야 한다.</p>
+
+    <p class="section-label">FOR YOU</p>
+    <div class="for-you">
+      <p>당신이 쓰는 RAG 정의는 &ldquo;제공된 자료를 기반으로 답하게 하는 기술&rdquo;이었다. 그 정의에서 빠진 부분이 &ldquo;제공할 자료를 어떻게 고르는가&rdquo;다. 그 고르는 단계의 본체가 임베딩과 가까운 순서 찾기다.</p>
+      <p>하네스 설계 쪽으로 옮기면 쉽다. 서브에이전트에게 컨텍스트를 나눠 줄 때 당신은 &ldquo;무엇을 넘길까&rdquo;를 설계한다. RAG는 그 선택을 글자 일치가 아니라 의미 거리로 자동화한 것이다.</p>
+      <p>강의에서는 이 오해가 나오기 쉽다. &ldquo;ChatGPT가 문서를 읽고 이해해서 찾아준다&rdquo;는 말이다. 실제로 찾는 쪽은 답을 쓰는 모델이 아니라 별도의 변환·거리 계산 단계다.</p>
+      <p>직접 예측해 보면 정착이 빠르다. 질문만 새 임베딩 모델로 바꾸고 문서는 옛 모델 벡터 그대로 두면 검색은 어떻게 될까? 먼저 답을 정해 두고 아래 설명과 비교해 보자.</p>
+      <p>답은 &ldquo;엉뚱한 글이 가깝다고 나온다&rdquo;이다. 두 모델의 좌표계가 서로 달라, 숫자는 나오지만 거리의 뜻이 사라진다. 에러도 나지 않고 조용히 틀린다는 점이 위험하다.</p>
+    </div>
+
+    <p class="section-label">LEARN</p>
+    <p>다음으로 이어질 개념은 벡터 검색과 청킹이다. 오래 가는 기초라서 지금 개념 모형을 잡아 두면 가치가 길다. 수식이나 모델 내부 구조까지 팔 필요는 없다.</p>
+
+    <div class="addendum">
+      <p class="section-label">3줄 요약</p>
+      <ol class="tri-summary">
+        <li>임베딩은 텍스트를 수백~수천 개 숫자의 벡터로 바꿔 의미가 비슷한 글을 가까이 놓는다.</li>
+        <li>RAG는 질문과 문서 조각을 벡터로 만들어 가까운 문서를 찾고 생성 LLM 입력에 붙인다.</li>
+        <li>임베딩 모델은 보통 생성 LLM과 별개이며, 질문과 문서는 같은 모델로 만들어야 한다.</li>
+      </ol>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">용어 해설</p>
+      <dl class="glossary">
+        <dt>코사인 유사도</dt>
+        <dd>두 숫자 목록이 같은 방향을 가리키는 정도를 0~1 근처 값으로 나타낸 것. 클수록 의미가 가깝다.</dd>
+        <dt>벡터 차원 수</dt>
+        <dd>글 하나를 표현하는 숫자 목록의 길이. 길수록 더 세밀하게 표현하지만 저장 공간이 더 든다.</dd>
+        <dt>벡터 DB</dt>
+        <dd>벡터를 저장해 두고 질문 벡터와 가장 가까운 것을 빠르게 찾아 주는 데이터베이스.</dd>
+      </dl>
+    </div>
+  </article>
+
+  <section class="radar">
+    <p class="section-label">레이더</p>
+    <p class="radar-note">학습 대상이 아니라 <b>인지 대상</b>입니다. 훑고 지나가세요 — 나중에 필요한 순간에 &ldquo;그거 있었지&rdquo;가 나오게 하는 것이 목적입니다.</p>
+
+    <div class="radar-group">
+      <h3>내가 쓰는 도구</h3>
+      <ul class="radar-list">
+        <li>Claude Code 2.1.286~287 (9/30~10/1) — 플러그인이 더 깊은 동작까지 바꿀 수 있게 하는 &ldquo;Mods&rdquo; 기능이 추가됐다. 놓친 항목을 짚어 주는 기본 mod가 함께 들어왔다. 쌓인 권한 확인 창에는 &ldquo;2 / 5&rdquo; 같은 진행 표시가 붙는다. <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">변경 기록</a></li>
+        <li>Codex 0.158~0.159.3 (9/28~9/30) — 모델이 답하는 도중에도 즉시 끼어들어 방향을 바꿀 수 있다(instant interrupt). 높은 권한을 쓰는 터미널 승인 기본값이 더 엄격해졌고, ChatGPT로 로그인한 로컬 세션에 계정 보안 설정 알림이 붙었다. <a href="https://releasebot.io/updates/openai/codex" target="_blank" rel="noopener">변경 기록</a></li>
+      </ul>
+    </div>
+
+    <div class="radar-group">
+      <h3>주변 생태계</h3>
+      <ul class="radar-list">
+        <li>Gemini 4 Argon (9/30~10/1 공개) — 구글 DeepMind의 새 대표 모델이다. 한 번에 출력하는 길이가 6.4만에서 100만 토큰으로 늘었다. 취약점을 스스로 찾고 검증하고 패치하는 능력을 내세운다. 일반 공개 없이 650곳 이상의 보안 파트너가 참여하는 Fairwind 프로그램에만 먼저 제공되고, 이후 유료 API와 Ultra로 넓힐 예정이다. 구글이 밝힌 성능 비교는 자사 주장이다.</li>
+        <li>Clor AI (옐로우박스, 국내, 9/10 정식 출시) — 이미지 생성, 리터칭, 장면 연출, 포즈 적용, 배경 편집을 한 작업 화면에서 하는 서비스다. 여러 생성 모델 중 골라 쓸 수 있는 게 특징이고 이커머스·마케터가 주 대상이다. <a href="https://www.newspim.com/news/view/20260903000194" target="_blank" rel="noopener">뉴스핌</a></li>
+      </ul>
+    </div>
+
+    <div class="radar-group">
+      <h3>가격·정책</h3>
+      <ul class="radar-list">
+        <li>Runway — 영상 생성 서비스다. 무제한 요금제(Unlimited)를 없앴고, 기존 구독자는 9월 1일부터 월 9,500 크레딧(한 달 이월)의 Max 요금제로 옮겨 갔다.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer class="status">
+    <span>오늘 조사 후 신호 2건 · 레이더 5건 · 반복 재보도 일부 폐기</span>
+    <span>Knowledge Agent v0.1</span>
+  </footer>
+
+</div>
