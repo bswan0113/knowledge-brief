@@ -1,0 +1,517 @@
+<title>Knowledge Brief 2026-10-05</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📡</text></svg>">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,500;1,6..72,600&family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  :root {
+    --paper: #eef0f4;
+    --surface: #ffffff;
+    --ink: #131722;
+    --ink-soft: #5b6472;
+    --signal: #c97a1a;
+    --signal-deep: #8a5313;
+    --signal-soft: #f3e3cc;
+    --line: rgba(19, 23, 34, 0.12);
+    --line-strong: rgba(19, 23, 34, 0.22);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #0e1116;
+      --surface: #171b22;
+      --ink: #e7e9ee;
+      --ink-soft: #9aa3b2;
+      --signal: #f0b15c;
+      --signal-deep: #f5c685;
+      --signal-soft: rgba(240, 177, 92, 0.14);
+      --line: rgba(231, 233, 238, 0.14);
+      --line-strong: rgba(231, 233, 238, 0.24);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --paper: #0e1116;
+    --surface: #171b22;
+    --ink: #e7e9ee;
+    --ink-soft: #9aa3b2;
+    --signal: #f0b15c;
+    --signal-deep: #f5c685;
+    --signal-soft: rgba(240, 177, 92, 0.14);
+    --line: rgba(231, 233, 238, 0.14);
+    --line-strong: rgba(231, 233, 238, 0.24);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans KR', 'IBM Plex Sans', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 56px 24px 96px;
+  }
+
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--signal-deep);
+  }
+
+  header.masthead {
+    border-bottom: 1px solid var(--line-strong);
+    padding-bottom: 28px;
+    margin-bottom: 40px;
+  }
+
+  header.masthead .eyebrow {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  h1.headline {
+    font-family: 'Newsreader', Georgia, serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(32px, 6vw, 44px);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin: 14px 0 10px;
+    text-wrap: balance;
+  }
+
+  .masthead .subhead {
+    color: var(--ink-soft);
+    font-size: 15px;
+    max-width: 56ch;
+  }
+
+  .masthead .subhead b {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  article.item {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 32px 32px 28px;
+    margin-bottom: 32px;
+  }
+
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  .tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+    border: 1px solid var(--line-strong);
+    color: var(--ink-soft);
+  }
+
+  .tag.priority {
+    border-color: var(--signal);
+    color: var(--signal-deep);
+    background: var(--signal-soft);
+  }
+
+  h2.item-title {
+    font-family: 'Newsreader', Georgia, serif;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 1.3;
+    margin: 0 0 18px;
+    text-wrap: balance;
+  }
+
+  .section-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin: 22px 0 8px;
+  }
+
+  .section-label:first-of-type { margin-top: 0; }
+
+  article.item p {
+    margin: 0 0 4px;
+    max-width: 62ch;
+  }
+
+  article.item .for-you {
+    padding: 14px 16px;
+    background: var(--signal-soft);
+    border-left: 2px solid var(--signal);
+    border-radius: 0 3px 3px 0;
+  }
+
+  figure.diagram {
+    margin: 26px 0 6px;
+    padding: 18px 6px 8px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  figure.diagram svg { width: 100%; height: auto; display: block; color: var(--ink-soft); }
+  figure.diagram .accent { color: var(--signal); }
+  figure.diagram text { font-family: 'IBM Plex Mono', monospace; fill: currentColor; }
+
+  figcaption {
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-top: 10px;
+  }
+
+  .source-row {
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .source-row a {
+    color: var(--ink);
+    text-decoration-color: var(--signal);
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 3px;
+  }
+
+  .source-row .domain {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+
+  .addendum {
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+  }
+
+  ol.tri-summary {
+    margin: 0;
+    padding-left: 1.3em;
+  }
+
+  ol.tri-summary li {
+    margin-bottom: 6px;
+    max-width: 62ch;
+  }
+
+  dl.glossary {
+    margin: 0;
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    column-gap: 14px;
+    row-gap: 10px;
+  }
+
+  dl.glossary dt {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--signal-deep);
+    white-space: nowrap;
+  }
+
+  dl.glossary dd {
+    margin: 0;
+    max-width: 56ch;
+    color: var(--ink-soft);
+  }
+
+  /* 레이더 — 인지 채널. 본 브리프(학습 채널)와 시각적으로 명확히 구분되어야 한다:
+     카드가 아니라 목록, 강조색 없음, 본문보다 작은 글씨. 훑고 지나가는 영역이다. */
+  section.radar {
+    margin-top: 40px;
+    padding-top: 26px;
+    border-top: 1px solid var(--line-strong);
+  }
+
+  section.radar > p.radar-note {
+    margin: 0 0 18px;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    max-width: 62ch;
+  }
+
+  .radar-group {
+    margin-bottom: 20px;
+  }
+
+  .radar-group h3 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 500;
+    margin: 0 0 8px;
+  }
+
+  ul.radar-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  ul.radar-list li {
+    position: relative;
+    padding-left: 16px;
+    margin-bottom: 7px;
+    font-size: 14.5px;
+    line-height: 1.6;
+    max-width: 66ch;
+    color: var(--ink);
+  }
+
+  ul.radar-list li::before {
+    content: "·";
+    position: absolute;
+    left: 3px;
+    color: var(--ink-soft);
+  }
+
+  ul.radar-list li a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid var(--line-strong);
+  }
+
+  ul.radar-list li a:hover { border-bottom-color: var(--signal); }
+
+  footer.status {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    border-top: 1px solid var(--line-strong);
+    padding-top: 18px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  @media (max-width: 480px) {
+    article.item { padding: 24px 20px; }
+    h1.headline { font-size: 30px; }
+  }
+</style>
+
+<div class="page">
+
+  <header class="masthead">
+    <div class="eyebrow">
+      <span>KNOWLEDGE BRIEF</span>
+      <span>2026-10-05 · 22:00</span>
+    </div>
+    <h1 class="headline">MCP는 &ldquo;연결 규격&rdquo;에서 &ldquo;에이전트가 올라서는 바닥&rdquo;이 되려 하고, 답이 없는 호출은 실패가 아니라 &ldquo;모름&rdquo;이다</h1>
+    <p class="subhead">오늘 조사한 것 중 <b>지금 당신에게 학습 가치가 있다고 판단한 것</b>만 남겼습니다. 나머지는 이미 아는 내용이거나 가치가 낮아 걸러냈습니다.</p>
+  </header>
+
+  <article class="item">
+    <div class="tag-row">
+      <span class="tag priority">도구 연결(MCP) · 강의에 바로 쓸 것</span>
+      <span class="tag">공식 로드맵 + 현장 보도</span>
+      <span class="tag">빨리 바뀜</span>
+    </div>
+
+    <h2 class="item-title">첫 MCP 개발자 행사가 열렸다. 다음 숙제는 에이전트 신원, 긴 작업, 도구 카탈로그다</h2>
+
+    <p class="section-label">WHAT</p>
+    <p>10월 5일 토론토에서 첫 MCP Dev Summit이 열렸다. 연사는 70명, 세션은 50여 개다. Anthropic의 MCP 리드 메인테이너가 키노트에서 MCP를 &ldquo;에이전트가 올라서는 기반 계층&rdquo;으로 다시 정의했다.</p>
+    <p>방향은 8월 22일 공식 로드맵에 이미 나와 있었다. 이번 행사는 그 로드맵을 현장에서 다시 확인한 자리다. 로드맵의 큰 줄기는 네 가지다.</p>
+    <ul>
+      <li><b>에이전트 신원</b>: 사람이 아니라 클라우드 작업이 스스로 신원을 증명하는 방법(DPoP, Workload Identity Federation)이다.</li>
+      <li><b>긴 작업</b>: 오래 걸리는 일을 맡기고 나중에 결과를 받는 Tasks 확장이다. 7월 스펙에서 공식 확장이 됐다.</li>
+      <li><b>전송 통합</b>: 갈라져 있던 연결 방식을 HTTP 하나로 모은다. 7월 스펙에서 서버가 세션을 들고 있지 않게 바뀌었다.</li>
+      <li><b>도구 카탈로그</b>: 도구 목록을 한꺼번에 보여주지 않고 필요할 때 펼치는 점진적 도구 탐색이다.</li>
+    </ul>
+    <p>아직 출시되지 않은 것도 분명하다. 서버가 먼저 보내는 이벤트, 에이전트용 워크로드 신원 연합, 점진적 도구 탐색, 로컬과 원격을 합친 전송이 그렇다.</p>
+
+    <p class="section-label">WHY</p>
+    <p>MCP는 이제 &ldquo;도구를 꽂는 규격&rdquo;에서 &ldquo;운영 환경의 약속&rdquo;으로 넘어가는 중이다. 도구를 연결하는 것은 쉬워졌다. 그다음 문제가 줄줄이 따라온다.</p>
+    <p>누가 이 호출을 했는지 어떻게 증명하는가. 몇 분 걸리는 작업이 중간에 끊기면 어떻게 하는가. 도구가 수백 개가 되면 모델은 무엇을 고르는가.</p>
+    <p>현장 보도에는 이런 수치가 나왔다. 도구가 30~50개를 넘으면 도구 선택 정확도가 43%에서 14% 아래로 떨어진다는 것이다. 이 수치는 한 매체의 보도이며 공식 문서로는 확인하지 못했다.</p>
+
+    <p class="section-label">FOR YOU</p>
+    <div class="for-you">
+      <p>도구가 많아질수록 모델이 잘 못 고른다는 문제를, 당신은 이미 설계로 풀어 왔다. 하나의 에이전트에 모든 도구를 주지 않고 라우터 아래에 하네스를 나눈 방식이 그것이다.</p>
+      <p>로드맵의 점진적 도구 탐색은 같은 해법을 프로토콜 쪽에서 만드는 것이다. 목록 전체를 주는 대신 입구만 주고 좁혀 가며 펼친다. 당신의 하네스 분리가 &ldquo;컨텍스트 격리&rdquo;였다면 이쪽은 &ldquo;카탈로그 격리&rdquo;다.</p>
+      <p>신원 쪽은 당신의 야간 시스템에 거울처럼 대응한다. 카카오 알림은 당신의 토큰을 빌려 보낸다. 로드맵이 가려는 곳은 그 비밀값을 저장하지 않고, 실행 환경이 신원을 증명하는 쪽이다.</p>
+      <p>긴 작업의 &ldquo;취소는 비동기이니 최종 상태를 확인한 뒤 재시도하라&rdquo;는 권고는 당신의 영수증 규칙과 같은 말이다. 응답을 못 받은 전송은 확인 전까지 다시 보내지 않는다는 규칙이다. 이 내용은 아래 항목에서 따로 풀었다.</p>
+    </div>
+
+    <p class="section-label">LEARN</p>
+    <p>지금은 사실만 알아두면 된다. 로드맵의 상당 부분이 아직 출시 전이라 세부는 바뀔 수 있다. 강의에서는 &ldquo;MCP는 연결 규격이고, 신원·긴 작업·도구 탐색은 아직 만드는 중&rdquo;이라고 설명하면 정확하다.</p>
+    <p>실제로 손볼 일이 생기는 시점은 원격 서버를 운영하거나 도구를 수십 개 이상 붙일 때다. 그때 공식 로드맵을 다시 확인하면 된다.</p>
+
+    <div class="source-row">
+      <a href="https://blog.modelcontextprotocol.io/posts/mcp-roadmap/" target="_blank" rel="noopener">MCP 공식 블로그 · 로드맵 원문 보기 →</a>
+      <span class="domain">blog.modelcontextprotocol.io</span>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">3줄 요약</p>
+      <ol class="tri-summary">
+        <li>토론토에서 열린 첫 MCP Dev Summit에서 Anthropic 메인테이너가 MCP를 에이전트가 올라서는 기반 계층으로 재정의했다.</li>
+        <li>7월 스펙은 세션 제거, Tasks 공식 확장, 인증 강화를 출시했지만 서버 시작 이벤트와 점진적 도구 탐색은 아직 미출시다.</li>
+        <li>한 매체는 도구가 30~50개를 넘으면 선택 정확도가 43%에서 14% 미만으로 떨어진다고 전했다.</li>
+      </ol>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">용어 해설</p>
+      <dl class="glossary">
+        <dt>Tasks 확장</dt>
+        <dd>MCP 서버에 오래 걸리는 작업을 맡기고 접수증만 받는다. 연결을 붙잡지 않고 나중에 결과를 조회하는 비동기 방식이다.</dd>
+        <dt>DPoP</dt>
+        <dd>토큰을 쓸 때마다 클라이언트의 개인키 서명을 요구하는 방식이다. 토큰이 유출돼도 키가 없으면 재사용할 수 없다.</dd>
+        <dt>Workload Identity Federation</dt>
+        <dd>클라우드나 CI 같은 실행 환경이 발급한 신원 토큰을 다른 서비스가 믿어 주는 방식이다. 장기 비밀키를 저장하지 않아도 된다.</dd>
+        <dt>Streamable HTTP / SSE</dt>
+        <dd>SSE는 서버가 열어 둔 연결로 일방향 푸시를 하는 방식이다. Streamable HTTP는 일반 HTTP 요청에 필요할 때만 스트리밍을 얹어 둘을 통합한다.</dd>
+        <dt>점진적 도구 탐색</dt>
+        <dd>도구 목록 전체를 처음부터 모델에게 넣지 않는다. 필요할 때 검색해서 일부만 불러온다.</dd>
+      </dl>
+    </div>
+  </article>
+
+  <article class="item">
+    <div class="tag-row">
+      <span class="tag priority">네트워크 실패 · 오늘의 보완</span>
+      <span class="tag">기초 개념</span>
+      <span class="tag">오래 가는 기초</span>
+    </div>
+
+    <h2 class="item-title">연결은 됐는데 답이 없다면, 그건 &ldquo;실패&rdquo;가 아니라 &ldquo;모름&rdquo;이다</h2>
+
+    <p class="section-label">WHY NOW</p>
+    <p>위 MCP 항목의 &ldquo;최종 상태를 확인한 뒤 재시도하라&rdquo;는 권고가 오늘 다룰 개념의 핵심이다. 이 말이 무슨 뜻인지 알려면 먼저 호출 실패에 세 가지 모양이 있다는 것을 알아야 한다.</p>
+    <p>API 호출이 30초 멈췄다가 실패한 상황을 떠올려 보자. 대부분은 &ldquo;서버가 죽었나?&rdquo;부터 묻는다. 하지만 같은 &ldquo;실패&rdquo;라도 모양에 따라 해야 할 일이 완전히 다르다.</p>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 640 230" role="img" aria-label="요청을 보낸 뒤 실패가 세 가지 모양으로 갈라지는 그림">
+        <rect x="10" y="85" width="90" height="46" rx="3" fill="none" stroke="currentColor"/>
+        <text x="55" y="113" font-size="13" text-anchor="middle">요청 전송</text>
+        <path d="M100 108 L190 36" stroke="currentColor" fill="none"/>
+        <path d="M100 108 L190 108" stroke="currentColor" fill="none" class="accent"/>
+        <path d="M100 108 L190 180" stroke="currentColor" fill="none"/>
+        <rect x="190" y="14" width="440" height="44" rx="3" fill="none" stroke="currentColor"/>
+        <text x="204" y="33" font-size="12.5">① 연결 실패 · 즉시 거부 / 이름 못 찾음</text>
+        <text x="204" y="50" font-size="11.5">서버에 닿지 못함 → 안 보낸 것과 같다 → 재시도해도 안전</text>
+        <g class="accent">
+          <rect x="190" y="86" width="440" height="44" rx="3" fill="none" stroke="currentColor" stroke-width="2"/>
+          <text x="204" y="105" font-size="12.5">② 연결 후 무응답 · 시간 초과로 끝남</text>
+          <text x="204" y="122" font-size="11.5">처리됐는지 모름 → 실패 단정 금지 → 확인한 뒤에만 재시도</text>
+        </g>
+        <rect x="190" y="158" width="440" height="44" rx="3" fill="none" stroke="currentColor"/>
+        <text x="204" y="177" font-size="12.5">③ 응답 후 거절 · 4xx / 5xx 코드가 이유를 알려 줌</text>
+        <text x="204" y="194" font-size="11.5">서버가 답함 → 코드를 읽고 고쳐서 다시 보낸다</text>
+      </svg>
+      <figcaption>가운데 모양만 &ldquo;상대가 일을 했는지 모르는&rdquo; 상태다. 실패까지 걸린 시간이 어느 모양인지 알려 주는 첫 단서다.</figcaption>
+    </figure>
+
+    <p class="section-label">FOR YOU</p>
+    <div class="for-you">
+      <p>이 구분은 이미 당신 저장소의 코드에서 매일 밤 돌아간다. 야간 상태 코드는 성공·실패·건너뜀 외에 &ldquo;모름&rdquo;이라는 값을 따로 둔다.</p>
+      <p>테스트 이름이 정답 문장이다. 전송 직후 프로그램이 죽으면 &ldquo;모름&rdquo;이 되고, 눈 감고 재시도할 수 없다. 응답이 오지 않은 경우를 성공으로도 실패로도 치지 않는다는 규칙이다.</p>
+      <p>지난번 이 코드를 읽을 때는 &ldquo;모름&rdquo;을 예상 못 한 입력값 같은 내부 문제로 읽었다. 바깥 세계의 확인 불가 상태로 읽는 길도 있다. 오늘의 세 모양에서 두 번째 칸이 바로 그것이다.</p>
+      <ul>
+        <li>카카오 전송 요청을 보냈는데 응답이 없다면 세 모양 중 무엇인가.</li>
+        <li>그때 다시 보내도 되는가. 다시 보내면 어떤 일이 생길 수 있는가.</li>
+        <li>다시 보내기 전에 어떤 증거를 확인할 수 있는가.</li>
+      </ul>
+      <p>답을 먼저 정리해 본 뒤 야간 코드의 해당 테스트와 맞춰 보면 된다. 이 개념은 AX 강의에서 에이전트 도구 호출이 실패했을 때의 재시도 규칙을 설명하는 기초가 된다.</p>
+    </div>
+
+    <p class="section-label">LEARN</p>
+    <p>더 파고들 가치가 있다. 다음 단계는 &ldquo;멱등성&rdquo;이다. 같은 요청을 두 번 보내도 결과가 한 번 보낸 것과 같도록 설계해 두면, 두 번째 칸의 &ldquo;모름&rdquo;도 재시도로 풀 수 있다. 이 개념은 쉽게 낡지 않는다.</p>
+
+    <div class="addendum">
+      <p class="section-label">3줄 요약</p>
+      <ol class="tri-summary">
+        <li>네트워크·API 호출 실패는 연결 실패, 응답 없음, 응답 후 거절의 세 모양으로 나뉜다.</li>
+        <li>실패까지 걸린 시간과 에러 종류를 보면 어느 모양인지 가려낼 수 있다.</li>
+        <li>응답 없음은 처리 여부를 모르므로 실패로 단정해 재시도하지 말고 &ldquo;모름&rdquo;으로 두고 확인해야 한다.</li>
+      </ol>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">용어 해설</p>
+      <dl class="glossary">
+        <dt>타임아웃</dt>
+        <dd>응답을 기다리는 최대 시간이다. 이 시간이 지나면 호출을 포기하는데, 상대가 처리했는지는 알 수 없다.</dd>
+        <dt>멱등성</dt>
+        <dd>같은 요청을 여러 번 보내도 결과가 한 번 보낸 것과 같은 성질이다. 이 성질이 있어야 안심하고 재시도할 수 있다.</dd>
+        <dt>4xx / 5xx 상태 코드</dt>
+        <dd>4xx는 요청이 잘못됐다는 거절이고, 5xx는 서버 쪽 오류다. 응답을 받았으니 서버가 요청을 봤다는 증거가 된다.</dd>
+        <dt>중복 실행</dt>
+        <dd>재시도 때문에 같은 작업이 두 번 처리되는 사고다. 결제나 메시지 발송처럼 되돌리기 어려운 작업에서 특히 위험하다.</dd>
+      </dl>
+    </div>
+  </article>
+
+  <section class="radar">
+    <p class="section-label">레이더</p>
+    <p class="radar-note">학습 대상이 아니라 <b>인지 대상</b>입니다. 훑고 지나가세요 — 나중에 필요한 순간에 &ldquo;그거 있었지&rdquo;가 나오게 하는 것이 목적입니다.</p>
+
+    <div class="radar-group">
+      <h3>내가 쓰는 도구</h3>
+      <ul class="radar-list">
+        <li>Claude Code 모드 &ldquo;You should know&rdquo; — 옆에서 지켜보는 보조 에이전트가 당신이나 Claude가 놓친 것을 짚어 주는 기본 제공 모드. 10월 3일 추가, 에이전트 보기에는 이름·작업 필터(<code>n:</code>)도 붙었다. <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">변경 내역</a></li>
+        <li>Codex 0.162 알파 계열 — 프로젝트 없이 세션을 시작하고 작업공간 기본값을 쓰는 기능, 재연결 뒤 보내지 못한 메시지를 중복 전송 없이 이어 보내는 동작, 서브에이전트가 아직 준비 중인 환경을 유지하는 변경. 승인 검토(Guardian)는 옵트인으로 이전 사용자 지시를 불러올 수 있다. <a href="https://developers.openai.com/codex/changelog" target="_blank" rel="noopener">변경 내역</a></li>
+        <li>Odoo 20(9월 24일) — 오픈소스 ERP에 MCP 서버가 기본 내장(엔터프라이즈). 외부 AI 도구가 사용자의 기존 접근 권한 안에서 데이터를 읽고 쓴다. 음성 입력과 PDF 청구서로 레코드를 만드는 에이전트도 함께 나왔다.</li>
+        <li>Match-Trader MCP(10월 5일) — 증권·FX 거래 플랫폼 계정을 AI 어시스턴트에 연결하는 원격 MCP 서버. 계정·시장 데이터를 조회하고 거래 행위를 &ldquo;준비&rdquo;하는 도구를 노출한다.</li>
+      </ul>
+    </div>
+
+    <div class="radar-group">
+      <h3>주변 생태계</h3>
+      <ul class="radar-list">
+        <li>ElevenLabs Eleven v4 / v4 Turbo(9월 28일) — 문장의 감정에 맞춰 말투를 바꾸고 같은 목소리를 유지하는 음성 합성 모델. Higgsfield의 오디오 기능에도 바로 들어왔다.</li>
+        <li>Kling 4.0 — 중국 Kuaishou의 AI 영상 생성 모델 새 세대. 클링 측 발표 기준 10월 정식 출시이며 Ultra 구독자는 이미 쓸 수 있다. 빠른 4.0 Flash는 9월 28일부터 일부 얼리 액세스다.</li>
+      </ul>
+    </div>
+
+    <div class="radar-group">
+      <h3>보안 사고 (Adversa 10월 모음 기준)</h3>
+      <ul class="radar-list">
+        <li>악성 훅 업데이트 — 확인한 코딩 에이전트 도구 전부가 뚫렸고 성공률이 92.5%였다는 연구. 훅을 갱신하는 경로가 새 공격 통로로 지목됐다.</li>
+        <li>Codex <code>apply_patch</code> — 패치 도구가 작업 폴더의 상위 폴더까지 쓰기 권한을 주는 결함, 자바스크립트 도구가 신뢰 토큰을 새게 하는 결함이 함께 정리됐다.</li>
+        <li>인포스틸러 — Claude·Cursor·Cline·Codex 사용자의 에이전트 토큰, MCP 설정, 프롬프트 기록을 노려 훔치는 악성코드 캠페인이 보고됐다. 에이전트 설정 파일이 새로운 탈취 대상이 된 셈이다.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer class="status">
+    <span>오늘 조사 후 2건 전달 · 레이더 9건 · 반복 재보도 몇 건은 폐기</span>
+    <span>Knowledge Agent v0.1</span>
+  </footer>
+
+</div>
