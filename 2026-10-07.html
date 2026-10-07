@@ -1,0 +1,540 @@
+<title>Knowledge Brief 2026-10-07</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📡</text></svg>">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,500;1,6..72,600&family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  :root {
+    --paper: #eef0f4;
+    --surface: #ffffff;
+    --ink: #131722;
+    --ink-soft: #5b6472;
+    --signal: #c97a1a;
+    --signal-deep: #8a5313;
+    --signal-soft: #f3e3cc;
+    --line: rgba(19, 23, 34, 0.12);
+    --line-strong: rgba(19, 23, 34, 0.22);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #0e1116;
+      --surface: #171b22;
+      --ink: #e7e9ee;
+      --ink-soft: #9aa3b2;
+      --signal: #f0b15c;
+      --signal-deep: #f5c685;
+      --signal-soft: rgba(240, 177, 92, 0.14);
+      --line: rgba(231, 233, 238, 0.14);
+      --line-strong: rgba(231, 233, 238, 0.24);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --paper: #0e1116;
+    --surface: #171b22;
+    --ink: #e7e9ee;
+    --ink-soft: #9aa3b2;
+    --signal: #f0b15c;
+    --signal-deep: #f5c685;
+    --signal-soft: rgba(240, 177, 92, 0.14);
+    --line: rgba(231, 233, 238, 0.14);
+    --line-strong: rgba(231, 233, 238, 0.24);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans KR', 'IBM Plex Sans', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 56px 24px 96px;
+  }
+
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--signal-deep);
+  }
+
+  header.masthead {
+    border-bottom: 1px solid var(--line-strong);
+    padding-bottom: 28px;
+    margin-bottom: 40px;
+  }
+
+  header.masthead .eyebrow {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  h1.headline {
+    font-family: 'Newsreader', Georgia, serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(32px, 6vw, 44px);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin: 14px 0 10px;
+    text-wrap: balance;
+  }
+
+  .masthead .subhead {
+    color: var(--ink-soft);
+    font-size: 15px;
+    max-width: 56ch;
+  }
+
+  .masthead .subhead b {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .masthead .listen {
+    margin-top: 20px;
+    padding: 14px 16px;
+    background: var(--signal-soft);
+    border-radius: 10px;
+    display: grid;
+    gap: 8px;
+  }
+
+  .masthead .listen audio { width: 100%; }
+
+  article.item {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 32px 32px 28px;
+    margin-bottom: 32px;
+  }
+
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  .tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+    border: 1px solid var(--line-strong);
+    color: var(--ink-soft);
+  }
+
+  .tag.priority {
+    border-color: var(--signal);
+    color: var(--signal-deep);
+    background: var(--signal-soft);
+  }
+
+  h2.item-title {
+    font-family: 'Newsreader', Georgia, serif;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 1.3;
+    margin: 0 0 18px;
+    text-wrap: balance;
+  }
+
+  .section-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin: 22px 0 8px;
+  }
+
+  .section-label:first-of-type { margin-top: 0; }
+
+  article.item p {
+    margin: 0 0 4px;
+    max-width: 62ch;
+  }
+
+  article.item .for-you {
+    padding: 14px 16px;
+    background: var(--signal-soft);
+    border-left: 2px solid var(--signal);
+    border-radius: 0 3px 3px 0;
+  }
+
+  figure.diagram {
+    margin: 26px 0 6px;
+    padding: 18px 6px 8px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  figure.diagram svg { width: 100%; height: auto; display: block; color: var(--ink-soft); }
+  figure.diagram .accent { color: var(--signal); }
+  figure.diagram text { font-family: 'IBM Plex Mono', monospace; fill: currentColor; }
+
+  figcaption {
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-top: 10px;
+  }
+
+  .source-row {
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .source-row a {
+    color: var(--ink);
+    text-decoration-color: var(--signal);
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 3px;
+  }
+
+  .source-row .domain {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+
+  .addendum {
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+  }
+
+  ol.tri-summary {
+    margin: 0;
+    padding-left: 1.3em;
+  }
+
+  ol.tri-summary li {
+    margin-bottom: 6px;
+    max-width: 62ch;
+  }
+
+  dl.glossary {
+    margin: 0;
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    column-gap: 14px;
+    row-gap: 10px;
+  }
+
+  dl.glossary dt {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--signal-deep);
+    white-space: nowrap;
+  }
+
+  dl.glossary dd {
+    margin: 0;
+    max-width: 56ch;
+    color: var(--ink-soft);
+  }
+
+  /* 레이더 — 인지 채널. 본 브리프(학습 채널)와 시각적으로 명확히 구분되어야 한다:
+     카드가 아니라 목록, 강조색 없음, 본문보다 작은 글씨. 훑고 지나가는 영역이다. */
+  section.radar {
+    margin-top: 40px;
+    padding-top: 26px;
+    border-top: 1px solid var(--line-strong);
+  }
+
+  section.radar > p.radar-note {
+    margin: 0 0 18px;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    max-width: 62ch;
+  }
+
+  .radar-group {
+    margin-bottom: 20px;
+  }
+
+  .radar-group h3 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 500;
+    margin: 0 0 8px;
+  }
+
+  ul.radar-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  ul.radar-list li {
+    position: relative;
+    padding-left: 16px;
+    margin-bottom: 7px;
+    font-size: 14.5px;
+    line-height: 1.6;
+    max-width: 66ch;
+    color: var(--ink);
+  }
+
+  ul.radar-list li::before {
+    content: "·";
+    position: absolute;
+    left: 3px;
+    color: var(--ink-soft);
+  }
+
+  ul.radar-list li a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid var(--line-strong);
+  }
+
+  ul.radar-list li a:hover { border-bottom-color: var(--signal); }
+
+  footer.status {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    border-top: 1px solid var(--line-strong);
+    padding-top: 18px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  @media (max-width: 480px) {
+    article.item { padding: 24px 20px; }
+    h1.headline { font-size: 30px; }
+  }
+</style>
+
+<div class="page">
+
+  <header class="masthead">
+    <div class="eyebrow">
+      <span>KNOWLEDGE BRIEF</span>
+      <span>2026-10-07 · 22:00</span>
+    </div>
+    <h1 class="headline">같은 모델, 다른 문턱 — 안전장치는 모델 바깥에서 조절된다</h1>
+    <p class="subhead">오늘 조사한 것 중 <b>지금 당신에게 학습 가치가 있다고 판단한 것</b>만 남겼습니다. 나머지는 이미 아는 내용이거나 가치가 낮아 걸러냈습니다.</p>
+    <div class="listen">
+      <span class="eyebrow">🎧 듣는 브리프 · 약 8분</span>
+      <audio controls preload="none" src="audio/2026-10-07.mp3"></audio>
+    </div>
+  </header>
+
+  <article class="item">
+    <div class="tag-row">
+      <span class="tag priority">보안 · 강의에 바로 쓸 것</span>
+      <span class="tag">공식 발표</span>
+      <span class="tag">빨리 바뀜</span>
+    </div>
+
+    <h2 class="item-title">앤트로픽, 검증된 보안 전문가에게 안전장치를 낮춘 Claude를 3단계로 연다</h2>
+
+    <p class="section-label">WHAT</p>
+    <p>앤트로픽이 10월 6일 사이버 검증 프로그램을 확대했다. 신원과 목적을 검증받은 보안 조직과 연구자는 Opus 5.5, Sonnet 5.5, Mythos 5.1에서 사이버 관련 차단이 줄어든 상태로 일한다.</p>
+    <p>접근 등급은 세 가지다.</p>
+    <ul>
+      <li><b>방어 접근</b> — 보안 관제, 침해 대응, 악성코드 분석, 취약점 분석. 취약점 공개 이력이 있는 개인 연구자도 신청할 수 있다. 심사는 며칠.</li>
+      <li><b>레드팀 접근</b> — 허가받은 모의해킹이 추가된다. 조직만 가능하고 개인은 안 된다. 심사는 몇 주.</li>
+      <li><b>특수 접근</b> — 차단이 가장 적다. 항공기 운영체제, 전력망, 통신망 같은 안전 필수 시스템을 시험할 권한이 확인된 조직만 들어간다. 미국 정부와 함께 심사한다.</li>
+    </ul>
+    <p>어느 등급에서도 랜섬웨어 배포나 물리 시스템 손상처럼 큰 피해로 이어질 행동은 실시간으로 차단된다.</p>
+
+    <p class="section-label">WHY</p>
+    <p>이 제도는 &ldquo;누가 묻는가&rdquo;에 따라 같은 모델의 문턱을 바꾸는 대표적 사례다. 방어 작업과 공격 작업은 같은 지식을 쓰기 때문에, 질문 내용만으로는 둘을 가르기 어렵다. 그래서 질문을 막는 대신 묻는 사람을 먼저 검증하는 구조를 택한 것으로 읽힌다. 이 해석은 원문이 직접 말한 것이 아니라 이 글의 판단이다.</p>
+    <p>앤트로픽은 근거로 숫자를 든다. 글래스윙 프로젝트 파트너가 4~7월에 검증된 취약점 약 12만 9천 건을 찾았다는 것이다. 이 수치는 앤트로픽의 자체 발표다.</p>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 640 230" role="img" aria-label="검증 등급이 올라갈수록 허용 구간은 넓어지지만, 대형 피해 행동을 막는 선은 모든 등급에서 그대로 유지된다">
+        <text x="8" y="22" font-size="12">같은 가중치 · 등급별 허용 구간</text>
+        <g font-size="12">
+          <text x="8" y="62">일반 사용자</text>
+          <rect x="130" y="48" width="110" height="20" rx="2" fill="none" stroke="currentColor" opacity="0.5"/>
+          <text x="8" y="100">방어 접근</text>
+          <rect x="130" y="86" width="220" height="20" rx="2" fill="none" stroke="currentColor" opacity="0.7"/>
+          <text x="8" y="138">레드팀 접근</text>
+          <rect x="130" y="124" width="320" height="20" rx="2" fill="none" stroke="currentColor"/>
+          <text x="8" y="176">특수 접근</text>
+          <rect x="130" y="162" width="400" height="20" rx="2" class="accent" fill="currentColor" opacity="0.35"/>
+        </g>
+        <line x1="545" y1="36" x2="545" y2="192" stroke="currentColor" stroke-width="2" stroke-dasharray="5 4" class="accent"/>
+        <text x="545" y="210" font-size="11" text-anchor="middle" class="accent">항상 차단</text>
+        <text x="545" y="224" font-size="11" text-anchor="middle">랜섬웨어 배포 · 물리 피해</text>
+      </svg>
+      <figcaption>막대의 길이는 개념적 표현이다. 등급이 오를수록 허용 구간이 넓어지지만, 오른쪽 점선은 모든 등급에서 움직이지 않는다.</figcaption>
+    </figure>
+
+    <p class="section-label">FOR YOU</p>
+    <div class="for-you">
+      <p>당신은 안전장치를 &ldquo;규칙이 모델 바깥에서 강제되는가&rdquo;로 판단한다. 이 제도는 그 기준이 벤더 쪽에 적용된 모습이다. 차단은 모델 안이 아니라 바깥에서 걸리고, 사용자 신원에 따라 문턱이 바뀐다.</p>
+      <p>여기서 확인할 질문이 하나 있다.</p>
+      <ul>
+        <li>등급이 올라가면 문턱이 낮아진다.</li>
+        <li>그 등급 판정은 누가, 어느 지점에서 강제하는가.</li>
+        <li>판정이 틀리거나 도용되면 어떤 선이 끝까지 남는가.</li>
+      </ul>
+      <p>당신의 야간 실행에서는 도구 허용 목록이 비슷한 일을 한다. 목록 밖의 도구는 아예 실행되지 않는다. 그 목록을 누가 고칠 수 있는지가 곧 이 질문의 답이다.</p>
+      <p>강의에서는 &ldquo;회사에서는 AI의 해킹 질문 거부를 풀 수 없나요?&rdquo;라는 질문이 나올 수 있다. 일반 사용자에게 풀어 주는 것이 아니라, 검증 절차를 거치는 별도 프로그램이 있다고 답하면 된다.</p>
+    </div>
+
+    <p class="section-label">LEARN</p>
+    <p>개념으로는 더 팔 것이 없고 사실만 알아두면 된다. 단계 이름과 신청 요건은 빨리 바뀔 수 있으니, 강의에 쓰기 전에 원문을 다시 확인하자. 이 구조가 가능한 이유는 바로 아래 두 번째 항목에서 이어서 다룬다.</p>
+
+    <div class="source-row">
+      <a href="https://www.anthropic.com/news/cyber-verification-program" target="_blank" rel="noopener">Anthropic 원문 보기 →</a>
+      <span class="domain">anthropic.com/news</span>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">3줄 요약</p>
+      <ol class="tri-summary">
+        <li>앤트로픽이 보안 전문가용 사이버 검증 프로그램을 확대해 최신 Claude 모델을 안전장치를 줄인 채 쓰게 했다.</li>
+        <li>접근은 방어, 레드팀, 특수 3단계이고 단계가 높을수록 조직 요건과 심사가 엄격해진다.</li>
+        <li>랜섬웨어 배포나 물리 시스템 손상 같은 대형 피해 행동은 검증 후에도 실시간으로 차단된다.</li>
+      </ol>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">용어 해설</p>
+      <dl class="glossary">
+        <dt>SOC</dt>
+        <dd>보안 관제 센터. 조직의 시스템을 24시간 지켜보며 이상 징후를 찾아 대응하는 조직 또는 그 업무다.</dd>
+        <dt>악성코드 역공학</dt>
+        <dd>이미 만들어진 악성코드를 분해해 동작 방식과 감염 경로, 목적을 알아내는 작업이다. 탐지 규칙과 대응책을 만드는 데 쓴다.</dd>
+        <dt>레드팀 / 모의해킹</dt>
+        <dd>방어 측의 허가를 받고 실제 공격자처럼 시스템을 뚫어 보는 활동이다. 허점을 공격자보다 먼저 찾는 것이 목적이다.</dd>
+        <dt>침해 대응</dt>
+        <dd>보안 사고가 났을 때 피해 범위를 파악하고, 확산을 막고, 원인을 없애 복구하는 절차다.</dd>
+      </dl>
+    </div>
+  </article>
+
+  <article class="item">
+    <div class="tag-row">
+      <span class="tag priority">LLM 기초 · 오늘의 기초 보완</span>
+      <span class="tag">개념 설명</span>
+      <span class="tag">오래 가는 기초</span>
+    </div>
+
+    <h2 class="item-title">모델은 대화 중에 배우지 않는다 — 학습과 추론을 가르는 선</h2>
+
+    <p class="section-label">WHY NOW</p>
+    <p>앞 항목의 &ldquo;같은 모델, 다른 문턱&rdquo;은 이 구분 위에 서 있다. 그래서 오늘 이 기초를 짚는다.</p>
+    <p>AX 강의에서 가장 자주 나오는 오해도 여기서 시작된다. &ldquo;제가 가르쳤더니 AI가 배웠어요&rdquo;라는 말이다.</p>
+
+    <p class="section-label">두 단계</p>
+    <ul>
+      <li><b>학습</b> — 거대한 데이터로 가중치를 만든다. 가중치는 모델 안에 든 수많은 숫자다. 몇 달이 걸리고 비용이 막대하다. 끝나면 가중치는 고정된다.</li>
+      <li><b>추론</b> — 고정된 가중치로 입력에 답을 만든다. 우리가 모델과 대화하는 시간은 전부 이 단계다.</li>
+    </ul>
+    <p>대화 내용은 컨텍스트 창에 잠시 놓일 뿐이다. 가중치는 한 글자도 바뀌지 않는다. 다음 대화에서 모델이 나를 기억하는 듯 보이면, 저장해 둔 메모를 다시 컨텍스트에 넣어 준 것이다.</p>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 640 190" role="img" aria-label="학습 단계에서 가중치가 만들어져 고정되고, 추론 단계에서는 컨텍스트와 바깥 차단층만 바뀐다">
+        <rect x="10" y="40" width="200" height="90" rx="3" fill="none" stroke="currentColor"/>
+        <text x="110" y="66" font-size="13" text-anchor="middle">학습</text>
+        <text x="110" y="90" font-size="11" text-anchor="middle">데이터 → 가중치 만들기</text>
+        <text x="110" y="110" font-size="11" text-anchor="middle">학습 때 심은 성향 포함</text>
+        <line x1="230" y1="30" x2="230" y2="150" stroke="currentColor" stroke-width="2" stroke-dasharray="5 4" class="accent"/>
+        <text x="230" y="170" font-size="11" text-anchor="middle" class="accent">가중치 고정</text>
+        <rect x="250" y="40" width="380" height="90" rx="3" fill="none" stroke="currentColor"/>
+        <text x="440" y="60" font-size="13" text-anchor="middle">추론 (지금 대화하는 시간)</text>
+        <rect x="266" y="74" width="110" height="40" rx="2" fill="none" stroke="currentColor" opacity="0.7"/>
+        <text x="321" y="98" font-size="11" text-anchor="middle">컨텍스트 창</text>
+        <rect x="392" y="74" width="224" height="40" rx="2" class="accent" fill="currentColor" opacity="0.25"/>
+        <text x="504" y="98" font-size="11" text-anchor="middle">바깥 차단층 (설정으로 조절)</text>
+      </svg>
+      <figcaption>가중치는 점선 왼쪽에서만 바뀐다. 점선 오른쪽에서 바뀌는 것은 컨텍스트와 바깥 차단층이다.</figcaption>
+    </figure>
+
+    <p class="section-label">안전장치도 두 층이다</p>
+    <ul>
+      <li><b>학습 때 심은 성향</b> — 위험한 요청을 거절하는 습관 같은 것이다. 바꾸려면 다시 학습해야 한다.</li>
+      <li><b>추론 때의 바깥 차단</b> — 입력과 출력을 모델 바깥에서 걸러 낸다. 설정으로 바꿀 수 있다.</li>
+    </ul>
+    <p>앞 항목의 사이버 검증은 같은 가중치를 두고 바깥 차단의 수준만 사용자별로 조절하는 사례로 읽을 수 있다. 다만 이것은 공개된 설명을 바탕으로 한 이 글의 해석이다.</p>
+
+    <p class="section-label">FOR YOU</p>
+    <div class="for-you">
+      <p>당신의 나이트 브리프가 가장 가까운 실물이다. 이 파이프라인은 매일 새 세션으로 시작해서 어제를 기억하지 못한다. 그래서 상태를 파일에 두고, 시작할 때 읽어서 컨텍스트에 넣는다.</p>
+      <p>예측해 보자. 그 상태 파일을 지우면 모델이 바뀔까, 아니면 비어 있던 컨텍스트로 돌아갈까. 답은 후자다. 모델은 처음부터 바뀐 적이 없다.</p>
+      <p>강의에서는 &ldquo;AI가 우리 회사 데이터를 학습하나요?&rdquo;라는 질문을 받게 된다. 이렇게 나눠 답할 수 있다.</p>
+      <ul>
+        <li>대화 중에 즉시 학습되는 일은 없다. 이것은 메커니즘의 문제다.</li>
+        <li>제공자가 나중에 그 데이터를 학습에 쓰는지는 별개다. 이것은 정책의 문제이고 제공자마다 다르다.</li>
+      </ul>
+    </div>
+
+    <p class="section-label">LEARN</p>
+    <p>오래 가는 기초라서 한 번 정확히 잡아 두면 된다. 이 구분은 시스템 프롬프트, 검색 증강, 파인튜닝을 나누는 강의 설명의 뿌리이기도 하다. 다음 재평가에서는 &ldquo;가중치가 바뀌는 시점은 언제인가&rdquo;를 직접 설명해 보는 것이 좋은 확인 질문이다.</p>
+
+    <div class="addendum">
+      <p class="section-label">3줄 요약</p>
+      <ol class="tri-summary">
+        <li>LLM은 학습으로 가중치를 한 번 만들어 고정하고, 추론에서는 그 가중치로 답만 만든다.</li>
+        <li>대화 내용은 컨텍스트 창에 잠시 놓일 뿐 가중치를 바꾸지 않으므로 &ldquo;모델이 내 말을 학습했다&rdquo;는 말은 틀리다.</li>
+        <li>안전장치는 학습 때 심은 성향과 추론 때의 실시간 차단 두 층이며, 사이버 검증은 후자만 사용자별로 조절하는 것으로 읽을 수 있다.</li>
+      </ol>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">용어 해설</p>
+      <dl class="glossary">
+        <dt>가중치</dt>
+        <dd>학습으로 정해지는 모델 내부의 수치 값이다. 입력이 출력으로 바뀌는 방식을 결정하고, 추론 때는 바뀌지 않는다.</dd>
+        <dt>RLHF</dt>
+        <dd>사람 피드백 강화학습. 모델의 여러 답에 사람이 선호도를 매기고, 그것을 보상으로 삼아 더 선호되는 답을 내도록 추가 학습시키는 기법이다.</dd>
+        <dt>분류기 기반 차단</dt>
+        <dd>메인 모델과 별개로 입력이나 출력을 &ldquo;유해/안전&rdquo;으로 판별하는 작은 모델을 두고, 위험으로 분류되면 요청이나 응답을 막는 방식이다.</dd>
+      </dl>
+    </div>
+  </article>
+
+  <section class="radar">
+    <p class="section-label">레이더</p>
+    <p class="radar-note">학습 대상이 아니라 <b>인지 대상</b>입니다. 훑고 지나가세요 — 나중에 필요한 순간에 &ldquo;그거 있었지&rdquo;가 나오게 하는 것이 목적입니다.</p>
+
+    <div class="radar-group">
+      <h3>내가 쓰는 도구</h3>
+      <ul class="radar-list">
+        <li>Claude Code 2.1.292 (10/6) — 보안 수정 묶음. 노트북·PDF를 읽는 도중 링크를 바꿔치기해 승인 범위 밖 파일을 읽던 경로, 훅이 승인한 네트워크(UNC) 경로 읽기가 권한 확인을 건너뛰던 문제, Windows에서 홈 폴더를 다른 표기로 써서 <code>rm -rf</code> 안전장치를 피하던 문제를 고쳤다.</li>
+        <li>같은 2.1.292 — Agent 도구에 <code>effort</code> 매개변수가 생겨 Claude가 하위 에이전트를 지정한 추론 강도로 띄운다. <code>claude plugin install</code>에는 <code>--marketplace</code> 옵션이 붙었고, HTTP/SSE MCP 서버 응답을 기다리지 않고 CLI가 시작된다.</li>
+        <li>Claude Code 2.1.290 (10/4) — 실행 중인 세션에 붙는 <code>claude attach</code>와 로그를 보는 <code>claude logs</code> 단축 명령이 추가됐다. <code>/claude-api managed-agents-onboard &lt;URL&gt;</code>은 Managed Agents 패턴을 설정해 준다.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer class="status">
+    <span>오늘 조사 후 신호 2건 · 레이더 3건 · 반복/중복 건은 제외</span>
+    <span>Knowledge Agent v0.1</span>
+  </footer>
+
+</div>
