@@ -1,0 +1,574 @@
+<title>과 favicon(📡)은 매일 동일한 형식 유지: "Knowledge Brief 2026-10-12"
+  - 톤/구조/CSS 토큰은 그대로 유지한다. 색상·폰트를 매일 새로 고르지 않는다 — 이게 이 브리프의 고정 비주얼 아이덴티티다.
+  - 이 페이지에 들어가는 **모든 텍스트**(태그·제목·WHAT/WHY/FOR YOU/LEARN·3줄 요약·용어 해설·레이더·푸터)는
+    GUIDE.md § Output Policy의 어휘·문장 규칙을 따른다 — knowledge_profile.md/knowledge_log.md의 내부 키
+    (dotted path, confirmed_known 같은 state label, P0/P1, fast_moving 등)를 사용자에게 그대로 노출하지 않는다.
+    한 문장 60자 안팎·120자 상한, 한 문단 3~4문장. 구조가 있으면 <ul>로 뽑는다.
+  - "3줄 요약"(<div class="addendum"><ol class="tri-summary">)은 뉴스 항목마다 항상 포함(GUIDE.md 모드 A 6.5 — 전용 서브에이전트 결과, 개인화하지 않은 중립 요약 3줄).
+  - "용어 해설"(<dl class="glossary">)은 그 항목에 실제로 생소할 만한 용어가 있을 때만 포함 — 없으면 그 <div class="addendum"> 전체를 생략한다. 이미 사용자가 아는 용어는 넣지 않는다.
+  - "레이더"(<section class="radar">)는 본 브리프를 통과하지 못한 항목 중 "실재하는 변화"를 한 줄씩 싣는 별도 인지 채널이다(GUIDE.md 모드 A 6.7). 분량 상한 없음. 실을 게 없으면 섹션 전체를 생략한다. 본 브리프 항목과 절대 섞지 않는다.
+-->
+<title>Knowledge Brief 2026-10-12</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,500;1,6..72,600&family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  :root {
+    --paper: #eef0f4;
+    --surface: #ffffff;
+    --ink: #131722;
+    --ink-soft: #5b6472;
+    --signal: #c97a1a;
+    --signal-deep: #8a5313;
+    --signal-soft: #f3e3cc;
+    --line: rgba(19, 23, 34, 0.12);
+    --line-strong: rgba(19, 23, 34, 0.22);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #0e1116;
+      --surface: #171b22;
+      --ink: #e7e9ee;
+      --ink-soft: #9aa3b2;
+      --signal: #f0b15c;
+      --signal-deep: #f5c685;
+      --signal-soft: rgba(240, 177, 92, 0.14);
+      --line: rgba(231, 233, 238, 0.14);
+      --line-strong: rgba(231, 233, 238, 0.24);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --paper: #0e1116;
+    --surface: #171b22;
+    --ink: #e7e9ee;
+    --ink-soft: #9aa3b2;
+    --signal: #f0b15c;
+    --signal-deep: #f5c685;
+    --signal-soft: rgba(240, 177, 92, 0.14);
+    --line: rgba(231, 233, 238, 0.14);
+    --line-strong: rgba(231, 233, 238, 0.24);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans KR', 'IBM Plex Sans', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 56px 24px 96px;
+  }
+
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--signal-deep);
+  }
+
+  header.masthead {
+    border-bottom: 1px solid var(--line-strong);
+    padding-bottom: 28px;
+    margin-bottom: 40px;
+  }
+
+  header.masthead .eyebrow {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  h1.headline {
+    font-family: 'Newsreader', Georgia, serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(32px, 6vw, 44px);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin: 14px 0 10px;
+    text-wrap: balance;
+  }
+
+  .masthead .subhead {
+    color: var(--ink-soft);
+    font-size: 15px;
+    max-width: 56ch;
+  }
+
+  .masthead .subhead b {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .masthead .listen {
+    margin-top: 20px;
+    padding: 14px 16px;
+    background: var(--signal-soft);
+    border-radius: 10px;
+    display: grid;
+    gap: 8px;
+  }
+
+  .masthead .listen audio { width: 100%; }
+
+  article.item {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 32px 32px 28px;
+    margin-bottom: 32px;
+  }
+
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  .tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+    border: 1px solid var(--line-strong);
+    color: var(--ink-soft);
+  }
+
+  .tag.priority {
+    border-color: var(--signal);
+    color: var(--signal-deep);
+    background: var(--signal-soft);
+  }
+
+  h2.item-title {
+    font-family: 'Newsreader', Georgia, serif;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 1.3;
+    margin: 0 0 18px;
+    text-wrap: balance;
+  }
+
+  .section-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin: 22px 0 8px;
+  }
+
+  .section-label:first-of-type { margin-top: 0; }
+
+  article.item p {
+    margin: 0 0 4px;
+    max-width: 62ch;
+  }
+
+  article.item .for-you {
+    padding: 14px 16px;
+    background: var(--signal-soft);
+    border-left: 2px solid var(--signal);
+    border-radius: 0 3px 3px 0;
+  }
+
+  figure.diagram {
+    margin: 26px 0 6px;
+    padding: 18px 6px 8px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  figure.diagram svg { width: 100%; height: auto; display: block; color: var(--ink-soft); }
+  figure.diagram .accent { color: var(--signal); }
+  figure.diagram text { font-family: 'IBM Plex Mono', monospace; fill: currentColor; }
+
+  figcaption {
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-top: 10px;
+  }
+
+  .source-row {
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .source-row a {
+    color: var(--ink);
+    text-decoration-color: var(--signal);
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 3px;
+  }
+
+  .source-row .domain {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+
+  .addendum {
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+  }
+
+  ol.tri-summary {
+    margin: 0;
+    padding-left: 1.3em;
+  }
+
+  ol.tri-summary li {
+    margin-bottom: 6px;
+    max-width: 62ch;
+  }
+
+  dl.glossary {
+    margin: 0;
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    column-gap: 14px;
+    row-gap: 10px;
+  }
+
+  dl.glossary dt {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--signal-deep);
+    white-space: nowrap;
+  }
+
+  dl.glossary dd {
+    margin: 0;
+    max-width: 56ch;
+    color: var(--ink-soft);
+  }
+
+  /* 레이더 — 인지 채널. 본 브리프(학습 채널)와 시각적으로 명확히 구분되어야 한다:
+     카드가 아니라 목록, 강조색 없음, 본문보다 작은 글씨. 훑고 지나가는 영역이다. */
+  section.radar {
+    margin-top: 40px;
+    padding-top: 26px;
+    border-top: 1px solid var(--line-strong);
+  }
+
+  section.radar > p.radar-note {
+    margin: 0 0 18px;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    max-width: 62ch;
+  }
+
+  .radar-group {
+    margin-bottom: 20px;
+  }
+
+  .radar-group h3 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 500;
+    margin: 0 0 8px;
+  }
+
+  ul.radar-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  ul.radar-list li {
+    position: relative;
+    padding-left: 16px;
+    margin-bottom: 7px;
+    font-size: 14.5px;
+    line-height: 1.6;
+    max-width: 66ch;
+    color: var(--ink);
+  }
+
+  ul.radar-list li::before {
+    content: "·";
+    position: absolute;
+    left: 3px;
+    color: var(--ink-soft);
+  }
+
+  ul.radar-list li a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid var(--line-strong);
+  }
+
+  ul.radar-list li a:hover { border-bottom-color: var(--signal); }
+
+  footer.status {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    border-top: 1px solid var(--line-strong);
+    padding-top: 18px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  @media (max-width: 480px) {
+    article.item { padding: 24px 20px; }
+    h1.headline { font-size: 30px; }
+  }
+</style>
+
+<div class="page">
+
+  <header class="masthead">
+    <div class="eyebrow">
+      <span>KNOWLEDGE BRIEF</span>
+      <span>2026-10-12 · 22:00</span>
+    </div>
+    <h1 class="headline">정책이 막는 것과 구조가 막는 것, 그리고 "90%"가 말하지 않는 것</h1>
+    <p class="subhead">오늘 조사한 것 중 <b>지금 당신에게 학습 가치가 있다고 판단한 것</b>만 남겼습니다. 나머지는 이미 아는 내용이거나 가치가 낮아 걸러냈습니다.</p>
+    <div class="listen">
+      <span class="eyebrow">🎧 듣는 브리프 · 약 9분</span>
+      <audio controls preload="none" src="audio/2026-10-12.mp3"></audio>
+    </div>
+  </header>
+
+  <article class="item">
+    <div class="tag-row">
+      <span class="tag priority">보안·정책 · 강의에 바로 쓸 것</span>
+      <span class="tag">공식 발표</span>
+      <span class="tag">빨리 바뀜</span>
+    </div>
+
+    <h2 class="item-title">Anthropic 이용정책 개정, 11월 12일 시행: 에이전트가 장비를 움직이면 사람의 정지권과 안전 상태가 조건이 된다</h2>
+
+    <p class="section-label">WHAT</p>
+    <p>Anthropic이 10월 8일 이용정책 개정을 발표했습니다. 시행일은 11월 12일입니다. 회사는 대부분이 기존 규칙을 명확히 한 것이라고 밝혔습니다.</p>
+    <ul>
+      <li>가짜 계정 네트워크, 조작 뉴스 사이트, 영향력 공작 도구를 묶은 "기만 활동" 절이 새로 생겼습니다.</li>
+      <li>감시 조항은 동의 없는 추적, 수사·체포 대상 추천, 감시 도구 제작을 막는 쪽으로 다시 쓰였습니다.</li>
+      <li>무기 조항에 유도·제어 소프트웨어와 드론 무장이 명시됐습니다.</li>
+      <li>선거 조항은 좁아졌습니다. 개인화 타기팅 전면 금지는 빠지고, 속이거나 유권자 정보를 오용하는 경우만 남았습니다.</li>
+      <li>모델에 대한 지속적이고 불필요한 학대적 행동 금지가 새로 들어갔습니다. 일상적인 짜증, 반박, 테스트는 제외됩니다.</li>
+    </ul>
+    <p>에이전트와 직접 관련된 부분은 물리 장비 조항입니다. 사람을 다치게 할 수 있는 자율 장비에는 두 조건이 붙습니다. 자격 있는 운영자가 장비를 지켜보고 멈출 수 있어야 합니다. Claude와의 연결이 끊기면 장비가 안전한 상태를 유지해야 합니다.</p>
+
+    <p class="section-label">WHY</p>
+    <p>Anthropic은 Claude가 더 길고 독립적인 일을 하게 되어 적용 예시를 추가했다고 설명합니다. 에이전트가 말만 하는 단계를 지나 행동한다는 인식이 정책 문장에 반영된 것입니다.</p>
+    <p>이 조항의 핵심은 조건이 모델 안이 아니라 장비 쪽에 걸린다는 점입니다. 모델이 거절을 잘하면 된다는 말이 아닙니다. 모델이 사라져도 성립하는 정지 수단과 기본 상태를 요구합니다. 이 해석은 제가 조항을 읽고 붙인 것이며, Anthropic이 이렇게 표현한 것은 아닙니다.</p>
+    <p>AX 강의에서는 두 가지 질문이 나올 수 있습니다. 하나는 "정책에 금지돼 있으면 안전한 것 아닌가요"입니다. 다른 하나는 "회사 내부 자동화에도 이런 기준이 필요한가요"입니다.</p>
+
+    <p class="section-label">FOR YOU</p>
+    <div class="for-you">
+      <p>당신은 강제 지점의 두 조건을 이미 스스로 세웠습니다. 통제는 통제 대상의 쓰기 권한 밖에 있어야 하고, 실제 실행 경로 위에 있어야 한다는 기준입니다. 이번 물리 장비 조항을 그 기준에 대 보면 구조가 잘 보입니다.</p>
+      <ul>
+        <li>"운영자가 멈출 수 있어야 한다"는 모델 밖에 있는 정지 수단입니다. 모델이 고칠 수 없는 자리입니다.</li>
+        <li>"연결이 끊기면 안전 상태"는 모델의 응답을 기다리지 않는 기본값입니다. 실행 경로 위에 있습니다.</li>
+        <li>정책 문서 자체는 이 둘 중 어느 쪽도 아닙니다. 계약일 뿐, 장비를 막는 장치는 운영자가 따로 만들어야 합니다.</li>
+      </ul>
+      <p>야간 브리프에도 같은 모양이 있습니다. 카카오 응답이 오지 않으면 결과를 "불명"으로 두고 다시 보내지 않습니다. 끊겼을 때 어느 쪽으로 기울지를 미리 정해 둔 것이고, 이번 조항이 요구하는 구조와 같은 종류입니다.</p>
+      <p>확인해 볼 질문이 하나 있습니다. 수강생이 "정책에서 금지하니 괜찮죠"라고 물으면 어떻게 답하시겠습니까. 정책이 막는 것과 구조가 막는 것을 어떻게 구분해서 말할지 한 문장으로 정리해 보세요.</p>
+    </div>
+
+    <p class="section-label">LEARN</p>
+    <p>시행 전에 원문을 한 번 훑어 둘 가치가 있습니다. 깊이 파야 할 주제는 아닙니다. 정책은 자주 바뀌므로 "무엇이 금지돼 있다"를 외우기보다 "조건이 모델 밖에 걸린다"는 구조만 기억하면 충분합니다.</p>
+
+    <div class="source-row">
+      <a href="https://www.anthropic.com/news/2026-usage-policy-update" target="_blank" rel="noopener">Anthropic 원문 보기 →</a>
+      <span class="domain">anthropic.com/news</span>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">3줄 요약</p>
+      <ol class="tri-summary">
+        <li>Anthropic이 10월 8일 이용정책 개정을 발표했고 11월 12일부터 시행됩니다.</li>
+        <li>기만 활동 절 신설, 선거·감시·무기 조항 재작성, 모델 학대 행동 금지 신설이 주요 변경입니다.</li>
+        <li>자율 물리 장비는 운영자가 관찰·정지할 수 있어야 하며, 대부분은 기존 규칙의 명확화라고 밝혔습니다.</li>
+      </ol>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">용어 해설</p>
+      <dl class="glossary">
+        <dt>고위험 사용</dt>
+        <dd>법률, 의료, 금융처럼 개인의 권리나 생계에 큰 영향을 주는 결정에 쓰이는 용도입니다. 자격 있는 사람의 검토와 영향받는 개인에 대한 고지가 필요합니다.</dd>
+        <dt>안전 상태</dt>
+        <dd>연결이 끊기거나 오류가 나도 장비가 위험을 키우지 않고, 미리 정해진 안전한 상태로 돌아가거나 머무르는 것을 말합니다.</dd>
+      </dl>
+    </div>
+  </article>
+
+  <article class="item">
+    <div class="tag-row">
+      <span class="tag priority">보안 · 강의에 바로 쓸 것</span>
+      <span class="tag">공식 발표</span>
+      <span class="tag">빨리 바뀜</span>
+    </div>
+
+    <h2 class="item-title">Anthropic, 오픈소스 프로젝트에 사람 검토 없는 취약점 보고서를 보내는 무료 스캐너를 연다</h2>
+
+    <p class="section-label">WHAT</p>
+    <p>Anthropic이 10월 8일 "사이버 미션"을 발표했습니다. 방어하는 쪽에 최신 모델을 쥐여 주겠다는 장기 프로그램이고, 처음에는 두 갈래로 시작합니다.</p>
+    <ul>
+      <li>전력·수도·교통 같은 설비를 지키는 보안업체에 최신 Claude 모델, 현장 엔지니어, 위협 연구를 제공합니다. 창립 파트너는 Accenture, CrowdStrike, Palo Alto Networks 등 11곳입니다.</li>
+      <li>오픈소스 유지관리자가 신청하면 Anthropic의 최상위 모델이 주기적으로 코드를 스캔해 무료로 보고서를 보냅니다. 이름은 OSS Scanner입니다.</li>
+    </ul>
+    <p>보고서에는 취약점을 실제로 악용하는 개념증명, 설명, 가능하면 수정 제안이 들어갑니다. 원문에는 보고서가 "모델이 생성하고 사람 검토 없이 발송된다"고 적혀 있습니다. Anthropic은 진양성률이 90% 이상일 것으로 예상한다고 밝혔습니다.</p>
+
+    <p class="section-label">WHY</p>
+    <p>Anthropic이 내건 이유는 두 가지입니다. 사이버 능력이 높은 모델이 공격자에게 널리 퍼졌습니다. 반면 방어 도구는 방어자에게 충분히 닿지 못했습니다.</p>
+    <p>눈여겨볼 곳은 "사람 검토 없이"입니다. 보고서를 받는 쪽은 대부분 소수의 자원봉사 유지관리자입니다. 90%라는 숫자는 회사의 예상치이며, 외부에서 측정한 값이 아닙니다. 보고서 열 건 중 한 건이 틀리면, 어느 건인지는 받는 사람이 직접 가려야 합니다.</p>
+
+    <p class="section-label">FOR YOU</p>
+    <div class="for-you">
+      <p>당신의 야간 브리프는 "프로세스가 정상 종료했다"를 성공 증거로 쓰지 않습니다. 실제 결과를 보여 주는 영수증을 요구합니다. OSS Scanner 보고서는 반대 방향의 사례입니다. 보고서가 도착했다는 사실과 보고서가 맞다는 사실이 다른데, 그 사이에 사람 검토가 없습니다.</p>
+      <ul>
+        <li>보내는 쪽은 "맞을 것"이라고 예상합니다.</li>
+        <li>받는 쪽은 맞는지 판단해야 합니다.</li>
+        <li>둘 사이의 검증 비용이 누구에게 가는지가 이 설계의 쟁점입니다.</li>
+      </ul>
+      <p>이 지점은 당신이 현장 경험에서 이미 짚은 것과 닿아 있습니다. 승인자가 내용을 평가할 능력이 없으면 승인 단계는 리스크를 줄이지 않고 책임만 넘깁니다. 이번에는 같은 구조가 "받는 사람이 검토자"라는 모양으로 나타났습니다.</p>
+      <p>아래 세 번째 항목에서 이 90%라는 숫자가 정확히 무엇을 말해 주고 무엇은 말해 주지 않는지를 다룹니다.</p>
+    </div>
+
+    <p class="section-label">LEARN</p>
+    <p>사실만 알아 두면 됩니다. 이 프로그램은 앞으로 몇 달에 걸쳐 바뀔 것이라고 회사도 밝혔습니다. 강의에서 "AI가 찾은 취약점 보고서"를 소개한다면 사람 검토가 없다는 점을 함께 말해야 합니다.</p>
+
+    <div class="source-row">
+      <a href="https://www.anthropic.com/news/anthropic-cyber-mission" target="_blank" rel="noopener">Anthropic 원문 보기 →</a>
+      <span class="domain">anthropic.com/news</span>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">3줄 요약</p>
+      <ol class="tri-summary">
+        <li>Anthropic은 고성능 AI가 공격자에게 퍼진 반면 방어 도구는 방어자에게 닿지 못했다고 보고 사이버 미션을 발표했습니다.</li>
+        <li>운영기술 보안업체에 Claude 모델, 현장 엔지니어, 위협 연구를 제공하는 프로그램을 11곳의 창립 파트너와 시작합니다.</li>
+        <li>오픈소스 유지관리자는 신청하면 무료 버그 보고서를 받으며, 사람 검토 없이 발송되는 보고서의 진양성률은 90% 이상으로 예상됩니다.</li>
+      </ol>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">용어 해설</p>
+      <dl class="glossary">
+        <dt>운영기술(OT)</dt>
+        <dd>전력, 수도, 교통처럼 실제 설비를 제어하고 감시하는 산업용 시스템입니다. 일반 IT와 달리 장애가 물리적 피해로 이어질 수 있습니다.</dd>
+        <dt>진양성률</dt>
+        <dd>시스템이 "맞다"고 낸 결과 중 실제로 맞은 비율입니다. 여기서는 보고서 100건 중 진짜 취약점인 건수를 뜻합니다.</dd>
+      </dl>
+    </div>
+  </article>
+
+  <article class="item">
+    <div class="tag-row">
+      <span class="tag priority">평가 설계 · 오늘의 핵심</span>
+      <span class="tag">개념 정리</span>
+      <span class="tag">오래 가는 기초</span>
+    </div>
+
+    <h2 class="item-title">"좋아졌다"를 숫자로 말하는 유일한 방법: 평가셋과, 90%라는 숫자가 말하지 않는 것</h2>
+
+    <p class="section-label">WHAT</p>
+    <p>오늘 다룰 것은 위 기사에서 나온 "진양성률 90%"를 어떻게 읽을지입니다. 이 숫자를 읽으려면 평가셋이 무엇인지 먼저 알아야 합니다.</p>
+    <p>당신은 테스트 코드를 쓰는 사람입니다. 단위 테스트는 같은 입력에 같은 결과를 줍니다. 한 번 통과하면 그 경로는 증명됩니다. 모델 출력은 그렇지 않습니다. 한 번 맞았다는 것은 증거가 못 됩니다.</p>
+
+    <p class="section-label">WHY</p>
+    <p>그래서 모델 쪽에서는 테스트 대신 평가셋을 씁니다. 평가셋은 질문과 기대 답의 목록입니다. 모델이나 프롬프트를 바꿀 때마다 같은 목록을 다시 돌리고 정답 비율을 이전과 비교합니다. 이것이 회귀 비교입니다.</p>
+    <p>평가셋은 세 부품으로 이뤄집니다.</p>
+    <ul>
+      <li>문항: 실제 업무에서 나온 입력 예시입니다.</li>
+      <li>정답표: 사람이 미리 정해 둔 기대 답입니다.</li>
+      <li>채점 방식: 기계가 확인할 수 있는 것은 코드로, 내용의 옳고 그름은 사람이나 다른 모델이 채점합니다.</li>
+    </ul>
+    <p>가장 고된 부분은 정답표입니다. 사람이 직접 만들어야 하기 때문입니다. RAG를 만들 때 정답셋 작업이 노가다처럼 느껴지는 이유도 같습니다.</p>
+
+    <p class="section-label">FOR YOU</p>
+    <div class="for-you">
+      <p>당신은 지난달 불안의 정체를 "내가 확인할 수 없는, 정량적 과정이 없는 것"이라고 짚었습니다. 평가셋이 바로 그 자리를 메우는 도구입니다. 컴파일러가 공짜로 주던 객관적 검증을, 모델 출력 구간에서는 정답표로 직접 만들어야 합니다.</p>
+      <p>당신 저장소에는 이미 절반이 있습니다. 야간 브리프의 테스트 파일은 결정론 구간을 검증합니다. 영수증 상태값이나 실패 경로가 그렇습니다. 같은 저장소의 브리프 검사 도구도 문장 길이와 내부 용어 누출을 셉니다. 없는 것은 확률 구간입니다. 그 기사가 정말 실을 만한가는 아직 숫자로 재지 않습니다.</p>
+      <p>이제 오늘의 질문으로 돌아갑니다. 스캐너가 하루 50건의 보고서를 보내고 진양성률이 90%라고 해 봅시다.</p>
+      <ul>
+        <li>유지관리자는 몇 건을 헛수고로 읽게 될까요? 약 5건입니다.</li>
+        <li>이 숫자는 스캐너가 놓친 취약점에 대해 무엇을 말해 줄까요? 아무것도 말해 주지 않습니다.</li>
+      </ul>
+      <p>첫 번째 숫자는 "낸 것 중 맞은 비율"입니다. 놓친 것의 비율은 재현율이라는 다른 숫자가 필요합니다. 하나만 보고 "정확하다"고 말하면 절반만 말한 것입니다. 수강생이 "정확도 95%래요"라고 하면 무엇의 95%인지 되물을 수 있어야 합니다.</p>
+      <p>다음 걸음은 작게 시작합니다. 브리프 후보 기사 10건에 "실을까, 버릴까"를 사람이 먼저 판정한 정답표를 만들고, 에이전트의 선택과 맞춰 보는 것입니다. 남의 예제가 아니라 당신 시스템이어야 한다는 점은 이미 확인된 바 있습니다.</p>
+    </div>
+
+    <p class="section-label">LEARN</p>
+    <p>이 주제는 오래 가는 기초이고, 강의와 제품과 자동화 세 업무에 모두 걸립니다. 지금 필요한 것은 용어 암기가 아니라 정답표 10건을 직접 만들어 보는 한 번의 경험입니다.</p>
+
+    <div class="addendum">
+      <p class="section-label">3줄 요약</p>
+      <ol class="tri-summary">
+        <li>평가셋은 질문과 기대 답의 쌍 모음으로, 모델이나 프롬프트를 바꿀 때마다 같은 셋을 돌려 정답률을 이전과 비교합니다.</li>
+        <li>모델 출력은 확률적이라 한 번 맞는 것으로는 부족하고 여러 문항의 비율로 판단합니다.</li>
+        <li>형식 같은 결정론 구간과 내용 정확성 같은 확률 구간을 나눠 검증하며, 정답표를 사람이 만드는 일이 가장 고됩니다.</li>
+      </ol>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">용어 해설</p>
+      <dl class="glossary">
+        <dt>정답표</dt>
+        <dd>사람이 미리 검토해 확정한 질문과 기대 답의 고정 목록입니다. 시스템 점수를 매기는 기준이 됩니다.</dd>
+        <dt>LLM 채점자</dt>
+        <dd>다른 LLM에게 답변의 품질을 채점하게 하는 방식입니다. 사람이 일일이 보지 않아도 되지만, 채점자의 편향이 점수에 섞일 수 있습니다.</dd>
+        <dt>재현율</dt>
+        <dd>실제로 있는 것 중에서 시스템이 찾아낸 비율입니다. 진양성률이 "낸 것 중 맞은 비율"이라면, 재현율은 "있는 것 중 찾은 비율"입니다.</dd>
+      </dl>
+    </div>
+  </article>
+
+  <section class="radar">
+    <p class="section-label">레이더</p>
+    <p class="radar-note">학습 대상이 아니라 <b>인지 대상</b>입니다. 훑고 지나가세요 — 나중에 필요한 순간에 &ldquo;그거 있었지&rdquo;가 나오게 하는 것이 목적입니다.</p>
+
+    <div class="radar-group">
+      <h3>내가 쓰는 도구</h3>
+      <ul class="radar-list">
+        <li>Codex CLI 0.162.1 (10월 9일) — 여러 줄 질문을 입력하면 종료되던 문제와, 기능 설정이 어긋나 시작이 실패하던 문제를 고친 수정 릴리스. 릴리스 추적 사이트 기준.</li>
+      </ul>
+    </div>
+
+    <div class="radar-group">
+      <h3>주변 생태계</h3>
+      <ul class="radar-list">
+        <li><a href="https://anthropic.com/news/claude-frontier-academy">Claude Frontier Academy</a> — Anthropic이 1억 달러를 들여 2027년 말까지 기업 AI 도입 엔지니어 1만 명을 훈련하는 프로그램. 며칠간의 집합 교육 뒤 12주 동안 소속 회사에서 실제 Claude 프로젝트를 이끌고, 평가를 통과하면 자격 배지를 준다. 첫 기수에 Accenture·Deloitte·McKinsey 등이 참여.</li>
+        <li>Runway — 통합 요금제와, 에이전트가 영상 제작을 돌리는 흐름용 실시간 검열 계층을 9월 중순 내놨다는 주간 요약 보도. 2차 출처 기준이라 원문은 확인하지 못함.</li>
+        <li>Universal Music Group × ElevenLabs — 음반사가 다년 라이선스 협업으로 AI 음악 제품을 내놓기로 했다는 보도(9월 주간 요약, 2차 출처). 저작권 허락을 받은 AI 음악이라는 카테고리가 음반사 쪽에서 열리고 있다.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer class="status">
+    <span>오늘 조사 후 2건 + 개념 정리 1건 전달 · 레이더 4건 · 일부는 반복/추측성으로 폐기</span>
+    <span>Knowledge Agent v0.1</span>
+  </footer>
+
+</div>
