@@ -1,0 +1,577 @@
+<title>Knowledge Brief 2026-10-14</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,500;1,6..72,600&family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  :root {
+    --paper: #eef0f4;
+    --surface: #ffffff;
+    --ink: #131722;
+    --ink-soft: #5b6472;
+    --signal: #c97a1a;
+    --signal-deep: #8a5313;
+    --signal-soft: #f3e3cc;
+    --line: rgba(19, 23, 34, 0.12);
+    --line-strong: rgba(19, 23, 34, 0.22);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #0e1116;
+      --surface: #171b22;
+      --ink: #e7e9ee;
+      --ink-soft: #9aa3b2;
+      --signal: #f0b15c;
+      --signal-deep: #f5c685;
+      --signal-soft: rgba(240, 177, 92, 0.14);
+      --line: rgba(231, 233, 238, 0.14);
+      --line-strong: rgba(231, 233, 238, 0.24);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --paper: #0e1116;
+    --surface: #171b22;
+    --ink: #e7e9ee;
+    --ink-soft: #9aa3b2;
+    --signal: #f0b15c;
+    --signal-deep: #f5c685;
+    --signal-soft: rgba(240, 177, 92, 0.14);
+    --line: rgba(231, 233, 238, 0.14);
+    --line-strong: rgba(231, 233, 238, 0.24);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans KR', 'IBM Plex Sans', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 56px 24px 96px;
+  }
+
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--signal-deep);
+  }
+
+  header.masthead {
+    border-bottom: 1px solid var(--line-strong);
+    padding-bottom: 28px;
+    margin-bottom: 40px;
+  }
+
+  header.masthead .eyebrow {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  h1.headline {
+    font-family: 'Newsreader', Georgia, serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(32px, 6vw, 44px);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin: 14px 0 10px;
+    text-wrap: balance;
+  }
+
+  .masthead .subhead {
+    color: var(--ink-soft);
+    font-size: 15px;
+    max-width: 56ch;
+  }
+
+  .masthead .subhead b {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .masthead .listen {
+    margin-top: 20px;
+    padding: 14px 16px;
+    background: var(--signal-soft);
+    border-radius: 10px;
+    display: grid;
+    gap: 8px;
+  }
+
+  .masthead .listen audio { width: 100%; }
+
+  article.item {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 32px 32px 28px;
+    margin-bottom: 32px;
+  }
+
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  .tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+    border: 1px solid var(--line-strong);
+    color: var(--ink-soft);
+  }
+
+  .tag.priority {
+    border-color: var(--signal);
+    color: var(--signal-deep);
+    background: var(--signal-soft);
+  }
+
+  h2.item-title {
+    font-family: 'Newsreader', Georgia, serif;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 1.3;
+    margin: 0 0 18px;
+    text-wrap: balance;
+  }
+
+  .section-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin: 22px 0 8px;
+  }
+
+  .section-label:first-of-type { margin-top: 0; }
+
+  article.item p {
+    margin: 0 0 4px;
+    max-width: 62ch;
+  }
+
+  article.item .for-you {
+    padding: 14px 16px;
+    background: var(--signal-soft);
+    border-left: 2px solid var(--signal);
+    border-radius: 0 3px 3px 0;
+  }
+
+  figure.diagram {
+    margin: 26px 0 6px;
+    padding: 18px 6px 8px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  figure.diagram svg { width: 100%; height: auto; display: block; color: var(--ink-soft); }
+  figure.diagram .accent { color: var(--signal); }
+  figure.diagram text { font-family: 'IBM Plex Mono', monospace; fill: currentColor; }
+
+  figcaption {
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-top: 10px;
+  }
+
+  .source-row {
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .source-row a {
+    color: var(--ink);
+    text-decoration-color: var(--signal);
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 3px;
+  }
+
+  .source-row .domain {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+
+  .addendum {
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+  }
+
+  ol.tri-summary {
+    margin: 0;
+    padding-left: 1.3em;
+  }
+
+  ol.tri-summary li {
+    margin-bottom: 6px;
+    max-width: 62ch;
+  }
+
+  dl.glossary {
+    margin: 0;
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    column-gap: 14px;
+    row-gap: 10px;
+  }
+
+  dl.glossary dt {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--signal-deep);
+    white-space: nowrap;
+  }
+
+  dl.glossary dd {
+    margin: 0;
+    max-width: 56ch;
+    color: var(--ink-soft);
+  }
+
+  /* 레이더 — 인지 채널. 본 브리프(학습 채널)와 시각적으로 명확히 구분되어야 한다:
+     카드가 아니라 목록, 강조색 없음, 본문보다 작은 글씨. 훑고 지나가는 영역이다. */
+  section.radar {
+    margin-top: 40px;
+    padding-top: 26px;
+    border-top: 1px solid var(--line-strong);
+  }
+
+  section.radar > p.radar-note {
+    margin: 0 0 18px;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    max-width: 62ch;
+  }
+
+  .radar-group {
+    margin-bottom: 20px;
+  }
+
+  .radar-group h3 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 500;
+    margin: 0 0 8px;
+  }
+
+  ul.radar-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  ul.radar-list li {
+    position: relative;
+    padding-left: 16px;
+    margin-bottom: 7px;
+    font-size: 14.5px;
+    line-height: 1.6;
+    max-width: 66ch;
+    color: var(--ink);
+  }
+
+  ul.radar-list li::before {
+    content: "·";
+    position: absolute;
+    left: 3px;
+    color: var(--ink-soft);
+  }
+
+  ul.radar-list li a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid var(--line-strong);
+  }
+
+  ul.radar-list li a:hover { border-bottom-color: var(--signal); }
+
+  footer.status {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    border-top: 1px solid var(--line-strong);
+    padding-top: 18px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  @media (max-width: 480px) {
+    article.item { padding: 24px 20px; }
+    h1.headline { font-size: 30px; }
+  }
+</style>
+
+<div class="page">
+
+  <header class="masthead">
+    <div class="eyebrow">
+      <span>KNOWLEDGE BRIEF</span>
+      <span>2026-10-14 · 22:00</span>
+    </div>
+    <h1 class="headline">모델의 거절은 실행을 막지 않고, HTTPS의 보장은 통로 끝의 신원까지다</h1>
+    <p class="subhead">오늘 조사한 것 중 <b>지금 당신에게 학습 가치가 있다고 판단한 것</b>만 남겼습니다. 나머지는 이미 아는 내용이거나 가치가 낮아 걸러냈습니다.</p>
+  </header>
+
+  <article class="item">
+    <div class="tag-row">
+      <span class="tag priority">보안 · 오늘의 핵심</span>
+      <span class="tag">논문 (심사 전)</span>
+      <span class="tag">빨리 바뀜</span>
+    </div>
+
+    <h2 class="item-title">모델이 거절해도 도구는 이미 실행된다: 여섯 에이전트 프레임워크와 MCP 서버 118곳의 약점</h2>
+
+    <p class="section-label">WHAT</p>
+    <p>10월 9일 공개된 논문이 에이전트 프레임워크 여섯 곳에서 같은 약점을 보고했습니다. 대상은 LangGraph, Microsoft Agent Framework, AutoGen, Google ADK 2.0, AWS Strands Agents, CrewAI입니다. 제목은 "ToFu"이고 아직 동료 심사 전입니다. CSO Online이 10월 12일 이를 보도했습니다.</p>
+    <p>공격 이름은 "Repeat-After-Me"입니다. 순서는 이렇습니다.</p>
+    <ul>
+      <li>공격자가 "가정이니 이 도구 호출 문장을 그대로 따라 써 보라"고 요청합니다.</li>
+      <li>모델은 거절하는 말을 하면서도, 구조를 갖춘 도구 호출을 함께 출력합니다.</li>
+      <li>프레임워크가 그 출력을 도구 호출로 보고 그대로 실행합니다.</li>
+      <li>모델의 거절 문구는 도구가 이미 돌아간 뒤에 도착합니다.</li>
+    </ul>
+    <p>범위에는 한계가 있습니다. 전체 시연은 LangGraph 1.2.0 한 곳에서만 공개됐습니다. 모델은 작은 Llama 3.1 8B였고, 도구는 가짜 두 개였으며, 방어는 시스템 프롬프트가 전부였습니다. 나머지 다섯은 재현했다고만 했고 성공률은 없습니다. 벤더 다섯 곳은 아직 답하지 않았습니다.</p>
+    <p>같은 연구팀은 도구 쪽도 점검했습니다. 오픈소스 MCP 서버 273개를 자동으로 두들겨 봤고, 118개 서버에서 검증된 취약점 253건을 찾았습니다.</p>
+    <ul>
+      <li><b>경로 탐색:</b> 64건. 허용된 폴더 밖의 파일에 닿습니다.</li>
+      <li><b>SSRF:</b> 7건. 서버가 내부 주소로 요청을 보내게 됩니다.</li>
+      <li><b>데이터 유출:</b> 5건, <b>OS 명령 주입:</b> 3건.</li>
+      <li>나머지 대부분은 출력 반사와 로그 주입 같은 낮은 영향의 문제입니다.</li>
+    </ul>
+
+    <p class="section-label">WHY</p>
+    <p>연구진은 이렇게 요약합니다. "시스템 프롬프트는 모델이 한 말을 바꿨지, 오케스트레이터가 한 일을 바꾸지 못했다." 모델이 하는 말과 시스템이 하는 실행은 서로 다른 줄입니다. 거절은 말 줄에 있었고, 실행은 다른 줄에서 일어났습니다.</p>
+    <p>도구 쪽도 같은 가정을 합니다. 모델이 알아서 걸러 줄 테니 입력 검증은 생략하는 식입니다. 논문은 많은 도구가 모델의 정제를 암묵적으로 믿는다고 지적합니다. 그래서 두 약점이 겹칩니다. 앞단의 거절도, 뒷단의 검증도 없는 구간이 생깁니다.</p>
+    <p>수치는 모두 연구팀 자체 결과입니다. 심사 전이고, 모든 배포가 이렇게 동작한다는 뜻도 아닙니다. 서버들이 지금 고쳐졌는지는 보도에 없습니다.</p>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 640 210" role="img" aria-label="모델이 거절 문구와 도구 호출을 함께 내면 오케스트레이터가 그것을 실행하고, 거절은 실행 뒤에 도착하며, 실행 직전 인가 검사와 도구 입력 검증 두 곳이 비어 있다는 그림">
+        <defs>
+          <marker id="ar1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker>
+        </defs>
+        <rect x="20" y="50" width="150" height="64" rx="3" fill="none" stroke="currentColor"/>
+        <text x="95" y="76" font-size="12" text-anchor="middle">모델</text>
+        <text x="95" y="96" font-size="11" text-anchor="middle">거절 문구 + 호출문</text>
+        <rect x="245" y="50" width="150" height="64" rx="3" fill="none" stroke="currentColor"/>
+        <text x="320" y="76" font-size="12" text-anchor="middle">오케스트레이터</text>
+        <text x="320" y="96" font-size="11" text-anchor="middle">호출문을 그대로 실행</text>
+        <rect x="470" y="50" width="150" height="64" rx="3" fill="none" stroke="currentColor"/>
+        <text x="545" y="76" font-size="12" text-anchor="middle">도구 (MCP 서버)</text>
+        <text x="545" y="96" font-size="11" text-anchor="middle">입력을 그대로 믿음</text>
+        <line x1="172" y1="82" x2="241" y2="82" stroke="currentColor" marker-end="url(#ar1)"/>
+        <line x1="397" y1="82" x2="466" y2="82" stroke="currentColor" marker-end="url(#ar1)"/>
+        <g class="accent">
+          <rect x="396" y="132" width="76" height="28" rx="3" fill="none" stroke="currentColor" stroke-dasharray="4 3"/>
+          <text x="434" y="150" font-size="11" text-anchor="middle">빠진 검사 ①</text>
+          <rect x="560" y="132" width="76" height="28" rx="3" fill="none" stroke="currentColor" stroke-dasharray="4 3"/>
+          <text x="598" y="150" font-size="11" text-anchor="middle">빠진 검사 ②</text>
+        </g>
+        <text x="434" y="180" font-size="10.5" text-anchor="middle">실행 직전 인가</text>
+        <text x="598" y="180" font-size="10.5" text-anchor="middle">도구 입력 검증</text>
+        <text x="95" y="150" font-size="11" text-anchor="middle">거절은 여기서 끝</text>
+        <text x="95" y="170" font-size="11" text-anchor="middle">(실행 뒤에 도착)</text>
+      </svg>
+      <figcaption>거절은 모델의 말에만 있었다. 실행 경로 위에는 인가 검사도, 도구 쪽 입력 검증도 없었다.</figcaption>
+    </figure>
+
+    <p class="section-label">FOR YOU</p>
+    <div class="for-you">
+      <p>당신은 이 논문의 결론을 이미 다른 자리에서 말했습니다. 위험한 키워드를 거르는 필터는 새고, 쿼리 구조를 고정하는 방식은 새지 않는다고 답했습니다. 오늘 사례는 같은 구도입니다.</p>
+      <ul>
+        <li><b>시스템 프롬프트의 "하지 마"</b>는 키워드 필터와 같은 쪽입니다. 우회 경로가 다양하고, 통제 대상인 모델이 읽는 글입니다.</li>
+        <li><b>도구가 자기 입력을 직접 검증</b>하는 것은 prepared statement와 같은 쪽입니다. 경로는 허용 폴더에 고정하고, URL은 허용 목록으로 고정합니다.</li>
+        <li><b>실행 직전의 독립 인가</b>는 당신의 두 조건에 들어맞습니다. 모델의 쓰기 권한 밖에 있고, 실행 경로 위에 있습니다.</li>
+      </ul>
+      <p>이번 사례에서 모델의 거절은 실행 경로 위가 아니라 그 옆에 있었습니다. 위치를 묻는 당신의 기준이 그대로 적용됩니다.</p>
+      <p>수강생이 "프롬프트에 하지 말라고 쓰면 막히나요?"라고 물으면 이렇게 답할 수 있습니다. 모델이 하는 말은 막혀도, 시스템이 하는 실행은 별개의 줄입니다.</p>
+      <p>확인 질문입니다. 야간 브리프에서 허용 도구 목록은 하네스가 실행 직전에 판단합니까, 모델의 협조에 맡깁니까? 카카오 전송 도구는 모델이 넘긴 텍스트와 URL을 그대로 받습니까?</p>
+    </div>
+
+    <p class="section-label">LEARN</p>
+    <p>구분 하나만 가져가면 됩니다. 모델이 말한 것과 시스템이 실행한 것은 따로 점검합니다. 이 영역은 빨리 바뀌고 논문은 심사 전입니다. 프레임워크가 사전 실행 검사를 넣었는지는 몇 주 뒤에 다시 보면 됩니다.</p>
+
+    <div class="source-row">
+      <a href="https://arxiv.org/abs/2610.13651" target="_blank" rel="noopener">논문 초록 (arXiv) 보기 →</a>
+      <span class="domain">arxiv.org</span>
+    </div>
+    <div class="source-row" style="margin-top:8px;padding-top:8px;">
+      <a href="https://csoonline.com/article/4233811/researchers-bypass-6-ai-agent-frameworks-with-a-simple-repeat-after-me-prompt.html" target="_blank" rel="noopener">CSO Online 보도 보기 →</a>
+      <span class="domain">csoonline.com</span>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">3줄 요약</p>
+      <ol class="tri-summary">
+        <li>연구진은 arXiv 논문(심사 전)에서 에이전트 프레임워크의 오케스트레이터가 모델 출력을 허가로 취급해, 모델이 거부 문구를 쓰면서 낸 도구 호출도 실행된다고 주장했다.</li>
+        <li>전체 시연은 LangGraph 1.2.0과 Llama 3.1 8B, 더미 도구 2개 환경에서만 이뤄졌고, 나머지 다섯 프레임워크는 재현했다고만 할 뿐 성공률은 보고되지 않았으며 벤더 응답도 없다.</li>
+        <li>연구팀 자체 보고로는 오픈소스 MCP 서버 273개 중 118개에서 검증된 취약점 253건이 나왔고, 권고는 도구의 입력 검증, 모델과 무관한 독립 인가, 민감 작업의 명시 승인이다.</li>
+      </ol>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">용어 해설</p>
+      <dl class="glossary">
+        <dt>오케스트레이터</dt>
+        <dd>에이전트 프레임워크에서 모델 출력을 받아 어떤 도구를 실행할지 정하고 실제로 호출하는 제어 코드다.</dd>
+        <dt>퍼징</dt>
+        <dd>비정상적이거나 무작위인 입력을 대량으로 넣어 프로그램이 깨지거나 취약점이 드러나는지 자동으로 찾는 시험 방법이다.</dd>
+        <dt>경로 탐색</dt>
+        <dd>"../" 같은 경로 문자열로 허용된 폴더 밖의 파일을 읽거나 쓰게 만드는 공격이다.</dd>
+        <dt>로그 주입</dt>
+        <dd>줄바꿈 등을 섞은 입력으로 로그에 가짜 기록을 끼워 넣어 감사 기록을 오염시키는 공격이다.</dd>
+        <dt>CWE</dt>
+        <dd>소프트웨어 취약점 유형에 번호를 붙여 분류한 공개 목록이다. 취약점의 종류를 공통 용어로 부를 때 쓴다.</dd>
+      </dl>
+    </div>
+  </article>
+
+  <article class="item">
+    <div class="tag-row">
+      <span class="tag priority">네트워크 · 오늘의 보완 항목</span>
+      <span class="tag">내 경험에서 출발</span>
+      <span class="tag">오래 가는 기초</span>
+    </div>
+
+    <h2 class="item-title">HTTPS는 세 층 중 가운데에서 일어난다: 당신의 APNs 정지 사건으로 읽는 TLS</h2>
+
+    <p class="section-label">WHY NOW</p>
+    <p>오늘 첫 항목은 "말과 실행 사이에서 어디가 막느냐"를 물었습니다. TLS는 반대편 질문입니다. 연결이 맺어진 순간 이미 무엇이 보장되어 있느냐입니다. 이 주제는 앞서 계층 설명으로 드렸지만 잘 붙지 않았습니다. 그래서 이번에는 당신이 직접 겪은 사건에서 거꾸로 올라갑니다.</p>
+
+    <p class="section-label">CONCEPT</p>
+    <p>당신은 APNs 발송이 멈춘 일을 겪었습니다. HTTP/2를 쓰고, 클라이언트 인증서를 스마트카드 방식으로 읽어 쓰는 연결이었고, 연결 협상(handshake)에서 정지했습니다. 원인은 당신도 확정하지 못했다고 했습니다. 이 사건이 어느 층에서 일어났는지를 보면 TLS의 자리가 보입니다.</p>
+    <p>HTTPS 요청 하나는 세 층을 차례로 지납니다.</p>
+    <ul>
+      <li><b>① TCP 연결:</b> 상대 서버까지 길을 냅니다. 3-way handshake는 이미 아는 부분입니다.</li>
+      <li><b>② TLS 협상:</b> 서버가 인증서로 자기 신원을 증명합니다. 양쪽이 암호 키를 합의합니다. HTTP/2를 쓸지도 여기서 정합니다(ALPN). APNs처럼 클라이언트 인증서가 필요하면 이쪽도 증명합니다.</li>
+      <li><b>③ HTTP:</b> 암호화된 통로 위에서 요청과 응답이 오갑니다. 상태 코드는 여기서 처음 생깁니다.</li>
+    </ul>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 640 220" role="img" aria-label="HTTPS 요청이 TCP 연결, TLS 협상, HTTP 요청의 세 층을 차례로 지나며, APNs 정지 지점은 가운데 TLS 협상이고 그 아래에서는 HTTP 상태 코드가 생기지 않는다는 그림">
+        <defs>
+          <marker id="ar2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker>
+        </defs>
+        <rect x="20" y="30" width="170" height="70" rx="3" fill="none" stroke="currentColor"/>
+        <text x="105" y="58" font-size="12" text-anchor="middle">① TCP 연결</text>
+        <text x="105" y="80" font-size="11" text-anchor="middle">길을 낸다</text>
+        <rect x="235" y="30" width="170" height="70" rx="3" fill="none" stroke="currentColor"/>
+        <text x="320" y="58" font-size="12" text-anchor="middle">② TLS 협상</text>
+        <text x="320" y="80" font-size="11" text-anchor="middle">신원·키·HTTP/2 합의</text>
+        <rect x="450" y="30" width="170" height="70" rx="3" fill="none" stroke="currentColor" stroke-dasharray="4 3"/>
+        <text x="535" y="58" font-size="12" text-anchor="middle">③ HTTP</text>
+        <text x="535" y="80" font-size="11" text-anchor="middle">요청·응답·상태 코드</text>
+        <line x1="192" y1="65" x2="231" y2="65" stroke="currentColor" marker-end="url(#ar2)"/>
+        <line x1="407" y1="65" x2="446" y2="65" stroke="currentColor" marker-end="url(#ar2)"/>
+        <g class="accent">
+          <line x1="320" y1="104" x2="320" y2="140" stroke="currentColor" stroke-width="2" marker-end="url(#ar2)"/>
+          <text x="320" y="160" font-size="12" text-anchor="middle">APNs 정지 지점</text>
+        </g>
+        <text x="320" y="186" font-size="11" text-anchor="middle">③에 닿기 전에 멈췄으니 상태 코드는 한 번도 생기지 않았다</text>
+        <text x="320" y="206" font-size="11" text-anchor="middle">밖에서는 "연결은 됐는데 응답이 없다"로 보인다</text>
+      </svg>
+      <figcaption>핸드셰이크는 HTTP보다 앞에 있다. 거기서 멈추면 서버가 거절한 것이 아니라, 대화가 시작되지 못한 것이다.</figcaption>
+    </figure>
+
+    <p>TLS가 보장하는 것은 세 가지입니다.</p>
+    <ul>
+      <li><b>신원:</b> 통로 끝이 그 도메인의 정당한 서버라는 것.</li>
+      <li><b>암호화:</b> 중간에서 내용을 엿볼 수 없다는 것.</li>
+      <li><b>무결성:</b> 중간에서 내용을 바꿀 수 없다는 것.</li>
+    </ul>
+    <p>보장하지 않는 것도 분명합니다. 그 서버가 선량하다는 것, 그리고 이 요청이 허가된 것이라는 것입니다. 앞의 것은 "누구냐"의 문제이고, 뒤의 것은 인가의 문제입니다.</p>
+
+    <p class="section-label">FOR YOU</p>
+    <div class="for-you">
+      <p>인증과 인가를 가르는 일은 당신이 이미 합니다. TLS는 그 구분 위에 정확히 올라갑니다. 서버 인증서는 "서버가 누구인가"를 증명합니다. 클라이언트 인증서는 "나는 누구인가"를 증명합니다. 둘 다 인증이고, 무엇을 해도 되는지는 그 위 HTTP 층의 서버단 검증이 맡습니다.</p>
+      <p>사내망에서도 HTTPS를 쓰는 이유가 여기서 나옵니다. 사내망 안에도 중간에 낀 장비와 같은 망의 다른 기기가 있습니다. 그곳에서도 상대의 신원과 내용의 비밀이 필요합니다. 담벼락 안이라서 면제되는 것이 아닙니다.</p>
+      <p>오늘 첫 항목과도 이어집니다. 원격 MCP 서버에 붙을 때 TLS가 주는 것은 "그 서버가 그 도메인이 맞다"까지입니다. 그 서버의 도구가 안전하다는 보장은 없습니다. 취약점이 나온 118개 서버도 HTTPS로 서비스될 수 있습니다. 통로의 안전과 도구의 안전은 다른 줄입니다.</p>
+      <p>그리고 이 그림은 당신이 이미 코드로 구현한 범주와 같습니다. 연결은 됐는데 결과를 확인할 수 없는 상태를 당신의 야간 실행은 "알 수 없음"으로 따로 둡니다. 핸드셰이크 정지가 바로 그 모양입니다.</p>
+      <p>예측 과제입니다. 핸드셰이크에서 멈췄다면, 서버 쪽 HTTP 로그에 그 요청의 기록이 남습니까? 클라이언트는 어떤 상태 코드를 받습니까?</p>
+    </div>
+
+    <p class="section-label">LEARN</p>
+    <p>외울 것은 그림 하나입니다. 길, 협상, 대화의 세 층이고 TLS는 가운데입니다. 암호 알고리즘의 수학은 필요 없습니다. 다음 단계는 "서버의 신원을 누가 보증하느냐", 즉 인증서가 어떻게 신뢰의 사슬로 이어지는지입니다.</p>
+
+    <div class="addendum">
+      <p class="section-label">3줄 요약</p>
+      <ol class="tri-summary">
+        <li>HTTPS 요청은 TCP 연결, TLS 핸드셰이크(인증서 신원 증명·키 합의·ALPN 협상), 암호화된 통로 위의 HTTP 교환 순서로 세 층을 지난다.</li>
+        <li>TLS는 상대 도메인의 신원 확인, 엿볼 수 없는 암호화, 바꿀 수 없는 무결성을 보장하지만 서버의 선량함이나 요청의 인가는 보장하지 않는다.</li>
+        <li>핸드셰이크는 HTTP보다 앞 단계라 여기서 실패하면 상태 코드 없이 연결은 됐는데 응답이 없는 모양으로 나타난다.</li>
+      </ol>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">용어 해설</p>
+      <dl class="glossary">
+        <dt>ALPN</dt>
+        <dd>TLS 협상 중에 클라이언트와 서버가 이 연결 위에서 HTTP/2와 HTTP/1.1 중 무엇을 쓸지 미리 합의하는 확장 기능이다.</dd>
+        <dt>인증서 체인 / CA</dt>
+        <dd>서버 인증서를 신뢰할 수 있는 기관(CA)이 서명했는지 단계별로 이어서 확인하는 구조다. 서버 신원 증명의 근거가 된다.</dd>
+        <dt>키 합의</dt>
+        <dd>통신 양측이 데이터를 주고받기 전에 같은 비밀 키를 안전하게 만들어 내는 과정이다. 이후 데이터 암호화에 쓰인다.</dd>
+        <dt>상호 TLS</dt>
+        <dd>서버뿐 아니라 클라이언트도 인증서로 신원을 증명하는 방식이다. 일반 TLS는 서버만 증명한다.</dd>
+      </dl>
+    </div>
+  </article>
+
+  <section class="radar">
+    <p class="section-label">레이더</p>
+    <p class="radar-note">학습 대상이 아니라 <b>인지 대상</b>입니다. 훑고 지나가세요 — 나중에 필요한 순간에 &ldquo;그거 있었지&rdquo;가 나오게 하는 것이 목적입니다.</p>
+
+    <div class="radar-group">
+      <h3>내가 쓰는 도구</h3>
+      <ul class="radar-list">
+        <li>Claude Code 2.1.299 — 터미널에서 20만 토큰 넘는 대화를 약 54분 두면, 1시간짜리 프롬프트 캐시가 끝나기 전에 미리 요약해 둔다. 다음 메시지가 전체를 다시 읽지 않게 하려는 장치이고 <code>idleCompaction: false</code>로 끌 수 있다. <code>/effort</code>·<code>/fast</code>는 새 세션의 시작값을 정하고, WSL2 샌드박스 오류와 예약 깨우기 누락도 고쳤다. (2.1.297·298은 확인하지 못했다)</li>
+      </ul>
+    </div>
+
+    <div class="radar-group">
+      <h3>가격·정책</h3>
+      <ul class="radar-list">
+        <li>Anthropic 이용 정책 개정 (10/8 발표, 11/12 시행) — 대부분 기존 규칙을 명확히 한 것이다. 허위 계정·가짜 뉴스 사이트 같은 조작 활동을 한 절로 모았고, Claude가 누구를 수사·체포·기소할지 정하는 데 쓰이는 것을 금지했다. 사람이 지켜보며 멈출 수 있어야 하고 연결이 끊기면 안전 상태를 유지해야 한다는 요건이 하드웨어를 제어하는 용도에 붙었다. <a href="https://www.anthropic.com/news/2026-usage-policy-update" target="_blank" rel="noopener">원문</a></li>
+        <li>Anthropic, 엔지니어 1만 명 교육에 1억 달러 약정 (10/2) — 기업의 AI 인재 부족을 겨냥한 교육 투자 발표. 공식 뉴스 제목 기준이며 세부 프로그램 구성은 확인하지 못했다.</li>
+        <li>Anthropic 싱가포르 사무소 개설과 정부 양해각서 (10/14) — 아시아 지역 거점 확대. 공식 뉴스 제목 기준이다.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer class="status">
+    <span>오늘 조사 후 신호 1건 + 기초 보완 1건 · 레이더 4건 · 날짜 불명 SNS·집계 글은 폐기</span>
+    <span>Knowledge Agent v0.1</span>
+  </footer>
+
+</div>
