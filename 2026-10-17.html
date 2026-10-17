@@ -1,0 +1,517 @@
+<title>Knowledge Brief 2026-10-17</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,500;1,6..72,600&family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  :root {
+    --paper: #eef0f4;
+    --surface: #ffffff;
+    --ink: #131722;
+    --ink-soft: #5b6472;
+    --signal: #c97a1a;
+    --signal-deep: #8a5313;
+    --signal-soft: #f3e3cc;
+    --line: rgba(19, 23, 34, 0.12);
+    --line-strong: rgba(19, 23, 34, 0.22);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #0e1116;
+      --surface: #171b22;
+      --ink: #e7e9ee;
+      --ink-soft: #9aa3b2;
+      --signal: #f0b15c;
+      --signal-deep: #f5c685;
+      --signal-soft: rgba(240, 177, 92, 0.14);
+      --line: rgba(231, 233, 238, 0.14);
+      --line-strong: rgba(231, 233, 238, 0.24);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --paper: #0e1116;
+    --surface: #171b22;
+    --ink: #e7e9ee;
+    --ink-soft: #9aa3b2;
+    --signal: #f0b15c;
+    --signal-deep: #f5c685;
+    --signal-soft: rgba(240, 177, 92, 0.14);
+    --line: rgba(231, 233, 238, 0.14);
+    --line-strong: rgba(231, 233, 238, 0.24);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans KR', 'IBM Plex Sans', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 56px 24px 96px;
+  }
+
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--signal-deep);
+  }
+
+  header.masthead {
+    border-bottom: 1px solid var(--line-strong);
+    padding-bottom: 28px;
+    margin-bottom: 40px;
+  }
+
+  header.masthead .eyebrow {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  h1.headline {
+    font-family: 'Newsreader', Georgia, serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(32px, 6vw, 44px);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin: 14px 0 10px;
+    text-wrap: balance;
+  }
+
+  .masthead .subhead {
+    color: var(--ink-soft);
+    font-size: 15px;
+    max-width: 56ch;
+  }
+
+  .masthead .subhead b {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .masthead .listen {
+    margin-top: 20px;
+    padding: 14px 16px;
+    background: var(--signal-soft);
+    border-radius: 10px;
+    display: grid;
+    gap: 8px;
+  }
+
+  .masthead .listen audio { width: 100%; }
+
+  article.item {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 32px 32px 28px;
+    margin-bottom: 32px;
+  }
+
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  .tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+    border: 1px solid var(--line-strong);
+    color: var(--ink-soft);
+  }
+
+  .tag.priority {
+    border-color: var(--signal);
+    color: var(--signal-deep);
+    background: var(--signal-soft);
+  }
+
+  h2.item-title {
+    font-family: 'Newsreader', Georgia, serif;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 1.3;
+    margin: 0 0 18px;
+    text-wrap: balance;
+  }
+
+  .section-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin: 22px 0 8px;
+  }
+
+  .section-label:first-of-type { margin-top: 0; }
+
+  article.item p {
+    margin: 0 0 4px;
+    max-width: 62ch;
+  }
+
+  article.item .for-you {
+    padding: 14px 16px;
+    background: var(--signal-soft);
+    border-left: 2px solid var(--signal);
+    border-radius: 0 3px 3px 0;
+  }
+
+  figure.diagram {
+    margin: 26px 0 6px;
+    padding: 18px 6px 8px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  figure.diagram svg { width: 100%; height: auto; display: block; color: var(--ink-soft); }
+  figure.diagram .accent { color: var(--signal); }
+  figure.diagram text { font-family: 'IBM Plex Mono', monospace; fill: currentColor; }
+
+  figcaption {
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-top: 10px;
+  }
+
+  .source-row {
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .source-row a {
+    color: var(--ink);
+    text-decoration-color: var(--signal);
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 3px;
+  }
+
+  .source-row .domain {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+
+  .addendum {
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+  }
+
+  ol.tri-summary {
+    margin: 0;
+    padding-left: 1.3em;
+  }
+
+  ol.tri-summary li {
+    margin-bottom: 6px;
+    max-width: 62ch;
+  }
+
+  dl.glossary {
+    margin: 0;
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    column-gap: 14px;
+    row-gap: 10px;
+  }
+
+  dl.glossary dt {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--signal-deep);
+    white-space: nowrap;
+  }
+
+  dl.glossary dd {
+    margin: 0;
+    max-width: 56ch;
+    color: var(--ink-soft);
+  }
+
+  /* 레이더 — 인지 채널. 본 브리프(학습 채널)와 시각적으로 명확히 구분되어야 한다:
+     카드가 아니라 목록, 강조색 없음, 본문보다 작은 글씨. 훑고 지나가는 영역이다. */
+  section.radar {
+    margin-top: 40px;
+    padding-top: 26px;
+    border-top: 1px solid var(--line-strong);
+  }
+
+  section.radar > p.radar-note {
+    margin: 0 0 18px;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    max-width: 62ch;
+  }
+
+  .radar-group {
+    margin-bottom: 20px;
+  }
+
+  .radar-group h3 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 500;
+    margin: 0 0 8px;
+  }
+
+  ul.radar-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  ul.radar-list li {
+    position: relative;
+    padding-left: 16px;
+    margin-bottom: 7px;
+    font-size: 14.5px;
+    line-height: 1.6;
+    max-width: 66ch;
+    color: var(--ink);
+  }
+
+  ul.radar-list li::before {
+    content: "·";
+    position: absolute;
+    left: 3px;
+    color: var(--ink-soft);
+  }
+
+  ul.radar-list li a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid var(--line-strong);
+  }
+
+  ul.radar-list li a:hover { border-bottom-color: var(--signal); }
+
+  footer.status {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    border-top: 1px solid var(--line-strong);
+    padding-top: 18px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  @media (max-width: 480px) {
+    article.item { padding: 24px 20px; }
+    h1.headline { font-size: 30px; }
+  }
+</style>
+
+<div class="page">
+
+  <header class="masthead">
+    <div class="eyebrow">
+      <span>KNOWLEDGE BRIEF</span>
+      <span>2026-10-17 · 22:00</span>
+    </div>
+    <h1 class="headline">외부 평가의 신뢰는 접근권이 아니라 기준을 누가 정하느냐에 달렸다</h1>
+    <p class="subhead">오늘 조사한 것 중 <b>지금 당신에게 학습 가치가 있다고 판단한 것</b>만 남겼습니다. 나머지는 이미 아는 내용이거나 가치가 낮아 걸러냈습니다.</p>
+  </header>
+
+  <article class="item">
+    <div class="tag-row">
+      <span class="tag priority">AI 안전 · 오늘의 핵심</span>
+      <span class="tag">공식 발표</span>
+      <span class="tag">계속 바뀌는 중</span>
+    </div>
+
+    <h2 class="item-title">Anthropic이 외부 평가 기관 METR에 직원급 접근권을 열었다</h2>
+
+    <p class="section-label">WHAT</p>
+    <p>10월 15일 Anthropic이 외부 평가자에게 회사 안으로 들어올 자리를 줬다고 밝혔습니다. 모델을 평가하는 비영리 단체 METR의 연구원 6명이 대상입니다. 이들은 회사 노트북과 사무 공간을 받고, Anthropic 자체 위험 평가팀과 비슷한 수준의 내부 도구를 씁니다.</p>
+    <p>METR은 위험, 사고, 운영 관행에 대한 분석을 스스로 공개할 수 있습니다. Anthropic은 공개를 막을 수 없습니다. 대신 정해진 범주만 가려 달라고 요구할 수 있습니다.</p>
+    <ul>
+      <li>가릴 수 있는 범주는 고객 데이터, 변호사 관련 비밀 자료, 모델 구조 정보입니다.</li>
+      <li>METR은 그 가림이 정당했는지 공개적으로 평가할 수 있습니다. 가려진 내용 자체는 밝히지 못합니다.</li>
+      <li>평가자는 세 단계로 나뉩니다. 1단계는 좁은 범위 검토이고 공개에 Anthropic 승인이 필요합니다. 2단계는 승인 없이 공개합니다. 3단계는 직원급 접근이며 지금은 METR뿐입니다.</li>
+    </ul>
+
+    <p class="section-label">WHY</p>
+    <p>AI 회사가 자기 모델의 위험을 스스로 보고하면 믿을 근거가 약합니다. 그래서 이번 발표의 핵심은 접근권 자체가 아니라 공개 거부권을 내려놓았다는 점입니다. Anthropic은 은행 감독관이 대형 은행에 상주하는 구조에 비유했습니다.</p>
+    <p>배경도 있습니다. 8월 말부터 에이전트가 지시 밖으로 움직인 사례가 1~2주에 한 번꼴로 공개됐습니다. 이번 발표는 Dario Amodei가 9월 에세이에서 제안한 외부 평가자 상주의 첫 이행입니다. OpenAI도 같은 방식을 약속했다고 보도됐습니다.</p>
+    <p>다만 한계가 분명합니다. 접근 범위와 가림 범주를 정하는 쪽은 Anthropic입니다. 모두 회사 발표이고, 실제로 믿을 만한지는 METR이 앞으로 내놓을 보고서와 가림의 양으로 드러납니다.</p>
+
+    <p class="section-label">FOR YOU</p>
+    <div class="for-you">
+      <p>당신은 통제가 통제 대상의 쓰기 권한 안에 있으면 통제가 아니라고 이미 판단합니다. 그 기준이 외부 평가에도 그대로 들어맞습니다. 평가 기준을 평가받는 쪽이 바꿀 수 있다면 그 평가는 감사가 아닙니다.</p>
+      <p>이 기준을 이번 구조에 대입해 보면 두 조건이 갈립니다.</p>
+      <ul>
+        <li>공개 경로 위에 있는가: 있습니다. Anthropic이 공개를 거부할 수 없습니다.</li>
+        <li>평가 대상이 바꿀 수 없는가: 절반만 그렇습니다. 가림 범주를 Anthropic이 정의합니다.</li>
+      </ul>
+      <p>그래서 이 구조의 신뢰도는 범주가 얼마나 좁게 유지되는지에 달렸습니다. 제한이 아니라 정의권이 약한 고리입니다.</p>
+      <p>당신의 야간 브리프에도 같은 질문이 있습니다. 영수증을 쓰는 코드와 그것을 검증하는 테스트가 같은 손에서 나왔다면, 검증이 얼마나 독립적인지 한 번 따져 볼 만합니다. 오늘 아래 보완 항목이 그 질문의 도구 쪽 이야기입니다.</p>
+    </div>
+
+    <p class="section-label">LEARN</p>
+    <p>사실만 알아두면 됩니다. 업계 규범이 계속 움직이는 분야라 한 달 뒤 구조가 바뀔 수 있습니다. 강의에서는 "회사가 안전하다고 말한다"와 "외부가 확인한다"를 구분하는 예로 쓰기 좋습니다.</p>
+
+    <div class="source-row">
+      <a href="https://www.anthropic.com/news/an-update-on-independent-evaluators" target="_blank" rel="noopener">Anthropic 공식 글 · 독립 평가자 업데이트 원문 보기 →</a>
+      <span class="domain">anthropic.com/news</span>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">3줄 요약</p>
+      <ol class="tri-summary">
+        <li>2026-10-15 Anthropic은 외부 평가 기관 METR 연구원 6명에게 직원에 준하는 내부 도구와 접근 권한을 제공하기 시작했다고 발표했다.</li>
+        <li>METR은 위험 분석을 공개할 수 있고 Anthropic은 공개를 막지 못하지만 사전 정의된 범주의 가림은 요청할 수 있다.</li>
+        <li>접근은 세 단계로 나뉘며 현재 직원급 접근은 METR만 받고, 발표된 조건의 검증은 METR의 향후 공개 보고서에 달려 있다.</li>
+      </ol>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">용어 해설</p>
+      <dl class="glossary">
+        <dt>METR</dt>
+        <dd>최신 AI 모델의 위험한 능력을 시험하는 비영리 평가 기관입니다.</dd>
+        <dt>레드팀</dt>
+        <dd>시스템을 공격자 입장에서 일부러 뚫어 보며 취약점과 위험한 동작을 찾는 시험 활동입니다.</dd>
+        <dt>변호사-의뢰인 특권</dt>
+        <dd>변호사와 의뢰인 사이의 자료를 법적으로 보호해 공개를 강제할 수 없게 하는 권리입니다. 그래서 외부 평가자에게도 가려야 합니다.</dd>
+        <dt>상주 감독관</dt>
+        <dd>은행 같은 금융사에 상시 파견돼 내부를 들여다보는 검사관입니다. 외부 평가자가 회사 안에서 지속적으로 점검한다는 비유로 쓰였습니다.</dd>
+      </dl>
+    </div>
+  </article>
+
+  <article class="item">
+    <div class="tag-row">
+      <span class="tag priority">출력 평가 설계 · 오늘의 기초 보완</span>
+      <span class="tag">개념 설명</span>
+      <span class="tag">오래 가는 기초</span>
+    </div>
+
+    <h2 class="item-title">모델 출력이 좋아졌는지 증명하려면 평가셋이 필요하다</h2>
+
+    <p class="section-label">왜 지금 이걸 다루나</p>
+    <p>위의 뉴스에서 METR이 하는 일은 결국 평가입니다. 그 평가가 믿을 만하려면 기준표가 먼저 있어야 합니다. 같은 문제가 당신의 시스템 안에도 있습니다.</p>
+
+    <p class="section-label">WHAT</p>
+    <p>당신은 지난달 "내가 확인할 수 없는 과정이 제일 어렵다"고 말했습니다. 코드에서는 컴파일러와 테스트가 정답 여부를 공짜로 알려줍니다. 모델 출력에는 그런 장치가 기본으로 없습니다.</p>
+    <p>그 자리를 메우는 도구가 평가셋입니다. 질문과 기대하는 답을 묶은 목록입니다. 프롬프트나 모델을 바꿀 때마다 같은 목록으로 다시 채점합니다. 점수가 내려간 항목이 곧 "나빠진 부분"입니다. 이 비교를 회귀 비교라고 부릅니다.</p>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 640 210" role="img" aria-label="평가셋이 바뀐 출력을 두 갈래 검사로 채점하고 이전 점수와 비교하는 흐름">
+        <rect x="14" y="78" width="120" height="50" rx="3" fill="none" stroke="currentColor"/>
+        <text x="74" y="107" font-size="13" text-anchor="middle">평가셋</text>
+        <rect x="190" y="78" width="120" height="50" rx="3" fill="none" stroke="currentColor"/>
+        <text x="250" y="100" font-size="12" text-anchor="middle">바꾼 프롬프트</text>
+        <text x="250" y="116" font-size="12" text-anchor="middle">또는 모델</text>
+        <rect x="366" y="22" width="130" height="50" rx="3" fill="none" stroke="currentColor"/>
+        <text x="431" y="44" font-size="12" text-anchor="middle">확정 검사</text>
+        <text x="431" y="60" font-size="11" text-anchor="middle">형식·필수 항목</text>
+        <g class="accent" style="color:var(--signal)">
+          <rect x="366" y="134" width="130" height="50" rx="3" fill="none" stroke="currentColor"/>
+          <text x="431" y="156" font-size="12" text-anchor="middle">확률 판정</text>
+          <text x="431" y="172" font-size="11" text-anchor="middle">사람·LLM 채점자</text>
+        </g>
+        <rect x="540" y="78" width="88" height="50" rx="3" fill="none" stroke="currentColor"/>
+        <text x="584" y="100" font-size="12" text-anchor="middle">이전 점수</text>
+        <text x="584" y="116" font-size="12" text-anchor="middle">와 비교</text>
+        <path d="M134 103 H190 M310 103 H338 L338 47 H366 M338 103 L338 159 H366 M496 47 H518 V103 H540 M496 159 H518 V103" fill="none" stroke="currentColor"/>
+      </svg>
+      <figcaption>같은 평가셋이 바뀐 출력을 두 종류의 검사로 채점하고, 이전 점수와 비교해 나빠진 곳을 찾습니다.</figcaption>
+    </figure>
+
+    <p class="section-label">WHY</p>
+    <p>검사는 두 종류로 나눠야 합니다. 정답이 하나로 정해지는 부분은 코드로 확정 검사를 합니다. 정답이 여럿인 부분은 사람이나 LLM 채점자가 판정하고, 이 판정에는 오차가 있다는 걸 전제로 둡니다.</p>
+    <p>이 구분이 평가셋의 뼈대입니다. 확정 검사는 매번 같은 결과를 냅니다. 확률 판정은 같은 입력에도 점수가 흔들릴 수 있어서, 여러 번 돌려 평균을 보는 식으로 다룹니다.</p>
+    <p>가장 힘든 일은 정답표를 만드는 것입니다. 정답은 사람이 정해야 하고, 그 품질이 평가 전체의 품질을 결정합니다. RAG 구축이 노가다로 느껴지는 이유와 같은 뿌리입니다.</p>
+
+    <p class="section-label">FOR YOU</p>
+    <div class="for-you">
+      <p>당신은 이미 반쪽을 갖고 있습니다. 야간 브리프의 테스트 17건은 확정 검사입니다. 브리프 문장 길이와 내부 용어 누출을 세는 검사기도 마찬가지입니다. 계약이 "항상 참"일 때의 경계 긋기는 당신이 잘 하는 일입니다.</p>
+      <p>비어 있는 반쪽은 "대체로 참"인 계약입니다. 예를 들어 레이더 한 줄이 "그게 뭘 하는 물건인지"를 담았는지는 코드가 세기 어렵습니다. 이 부분이 확률 판정의 몫입니다.</p>
+      <p>하나 예측해 보세요. 내일 레이더 규칙을 한 줄 바꾸면, 지금 있는 검사 중 어느 것이 먼저 이상을 알려 줄까요? 그리고 알려 주지 못하는 변화는 무엇일까요? 후자를 적어 보는 것이 첫 평가셋의 출발입니다.</p>
+    </div>
+
+    <p class="section-label">LEARN</p>
+    <p>오래 가는 기초입니다. 다음 단계는 설명이 아니라 직접 만들기입니다. 브리프 항목 5개에 "좋다/나쁘다"를 손으로 붙인 정답표 한 장이면 충분합니다.</p>
+
+    <div class="addendum">
+      <p class="section-label">3줄 요약</p>
+      <ol class="tri-summary">
+        <li>LLM 출력은 매번 달라져 컴파일러나 단위 테스트처럼 정답 여부를 자동으로 알려주지 않으므로, 질문과 기대 답을 묶은 평가셋을 만든다.</li>
+        <li>모델이나 프롬프트를 바꿀 때마다 같은 평가셋으로 점수를 비교하고, 정답이 정해진 항목은 결정론적 검사로, 여러 정답이 가능한 항목은 사람이나 LLM 채점자로 판정한다.</li>
+        <li>평가셋 작성은 사람이 정답을 정해야 해서 품질의 대부분을 좌우하는 힘든 작업이며, 외부 평가에도 고정된 기준과 점수표가 필요하다.</li>
+      </ol>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">용어 해설</p>
+      <dl class="glossary">
+        <dt>회귀</dt>
+        <dd>모델이나 프롬프트를 바꾼 뒤 예전에 잘 되던 부분이 오히려 나빠지는 현상입니다. 바꾸기 전후에 같은 평가를 돌려 찾습니다.</dd>
+        <dt>LLM 채점자</dt>
+        <dd>사람 대신 다른 AI 모델에게 답변을 채점하게 하는 방식입니다. 요약 품질처럼 정답이 하나가 아닌 항목에 씁니다.</dd>
+        <dt>정답표</dt>
+        <dd>질문마다 어떤 답이 나와야 하는지를 사람이 미리 적어 둔 기준 목록입니다. 평가의 바탕이 됩니다.</dd>
+      </dl>
+    </div>
+  </article>
+
+  <section class="radar">
+    <p class="section-label">레이더</p>
+    <p class="radar-note">학습 대상이 아니라 <b>인지 대상</b>입니다. 훑고 지나가세요. 나중에 필요한 순간에 &ldquo;그거 있었지&rdquo;가 나오게 하는 것이 목적입니다.</p>
+
+    <div class="radar-group">
+      <h3>내가 쓰는 도구</h3>
+      <ul class="radar-list">
+        <li>Claude Code 2.1.302 (10월 16일) — 기기에서 자동 모드가 어떻게 동작할지 더 세밀하게 정할 수 있게 했고 버그 몇 개를 고쳤습니다. (릴리스 집계 사이트 기준, 원문 미확인)</li>
+        <li>Claude Code의 코드 리뷰 기능 — Team·Enterprise 조직에서 정식 제공으로 전환됐다고 합니다. PR을 올리면 에이전트가 먼저 검토 의견을 다는 기능입니다. (변경 기록 요약 사이트 기준, 날짜 미확인)</li>
+      </ul>
+    </div>
+
+    <div class="radar-group">
+      <h3>주변 생태계</h3>
+      <ul class="radar-list">
+        <li>제나(GenA, 제논) — 10월 15일 정식 출시된 국내 AI 에이전트 통합 포털입니다. 슬라이드, 리서치, 데이터 분석, 문서 번역, 회의록 등 6종 에이전트를 한 곳에서 고르고, 신규 가입자에게 월 약 1만 원어치 크레딧을 줍니다. 안드로이드 앱이 먼저 나왔습니다.</li>
+        <li>아마존 퀵(AWS) — (8월 국내 출시, 이번에 임계) 슬랙·팀즈·아웃룩 등 40여 개 업무 도구와 PC 파일, 메일, 일정을 연결해 업무를 대신 실행하는 기업용 업무 에이전트입니다. 메가존클라우드가 첫 국내 구축 파트너입니다. 구글, OpenAI도 비슷한 업무용 제품을 내며 카테고리가 섰습니다. (한국경제 8월 12일 보도)</li>
+        <li>OpenAI Dots — 9월 29일 개발자 행사에서 공개된 상시 켜 두는 에이전트 아바타입니다. 기업용은 관리자가 켜야 하는 베타이고 기본값은 꺼짐입니다. (TechCrunch·2차 보도 기준)</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer class="status">
+    <span>오늘 조사 후 신호 1건 + 보완 1건 전달 · 레이더 5건 · 원문 일부는 2차 출처로 대체</span>
+    <span>Knowledge Agent v0.1</span>
+  </footer>
+
+</div>
