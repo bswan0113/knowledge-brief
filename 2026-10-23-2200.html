@@ -1,0 +1,545 @@
+<title>Knowledge Brief 2026-10-23</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,500;1,6..72,600&family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  :root {
+    --paper: #eef0f4;
+    --surface: #ffffff;
+    --ink: #131722;
+    --ink-soft: #5b6472;
+    --signal: #c97a1a;
+    --signal-deep: #8a5313;
+    --signal-soft: #f3e3cc;
+    --line: rgba(19, 23, 34, 0.12);
+    --line-strong: rgba(19, 23, 34, 0.22);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #0e1116;
+      --surface: #171b22;
+      --ink: #e7e9ee;
+      --ink-soft: #9aa3b2;
+      --signal: #f0b15c;
+      --signal-deep: #f5c685;
+      --signal-soft: rgba(240, 177, 92, 0.14);
+      --line: rgba(231, 233, 238, 0.14);
+      --line-strong: rgba(231, 233, 238, 0.24);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --paper: #0e1116;
+    --surface: #171b22;
+    --ink: #e7e9ee;
+    --ink-soft: #9aa3b2;
+    --signal: #f0b15c;
+    --signal-deep: #f5c685;
+    --signal-soft: rgba(240, 177, 92, 0.14);
+    --line: rgba(231, 233, 238, 0.14);
+    --line-strong: rgba(231, 233, 238, 0.24);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans KR', 'IBM Plex Sans', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 56px 24px 96px;
+  }
+
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--signal-deep);
+  }
+
+  header.masthead {
+    border-bottom: 1px solid var(--line-strong);
+    padding-bottom: 28px;
+    margin-bottom: 40px;
+  }
+
+  header.masthead .eyebrow {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  h1.headline {
+    font-family: 'Newsreader', Georgia, serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(32px, 6vw, 44px);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin: 14px 0 10px;
+    text-wrap: balance;
+  }
+
+  .masthead .subhead {
+    color: var(--ink-soft);
+    font-size: 15px;
+    max-width: 56ch;
+  }
+
+  .masthead .subhead b {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .masthead .listen {
+    margin-top: 20px;
+    padding: 14px 16px;
+    background: var(--signal-soft);
+    border-radius: 10px;
+    display: grid;
+    gap: 8px;
+  }
+
+  .masthead .listen audio { width: 100%; }
+
+  article.item {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 32px 32px 28px;
+    margin-bottom: 32px;
+  }
+
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  .tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+    border: 1px solid var(--line-strong);
+    color: var(--ink-soft);
+  }
+
+  .tag.priority {
+    border-color: var(--signal);
+    color: var(--signal-deep);
+    background: var(--signal-soft);
+  }
+
+  h2.item-title {
+    font-family: 'Newsreader', Georgia, serif;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 1.3;
+    margin: 0 0 18px;
+    text-wrap: balance;
+  }
+
+  .section-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin: 22px 0 8px;
+  }
+
+  .section-label:first-of-type { margin-top: 0; }
+
+  article.item p {
+    margin: 0 0 4px;
+    max-width: 62ch;
+  }
+
+  article.item .for-you {
+    padding: 14px 16px;
+    background: var(--signal-soft);
+    border-left: 2px solid var(--signal);
+    border-radius: 0 3px 3px 0;
+  }
+
+  figure.diagram {
+    margin: 26px 0 6px;
+    padding: 18px 6px 8px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  figure.diagram svg { width: 100%; height: auto; display: block; color: var(--ink-soft); }
+  figure.diagram .accent { color: var(--signal); }
+  figure.diagram text { font-family: 'IBM Plex Mono', monospace; fill: currentColor; }
+
+  figcaption {
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-top: 10px;
+  }
+
+  .source-row {
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .source-row a {
+    color: var(--ink);
+    text-decoration-color: var(--signal);
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 3px;
+  }
+
+  .source-row .domain {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+
+  .addendum {
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+  }
+
+  ol.tri-summary {
+    margin: 0;
+    padding-left: 1.3em;
+  }
+
+  ol.tri-summary li {
+    margin-bottom: 6px;
+    max-width: 62ch;
+  }
+
+  dl.glossary {
+    margin: 0;
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    column-gap: 14px;
+    row-gap: 10px;
+  }
+
+  dl.glossary dt {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--signal-deep);
+    white-space: nowrap;
+  }
+
+  dl.glossary dd {
+    margin: 0;
+    max-width: 56ch;
+    color: var(--ink-soft);
+  }
+
+  /* 레이더 — 인지 채널. 본 브리프(학습 채널)와 시각적으로 명확히 구분되어야 한다:
+     카드가 아니라 목록, 강조색 없음, 본문보다 작은 글씨. 훑고 지나가는 영역이다. */
+  section.radar {
+    margin-top: 40px;
+    padding-top: 26px;
+    border-top: 1px solid var(--line-strong);
+  }
+
+  section.radar > p.radar-note {
+    margin: 0 0 18px;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    max-width: 62ch;
+  }
+
+  .radar-group {
+    margin-bottom: 20px;
+  }
+
+  .radar-group h3 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 500;
+    margin: 0 0 8px;
+  }
+
+  ul.radar-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  ul.radar-list li {
+    position: relative;
+    padding-left: 16px;
+    margin-bottom: 7px;
+    font-size: 14.5px;
+    line-height: 1.6;
+    max-width: 66ch;
+    color: var(--ink);
+  }
+
+  ul.radar-list li::before {
+    content: "·";
+    position: absolute;
+    left: 3px;
+    color: var(--ink-soft);
+  }
+
+  ul.radar-list li a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid var(--line-strong);
+  }
+
+  ul.radar-list li a:hover { border-bottom-color: var(--signal); }
+
+  footer.status {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    border-top: 1px solid var(--line-strong);
+    padding-top: 18px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  @media (max-width: 480px) {
+    article.item { padding: 24px 20px; }
+    h1.headline { font-size: 30px; }
+  }
+</style>
+
+
+<div class="page">
+
+  <header class="masthead">
+    <div class="eyebrow">
+      <span>KNOWLEDGE BRIEF</span>
+      <span>2026-10-23 · 22:51</span>
+    </div>
+    <h1 class="headline">모델의 사고 과정이 잠기고, 답은 확률에서 한 번 뽑힌 것이다</h1>
+    <p class="subhead">오늘 조사한 것 중 <b>지금 당신에게 학습 가치가 있다고 판단한 것</b>만 남겼습니다. 나머지는 이미 아는 내용이거나 가치가 낮아 걸러냈습니다.</p>
+  </header>
+
+  <article class="item">
+    <div class="tag-row">
+      <span class="tag priority">모델 보호 · 오늘의 핵심</span>
+      <span class="tag">공식 발표</span>
+      <span class="tag">빨리 바뀜</span>
+    </div>
+
+    <h2 class="item-title">Anthropic이 &lsquo;증류 공격&rsquo;을 막으려고 모델의 사고 과정을 잠그고 있다</h2>
+
+    <p class="section-label">WHAT</p>
+    <p>Anthropic이 10월 12일에 증류 공격 방어 현황을 공개했다. 증류 공격이란 가짜 계정으로 대량 요청을 보내 답을 모으고, 그것으로 다른 모델을 학습시키는 일이다. 가장 값진 수집 대상은 모델이 답에 이르는 과정을 적은 추론 기록이다.</p>
+    <p>Anthropic은 사례도 들었다.</p>
+    <ul>
+      <li>Zhipu가 GLM-5.3을 만들면서 Claude의 사이버 보안 능력을 증류했다고 밝혔다.</li>
+      <li>Moonshot의 Kimi로 들어온 요청 일부가 몰래 Claude로 전달된 정황을 확인했다.</li>
+      <li>한 중개 네트워크는 가짜 계정 2만 개 이상을 동시에 운영했다.</li>
+    </ul>
+    <p>방어책은 네 가지다.</p>
+    <ul>
+      <li>추론 과정을 원문 대신 요약으로 내려 준다.</li>
+      <li>추론 기록은 요청을 보낸 조직만 읽을 수 있게 한다.</li>
+      <li>증류 시도를 알아보는 2단계 분류기를 둔다.</li>
+      <li>반복하는 계정은 한도를 조이고 정지시킨다. 9월 24일부터는 차단된 요청에도 요금을 매긴다.</li>
+    </ul>
+
+    <p class="section-label">WHY</p>
+    <p>이 글은 &ldquo;답은 막을 수 없으니 답에 딸린 추론 기록을 막는다&rdquo;는 선택을 보여 준다. 답만으로는 모방이 어렵지만 추론 기록은 학습 재료로 훨씬 값지다. Anthropic이 밝힌 실험이 그 차이를 보여 준다. 요약된 기록으로 학습한 모델은 코딩 평가에서 71.8점, 전체 기록으로 학습한 모델은 80.4점이었다.</p>
+    <p>성과 수치는 모두 Anthropic 자체 발표다. 증류자가 뽑아낸 추론 토큰이 분류기 도입 뒤 10배에서 100배 줄었다고 한다. 외부 검증은 아직 없다.</p>
+    <p>대가도 적혀 있다. 정상 사용자도 연동을 고쳐야 했고, 오차단 가능성이 0.1% 미만으로 남아 있다. Anthropic은 이 싸움을 &ldquo;고양이와 쥐 게임&rdquo;이라 부르고, 이득이 얼마나 갈지 모른다고 인정했다.</p>
+
+    <p class="section-label">FOR YOU</p>
+    <div class="for-you">
+      <p>당신은 SQL Injection에서 이미 한 번 판단을 내렸다. 위험 키워드를 걸러 내는 필터는 우회로가 끝없이 생기고, 쿼리 구조를 고정하는 쪽이 낫다는 판단이었다. 오늘 글에 그 구도가 그대로 나온다.</p>
+      <ul>
+        <li>구조 쪽: 추론 기록을 요약으로 바꾸고, 열람 권한을 조직 단위로 묶었다. 공격자가 어떤 말을 해도 원문이 나갈 길이 없다.</li>
+        <li>필터 쪽: 분류기가 수상한 요청을 알아본다. Anthropic도 &ldquo;앞선 추론을 다른 언어로 옮겨 달라&rdquo; 같은 우회를 하나씩 막아 왔다고 쓴다.</li>
+      </ul>
+      <p>Anthropic이 두 방식을 함께 쓰는 이유는 분명하다. 구조는 확실하지만 정상 사용자의 기능까지 줄인다. 필터는 기능을 지키지만 새는 곳이 생긴다. 당신이 자주 말해 온 &ldquo;차단 지점을 어느 층에 두는가&rdquo;의 실제 사례다.</p>
+      <p>강의에서는 수강생이 이렇게 물을 수 있다. 다른 회사 모델의 답으로 우리 모델을 학습시켜도 되는가. 오늘 글은 그것이 약관 위반이고 실제로 계정 정지까지 간다는 근거가 된다. 이 질문을 받으면 공식 약관 문구를 먼저 확인하고 답하는 편이 안전하다.</p>
+    </div>
+
+    <p class="section-label">LEARN</p>
+    <p>증류는 &ldquo;남의 답으로 내 모델을 학습시킨다&rdquo;는 뜻이라 학습과 추론의 경계를 알아야 선명해진다. 그 바탕이 되는 샘플링을 아래 보완 항목에서 다룬다. 방어 수치와 대응은 빨리 바뀌는 영역이라 지금은 구조만 기억하면 충분하다.</p>
+
+    <div class="source-row">
+      <a href="https://www.anthropic.com/news/distillation-defenses" target="_blank" rel="noopener">Anthropic 원문 보기 →</a>
+      <span class="domain">anthropic.com/news</span>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">3줄 요약</p>
+      <ol class="tri-summary">
+        <li>Anthropic이 2026년 10월 12일 글에서, 가짜 계정 수만 개로 답변과 추론 기록을 빼내 모델을 복제하는 증류 공격 사례를 공개했다.</li>
+        <li>방어책은 추론 과정 요약, 2단계 분류기, 반복 시도자 제재 등이며, 아래 수치는 모두 회사 자체 발표다.</li>
+        <li>회사는 추출된 추론 토큰이 10~100배 줄었다고 주장하지만 정당한 사용자 불편과 오차단이 있고 "고양이와 쥐 게임"이라 인정했다.</li>
+      </ol>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">용어 해설</p>
+      <dl class="glossary">
+        <dt>증류</dt>
+        <dd>큰 모델의 답과 추론 과정을 대량으로 모아 작은 모델이 그 흉내를 내도록 학습시키는 기법이다. 정상적으로도 쓰이지만 남의 모델 출력으로 몰래 하면 개발 비용 없이 성능을 베끼는 공격이 된다.</dd>
+        <dt>추론 과정 기록</dt>
+        <dd>모델이 답을 내기 전에 단계별로 적어 내려가는 사고 과정의 원문이다. 학습 데이터로 값지기 때문에 증류의 핵심 표적이 되고, 그래서 요약본으로 바꾸고 요청한 조직만 원문을 보게 했다.</dd>
+        <dt>오탐률</dt>
+        <dd>분류기가 정상 요청을 공격으로 잘못 판정하는 비율이다. 높으면 멀쩡한 사용자가 차단되므로 탐지율과 함께 균형을 봐야 한다.</dd>
+        <dt>오픈 웨이트 모델</dt>
+        <dd>학습된 가중치 파일이 공개되어 누구나 내려받아 돌리고 추가 학습할 수 있는 모델이다. 학습 데이터나 과정까지 공개한다는 뜻은 아니다.</dd>
+      </dl>
+    </div>
+  </article>
+
+  <article class="item">
+    <div class="tag-row">
+      <span class="tag priority">LLM 동작 원리 · 오늘의 보완</span>
+      <span class="tag">개념 설명</span>
+      <span class="tag">오래 가는 기초</span>
+    </div>
+
+    <h2 class="item-title">모델의 답 하나는 확률에서 한 번 뽑힌 결과이고, temperature는 자르지 않는다</h2>
+
+    <p class="section-label">왜 지금 다루는가</p>
+    <p>오늘 뉴스의 증류는 모델의 답을 많이 모아 쓰는 일이다. 그런데 답 한 번은 모델이 낼 수 있던 답 중 뽑힌 하나일 뿐이다. 이 뽑는 단계를 모르면 &ldquo;같은 질문에 왜 답이 매번 다른가&rdquo;를 설명할 수 없다.</p>
+    <p>당신은 지난번에 temperature를 &ldquo;선택되는 분포의 범위를 줄이는 것&rdquo;이라고 추측했다. 결과가 매번 같아지는 T=0의 성질은 정확히 짚었다. 다만 범위를 줄이는 일은 temperature의 몫이 아니다. 그 손잡이는 따로 있다.</p>
+
+    <p class="section-label">WHAT</p>
+    <p>글자 하나를 내놓기까지 세 단계가 있다.</p>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 640 210" role="img" aria-label="후보 네 개의 확률이 temperature에서 비율만 바뀌고, top-p에서 후보가 잘리고, 마지막에 하나가 뽑히는 흐름">
+        <text x="20" y="22" font-size="12">1 확률 분포</text>
+        <text x="240" y="22" font-size="12">2 temperature</text>
+        <text x="440" y="22" font-size="12">3 자르기와 뽑기</text>
+        <g stroke="currentColor" fill="currentColor" fill-opacity="0.25">
+          <rect x="20" y="80" width="30" height="70"/><rect x="58" y="108" width="30" height="42"/><rect x="96" y="129" width="30" height="21"/><rect x="134" y="143" width="30" height="7"/>
+        </g>
+        <text x="35" y="170" font-size="11" text-anchor="middle">A</text><text x="73" y="170" font-size="11" text-anchor="middle">B</text><text x="111" y="170" font-size="11" text-anchor="middle">C</text><text x="149" y="170" font-size="11" text-anchor="middle">D</text>
+        <g class="accent" stroke="currentColor" fill="currentColor" fill-opacity="0.25">
+          <rect x="240" y="55" width="30" height="95"/><rect x="278" y="115" width="30" height="35"/><rect x="316" y="141" width="30" height="9"/><rect x="354" y="149" width="30" height="1"/>
+        </g>
+        <text x="255" y="170" font-size="11" text-anchor="middle">A</text><text x="293" y="170" font-size="11" text-anchor="middle">B</text><text x="331" y="170" font-size="11" text-anchor="middle">C</text><text x="369" y="170" font-size="11" text-anchor="middle">D</text>
+        <g stroke="currentColor" fill="currentColor" fill-opacity="0.25">
+          <rect x="440" y="62" width="40" height="88"/><rect x="490" y="97" width="40" height="53"/>
+        </g>
+        <g stroke="currentColor" fill="none" stroke-dasharray="3 3"><rect x="540" y="129" width="30" height="21"/><rect x="578" y="143" width="30" height="7"/></g>
+        <text x="460" y="170" font-size="11" text-anchor="middle">A</text><text x="510" y="170" font-size="11" text-anchor="middle">B</text><text x="555" y="170" font-size="11" text-anchor="middle">C</text><text x="593" y="170" font-size="11" text-anchor="middle">D</text>
+        <path d="M185 115 H225 M395 115 H430" stroke="currentColor" fill="none"/>
+        <text x="20" y="196" font-size="11">T=0.5이면 비율만 뾰족해진다</text>
+        <text x="440" y="196" font-size="11">잘린 후보(점선)는 사라진다</text>
+      </svg>
+      <figcaption>가운데 단계는 막대의 높이만 다시 그린다. 막대를 없애는 단계는 오른쪽의 자르기이고, 마지막에 남은 막대 중 하나가 뽑힌다.</figcaption>
+    </figure>
+
+    <ul>
+      <li>모델이 다음 글자 후보마다 확률을 매긴다. 이 표가 확률 분포다.</li>
+      <li>temperature가 그 확률의 비율을 다시 그린다. 낮추면 높은 후보가 더 높아지고, 높이면 평평해진다.</li>
+      <li>top-k나 top-p가 확률이 낮은 후보를 잘라 낸다. 남은 후보의 합이 1이 되도록 다시 맞춘다.</li>
+    </ul>
+    <p>마지막으로 남은 분포에서 하나를 무작위로 뽑는다. 이것이 샘플링이다. 구현마다 단계 순서는 조금 다를 수 있다.</p>
+
+    <p class="section-label">WHY</p>
+    <p>숫자로 보면 차이가 분명해진다. 후보가 A 50%, B 30%, C 15%, D 5%라고 하자.</p>
+    <ul>
+      <li>temperature 0.5: A 68%, B 25%, C 6%, D 1%. 모두 남아 있고 비율만 달라졌다.</li>
+      <li>temperature 2.0: A 38%, B 29%, C 21%, D 12%. 역시 모두 남았다.</li>
+      <li>top-p 0.8: 확률 큰 순서로 합이 0.8에 닿을 때까지만 남긴다. A 62.5%, B 37.5%만 남고 C와 D는 사라진다.</li>
+      <li>top-k 3: 상위 세 개만 남아 A 53%, B 32%, C 16%가 된다.</li>
+    </ul>
+    <p>temperature를 아무리 낮춰도 D의 확률은 0이 되지 않는다. 0이 되는 것은 자르는 단계를 거친 경우뿐이다. 강의에서 두 손잡이를 같은 것으로 설명하면 이 지점에서 틀린다.</p>
+
+    <p class="section-label">FOR YOU</p>
+    <div class="for-you">
+      <p>당신은 이미 &ldquo;모델이 보내는 건 실행이 아니라 요청&rdquo;이라는 구조를 스스로 도출했다. 같은 눈으로 보면 모델의 출력도 확정된 값이 아니다. 분포에서 뽑힌 하나의 표본이다.</p>
+      <p>이 관점이 오늘 뉴스와 이어진다. 답 한 번에는 뽑힌 하나만 보인다. 공격자가 같은 질문을 수없이 던지고 가짜 계정을 수만 개 쓰는 이유가 여기 있다. 표본이 쌓여야 모델의 성향이 복원되기 때문이다. 이것은 일반 원리에서 나온 추론이며 Anthropic 글에 그대로 적힌 설명은 아니다.</p>
+      <p>당신의 시스템에도 연결된다. 야간 브리프의 같은 지시가 날마다 조금씩 다른 글을 내는 것은 오류가 아니라 샘플링의 성질이다. 그래서 형식 검사와 같은 확정 구간은 코드로 고정하고, 글의 내용은 확률 구간으로 다루는 설계가 맞다. 평가 설계에서 이미 쓰는 구분이다.</p>
+      <p><b>예측해 보기:</b> 후보 D가 5%인 분포에서 temperature를 0.1까지 낮추면 D는 정확히 0%가 될까? top-p를 0.8로 걸면 D는 어떻게 되는가? 두 답이 왜 다른지 한 문장으로 말해 보라.</p>
+    </div>
+
+    <p class="section-label">LEARN</p>
+    <p>다음으로 배울 만한 것은 top-p와 top-k가 언제 서로 다르게 작동하는지다. 후보가 몇 개 안 남는 문장과 후보가 넓게 퍼진 문장에서 결과가 갈린다. 이 개념은 도구가 바뀌어도 오래 쓰이는 기초다.</p>
+
+    <div class="addendum">
+      <p class="section-label">3줄 요약</p>
+      <ol class="tri-summary">
+        <li>LLM은 먼저 후보 토큰마다 점수를 매겨 확률 분포를 만들고, 그 분포에서 토큰 하나를 뽑아 내놓는다.</li>
+        <li>temperature는 후보를 자르지 않고 확률 비율만 다시 그리며, top-k·top-p는 낮은 후보를 잘라 내고 남은 합을 1로 맞춘다.</li>
+        <li>예컨대 A50%·B30%·C15%·D5%에서 top-p 0.8이면 A62.5%·B37.5%만 남고, 답 하나는 가능한 답 중 뽑힌 하나일 뿐이다.</li>
+      </ol>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">용어 해설</p>
+      <dl class="glossary">
+        <dt>로짓(logit)</dt>
+        <dd>모델이 다음 토큰 후보 각각에 매긴 가공 전의 점수다. 이 점수에 softmax를 적용하면 합이 1인 확률로 바뀐다.</dd>
+        <dt>확률 분포</dt>
+        <dd>다음에 올 수 있는 모든 토큰에 각각 몇 %를 배정한 전체 목록이다. 모든 값을 더하면 100%가 된다.</dd>
+        <dt>샘플링</dt>
+        <dd>확률 분포에서 실제로 토큰 하나를 뽑는 단계다. 확률이 높은 토큰이 더 잘 나오도록 가중치를 준 추첨과 같다.</dd>
+        <dt>greedy 디코딩</dt>
+        <dd>샘플링 없이 매번 확률이 가장 높은 토큰만 고르는 방식이다. 같은 입력에는 항상 같은 답이 나오지만 단조로워지기 쉽다.</dd>
+        <dt>top-p(핵 샘플링)</dt>
+        <dd>확률이 높은 토큰부터 누적해 합이 p(예: 0.9)에 이를 때까지만 남기고 그 안에서 뽑는 방식이다. 상황에 따라 후보 수가 자동으로 늘거나 줄어든다.</dd>
+      </dl>
+    </div>
+  </article>
+
+  <section class="radar">
+    <p class="section-label">레이더</p>
+    <p class="radar-note">학습 대상이 아니라 <b>인지 대상</b>입니다. 훑고 지나가세요 — 나중에 필요한 순간에 &ldquo;그거 있었지&rdquo;가 나오게 하는 것이 목적입니다.</p>
+
+    <div class="radar-group">
+      <h3>내가 쓰는 도구</h3>
+      <ul class="radar-list">
+        <li>Claude Code 2.1.309 — 공식 변경 기록 기준으로 <code>sed -i</code>를 일반 Bash 명령으로 취급하고, Desktop 앱과 VS Code의 권한 우회 모드에서도 <code>rm</code>·<code>rmdir</code>은 곧바로 거부한다. 버그 62개를 고쳤다.</li>
+        <li>Claude Code 2.1.307 — 해석할 수 없는 도구 호출을 최대 두 번 다시 시도한다. 안전 관련 판단이 날 때마다 남기는 텔레메트리 이벤트와, 코드 리뷰를 멈추는 <code>@claude review stop</code>이 추가됐다.</li>
+        <li>Claude Code 2.1.305 — 리눅스 샌드박스에 중첩 사용자 네임스페이스를 허용하는 설정이 생겼다. 공식 기록이 파일 보호를 우회할 수 있다고 경고하니 켜기 전에 확인이 필요하다.</li>
+        <li>Claude Code 2.1.304 — 자동 모드 설정을 안내하는 <code>/auto-mode-setup</code>이 추가됐다. 사용자 지정 API 주소를 쓸 때도 도구 검색이 기본으로 켜진다.</li>
+        <li>Codex 데스크톱 앱 — 응답이 끝나면 다음에 보낼 프롬프트를 제안하고 Tab으로 받아 초안으로 고칠 수 있는 기능이 10월 9일 베타로 나왔다. 대상은 개인 Pro 요금제다.</li>
+      </ul>
+    </div>
+
+    <div class="radar-group">
+      <h3>보안</h3>
+      <ul class="radar-list">
+        <li>x402 SDK 결함 — x402는 에이전트가 API를 부를 때마다 결제 요청(HTTP 402)에 서명해 돈을 내는 방식이다. 악성 API가 에이전트의 토큰 잔액 전부만큼 서명을 요구할 수 있었고, 기본 클라이언트에 지출 상한이 없었다는 보도다. 8월 릴리스에서 상한이 추가됐다. (The Hacker News 제목 요약 기준, 원문과 보안 공지는 미확인)</li>
+        <li>OpenCode 결함 — OpenCode는 터미널에서 쓰는 오픈소스 코딩 에이전트다. 악성 MCP 서버가 로그인 과정에서 Windows·WSL의 이스케이프되지 않은 PowerShell 명령을 통해 코드를 실행시킬 수 있었다. 1.18.33에서 고쳤고 CVE는 없다. (The Hacker News 제목 요약 기준, 원문 미확인)</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer class="status">
+    <span>오늘 조사 후 1건 전달 + 보완 1건 · 레이더 7건 · 날짜 불명 영상·이미지 롤업은 폐기</span>
+    <span>Knowledge Agent v0.1</span>
+  </footer>
+
+</div>
