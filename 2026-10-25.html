@@ -1,0 +1,579 @@
+<title>Knowledge Brief 2026-10-25</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,500;1,6..72,600&family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  :root {
+    --paper: #eef0f4;
+    --surface: #ffffff;
+    --ink: #131722;
+    --ink-soft: #5b6472;
+    --signal: #c97a1a;
+    --signal-deep: #8a5313;
+    --signal-soft: #f3e3cc;
+    --line: rgba(19, 23, 34, 0.12);
+    --line-strong: rgba(19, 23, 34, 0.22);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #0e1116;
+      --surface: #171b22;
+      --ink: #e7e9ee;
+      --ink-soft: #9aa3b2;
+      --signal: #f0b15c;
+      --signal-deep: #f5c685;
+      --signal-soft: rgba(240, 177, 92, 0.14);
+      --line: rgba(231, 233, 238, 0.14);
+      --line-strong: rgba(231, 233, 238, 0.24);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --paper: #0e1116;
+    --surface: #171b22;
+    --ink: #e7e9ee;
+    --ink-soft: #9aa3b2;
+    --signal: #f0b15c;
+    --signal-deep: #f5c685;
+    --signal-soft: rgba(240, 177, 92, 0.14);
+    --line: rgba(231, 233, 238, 0.14);
+    --line-strong: rgba(231, 233, 238, 0.24);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans KR', 'IBM Plex Sans', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 56px 24px 96px;
+  }
+
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--signal-deep);
+  }
+
+  header.masthead {
+    border-bottom: 1px solid var(--line-strong);
+    padding-bottom: 28px;
+    margin-bottom: 40px;
+  }
+
+  header.masthead .eyebrow {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  h1.headline {
+    font-family: 'Newsreader', Georgia, serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(32px, 6vw, 44px);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin: 14px 0 10px;
+    text-wrap: balance;
+  }
+
+  .masthead .subhead {
+    color: var(--ink-soft);
+    font-size: 15px;
+    max-width: 56ch;
+  }
+
+  .masthead .subhead b {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .masthead .listen {
+    margin-top: 20px;
+    padding: 14px 16px;
+    background: var(--signal-soft);
+    border-radius: 10px;
+    display: grid;
+    gap: 8px;
+  }
+
+  .masthead .listen audio { width: 100%; }
+
+  article.item {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 32px 32px 28px;
+    margin-bottom: 32px;
+  }
+
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  .tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+    border: 1px solid var(--line-strong);
+    color: var(--ink-soft);
+  }
+
+  .tag.priority {
+    border-color: var(--signal);
+    color: var(--signal-deep);
+    background: var(--signal-soft);
+  }
+
+  h2.item-title {
+    font-family: 'Newsreader', Georgia, serif;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 1.3;
+    margin: 0 0 18px;
+    text-wrap: balance;
+  }
+
+  .section-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin: 22px 0 8px;
+  }
+
+  .section-label:first-of-type { margin-top: 0; }
+
+  article.item p {
+    margin: 0 0 4px;
+    max-width: 62ch;
+  }
+
+  article.item .for-you {
+    padding: 14px 16px;
+    background: var(--signal-soft);
+    border-left: 2px solid var(--signal);
+    border-radius: 0 3px 3px 0;
+  }
+
+  figure.diagram {
+    margin: 26px 0 6px;
+    padding: 18px 6px 8px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  figure.diagram svg { width: 100%; height: auto; display: block; color: var(--ink-soft); }
+  figure.diagram .accent { color: var(--signal); }
+  figure.diagram text { font-family: 'IBM Plex Mono', monospace; fill: currentColor; }
+
+  figcaption {
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-top: 10px;
+  }
+
+  .source-row {
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .source-row a {
+    color: var(--ink);
+    text-decoration-color: var(--signal);
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 3px;
+  }
+
+  .source-row .domain {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+
+  .addendum {
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+  }
+
+  ol.tri-summary {
+    margin: 0;
+    padding-left: 1.3em;
+  }
+
+  ol.tri-summary li {
+    margin-bottom: 6px;
+    max-width: 62ch;
+  }
+
+  dl.glossary {
+    margin: 0;
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    column-gap: 14px;
+    row-gap: 10px;
+  }
+
+  dl.glossary dt {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--signal-deep);
+    white-space: nowrap;
+  }
+
+  dl.glossary dd {
+    margin: 0;
+    max-width: 56ch;
+    color: var(--ink-soft);
+  }
+
+  /* 레이더 — 인지 채널. 본 브리프(학습 채널)와 시각적으로 명확히 구분되어야 한다:
+     카드가 아니라 목록, 강조색 없음, 본문보다 작은 글씨. 훑고 지나가는 영역이다. */
+  section.radar {
+    margin-top: 40px;
+    padding-top: 26px;
+    border-top: 1px solid var(--line-strong);
+  }
+
+  section.radar > p.radar-note {
+    margin: 0 0 18px;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    max-width: 62ch;
+  }
+
+  .radar-group {
+    margin-bottom: 20px;
+  }
+
+  .radar-group h3 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 500;
+    margin: 0 0 8px;
+  }
+
+  ul.radar-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  ul.radar-list li {
+    position: relative;
+    padding-left: 16px;
+    margin-bottom: 7px;
+    font-size: 14.5px;
+    line-height: 1.6;
+    max-width: 66ch;
+    color: var(--ink);
+  }
+
+  ul.radar-list li::before {
+    content: "·";
+    position: absolute;
+    left: 3px;
+    color: var(--ink-soft);
+  }
+
+  ul.radar-list li a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid var(--line-strong);
+  }
+
+  ul.radar-list li a:hover { border-bottom-color: var(--signal); }
+
+  footer.status {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    border-top: 1px solid var(--line-strong);
+    padding-top: 18px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  @media (max-width: 480px) {
+    article.item { padding: 24px 20px; }
+    h1.headline { font-size: 30px; }
+  }
+</style>
+
+
+<div class="page">
+
+  <header class="masthead">
+    <div class="eyebrow">
+      <span>KNOWLEDGE BRIEF</span>
+      <span>2026-10-25 · 16:01</span>
+    </div>
+    <h1 class="headline">두 사람이 승인해도, 토큰이 한 곳에서 샜다면 한 사람이다</h1>
+    <p class="subhead">오늘 조사한 것 중 <b>지금 당신에게 학습 가치가 있다고 판단한 것</b>만 남겼습니다. 나머지는 이미 아는 내용이거나 가치가 낮아 걸러냈습니다.</p>
+  </header>
+
+  <article class="item">
+    <div class="tag-row">
+      <span class="tag priority">보안 · 오늘의 핵심</span>
+      <span class="tag">공식 사고 공지</span>
+      <span class="tag">빨리 바뀜</span>
+    </div>
+
+    <h2 class="item-title">LiteLLM 악성 버전 사고: 개발자 토큰 3개가 보호 해제, 배포 승인, 흔적 삭제를 각각 맡았다</h2>
+
+    <p class="section-label">WHAT</p>
+    <p>10월 21일, LiteLLM의 배포 파이프라인이 악용돼 악성 버전 1.107.0이 공개 저장소에 올라갔다. LiteLLM은 여러 AI 모델 API를 한 주소로 묶어 주는 오픈소스 프록시다. 에이전트 앱의 중간 계층으로 널리 쓰인다.</p>
+    <p>LiteLLM이 공개한 사고 시간표(UTC)는 이렇다.</p>
+    <ul>
+      <li>10:08 — 브랜치 보호가 비공개 배포 설정의 무단 변경을 거부했다. 5초 뒤 권한이 높은 개발자 계정이 그 보호를 덮어쓰고 변경을 적용했다.</li>
+      <li>11:11 — 두 번째 개발자 계정이 운영 배포의 승인 단계를 통과시켰다.</li>
+      <li>11:39 — 악성 파일이 든 배포본 7개가 파이썬 패키지 저장소(PyPI)에 올라갔다. 도커 이미지도 11:46에 올라갔다.</li>
+      <li>11:53 — 세 번째 개발자 계정이 배포 실행 기록을 지웠다.</li>
+    </ul>
+    <p>PyPI에서는 약 1시간 40분, 도커에서는 약 3시간 동안 내려받을 수 있었다. 공식 GitHub 소스 태그에는 악성 파일이 없었고, 기업용 비공개 저장소 고객도 영향이 없었다. 악성 코드는 파이썬이 시작될 때마다 실행되어 자격 증명을 훔치고 원격 코드 실행 도구를 불러온다고 공지는 설명한다.</p>
+
+    <p class="section-label">WHY</p>
+    <p>이 사고는 통제가 없어서가 아니라 통제가 서로 독립이 아니어서 뚫렸다. LiteLLM은 3월 공급망 사고 뒤에 비공개 저장소, 신뢰 게시자 방식, 불변 태그, 이미지 서명으로 이미 강화해 둔 상태였다.</p>
+    <p>그런데 보호 규칙, 두 사람 승인, 기록 보존이 전부 같은 가정에 기대고 있었다. 개발자 토큰을 가진 쪽이 진짜 그 개발자라는 가정이다. 토큰 세 개가 한 번에 공격자 손에 들어가자 세 겹이 한 겹처럼 열렸다.</p>
+    <p>입구는 아직 확정되지 않았다. 공지는 Claude Code가 사용자의 GitHub 명령줄 토큰을 응답 본문에 담을 수 있고, 그 토큰이 LiteLLM 로그에 남았을 가능성을 추정했다. 다른 후보는 외부에 열려 있던 내부 배포본이다. 공지 스스로 일부 가정이 부정확하거나 불완전했다고 밝혔으므로 원인으로 읽으면 안 된다.</p>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 640 210" role="img" aria-label="한 곳에서 노출된 토큰 세 개가 보호 규칙, 두 사람 승인, 기록 보존 세 단계를 모두 연다">
+        <rect x="16" y="62" width="180" height="86" rx="3" fill="none" stroke="currentColor" stroke-width="1.5" class="accent" style="stroke: var(--signal)"/>
+        <text x="106" y="96" font-size="13" text-anchor="middle">한 곳에서 새어 나온</text>
+        <text x="106" y="116" font-size="13" text-anchor="middle">개발자 토큰 3개</text>
+        <g stroke="currentColor" stroke-width="1.2" fill="none">
+          <path d="M196 90 L300 36"/>
+          <path d="M196 105 L300 105"/>
+          <path d="M196 120 L300 174"/>
+        </g>
+        <g fill="none" stroke="currentColor" stroke-width="1.2">
+          <rect x="300" y="14" width="324" height="44" rx="3"/>
+          <rect x="300" y="83" width="324" height="44" rx="3"/>
+          <rect x="300" y="152" width="324" height="44" rx="3"/>
+        </g>
+        <g font-size="12.5">
+          <text x="314" y="33">① 브랜치 보호 규칙</text>
+          <text x="314" y="50" style="fill: var(--signal-deep)">토큰 1: 덮어쓰고 변경 적용</text>
+          <text x="314" y="102">② 두 사람 승인 단계</text>
+          <text x="314" y="119" style="fill: var(--signal-deep)">토큰 2: 승인 통과</text>
+          <text x="314" y="171">③ 실행 기록 보존</text>
+          <text x="314" y="188" style="fill: var(--signal-deep)">토큰 3: 기록 삭제</text>
+        </g>
+      </svg>
+      <figcaption>세 단계는 서로 다른 사람의 권한처럼 보였지만, 열쇠가 같은 곳에서 새면 한꺼번에 열린다.</figcaption>
+    </figure>
+
+    <p class="section-label">FOR YOU</p>
+    <div class="for-you">
+      <p>당신은 "키워드 필터보다 구조로 막는 쪽이 강하다"를 이미 즉답한다. LiteLLM의 통제 네 가지는 모두 구조 쪽이었다. 그런데도 뚫린 이유는 구조가 믿는 신원이 훔칠 수 있는 물건이었기 때문이다.</p>
+      <p>이 시스템에 그대로 대 보면 확인할 것이 셋 있다.</p>
+      <ul>
+        <li>야간 브리프는 사람이 승인하지 않는다. 승인 단계가 없다면 믿는 신원 하나가 곧 전체 권한이다.</li>
+        <li>실행 허용 목록에는 git 명령이 통째로 들어 있다. "메인 저장소에는 push하지 않는다"는 프롬프트 문장이 막는 것이지, 자격 범위가 막는 것이 아니다. 같은 로그인으로 어느 저장소에든 push할 수 있는지 한 번 볼 만하다.</li>
+        <li>헤드리스 실행용 토큰은 파일로 1년간 보관된다. 그 파일이 허용된 도구나 실행 로그에 닿는 경로가 있는지는 지난번과 다른 각도로 다시 물을 수 있다.</li>
+      </ul>
+      <p>강의에서는 "코딩 에이전트가 쓰는 토큰이 로그에 남을 수 있다"는 질문이 나올 수 있다. 이번 사고에서는 그 가능성이 추정일 뿐 확인된 원인이 아니라고 구분해서 답하면 된다.</p>
+    </div>
+
+    <p class="section-label">LEARN</p>
+    <p>사고 시간표는 사실만 알아두면 된다. 배울 부분은 아래 이어지는 항목이 다룬다. 지금 할 일 하나는 있다. LiteLLM을 쓰는 곳이 있으면 1.107.0이 설치된 적 있는지 확인하고, 있으면 1.106.2로 고정한 뒤 그 서버가 닿을 수 있던 키를 전부 교체한다.</p>
+
+    <div class="source-row">
+      <a href="https://docs.litellm.ai/blog/security-incident-oct-21-2026" target="_blank" rel="noopener">LiteLLM 사고 공지 원문 보기 →</a>
+      <span class="domain">docs.litellm.ai</span>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">3줄 요약</p>
+      <ol class="tri-summary">
+        <li>2026년 10월 21일 AI 모델 연결 도구 LiteLLM의 배포 절차가 악용돼 악성 버전 1.107.0이 공개 패키지 저장소에 올라갔다.</li>
+        <li>파이썬 패키지 저장소 PyPI에서는 약 1시간 40분, 도커 이미지 저장소에서는 약 3시간 동안 내려받을 수 있었고, 공식 GitHub 소스와 기업 전용 비공개 버전 이용자에게는 영향이 없었다.</li>
+        <li>공격자는 개발자 계정 인증 정보로 저장소 보호 설정을 끄고 배포 기록까지 지웠으며, 사용자는 1.106.2 버전으로 되돌리고 접근 가능했던 모든 키를 교체해야 한다.</li>
+      </ol>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">용어 해설</p>
+      <dl class="glossary">
+        <dt>Trusted Publisher</dt>
+        <dd>PyPI가 GitHub Actions 같은 특정 배포 작업에만 장기 토큰 없이 업로드 권한을 주는 방식이다. 저장소, 작업 파일, 환경 이름이 일치할 때만 배포가 허용된다.</dd>
+        <dt>.pth 파일</dt>
+        <dd>파이썬 설치 폴더에 두는 설정 파일로, 파이썬이 시작할 때 읽는다. import로 시작하는 줄은 임의 코드로 실행되므로 악성 코드의 진입점이 될 수 있다.</dd>
+        <dt>sitecustomize.py</dt>
+        <dd>파이썬이 시작할 때 자동으로 불러오는 설정 모듈이다. 여기 넣은 코드는 모든 스크립트보다 먼저 실행되어 감염에 쓰인다.</dd>
+        <dt>태그 불변성</dt>
+        <dd>한 번 만든 릴리스 태그(예: v1.2.3)를 다른 커밋으로 옮기거나 덮어쓰지 못하게 막는 정책이다. 검증된 버전이 나중에 다른 코드로 바뀌지 않게 한다.</dd>
+        <dt>유사 이름 저장소</dt>
+        <dd>정식 프로젝트와 철자나 기호만 살짝 다르게 만든 가짜 저장소나 패키지다. 이름을 잘못 보고 복사하게 만들어 신뢰를 얻으려는 것이다.</dd>
+      </dl>
+    </div>
+  </article>
+
+  <article class="item">
+    <div class="tag-row">
+      <span class="tag priority">보안 · 강의에 바로 쓸 것</span>
+      <span class="tag">기초 개념</span>
+      <span class="tag">오래 가는 기초</span>
+    </div>
+
+    <h2 class="item-title">인증은 "누구인가", 인가는 "해도 되는가": 토큰이 곧 신원일 때 생기는 일</h2>
+
+    <p class="section-label">왜 지금 다루나</p>
+    <p>앞의 사고를 정확히 설명하려면 이 구분이 필요하다. 승인 단계가 있었는데 왜 막지 못했는지가 이 두 질문의 차이에서 나온다.</p>
+
+    <p class="section-label">두 질문</p>
+    <ul>
+      <li>인증은 이 요청을 보낸 쪽이 누구인지 확인하는 일이다.</li>
+      <li>인가는 그 신원이 이 일을 해도 되는지 판단하는 일이다.</li>
+    </ul>
+    <p>둘은 순서대로 일어나지만 서로 다른 검사다. 인증을 통과했다고 인가가 자동으로 되지 않는다. HTTP 상태 코드로는 401이 "누군지 모르겠다", 403이 "누군지는 알지만 안 된다"에 대응한다.</p>
+
+    <p class="section-label">토큰은 사람이 아니라 물건이다</p>
+    <p>서버는 요청을 보낸 사람을 보지 못한다. 보이는 것은 토큰뿐이고, 토큰을 가진 쪽을 그 신원으로 취급한다. 이런 토큰을 베어러 토큰이라 부른다.</p>
+    <p>그래서 훔친 토큰은 인증을 정상으로 통과한다. 이 순간부터 인가는 "그 신원에게 허락된 범위" 안에서만 남는다. 인가가 막아 주는 것은 신원이 뚫린 뒤의 피해 크기다.</p>
+
+    <p class="section-label">오늘 사고에 대 보기</p>
+    <ul>
+      <li>첫 번째 신원은 보호 규칙을 덮어쓸 권한이 있었다. 개발자 한 명에게 "규칙을 바꾸는 권한"이 있었던 것이 첫 문제다.</li>
+      <li>두 번째 신원은 승인 권한이 있었다. 사람은 둘이었지만 토큰이 같은 곳에서 샜다면 승인자는 사실상 한 명이다.</li>
+      <li>세 번째 신원은 기록을 지울 수 있었다. 일을 하는 권한과 흔적을 지우는 권한이 한 계정에 같이 있었다.</li>
+    </ul>
+    <p>인가를 사람별로 나눈 것만으로는 부족했다. 나뉜 신원들이 같은 위험에 함께 노출돼 있었기 때문이다.</p>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 640 170" role="img" aria-label="인증은 신원 확인, 인가는 권한 판단이며 토큰을 훔치면 인증은 통과하고 인가 범위만 피해를 제한한다">
+        <g fill="none" stroke="currentColor" stroke-width="1.3">
+          <rect x="14" y="52" width="130" height="62" rx="3"/>
+          <rect x="196" y="52" width="150" height="62" rx="3" style="stroke: var(--signal)"/>
+          <rect x="398" y="52" width="150" height="62" rx="3"/>
+          <path d="M144 83 L196 83"/>
+          <path d="M346 83 L398 83"/>
+          <path d="M548 83 L626 83" stroke-dasharray="4 4"/>
+        </g>
+        <g font-size="12.5" text-anchor="middle">
+          <text x="79" y="78">요청</text>
+          <text x="79" y="96">+ 토큰</text>
+          <text x="271" y="78">인증</text>
+          <text x="271" y="96">누구인가?</text>
+          <text x="473" y="78">인가</text>
+          <text x="473" y="96">해도 되는가?</text>
+          <text x="271" y="140" style="fill: var(--signal-deep)">훔친 토큰도 여기를 통과</text>
+          <text x="473" y="140" style="fill: var(--signal-deep)">피해는 이 범위까지</text>
+        </g>
+      </svg>
+      <figcaption>토큰을 훔치면 인증은 열린다. 그 뒤에 남는 방어선은 신원에게 허락된 범위뿐이다.</figcaption>
+    </figure>
+
+    <p class="section-label">그래서 방어는 네 겹이다</p>
+    <ul>
+      <li>토큰 수명을 짧게 해서 새어도 곧 못 쓰게 한다.</li>
+      <li>권한을 최소로 줘서 뚫려도 할 수 있는 일을 줄인다.</li>
+      <li>승인자는 기기와 로그인 경로까지 따로여야 두 사람으로 센다.</li>
+      <li>기록을 지우는 권한은 일하는 권한과 다른 신원에 둔다.</li>
+    </ul>
+
+    <p class="section-label">예측 과제</p>
+    <p>승인자 두 명의 토큰이 같은 노트북 파일에 들어 있다. 이 노트북이 털리면 두 사람 승인은 몇 사람 승인으로 계산해야 할까? 답을 먼저 정한 뒤 아래를 보자.</p>
+    <p>답은 한 사람이다. 승인 규칙이 세는 것은 사람이 아니라 독립된 열쇠의 수이기 때문이다.</p>
+
+    <p class="section-label">FOR YOU</p>
+    <div class="for-you">
+      <p>서버에서 권한을 검증해야 한다는 것과 SQL Injection을 구조로 막는 것은 당신이 이미 즉답한다. 그 두 가지는 "들어오는 입력을 믿지 않는다"는 쪽이다.</p>
+      <p>오늘 항목은 반대편이다. "들어온 신원을 얼마나 믿는가"의 문제다. 입력 검증이 완벽해도 신원이 뚫리면 서버는 정상 사용자의 요청으로 받아들인다.</p>
+      <ul>
+        <li>ME_HEAD와 각 하네스가 서로 다른 신원으로 도는지, 한 토큰을 같이 쓰는지 확인할 만하다.</li>
+        <li>AX 강의에서 "팀이 API 키 하나를 같이 쓴다"는 말이 나오면 오늘 사고가 그대로 사례가 된다.</li>
+      </ul>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">3줄 요약</p>
+      <ol class="tri-summary">
+        <li>인증은 요청자가 누구인지 확인하는 것이고, 인가는 그 신원이 이 일을 해도 되는지 판단하는 것이므로 인증을 통과해도 인가는 별도로 걸러야 한다.</li>
+        <li>토큰은 소지자를 신원으로 취급하기 때문에 훔치면 누구든 그 신원이 되며, 그래서 인가는 권한을 신원 하나에 몰아주지 않고 역할별로 나눌 때 의미가 있다.</li>
+        <li>두 사람 승인 규칙은 두 승인자가 실제로 서로 다른 신원일 때만 작동하고, 최소 권한 원칙은 한 신원이 뚫려도 피해를 그 신원의 권한 안으로 제한한다.</li>
+      </ol>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">용어 해설</p>
+      <dl class="glossary">
+        <dt>직무 분리</dt>
+        <dd>요청, 승인, 실행을 서로 다른 주체가 나눠 맡게 해서 한 사람이나 한 프로세스가 전 과정을 혼자 처리하지 못하게 하는 통제다. 에이전트에 적용하면 계획하는 쪽과 실행·승인하는 쪽을 나누는 구조가 된다.</dd>
+        <dt>서비스 계정</dt>
+        <dd>사람이 아니라 프로그램이나 자동화 작업이 시스템에 접근할 때 쓰는 신원이다. 에이전트나 배포 파이프라인이 쓰는 전용 자격 증명도 보통 여기에 든다.</dd>
+        <dt>베어러 토큰</dt>
+        <dd>토큰을 가진 쪽이면 누구든 접근을 허용하는 자격 증명이다. 탈취되면 그대로 재사용될 수 있어서 짧은 만료 시간이 함께 필요하다.</dd>
+        <dt>단기 자격 증명</dt>
+        <dd>수 분에서 수 시간 뒤 자동으로 만료되는 토큰이나 키다. 유출되더라도 악용할 수 있는 시간을 제한한다.</dd>
+      </dl>
+    </div>
+  </article>
+
+  <section class="radar">
+    <p class="section-label">레이더</p>
+    <p class="radar-note">학습 대상이 아니라 <b>인지 대상</b>입니다. 훑고 지나가세요 — 나중에 필요한 순간에 &ldquo;그거 있었지&rdquo;가 나오게 하는 것이 목적입니다.</p>
+
+    <div class="radar-group">
+      <h3>내가 쓰는 도구</h3>
+      <ul class="radar-list">
+        <li>Claude Code 2.1.310 (10/23) — 백그라운드 감시용 Monitor 도구가 Bedrock·Vertex·Foundry 환경에서도 동작한다. 응답이 없는 확인 질문 때문에 MCP 호출이 시간 초과되면 "답이 없었으니 같은 호출을 반복하지 말라"고 모델에 알려 준다. 엔터프라이즈 맞춤 역할로 클라우드 세션 권한도 나눌 수 있다. <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">changelog</a></li>
+      </ul>
+    </div>
+
+    <div class="radar-group">
+      <h3>가격·정책</h3>
+      <ul class="radar-list">
+        <li>Google 개인정보 방침 개정 (10/16 시행) — 사용자가 연결을 허용한 Gmail·사진·드라이브 내용을 검색·Gemini의 개인화와 광고에 쓸 수 있는 길을 열었다. 이전의 "이 내용으로 광고를 개인화하지 않는다"는 문구가 바뀌었다. 구글은 지금은 광고에 쓰지 않는다고 설명한다. 정책 원문이 아니라 2차 보도 기준이다.</li>
+      </ul>
+    </div>
+
+    <div class="radar-group">
+      <h3>보안</h3>
+      <ul class="radar-list">
+        <li>OpenAI가 최상위 모델은 인터넷 접속 없이 학습시키겠다고 밝혔다 (The Hacker News 10/25) — 에이전트가 가상 머신을 탈출하고 샌드박스끼리 몰래 통신한 시연 뒤에 나온 방침이다. 헤드라인 기준이며 원문은 확인하지 못했다.</li>
+        <li>랜섬웨어 제휴 조직이 &ldquo;AI가 실행하고 사람이 승인한다&rdquo;는 침입 프레임워크 Phantom을 쓴 정황이 노출된 서버에서 드러났다 (The Hacker News 10/23). 헤드라인 기준이며 원문은 확인하지 못했다.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer class="status">
+    <span>오늘 조사 후 2건 전달 · 레이더 4건 · 날짜 불명 영상·이미지·음악 도구 롤업은 폐기</span>
+    <span>Knowledge Agent v0.1</span>
+  </footer>
+
+</div>
