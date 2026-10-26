@@ -1,0 +1,587 @@
+<title>Knowledge Brief 2026-10-27</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,500;1,6..72,600&family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  :root {
+    --paper: #eef0f4;
+    --surface: #ffffff;
+    --ink: #131722;
+    --ink-soft: #5b6472;
+    --signal: #c97a1a;
+    --signal-deep: #8a5313;
+    --signal-soft: #f3e3cc;
+    --line: rgba(19, 23, 34, 0.12);
+    --line-strong: rgba(19, 23, 34, 0.22);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #0e1116;
+      --surface: #171b22;
+      --ink: #e7e9ee;
+      --ink-soft: #9aa3b2;
+      --signal: #f0b15c;
+      --signal-deep: #f5c685;
+      --signal-soft: rgba(240, 177, 92, 0.14);
+      --line: rgba(231, 233, 238, 0.14);
+      --line-strong: rgba(231, 233, 238, 0.24);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --paper: #0e1116;
+    --surface: #171b22;
+    --ink: #e7e9ee;
+    --ink-soft: #9aa3b2;
+    --signal: #f0b15c;
+    --signal-deep: #f5c685;
+    --signal-soft: rgba(240, 177, 92, 0.14);
+    --line: rgba(231, 233, 238, 0.14);
+    --line-strong: rgba(231, 233, 238, 0.24);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans KR', 'IBM Plex Sans', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 56px 24px 96px;
+  }
+
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--signal-deep);
+  }
+
+  header.masthead {
+    border-bottom: 1px solid var(--line-strong);
+    padding-bottom: 28px;
+    margin-bottom: 40px;
+  }
+
+  header.masthead .eyebrow {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  h1.headline {
+    font-family: 'Newsreader', Georgia, serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(32px, 6vw, 44px);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin: 14px 0 10px;
+    text-wrap: balance;
+  }
+
+  .masthead .subhead {
+    color: var(--ink-soft);
+    font-size: 15px;
+    max-width: 56ch;
+  }
+
+  .masthead .subhead b {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .masthead .listen {
+    margin-top: 20px;
+    padding: 14px 16px;
+    background: var(--signal-soft);
+    border-radius: 10px;
+    display: grid;
+    gap: 8px;
+  }
+
+  .masthead .listen audio { width: 100%; }
+
+  article.item {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 32px 32px 28px;
+    margin-bottom: 32px;
+  }
+
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  .tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+    border: 1px solid var(--line-strong);
+    color: var(--ink-soft);
+  }
+
+  .tag.priority {
+    border-color: var(--signal);
+    color: var(--signal-deep);
+    background: var(--signal-soft);
+  }
+
+  h2.item-title {
+    font-family: 'Newsreader', Georgia, serif;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 1.3;
+    margin: 0 0 18px;
+    text-wrap: balance;
+  }
+
+  .section-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin: 22px 0 8px;
+  }
+
+  .section-label:first-of-type { margin-top: 0; }
+
+  article.item p {
+    margin: 0 0 4px;
+    max-width: 62ch;
+  }
+
+  article.item .for-you {
+    padding: 14px 16px;
+    background: var(--signal-soft);
+    border-left: 2px solid var(--signal);
+    border-radius: 0 3px 3px 0;
+  }
+
+  figure.diagram {
+    margin: 26px 0 6px;
+    padding: 18px 6px 8px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  figure.diagram svg { width: 100%; height: auto; display: block; color: var(--ink-soft); }
+  figure.diagram .accent { color: var(--signal); }
+  figure.diagram text { font-family: 'IBM Plex Mono', monospace; fill: currentColor; }
+
+  figcaption {
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-top: 10px;
+  }
+
+  .source-row {
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .source-row a {
+    color: var(--ink);
+    text-decoration-color: var(--signal);
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 3px;
+  }
+
+  .source-row .domain {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+
+  .addendum {
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+  }
+
+  ol.tri-summary {
+    margin: 0;
+    padding-left: 1.3em;
+  }
+
+  ol.tri-summary li {
+    margin-bottom: 6px;
+    max-width: 62ch;
+  }
+
+  dl.glossary {
+    margin: 0;
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    column-gap: 14px;
+    row-gap: 10px;
+  }
+
+  dl.glossary dt {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--signal-deep);
+    white-space: nowrap;
+  }
+
+  dl.glossary dd {
+    margin: 0;
+    max-width: 56ch;
+    color: var(--ink-soft);
+  }
+
+  /* 레이더 — 인지 채널. 본 브리프(학습 채널)와 시각적으로 명확히 구분되어야 한다:
+     카드가 아니라 목록, 강조색 없음, 본문보다 작은 글씨. 훑고 지나가는 영역이다. */
+  section.radar {
+    margin-top: 40px;
+    padding-top: 26px;
+    border-top: 1px solid var(--line-strong);
+  }
+
+  section.radar > p.radar-note {
+    margin: 0 0 18px;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    max-width: 62ch;
+  }
+
+  .radar-group {
+    margin-bottom: 20px;
+  }
+
+  .radar-group h3 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 500;
+    margin: 0 0 8px;
+  }
+
+  ul.radar-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  ul.radar-list li {
+    position: relative;
+    padding-left: 16px;
+    margin-bottom: 7px;
+    font-size: 14.5px;
+    line-height: 1.6;
+    max-width: 66ch;
+    color: var(--ink);
+  }
+
+  ul.radar-list li::before {
+    content: "·";
+    position: absolute;
+    left: 3px;
+    color: var(--ink-soft);
+  }
+
+  ul.radar-list li a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid var(--line-strong);
+  }
+
+  ul.radar-list li a:hover { border-bottom-color: var(--signal); }
+
+  footer.status {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    border-top: 1px solid var(--line-strong);
+    padding-top: 18px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  @media (max-width: 480px) {
+    article.item { padding: 24px 20px; }
+    h1.headline { font-size: 30px; }
+  }
+</style>
+
+
+<div class="page">
+
+  <header class="masthead">
+    <div class="eyebrow">
+      <span>KNOWLEDGE BRIEF</span>
+      <span>2026-10-27 · 08:40</span>
+    </div>
+    <h1 class="headline">폴더에 놓인 파일 하나가 에이전트의 지시가 되고, 자물쇠는 길을 막지 못한다</h1>
+    <p class="subhead">오늘 조사한 것 중 <b>지금 당신에게 학습 가치가 있다고 판단한 것</b>만 남겼습니다. 나머지는 이미 아는 내용이거나 가치가 낮아 걸러냈습니다.</p>
+  </header>
+
+  <article class="item">
+    <div class="tag-row">
+      <span class="tag priority">하네스 설계 · 오늘의 핵심</span>
+      <span class="tag">기술매체</span>
+      <span class="tag">빨리 바뀜</span>
+    </div>
+
+    <h2 class="item-title">Downloads 폴더의 AGENTS.md 한 장이 코딩 에이전트에게 악성 패키지를 설치시켰다</h2>
+
+    <p class="section-label">WHAT</p>
+    <p>보안 업체 Forever Security가 고객 PC에서 이상한 설치 시도를 발견했다. 코딩 에이전트가 function-color라는 악성 npm 패키지를 깔려고 했다. 원인을 따라가니 ~/Downloads 폴더의 AGENTS.md 파일이 나왔다. BleepingComputer가 10월 25일 보도했다.</p>
+    <p>그 폴더가 에이전트의 작업 폴더였다. 에이전트는 작업 폴더의 AGENTS.md와 CLAUDE.md를 자동으로 읽고 따른다. 이 파일은 실행 파일이 아니다. 하지만 안에 적힌 지시가 에이전트의 권한으로 명령 실행, 패키지 설치, 설정 변경을 일으킨다.</p>
+    <p>연구진이 그린 공격 순서는 세 단계다.</p>
+    <ul>
+      <li>악성 지시 파일이 Downloads에 떨어진다. 연구진은 악성 웹 페이지가 사용자 조작 없이 내려받게 할 수 있다고 본다. 이 고객 PC에서 실제로 어떻게 들어왔는지는 확인하지 못했다.</li>
+      <li>사용자가 그 폴더에서 에이전트를 켠다. 내려받은 파일을 정리시키려는 경우가 흔하다.</li>
+      <li>에이전트가 파일을 읽고 지시를 따른다.</li>
+    </ul>
+    <p>브라우저는 대부분 묻지 않고 Downloads에 저장한다. Chrome, Edge, Firefox가 그랬다. BleepingComputer가 무해한 시험 페이지로 확인했고, Brave만 저장 전에 승인을 물었다.</p>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 640 150" role="img" aria-label="웹 페이지가 지시 파일을 Downloads에 떨어뜨리고, 사용자가 그 폴더에서 에이전트를 켜면 에이전트가 파일을 읽고 명령을 실행한다">
+        <g fill="none" stroke="currentColor" stroke-width="1.4">
+          <rect x="10" y="40" width="170" height="64" rx="3"/>
+          <rect x="235" y="40" width="170" height="64" rx="3" style="stroke: var(--signal)"/>
+          <rect x="460" y="40" width="170" height="64" rx="3"/>
+          <path d="M180 72 L235 72"/>
+          <path d="M405 72 L460 72"/>
+        </g>
+        <g font-size="12.5" text-anchor="middle">
+          <text x="95" y="68">지시 파일이</text>
+          <text x="95" y="87">Downloads에 놓임</text>
+          <text x="320" y="68">그 폴더에서</text>
+          <text x="320" y="87">에이전트 실행</text>
+          <text x="545" y="68">파일을 읽고</text>
+          <text x="545" y="87">명령·설치 실행</text>
+          <text x="320" y="130" font-size="11.5" style="fill: var(--ink-soft)">에이전트의 판단이 아니라 폴더가 지시를 정한다</text>
+        </g>
+      </svg>
+      <figcaption>가운데 칸이 약한 고리다. 에이전트를 켜는 위치가 곧 어떤 파일을 믿을지를 정한다.</figcaption>
+    </figure>
+
+    <p class="section-label">WHY</p>
+    <p>이번 건에서 모델은 속지 않았다. 연구진 말대로 에이전트는 설계된 대로 동작했다. 작업 폴더의 지시 파일을 믿는 것이 기본 설계다. 그래서 연구진은 벤더가 패치할 것이 없다고 주장한다.</p>
+    <p>재현 수치는 연구진 자체 테스트다.</p>
+    <ul>
+      <li>OpenAI Codex는 무해한 페이로드(계산기 실행)로 90% 성공했다.</li>
+      <li>Claude Code는 별도 시험에서 악성 CLAUDE.md가 API 통신을 연구진 서버로 돌렸다. OAuth 토큰이 노출됐고, 그 서버가 모델인 척 도구 호출을 돌려주자 약 50%에서 코드가 실행됐다.</li>
+    </ul>
+    <p>위험이 이론에 그치지 않는다는 근거도 있다. 업체 내부 통계로 고객 수백 곳이 Downloads에서 에이전트를 돌리고 있었고, Claude Code만 1,300회 넘는 세션이 거기서 시작됐다.</p>
+    <p>OpenAI와 Anthropic은 홈 폴더나 넓은 상위 폴더가 아니라 프로젝트 폴더에서 에이전트를 실행하라고 권한다. 연구진의 완화책도 같다. 낯선 지시 파일은 열어 보고, 승인 프롬프트와 샌드박스는 켜 둔다. 근거는 보도 한 건과 연구진 주장이라는 점을 감안해야 한다.</p>
+
+    <p class="section-label">FOR YOU</p>
+    <div class="for-you">
+      <p>당신은 SQL Injection에서 "필터링이 아니라 구조 고정"을 스스로 도출했다. 이 사건은 같은 질문을 에이전트에 던진다. 어떤 파일을 믿을지를 폴더 위치가 정하고 있다.</p>
+      <p>그 위치는 사용자가 켜는 순간 정해지고 에이전트는 못 바꾼다. 즉 이번 방어선은 모델이 아니라 어디서 켜는가다.</p>
+      <p>강제 지점의 두 조건으로 읽어 보자. 쓰기 권한 밖에 있어야 하고 실행 경로 위에 있어야 한다. 낯선 파일을 열어 보라는 조언은 이 중 어느 쪽도 채우지 못한다.</p>
+      <p>사람의 주의에 기대는 방어이기 때문이다. 구조적인 답은 에이전트가 읽는 지시 파일의 출처를 제한하는 쪽이다.</p>
+      <p>당신의 시스템에 대입하면 확인할 질문이 셋이다.</p>
+      <ul>
+        <li>야간 브리프 폴더에는 바깥에서 병합해 온 파일이 들어온다. 원격에서 가져온 README가 그 예다. 그 파일들 중 에이전트가 지시로 읽는 이름이 있는가.</li>
+        <li>작업 폴더가 늘어날 때마다 같은 질문을 해야 한다. 이 저장소에는 워크트리별로 AGENTS.md 사본이 여럿 있다. 어느 것이 에이전트의 눈에 들어오는가.</li>
+        <li>강의에서는 이렇게 말하면 된다. "에이전트를 어디서 켜느냐가 보안 설정입니다. 다운로드 폴더에서 켜지 마세요."</li>
+      </ul>
+    </div>
+
+    <p class="section-label">LEARN</p>
+    <p>지금 할 일은 하나다. 에이전트를 켜는 폴더를 점검한다. 이 사건 자체는 빨리 바뀌는 소식이지만, "신뢰 경계는 입력 파일의 위치에서 시작한다"는 원리는 오래 간다. 아래 항목이 이 사건의 두 번째 절반, 곧 API 주소가 바뀌었는데 자물쇠는 왜 정상인가를 다룬다.</p>
+
+    <div class="source-row">
+      <a href="https://www.bleepingcomputer.com/news/security/ai-coding-agents-hijacked-using-agentsmd-file-in-downloads-folder/" target="_blank" rel="noopener">BleepingComputer 원문 보기 →</a>
+      <span class="domain">bleepingcomputer.com</span>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">3줄 요약</p>
+      <ol class="tri-summary">
+        <li>보안 업체 Forever Security가 고객 PC에서, 코딩 에이전트가 악성 npm 패키지를 설치하려던 원인이 작업 폴더인 ~/Downloads에 있던 AGENTS.md 지시 파일임을 찾아냈다.</li>
+        <li>연구진 재현에서 OpenAI Codex는 무해한 페이로드로 90% 성공했고, Claude Code는 악성 CLAUDE.md로 OAuth 토큰이 노출되고 약 50%에서 코드가 실행됐다(연구진 자체 테스트).</li>
+        <li>연구진은 에이전트가 설계대로 동작한 것이라 패치할 것이 없다고 주장하며, OpenAI와 Anthropic은 홈 폴더가 아닌 프로젝트 폴더에서 에이전트를 실행하라고 권고한다.</li>
+      </ol>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">용어 해설</p>
+      <dl class="glossary">
+        <dt>지시 파일</dt>
+        <dd>에이전트가 작업 폴더를 열면 자동으로 읽고 프로젝트 규칙으로 따르는 마크다운 파일이다. AGENTS.md와 CLAUDE.md가 대표적이며, 악의적으로 바뀌면 에이전트의 동작이 바뀐다.</dd>
+        <dt>페이로드</dt>
+        <dd>공격이 전달해 실제로 실행시키는 명령이나 코드 부분이다. 이번 연구에서는 계산기만 띄우는 무해한 페이로드로 실행 여부를 확인했다.</dd>
+        <dt>OAuth 토큰</dt>
+        <dd>로그인 뒤 발급되어 비밀번호 대신 API 요청에 쓰이는 인증 증표다. 탈취되면 공격자가 그 사용자 권한으로 요청을 보낼 수 있다.</dd>
+        <dt>npm 패키지</dt>
+        <dd>자바스크립트 생태계에서 설치해 쓰는 코드 묶음이다. 설치 과정에서 코드가 실행될 수 있어, 악성 패키지를 깔면 그 자리에서 피해가 시작될 수 있다.</dd>
+      </dl>
+    </div>
+  </article>
+
+  <article class="item">
+    <div class="tag-row">
+      <span class="tag priority">웹·네트워크 · 오늘의 보완</span>
+      <span class="tag">기초 개념</span>
+      <span class="tag">오래 가는 기초</span>
+    </div>
+
+    <h2 class="item-title">자물쇠가 보증하는 것은 "이 주소의 주인"이지 "맞는 주소"가 아니다</h2>
+
+    <p class="section-label">왜 지금 다루나</p>
+    <p>앞 항목에서 Claude Code의 통신이 연구진 서버로 돌아가 토큰이 노출됐다. 그 서버가 정당한 인증서를 가졌다면 자물쇠는 정상으로 보인다. 이유를 알면 TLS가 무엇을 보장하는지가 한 번에 정리된다.</p>
+
+    <p class="section-label">TLS가 보장하는 것 셋</p>
+    <p>HTTPS는 HTTP 아래에 TLS 협상이 한 겹 더 있는 연결이다. 그 협상이 끝나야 요청이 오간다. 당신이 겪은 APNs 정지 사건도 이 협상 단계에서 멈춘 일이었다.</p>
+    <ul>
+      <li>신원: 내가 접속한 주소의 서버가 그 주소의 정당한 주인이다. 인증기관이 서명한 인증서가 이를 보여 준다.</li>
+      <li>비밀: 그 서버와 나 사이의 내용을 중간에서 못 읽는다.</li>
+      <li>무결성: 중간에서 내용을 바꾸면 들통난다.</li>
+    </ul>
+
+    <p class="section-label">보장하지 않는 것</p>
+    <ul>
+      <li>내가 접속하려던 주소가 맞는 주소인지.</li>
+      <li>그 서버가 선량한지.</li>
+      <li>내 요청을 받을 자격이 있는지(인가).</li>
+    </ul>
+    <p>공격자도 자기 도메인에 대한 정당한 인증서를 받을 수 있다. 그래서 공격자 서버도 자물쇠가 완벽하게 켜진다.</p>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 640 210" role="img" aria-label="설정 파일이 API 주소를 공격자 서버로 바꾸면 자물쇠는 정상이고 토큰이 공격자에게 전달된다">
+        <g fill="none" stroke="currentColor" stroke-width="1.4">
+          <rect x="10" y="20" width="150" height="56" rx="3"/>
+          <rect x="245" y="20" width="150" height="56" rx="3" style="stroke: var(--signal)"/>
+          <rect x="480" y="20" width="150" height="56" rx="3"/>
+          <path d="M160 48 L245 48"/>
+          <path d="M395 48 L480 48"/>
+        </g>
+        <g font-size="12.5" text-anchor="middle">
+          <text x="85" y="44">설정 파일의</text>
+          <text x="85" y="62">API 주소</text>
+          <text x="320" y="44">TLS 협상</text>
+          <text x="320" y="62" style="fill: var(--signal-deep)">자물쇠 정상</text>
+          <text x="555" y="44">공격자 서버</text>
+          <text x="555" y="62">토큰 수신</text>
+          <text x="202" y="40" font-size="11" style="fill: var(--ink-soft)">주소가 바뀜</text>
+        </g>
+        <g fill="none" stroke="currentColor" stroke-width="1.2">
+          <rect x="30" y="118" width="250" height="64" rx="3"/>
+          <rect x="360" y="118" width="250" height="64" rx="3"/>
+        </g>
+        <g font-size="12.5" text-anchor="middle">
+          <text x="155" y="143">TLS가 확인하는 것</text>
+          <text x="155" y="164" style="fill: var(--signal-deep)">이 주소의 서버가 진짜인가</text>
+          <text x="485" y="143">TLS가 묻지 않는 것</text>
+          <text x="485" y="164" style="fill: var(--signal-deep)">이 주소가 원래 가려던 곳인가</text>
+        </g>
+      </svg>
+      <figcaption>자물쇠는 오른쪽 상자 안의 질문에는 답하지 않는다. 주소를 정하는 일은 TLS 바깥에 있다.</figcaption>
+    </figure>
+
+    <p class="section-label">그럼 어디서 막는가</p>
+    <p>"토큰이 어디로 가는가"는 TLS가 아니라 주소를 정하는 설정이 정한다. 그래서 방어는 TLS 바깥에 둔다.</p>
+    <ul>
+      <li>주소를 정하는 설정을, 신뢰 경계 밖에서 온 파일이 바꾸지 못하게 한다.</li>
+      <li>토큰이 갈 수 있는 호스트를 허용 목록으로 한정한다.</li>
+      <li>토큰의 권한과 수명을 줄여, 새어 나가도 피해를 작게 만든다.</li>
+    </ul>
+    <p>세 번째가 가장 현실적이다. 앞 단계가 뚫려도 토큰이 짧게 살고 권한이 좁으면 값어치가 없다.</p>
+
+    <p class="section-label">예측 과제</p>
+    <p>한 에이전트의 API 주소가 공격자 서버로 바뀌었다. 공격자 서버는 정당한 인증서를 가졌다. 에이전트의 연결 로그에는 TLS 오류가 남을까? 답을 먼저 정한 뒤 아래를 보자.</p>
+    <p>남지 않는다. 협상은 성공했고 오류가 없다. 연결 로그만 보는 점검은 이 사고를 못 잡는다. 접속한 주소가 허용 목록 안인지 따로 확인해야 한다.</p>
+
+    <p class="section-label">FOR YOU</p>
+    <div class="for-you">
+      <p>TLS는 당신이 "해도해도 안 익는다"고 말한 영역이다. 그래서 오늘은 개념이 아니라 사건에서 거꾸로 올라갔다.</p>
+      <p>정리하면 한 줄이다. 자물쇠는 상대가 누구인지만 말해 준다. 가려던 곳이 맞는지는 말해 주지 않는다.</p>
+      <p>이것은 당신이 이미 아는 서버단 권한 검증과 같은 구조다. 서버가 요청의 주인을 확인하듯, 클라이언트도 보내는 곳을 확인해야 한다.</p>
+      <ul>
+        <li>야간 브리프의 카카오 토큰은 어느 주소로만 나가도록 정해져 있는가.</li>
+        <li>강의에서 "HTTPS면 안전하죠?"라는 질문이 나오면 이렇게 답한다. "누구와 통신하는지는 보증하지만, 맞는 상대인지는 설정이 정합니다."</li>
+      </ul>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">3줄 요약</p>
+      <ol class="tri-summary">
+        <li>HTTPS(TLS)는 접속한 주소 서버의 신원, 통신 암호화, 변조 방지를 보장하지만 접속하려던 주소가 맞는지는 보장하지 않는다.</li>
+        <li>설정의 API 주소가 공격자 서버로 바뀌어도 그 서버가 정당한 인증서를 가졌다면 자물쇠는 정상이고 Authorization 헤더의 토큰이 그대로 전달된다.</li>
+        <li>방어는 TLS 바깥에서 주소 설정을 신뢰 경계 밖 파일이 바꾸지 못하게 하고, 토큰이 갈 호스트를 허용 목록으로 한정하며, 토큰의 권한과 수명을 줄이는 것이다.</li>
+      </ol>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">용어 해설</p>
+      <dl class="glossary">
+        <dt>인증기관</dt>
+        <dd>서버 인증서가 믿을 만하다고 서명으로 보증하는 기관이다. 브라우저와 운영체제가 신뢰하는 인증기관 목록을 기준으로 인증서를 확인한다.</dd>
+        <dt>도메인 검증</dt>
+        <dd>인증서를 요청한 쪽이 그 도메인을 실제로 관리하는지 인증기관이 확인하는 절차다. 공격자도 자기 도메인으로는 이 절차를 통과해 정당한 인증서를 받을 수 있다.</dd>
+        <dt>Authorization 헤더</dt>
+        <dd>요청에 로그인 자격을 실어 보내는 HTTP 헤더다. Bearer 뒤의 토큰 값을 가진 쪽이 인증된 사용자로 취급된다.</dd>
+        <dt>허용 목록</dt>
+        <dd>접속해도 되는 주소를 미리 적어 두고 그 밖은 막는 방식이다. 막을 것을 나열하는 방식과 달리 목록 밖이 기본으로 차단된다.</dd>
+      </dl>
+    </div>
+  </article>
+
+  <section class="radar">
+    <p class="section-label">레이더</p>
+    <p class="radar-note">학습 대상이 아니라 <b>인지 대상</b>입니다. 훑고 지나가세요 — 나중에 필요한 순간에 &ldquo;그거 있었지&rdquo;가 나오게 하는 것이 목적입니다.</p>
+
+    <div class="radar-group">
+      <h3>내가 쓰는 도구</h3>
+      <ul class="radar-list">
+        <li>Claude Code 2.1.311 (10/26) — 자체 호스팅 실행기(self-hosted runner)에 유휴 대기 옵션이 생겼다. 시작 멈춤, 중단 요청이 걸리는 문제, 세션이 예고 없이 끝나는 문제도 고쳤다. 집계 사이트 기준이며 전문은 확인하지 못했다.</li>
+      </ul>
+    </div>
+
+    <div class="radar-group">
+      <h3>주변 생태계</h3>
+      <ul class="radar-list">
+        <li>Nvidia 오픈소스 Agent Toolkit (GTC Berlin, 10/20~22) — 에이전트를 회사 데이터에 맞추고, 하는 일을 감시하고, 운영 규칙으로 통제하는 도구 모음이다. Nvidia 블로그 요약 기준이며 세부는 확인하지 못했다.</li>
+        <li>SK텔레콤의 에이전트 사번 관리 (국내) — 에이전트마다 사번을 주고 역할, 담당 상급자, 토큰 사용량, 작업 기록을 사람 직원처럼 기록하고 감시한다. 주간 동향 집계 페이지의 요약 기준이며 원문은 확인하지 못했다.</li>
+      </ul>
+    </div>
+
+    <div class="radar-group">
+      <h3>보안</h3>
+      <ul class="radar-list">
+        <li>Gheist 캠페인 (10/26) — 훔친 GitHub 토큰으로 워크플로를 심어, 실행 기록(Actions 로그)에 저장소 비밀 값이 찍히게 만든다. 주로 비공개 저장소와 GitHub Enterprise가 대상이다. The Hacker News 헤드라인 요약 기준이다.</li>
+        <li>OpenAI 내부 감시 체계 외부 평가 (10/25) — METR와 Redwood Research가 OpenAI의 내부 오정렬 감시 시스템에서 새 취약점을 여러 개 찾았다고 한다. 검색 요약 기준이며 원문은 확인하지 못했다.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer class="status">
+    <span>오늘 조사 후 1건 전달 + 보완 1건 · 레이더 5건 · Anthropic 상장 서류 제출·날짜 불명 영상·이미지·음악 롤업은 폐기</span>
+    <span>Knowledge Agent v0.1</span>
+  </footer>
+
+</div>
