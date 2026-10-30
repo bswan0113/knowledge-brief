@@ -1,0 +1,617 @@
+<title>Knowledge Brief 2026-10-30</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,500;1,6..72,600&family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  :root {
+    --paper: #eef0f4;
+    --surface: #ffffff;
+    --ink: #131722;
+    --ink-soft: #5b6472;
+    --signal: #c97a1a;
+    --signal-deep: #8a5313;
+    --signal-soft: #f3e3cc;
+    --line: rgba(19, 23, 34, 0.12);
+    --line-strong: rgba(19, 23, 34, 0.22);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #0e1116;
+      --surface: #171b22;
+      --ink: #e7e9ee;
+      --ink-soft: #9aa3b2;
+      --signal: #f0b15c;
+      --signal-deep: #f5c685;
+      --signal-soft: rgba(240, 177, 92, 0.14);
+      --line: rgba(231, 233, 238, 0.14);
+      --line-strong: rgba(231, 233, 238, 0.24);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --paper: #0e1116;
+    --surface: #171b22;
+    --ink: #e7e9ee;
+    --ink-soft: #9aa3b2;
+    --signal: #f0b15c;
+    --signal-deep: #f5c685;
+    --signal-soft: rgba(240, 177, 92, 0.14);
+    --line: rgba(231, 233, 238, 0.14);
+    --line-strong: rgba(231, 233, 238, 0.24);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans KR', 'IBM Plex Sans', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 56px 24px 96px;
+  }
+
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--signal-deep);
+  }
+
+  header.masthead {
+    border-bottom: 1px solid var(--line-strong);
+    padding-bottom: 28px;
+    margin-bottom: 40px;
+  }
+
+  header.masthead .eyebrow {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  h1.headline {
+    font-family: 'Newsreader', Georgia, serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(32px, 6vw, 44px);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin: 14px 0 10px;
+    text-wrap: balance;
+  }
+
+  .masthead .subhead {
+    color: var(--ink-soft);
+    font-size: 15px;
+    max-width: 56ch;
+  }
+
+  .masthead .subhead b {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .masthead .listen {
+    margin-top: 20px;
+    padding: 14px 16px;
+    background: var(--signal-soft);
+    border-radius: 10px;
+    display: grid;
+    gap: 8px;
+  }
+
+  .masthead .listen audio { width: 100%; }
+
+  article.item {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 32px 32px 28px;
+    margin-bottom: 32px;
+  }
+
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  .tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+    border: 1px solid var(--line-strong);
+    color: var(--ink-soft);
+  }
+
+  .tag.priority {
+    border-color: var(--signal);
+    color: var(--signal-deep);
+    background: var(--signal-soft);
+  }
+
+  h2.item-title {
+    font-family: 'Newsreader', Georgia, serif;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 1.3;
+    margin: 0 0 18px;
+    text-wrap: balance;
+  }
+
+  .section-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin: 22px 0 8px;
+  }
+
+  .section-label:first-of-type { margin-top: 0; }
+
+  article.item p {
+    margin: 0 0 4px;
+    max-width: 62ch;
+  }
+
+  article.item .for-you {
+    padding: 14px 16px;
+    background: var(--signal-soft);
+    border-left: 2px solid var(--signal);
+    border-radius: 0 3px 3px 0;
+  }
+
+  figure.diagram {
+    margin: 26px 0 6px;
+    padding: 18px 6px 8px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  figure.diagram svg { width: 100%; height: auto; display: block; color: var(--ink-soft); }
+  figure.diagram .accent { color: var(--signal); }
+  figure.diagram text { font-family: 'IBM Plex Mono', monospace; fill: currentColor; }
+
+  figcaption {
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-top: 10px;
+  }
+
+  .source-row {
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .source-row a {
+    color: var(--ink);
+    text-decoration-color: var(--signal);
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 3px;
+  }
+
+  .source-row .domain {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+
+  .addendum {
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+  }
+
+  ol.tri-summary {
+    margin: 0;
+    padding-left: 1.3em;
+  }
+
+  ol.tri-summary li {
+    margin-bottom: 6px;
+    max-width: 62ch;
+  }
+
+  dl.glossary {
+    margin: 0;
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    column-gap: 14px;
+    row-gap: 10px;
+  }
+
+  dl.glossary dt {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--signal-deep);
+    white-space: nowrap;
+  }
+
+  dl.glossary dd {
+    margin: 0;
+    max-width: 56ch;
+    color: var(--ink-soft);
+  }
+
+  /* 레이더 — 인지 채널. 본 브리프(학습 채널)와 시각적으로 명확히 구분되어야 한다:
+     카드가 아니라 목록, 강조색 없음, 본문보다 작은 글씨. 훑고 지나가는 영역이다. */
+  section.radar {
+    margin-top: 40px;
+    padding-top: 26px;
+    border-top: 1px solid var(--line-strong);
+  }
+
+  section.radar > p.radar-note {
+    margin: 0 0 18px;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    max-width: 62ch;
+  }
+
+  .radar-group {
+    margin-bottom: 20px;
+  }
+
+  .radar-group h3 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 500;
+    margin: 0 0 8px;
+  }
+
+  ul.radar-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  ul.radar-list li {
+    position: relative;
+    padding-left: 16px;
+    margin-bottom: 7px;
+    font-size: 14.5px;
+    line-height: 1.6;
+    max-width: 66ch;
+    color: var(--ink);
+  }
+
+  ul.radar-list li::before {
+    content: "·";
+    position: absolute;
+    left: 3px;
+    color: var(--ink-soft);
+  }
+
+  ul.radar-list li a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid var(--line-strong);
+  }
+
+  ul.radar-list li a:hover { border-bottom-color: var(--signal); }
+
+  footer.status {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    border-top: 1px solid var(--line-strong);
+    padding-top: 18px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  @media (max-width: 480px) {
+    article.item { padding: 24px 20px; }
+    h1.headline { font-size: 30px; }
+  }
+</style>
+
+<div class="page">
+
+  <header class="masthead">
+    <div class="eyebrow">
+      <span>KNOWLEDGE BRIEF</span>
+      <span>2026-10-30 · 22:00</span>
+    </div>
+    <h1 class="headline">성공 응답에 남의 데이터가 실려 왔다</h1>
+    <p class="subhead">오늘 조사한 것 중 <b>지금 당신에게 학습 가치가 있다고 판단한 것</b>만 남겼습니다. 나머지는 이미 아는 내용이거나 가치가 낮아 걸러냈습니다.</p>
+  </header>
+
+  <!-- 항목 1 -->
+  <article class="item">
+    <div class="tag-row">
+      <span class="tag priority">AI 서비스 운영 · 오늘의 핵심</span>
+      <span class="tag">공식 사고 보고서</span>
+      <span class="tag">계속 바뀌는 중</span>
+    </div>
+
+    <h2 class="item-title">긴 요청이 오류 대신 성공 응답을 받았고, 그 안에 다른 고객의 요청 내용이 들어 있었다</h2>
+
+    <p class="section-label">WHAT</p>
+    <p>Cloudflare가 10월 26일 사고 보고서를 공개했다. 대상은 Workers AI에서 돌던 GLM-5.3 모델이다.</p>
+    <p>8월 27일부터 9월 9일까지, 아주 긴 요청의 응답 일부에 다른 고객의 요청 내용이 섞여 나왔다. 조건은 프롬프트가 약 68만 토큰을 넘는 경우였다. 확인된 응답은 155건이고, 해당 고객은 소수라고 한다.</p>
+    <p>원인은 서로 다른 두 가지가 겹친 것이다.</p>
+    <ul>
+      <li>설정 불일치: 모델은 약 105만 토큰까지 받는다고 되어 있었다. 그런데 입력을 읽는 GPU의 캐시 공간은 약 68만 토큰어치뿐이었다.</li>
+      <li>추론 엔진 SGLang의 버그: 너무 긴 요청을 거절만 하고 중단하지 않았다. 그 요청을 1토큰짜리 가짜 요청으로 바꿔 다음 단계에 넘겼다.</li>
+      <li>그 결과 다음 단계(답변을 만드는 쪽)가 치워지지 않은 이전 사용자의 캐시 칸을 읽었다.</li>
+    </ul>
+    <p>고객은 오류가 아니라 HTTP 200, 곧 성공 응답을 받았다. 9월 8일 외부 연구자가 HackerOne으로 제보했고, 9월 9일 Cloudflare가 사고를 선언해 모델을 잠시 비공개로 돌렸다. 같은 날 저녁에 복구했다.</p>
+    <p>이 글의 모든 사실은 Cloudflare 자신의 보고서에 근거한다. 회사는 고의적인 악용 증거를 찾지 못했다고 밝혔다. 이 판단도 회사의 서술이다.</p>
+
+    <p class="section-label">WHY</p>
+    <p>이 사고에는 공격자가 없다. 설정값 하나와 거절 처리 누락이 겹쳤을 뿐이다.</p>
+    <p>거절해야 할 요청이 성공으로 처리됐다. 고객 쪽에는 오류 신호가 없었다. 회사도 자체 점검이 아니라 외부 제보로 알았다.</p>
+    <p>여러 고객이 같은 GPU 메모리를 나눠 쓰는 서비스에서는 고객 사이의 경계가 코드 몇 줄에 달려 있다. 그 몇 줄이 빠지면 경계가 사라진다.</p>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 640 250" role="img" aria-label="긴 요청이 거절되지 않고 가짜 요청으로 바뀌어, 이전 고객의 캐시 칸을 읽고 성공 응답으로 돌아가는 과정">
+        <g stroke="currentColor" stroke-width="1.2" fill="none">
+          <rect x="20" y="12" width="600" height="56" rx="3"/>
+          <rect x="20" y="96" width="600" height="56" rx="3"/>
+          <rect x="20" y="180" width="600" height="56" rx="3" class="accent" stroke="currentColor"/>
+          <path d="M320 68 L320 96 M314 90 L320 96 L326 90"/>
+          <path d="M320 152 L320 180 M314 174 L320 180 L326 174"/>
+        </g>
+        <g font-size="13">
+          <text x="36" y="36">① 고객 A의 요청이 처리된다</text>
+          <text x="36" y="56">GPU 캐시 칸에 A의 내용이 남는다</text>
+          <text x="36" y="120">② 고객 B의 요청이 캐시 한도를 넘는다</text>
+          <text x="36" y="140">거절돼야 하지만 1토큰짜리 가짜 요청으로 바뀐다</text>
+          <text x="36" y="204" class="accent">③ 답변 단계가 치워지지 않은 A의 칸을 읽는다</text>
+          <text x="36" y="224" class="accent">B는 오류 없이 HTTP 200과 A의 내용을 받는다</text>
+        </g>
+      </svg>
+      <figcaption>거절이 중단으로 이어지지 않은 한 지점에서, 경계가 성공 응답 안으로 사라졌다.</figcaption>
+    </figure>
+
+    <p class="section-label">FOR YOU</p>
+    <div class="for-you">
+      <p>이 사고의 핵심은 "성공 신호가 내용의 정확성을 보증하지 않는다"는 것이다. 당신은 야간 브리프에서 이미 같은 원칙을 쓰고 있다. 프로세스 종료 코드 0이나 "완료했다"는 문장을 성공 증거로 치지 않고, 단계마다 영수증을 요구한다.</p>
+      <p>Cloudflare 사고에 대면 이렇다. HTTP 200은 종료 코드 0과 같은 자리에 있다. 빠져 있던 것은 영수증, 곧 "이 응답이 정말 내 요청에 대한 것인가"를 확인하는 장치다.</p>
+      <p>다만 한 가지가 다르다. 당신의 영수증은 우리 쪽 장부라서 우리가 직접 검증할 수 있다. 이 사고에서 고객은 응답이 남의 것인지 알 방법이 없었다. 외부 AI 서비스를 쓸 때 응답이 내 요청과 맞는지 어떻게 대조할지, 한 번 생각해 볼 만한 질문이다.</p>
+      <p>강의에서는 이런 질문이 나올 수 있다. "긴 문서를 넣으면 남의 내용이 섞여 나올 수 있나요?" 이번에는 실제로 있었다.</p>
+      <p>하지만 모델이 남의 데이터를 학습해서 기억한 것이 아니다. 서버 메모리를 치우지 않은 운영 오류다. 이 구분을 해 주는 것이 수강생의 오해를 막는다.</p>
+    </div>
+
+    <p class="section-label">LEARN</p>
+    <p>사실과 구분만 알아두면 충분하다. 캐시 내부 구조까지 파고들 필요는 없다. SGLang을 직접 운영하지 않는다면 패치 권고도 해당 없다. "성공 응답이 곧 맞는 답은 아니다"라는 개념은 아래 연결 개념에서 이어서 다룬다.</p>
+
+    <div class="source-row">
+      <a href="https://blog.cloudflare.com/kv-cache-exposure-remediation/" target="_blank" rel="noopener">Cloudflare 원문 보기 →</a>
+      <span class="domain">blog.cloudflare.com</span>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">3줄 요약</p>
+      <ol class="tri-summary">
+        <li>2026-08-27~09-09 사이 Workers AI의 GLM-5.3 응답 155건 일부에 다른 고객의 데이터가 섞였다.</li>
+        <li>원인은 캐시 공간 설정 불일치와, SGLang이 긴 프롬프트를 중단하지 않고 이전 요청의 캐시 칸을 읽은 것이다.</li>
+        <li>9/9 사고 선언 후 모델을 비공개로 전환해 19:40 UTC에 복구했고, 공간 확대와 SGLang 패치 등으로 조치했다.</li>
+      </ol>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">용어 해설</p>
+      <dl class="glossary">
+        <dt>KV 캐시</dt>
+        <dd>모델이 이미 읽은 입력의 중간 계산 결과를 메모리에 저장해 둔 것이다. 같은 앞부분을 다시 계산하지 않으려고 쓴다.</dd>
+        <dt>프리필 / 디코드</dt>
+        <dd>응답 생성의 두 단계다. 프리필은 입력 전체를 한 번에 읽고, 디코드는 답변을 한 토큰씩 만든다.</dd>
+        <dt>SGLang</dt>
+        <dd>LLM을 실제로 서비스하는 추론 엔진 소프트웨어다. 이번 사고에서는 두 단계를 서로 다른 GPU에서 나눠 돌리는 설정으로 쓰였다.</dd>
+        <dt>HackerOne</dt>
+        <dd>외부 연구자가 보안 결함을 회사에 제보하고 보상을 받는 창구다.</dd>
+      </dl>
+    </div>
+  </article>
+
+  <!-- 항목 2 -->
+  <article class="item">
+    <div class="tag-row">
+      <span class="tag priority">보안 · 강의에 바로 쓸 것</span>
+      <span class="tag">공식 발표</span>
+      <span class="tag">빨리 바뀜</span>
+    </div>
+
+    <h2 class="item-title">Google이 가장 강한 모델을 사이버 방어자에게만 먼저 열었다</h2>
+
+    <p class="section-label">WHAT</p>
+    <p>Google이 10월 28일 Gemini 4 Carbon을 공개했다. 2주 전 나온 Gemini 4 Argon의 후속이다. 회사는 "사이버보안과 긴 과제에 최첨단"인 모델이라고 소개한다.</p>
+    <p>일반 개발자, 기업, 소비자는 아직 쓸 수 없다. 일부 사이버 방어자에게 먼저 열었고, Fairwind 프로그램을 통해 신뢰하는 파트너로 천천히 넓힌다. 일반 제공은 피드백을 받고 방어 장치를 다듬은 뒤 "가능한 빨리"라고만 했다.</p>
+    <p>Google이 보고한 수치는 다음과 같다. 전부 회사 자체 발표다.</p>
+    <ul>
+      <li>취약점 찾기 시험 SEC-bench Pro에서 88.2%.</li>
+      <li>취약점을 실제 공격 코드로 만드는 시험 ExploitGym에서 54.8%.</li>
+      <li>취약점 패치 시험 CWE-bench에서 71.0%.</li>
+      <li>간접 프롬프트 인젝션 시험에서 공격 성공률 0.0%. Argon은 0.7%였다.</li>
+      <li>터미널 과제 시험에서 부정행위 성공 0.0%, 시도 0.4%.</li>
+    </ul>
+    <p>도입 가격은 백만 토큰당 입력 2달러, 출력 10달러다. 이후에는 4달러와 20달러로 오른다. 안전 장치로는 훈련, 실시간 오용 방어, 인젝션 내성, 추론 과정 감시를 쓴다고 한다. 미국 정부의 자발적 사전 시험에도 참여한다.</p>
+
+    <p class="section-label">WHY</p>
+    <p>모델의 능력이 공개 순서를 정하기 시작했다. 어제 다룬 OpenAI 시스템 카드와 같은 흐름이다. 강한 모델일수록 누가 먼저 쓰느냐가 안전 설계의 일부가 된다.</p>
+    <p>한 가지는 구분해서 읽어야 한다. Google은 접근을 제한한 이유를 "신중한 배포"라고만 썼다. 사이버 능력이 위험해서라고 직접 말하지는 않았다. 방어자에게 먼저 연 것이라는 사실에서 우리가 추론할 뿐이다.</p>
+    <p>모든 수치가 회사 자체 보고라는 점도 같이 기억해야 한다.</p>
+
+    <p class="section-label">FOR YOU</p>
+    <div class="for-you">
+      <p>이 소식에는 통제 방식이 두 가지 들어 있다.</p>
+      <ul>
+        <li>벤더가 문을 닫는 방식이다. 모델 자체를 아무에게나 주지 않는다.</li>
+        <li>쓰는 쪽이 권한을 설계하는 방식이다. 당신이 하네스에서 매일 하는 일이다.</li>
+      </ul>
+      <p>당신이 직접 통제할 수 있는 것은 뒤쪽뿐이다. 벤더의 접근 제한은 언젠가 풀리고, 풀린 뒤에 쓰는 쪽의 권한 설계가 없으면 아무것도 막지 못한다.</p>
+      <p>"간접 인젝션 공격 성공률 0.0%"를 읽는 법도 연결된다. 당신은 지난번 평가에서 "위험 문자열을 걸러내는 필터는 우회 경로가 너무 다양해서 원리적으로 불완전하다"고 직접 판단했다.</p>
+      <p>같은 기준을 적용하면 0.0%는 "그 시험 문제 안에서 0"이라는 뜻이다. "막힌다"는 뜻이 아니다. 모델이 거부하는 것과 구조가 막는 것은 다른 층이다.</p>
+      <p>강의에서 "AI가 해킹도 하나요?"라는 질문이 나오면 이렇게 답할 수 있다. "취약점을 찾고 고치는 능력이 올라서 회사들이 방어자에게 먼저 열기 시작했다. 일반 공개는 아직이다."</p>
+    </div>
+
+    <p class="section-label">LEARN</p>
+    <p>지금은 사실만 알아두면 된다. 수치 비교를 깊게 파는 것은 일반 공개 뒤로 미뤄도 늦지 않다. 공개되면 가격과 권한 구성이 달라질 수 있어서 그때 다시 볼 가치가 있다.</p>
+
+    <div class="source-row">
+      <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/" target="_blank" rel="noopener">Google 원문 보기 →</a>
+      <span class="domain">blog.google</span>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">3줄 요약</p>
+      <ol class="tri-summary">
+        <li>Google은 2026-10-28 블로그에서 2주 전 나온 Gemini 4 Argon의 후속인 최상위 모델 Gemini 4 Carbon을 소개했다.</li>
+        <li>접근은 일부 사이버 방어자로 제한되며 Fairwind 프로그램으로 신뢰 파트너에게 점진 확대되고, 개발자·기업·소비자 제공은 뒤로 미뤄졌다.</li>
+        <li>수치는 Google 자체 발표로, 취약점 찾기 88.2%, 공격 코드 작성 54.8%, 패치 71.0%를 기록했다.</li>
+      </ol>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">용어 해설</p>
+      <dl class="glossary">
+        <dt>CWE</dt>
+        <dd>소프트웨어 취약점을 유형별 번호로 분류한 표준 목록이다. 예를 들어 CWE-89는 SQL 인젝션이다.</dd>
+        <dt>추론 과정 감시</dt>
+        <dd>모델이 답을 내기 전에 쓰는 중간 추론 텍스트를 감시해 위험하거나 기만적인 의도를 찾는 안전 기법이다.</dd>
+        <dt>Artificial Analysis 지수</dt>
+        <dd>여러 벤치마크 점수를 하나로 묶어 모델을 비교하는 제3자 종합 지표다.</dd>
+      </dl>
+    </div>
+  </article>
+
+  <!-- 항목 3: 연결 개념 -->
+  <article class="item">
+    <div class="tag-row">
+      <span class="tag priority">웹·네트워크 · 오늘의 개념 정리</span>
+      <span class="tag">설명</span>
+      <span class="tag">오래 가는 기초</span>
+    </div>
+
+    <h2 class="item-title">'성공(200)'이 왔다고 맞는 답이 온 것은 아니다</h2>
+
+    <p class="section-label">WHY NOW</p>
+    <p>오늘 첫 번째 사고가 이 개념의 실제 사례다. 요청은 거절됐어야 했는데 성공 응답이 돌아왔다. 실패를 구분하는 이름표가 없으면 이런 상황을 설명할 수도, 점검 항목으로 만들 수도 없다.</p>
+
+    <p class="section-label">개념</p>
+    <p>당신은 HTTP/2 핸드셰이크가 멈추는 문제를 직접 디버깅한 적이 있다. 그러니 현상은 이미 안다. 부족한 것은 현상에 붙이는 이름표다. 실패는 크게 세 모양이다.</p>
+    <ul>
+      <li>연결이 안 된다. 연결 거부, 이름 풀이 실패 등이다. 요청이 서버에 닿지 않았으므로 다시 보내도 안전하다.</li>
+      <li>연결은 됐는데 답이 없다. 대기 시간 초과가 대표적이다. 서버가 일을 했는지 모르므로 다시 보내면 두 번 처리될 수 있다.</li>
+      <li>답은 왔는데 거절이다. 401은 신원 문제, 403은 권한 문제, 429는 너무 많이 보냄, 500은 서버 내부 오류다. 숫자가 곧 단서다.</li>
+    </ul>
+    <p>오늘 사고는 네 번째 모양이다. 답이 성공으로 왔는데 내용이 틀렸다. 이 경우 로그에 오류가 한 줄도 없다.</p>
+    <p>상태 코드 200이 말해 주는 것은 "요청이 처리 경로를 끝까지 탔다"까지다. "내용이 맞다"는 말이 아니다.</p>
+
+    <p class="section-label">FOR YOU</p>
+    <div class="for-you">
+      <p>진단 질문을 세 개로 외워 두면 편하다.</p>
+      <ul>
+        <li>시간이 얼마나 걸렸나.</li>
+        <li>상태 숫자가 무엇이었나.</li>
+        <li>내용이 내 요청과 맞는가.</li>
+      </ul>
+      <p>앞의 둘은 도구가 알려 준다. 셋째는 사람이나 별도 검사가 해야 한다.</p>
+      <p>당신의 야간 브리프에도 같은 틈이 있다. 카카오 전송은 provider가 "전송 성공"이라고 응답하면 성공으로 기록한다. 만약 그 응답이 있었는데 메시지가 폰에 도착하지 않았다면 어떻게 될까?</p>
+      <p>예측해 보자. 장부에는 성공이 남고, 알아챌 수 있는 사람은 폰에서 못 받은 당신뿐이다. 이 시스템은 이 한계를 이미 인정하고 있다. 결과 조회 수단이 없으면 불명으로 남기는 규칙이 그 인정이다.</p>
+      <p>내용을 따로 검증하는 방법은 세 가지다. 정답표와 대조하기, 형식과 범위를 검사하기, 응답에 요청 식별자를 되돌려 받아 대조하기. 앞의 둘은 당신이 평가 설계에서 다룬 도구와 같은 계열이다.</p>
+    </div>
+
+    <p class="section-label">LEARN</p>
+    <p>세 모양의 이름과 재시도 안전성의 차이까지 익히면 충분하다. 다음에 외부 API 오류를 만나면 "시간, 숫자, 내용" 순서로 물어보자. 이 설명으로 이해도를 확인한 것은 아니므로 다음 기회에 짧은 질문으로 확인하는 편이 좋다.</p>
+
+    <div class="source-row">
+      <a href="https://blog.cloudflare.com/kv-cache-exposure-remediation/" target="_blank" rel="noopener">사례 원문 (Cloudflare) →</a>
+      <span class="domain">blog.cloudflare.com</span>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">3줄 요약</p>
+      <ol class="tri-summary">
+        <li>실패는 연결 자체가 안 되는 경우, 연결은 됐으나 응답이 없거나 끊기는 경우, 응답은 왔으나 거절·오류인 경우의 세 모양으로 나뉜다.</li>
+        <li>가장 위험한 네 번째 모양은 실패인데 성공처럼 보이는 것으로, 200 응답에 내용이 틀린 경우다.</li>
+        <li>상태 코드가 성공이어도 내용이 맞다는 증명은 아니므로 정답표·형식 검사·출처 확인으로 응답 내용을 따로 검증해야 한다.</li>
+      </ol>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">용어 해설</p>
+      <dl class="glossary">
+        <dt>HTTP 상태 코드</dt>
+        <dd>서버가 요청 처리 결과를 세 자리 숫자로 알려 주는 번호다. 200은 성공, 4xx는 요청 쪽 문제, 5xx는 서버 쪽 문제를 뜻한다.</dd>
+        <dt>401 · 403 · 429 · 500</dt>
+        <dd>401은 로그인 정보가 없거나 틀림, 403은 로그인은 됐지만 권한 없음이다. 429는 요청을 너무 많이 보내 제한됨, 500은 서버 내부 오류다.</dd>
+        <dt>조용한 실패</dt>
+        <dd>오류 표시 없이 성공으로 보이지만 실제 내용은 잘못된 상황이다. 상태 코드만 보면 놓치기 쉽다.</dd>
+      </dl>
+    </div>
+  </article>
+
+  <section class="radar">
+    <p class="section-label">레이더</p>
+    <p class="radar-note">학습 대상이 아니라 <b>인지 대상</b>입니다. 훑고 지나가세요 — 나중에 필요한 순간에 &ldquo;그거 있었지&rdquo;가 나오게 하는 것이 목적입니다.</p>
+
+    <div class="radar-group">
+      <h3>내가 쓰는 도구</h3>
+      <ul class="radar-list">
+        <li>Claude 법률 검토 아티팩트(10/29) — 계약 검토, 법률 인용 확인, 규제 변경 추적용 시작 템플릿이 추가됐다. 샘플로 시작해 자기 문서를 연결하고 팀과 공유한다. <a href="https://x.com/claudeai/status/2115467192276025500" target="_blank" rel="noopener">출처</a></li>
+        <li>GitHub Copilot Fusion·code review Max(10/29) — 코딩 에이전트용 모델 자동 선택(라우팅) 시스템과 상위 코드 리뷰가 나왔다. 기업은 AI 크레딧 방식으로 쓴다. GitHub 통계로는 9월 PR의 40% 넘게를 에이전트가 만들었다(3월 17%). <a href="https://thenextweb.com/news/github-universe-copilot-fusion-octoverse-agents" target="_blank" rel="noopener">출처</a></li>
+        <li>Apple Pages·Keynote·Numbers AI 비서(10/28) — 문서 초안·발표 자료·표 분석을 돕는 기능이 들어갔다. macOS 27은 MCP를 지원해 서드파티 에이전트가 연결된다. OS 기본 앱까지 MCP가 들어오는 신호다. <a href="https://www.theverge.com/tech/1019373/apple-pages-keynote-numbers-ai-chatbot-update" target="_blank" rel="noopener">출처</a></li>
+      </ul>
+    </div>
+
+    <div class="radar-group">
+      <h3>주변 생태계</h3>
+      <ul class="radar-list">
+        <li>OpenAI-ServiceNow 연동 확대(10/29)·Oracle 앱의 ChatGPT 연결(10/28) — ChatGPT가 승인된 업무 시스템에서 워크플로 동작을 실행하거나 허용된 데이터를 읽는다. 기업용 AI 워크스페이스 경쟁이 업무 소프트웨어 연동으로 옮겨 가는 중이다. <a href="https://openai.com/index/openai-servicenow-partnership-expansion/" target="_blank" rel="noopener">ServiceNow</a> · <a href="https://openai.com/index/oracle-apps-in-chatgpt/" target="_blank" rel="noopener">Oracle</a></li>
+        <li>ChatGPT iCloud 플러그인(10/29) — iCloud 메일을 검색하고 캘린더 일정을 다룬다. 앱 전용 암호로 애플 계정을 연결한다. <a href="https://www.engadget.com/2299026/chatgpt-can-work-with-your-icloud-mail-and-calendar-thanks-to-new-plugin-support/" target="_blank" rel="noopener">출처</a></li>
+        <li>Google DeepMind Genie 4(10/28) — 입력에 실시간으로 반응하는 가상 세계를 만드는 월드 모델이다. 소리와 물리 시뮬레이션을 지원한다. 신뢰 테스터가 먼저 쓰고 AI Ultra 구독자는 예정이다. <a href="https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/" target="_blank" rel="noopener">출처</a></li>
+        <li>ByteDance 지멍(Jimeng) AI 숏드라마 스튜디오(10/27) — 대본, 캐릭터, 장면, 스토리보드, 영상까지 한 곳에서 만드는 숏드라마 제작 도구다. <a href="https://technode.com/2026/10/27/bytedance-launches-ai-studio-for-short-drama-production/" target="_blank" rel="noopener">출처</a></li>
+        <li>Ant Group 링광 2.0(10/27) — 기억을 유지하며 일을 이어 가는 개인 비서 앱이다. 허락을 받으면 여행 가격을 계속 지켜보고, 알리페이 청구서에서 구독을 찾아내고, 학교 공지를 할 일로 바꾼다. <a href="https://technode.com/2026/10/27/ant-launches-lingguang-2-0-ai-assistant-for-ongoing-personal-tasks/" target="_blank" rel="noopener">출처</a></li>
+        <li>Fish Audio Drama 3(10월) — 음성 합성 모델이다. 말투와 속도를 자연어로 지시할 수 있고, 한 문장 안에서 목소리를 바꿀 수 있다. <a href="https://x.com/FishAudio/status/2115126383668027643" target="_blank" rel="noopener">출처</a></li>
+        <li>NVIDIA Nemotron 3.5 Transcribe(10/29) — 무료 공개 가중치 음성 받아쓰기 모델이다. 40개 언어를 처리하고 화자를 8명까지 구분한다. 실시간 음성은 처리하지 못한다. <a href="https://techcrunch.com/2026/10/28/voice-ai-in-vogue-nvidia-releases-new-open-transcription-model/" target="_blank" rel="noopener">출처</a></li>
+        <li>Opera WebAI(10/27) — 브라우저 안에서 지원 AI 모델을 로컬로 돌리게 하는 웹 표준 초안이다. Opera One에서 먼저 미리보기가 열린다. <a href="https://techcrunch.com/2026/10/27/opera-introduces-a-new-web-standard-to-let-users-deploy-ai-locally-in-their-browser/" target="_blank" rel="noopener">출처</a></li>
+        <li>LlamaIndex 문서 파싱 프로토콜 초안 0.1(10/29) — 표, 양식, 도표를 에이전트가 같은 방식으로 읽도록 하는 140개 공통 규칙이다. 공개 검토를 받는 중이다. <a href="https://www.llamaindex.ai/blog/introducing-the-document-parsing-protocol" target="_blank" rel="noopener">출처</a></li>
+      </ul>
+    </div>
+
+    <div class="radar-group">
+      <h3>가격·정책·보안</h3>
+      <ul class="radar-list">
+        <li>Anthropic-GSA 협약 확대(10/27) — 미국 연방·주·지방 정부 전체가 Claude Enterprise, Claude for Government, API를 40% 할인가로 쓸 수 있다. Anthropic은 이미 약 500개 정부 기관이 쓴다고 밝혔다. <a href="https://www.anthropic.com/news/expanding-partnership-gsa" target="_blank" rel="noopener">출처</a></li>
+        <li>Anthropic·Theorem 보안 증명(10/28) — Claude로 오픈소스 라이브러리 123개에 대한 기계 검증 가능한 보안 증명을 만들었다. 각 보증은 명세에 적어 둔 조건 안에서만 성립한다. <a href="https://www.theneuron.ai/news/anthropic-claude-software-security-verification/" target="_blank" rel="noopener">출처</a></li>
+        <li>Moonshot AI·DeepSeek의 OpenAI Astra 출력 이용 보도(10/29) — 두 회사가 새 모델을 학습할 때 Astra의 출력을 썼다는 The Information 보도를 Reuters가 전했다. 구체 방법은 독립 확인되지 않았다. <a href="https://www.tradingview.com/news/reuters.com,2026:newsml_P8N3P10CQ:0-moonshot-ai-and-deepseek-relied-outputs-from-openai-s-astra-when-developing-their-latest-models-released-this-month-the-information/" target="_blank" rel="noopener">출처</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <footer class="status">
+    <span>오늘 조사 후 신호 2건 + 연결 개념 1건 · 레이더 15건(헤드라인 기준) · 투자·정치 보도는 폐기</span>
+    <span>Knowledge Agent v0.1</span>
+  </footer>
+
+</div>
