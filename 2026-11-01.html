@@ -1,0 +1,519 @@
+<title>Knowledge Brief 2026-11-01</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,500;1,6..72,600&family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  :root {
+    --paper: #eef0f4;
+    --surface: #ffffff;
+    --ink: #131722;
+    --ink-soft: #5b6472;
+    --signal: #c97a1a;
+    --signal-deep: #8a5313;
+    --signal-soft: #f3e3cc;
+    --line: rgba(19, 23, 34, 0.12);
+    --line-strong: rgba(19, 23, 34, 0.22);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #0e1116;
+      --surface: #171b22;
+      --ink: #e7e9ee;
+      --ink-soft: #9aa3b2;
+      --signal: #f0b15c;
+      --signal-deep: #f5c685;
+      --signal-soft: rgba(240, 177, 92, 0.14);
+      --line: rgba(231, 233, 238, 0.14);
+      --line-strong: rgba(231, 233, 238, 0.24);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --paper: #0e1116;
+    --surface: #171b22;
+    --ink: #e7e9ee;
+    --ink-soft: #9aa3b2;
+    --signal: #f0b15c;
+    --signal-deep: #f5c685;
+    --signal-soft: rgba(240, 177, 92, 0.14);
+    --line: rgba(231, 233, 238, 0.14);
+    --line-strong: rgba(231, 233, 238, 0.24);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans KR', 'IBM Plex Sans', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 56px 24px 96px;
+  }
+
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--signal-deep);
+  }
+
+  header.masthead {
+    border-bottom: 1px solid var(--line-strong);
+    padding-bottom: 28px;
+    margin-bottom: 40px;
+  }
+
+  header.masthead .eyebrow {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  h1.headline {
+    font-family: 'Newsreader', Georgia, serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(32px, 6vw, 44px);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin: 14px 0 10px;
+    text-wrap: balance;
+  }
+
+  .masthead .subhead {
+    color: var(--ink-soft);
+    font-size: 15px;
+    max-width: 56ch;
+  }
+
+  .masthead .subhead b {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .masthead .listen {
+    margin-top: 20px;
+    padding: 14px 16px;
+    background: var(--signal-soft);
+    border-radius: 10px;
+    display: grid;
+    gap: 8px;
+  }
+
+  .masthead .listen audio { width: 100%; }
+
+  article.item {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 32px 32px 28px;
+    margin-bottom: 32px;
+  }
+
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  .tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+    border: 1px solid var(--line-strong);
+    color: var(--ink-soft);
+  }
+
+  .tag.priority {
+    border-color: var(--signal);
+    color: var(--signal-deep);
+    background: var(--signal-soft);
+  }
+
+  h2.item-title {
+    font-family: 'Newsreader', Georgia, serif;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 1.3;
+    margin: 0 0 18px;
+    text-wrap: balance;
+  }
+
+  .section-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin: 22px 0 8px;
+  }
+
+  .section-label:first-of-type { margin-top: 0; }
+
+  article.item p {
+    margin: 0 0 4px;
+    max-width: 62ch;
+  }
+
+  article.item .for-you {
+    padding: 14px 16px;
+    background: var(--signal-soft);
+    border-left: 2px solid var(--signal);
+    border-radius: 0 3px 3px 0;
+  }
+
+  figure.diagram {
+    margin: 26px 0 6px;
+    padding: 18px 6px 8px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  figure.diagram svg { width: 100%; height: auto; display: block; color: var(--ink-soft); }
+  figure.diagram .accent { color: var(--signal); }
+  figure.diagram text { font-family: 'IBM Plex Mono', monospace; fill: currentColor; }
+
+  figcaption {
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-top: 10px;
+  }
+
+  .source-row {
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .source-row a {
+    color: var(--ink);
+    text-decoration-color: var(--signal);
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 3px;
+  }
+
+  .source-row .domain {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+
+  .addendum {
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+  }
+
+  ol.tri-summary {
+    margin: 0;
+    padding-left: 1.3em;
+  }
+
+  ol.tri-summary li {
+    margin-bottom: 6px;
+    max-width: 62ch;
+  }
+
+  dl.glossary {
+    margin: 0;
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    column-gap: 14px;
+    row-gap: 10px;
+  }
+
+  dl.glossary dt {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--signal-deep);
+    white-space: nowrap;
+  }
+
+  dl.glossary dd {
+    margin: 0;
+    max-width: 56ch;
+    color: var(--ink-soft);
+  }
+
+  /* 레이더 — 인지 채널. 본 브리프(학습 채널)와 시각적으로 명확히 구분되어야 한다:
+     카드가 아니라 목록, 강조색 없음, 본문보다 작은 글씨. 훑고 지나가는 영역이다. */
+  section.radar {
+    margin-top: 40px;
+    padding-top: 26px;
+    border-top: 1px solid var(--line-strong);
+  }
+
+  section.radar > p.radar-note {
+    margin: 0 0 18px;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    max-width: 62ch;
+  }
+
+  .radar-group {
+    margin-bottom: 20px;
+  }
+
+  .radar-group h3 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 500;
+    margin: 0 0 8px;
+  }
+
+  ul.radar-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  ul.radar-list li {
+    position: relative;
+    padding-left: 16px;
+    margin-bottom: 7px;
+    font-size: 14.5px;
+    line-height: 1.6;
+    max-width: 66ch;
+    color: var(--ink);
+  }
+
+  ul.radar-list li::before {
+    content: "·";
+    position: absolute;
+    left: 3px;
+    color: var(--ink-soft);
+  }
+
+  ul.radar-list li a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid var(--line-strong);
+  }
+
+  ul.radar-list li a:hover { border-bottom-color: var(--signal); }
+
+  footer.status {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    border-top: 1px solid var(--line-strong);
+    padding-top: 18px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  @media (max-width: 480px) {
+    article.item { padding: 24px 20px; }
+    h1.headline { font-size: 30px; }
+  }
+</style>
+
+<div class="page">
+
+  <header class="masthead">
+    <div class="eyebrow">
+      <span>KNOWLEDGE BRIEF</span>
+      <span>2026-11-01 · 22:00</span>
+    </div>
+    <h1 class="headline">맡긴 비밀이 털려도 버티는 설계, 그리고 RAG의 검색 단계</h1>
+    <p class="subhead">오늘 조사한 것 중 <b>지금 당신에게 학습 가치가 있다고 판단한 것</b>만 남겼습니다. 나머지는 이미 아는 내용이거나 가치가 낮아 걸러냈습니다.</p>
+  </header>
+
+  <article class="item">
+    <div class="tag-row">
+      <span class="tag priority">보안 · 강의에 바로 쓸 것</span>
+      <span class="tag">기술매체</span>
+      <span class="tag">빨리 바뀜</span>
+    </div>
+
+    <h2 class="item-title">배포 플랫폼에 맡긴 환경 변수가 통째로 털렸다, AI 키 무단 사용 신고까지 나왔다</h2>
+
+    <p class="section-label">WHAT</p>
+    <p>Northflank는 앱, 컨테이너, AI 서비스를 올려 돌리는 클라우드 배포 플랫폼이다. 이 회사가 10월 30일 보안 사고를 공지했다. 고객이 플랫폼에 저장해 둔 AI API 키를 누가 무단으로 쓴다는 신고가 들어왔다고 한다.</p>
+    <p>회사는 고객에게 "모든 환경 변수가 복호화되어 그 안의 비밀이 탈취됐다고 가정하라"고 안내했다. 환경 변수에는 데이터베이스 비밀번호, 클라우드 자격 증명, API 키가 들어 있다. 침입 경로와 피해 고객 수는 공개되지 않았다. 보도 시점까지 회사는 기자의 질문에도 답하지 않았다.</p>
+    <p>이 내용은 전부 회사의 공지와 그 인용 보도에 근거한다. 보안업체 Wiz가 사고를 알려 왔고, 회사는 약 한 시간 사이에 패치를 세 번 냈다. 회사는 데이터베이스 자격 증명 교체 기능과 전 고객 대상 감사 로그를 열었다.</p>
+
+    <p class="section-label">WHY</p>
+    <p>이번 사고는 한 건이 아니라 10월 전체의 흐름 중 하나다. Wiz 보고서는 10월 한 달에 AI 개발 플랫폼 사고를 최소 아홉 건으로 센다. Railway, OpenCode, Warp, Lightning AI가 그 목록에 있다. 같은 공격자인지는 확인되지 않았다.</p>
+    <p>공격자가 노리는 것이 데이터가 아니라 "남의 계정으로 모델을 쓰는 권리"라는 점이 새롭다. Wiz는 이를 LLMjacking이라 부른다. 요금은 키 주인에게 청구된다.</p>
+    <ul>
+      <li>Wiz가 조사한 두 사례에서 탈취된 기업 자격 증명이 쓰였다.</li>
+      <li>Amazon Bedrock 호출이 약 250만 회 일어났다.</li>
+      <li>청구액은 약 10만 달러였다.</li>
+    </ul>
+    <p>이 수치는 Wiz의 조사를 인용한 보도에서 나왔다. 이번 Northflank 사고와 같은 건인지는 확인되지 않았다.</p>
+
+    <p class="section-label">FOR YOU</p>
+    <div class="for-you">
+      <p>당신은 "모델이 보내는 것은 실행이 아니라 요청이고, 실행은 로컬에서 일어난다"는 데까지 스스로 도달했다. 같은 질문을 비밀에도 던지면 된다. 이 키는 지금 어디에 놓여 있고, 털리면 무엇이 열리는가.</p>
+      <p>지난번에 인증과 인가를 다루며 베어러 토큰을 이야기했다. 열쇠를 가진 사람은 누구든 주인으로 취급된다는 이야기였다. AI API 키도 같다. 키 자체는 쓰는 사람이 누구인지 묻지 않는다.</p>
+      <p>그래서 피해를 줄이는 장치는 키 바깥에 있어야 한다.</p>
+      <ul>
+        <li>키마다 월 사용 한도를 건다.</li>
+        <li>프로젝트마다 키를 따로 만들어 한꺼번에 털리지 않게 한다.</li>
+        <li>쓸 수 있는 모델을 제한하고, 평소와 다른 사용량에는 알림을 건다.</li>
+        <li>키를 주기적으로 교체한다.</li>
+      </ul>
+      <p>야간 브리프가 쓰는 토큰은 이 컴퓨터 안의 파일에 있어서 이번 사건과 모양이 다르다. 하지만 AX 수강생은 반대다. 실습 중 키를 배포 플랫폼 환경 변수에 넣는 것이 가장 흔한 길이다. 강의에서는 이 한 문장이면 된다. "키는 금고에 넣어도 털린다고 가정하고, 털렸을 때 얼마까지 잃는지를 먼저 정한다."</p>
+    </div>
+
+    <p class="section-label">LEARN</p>
+    <p>사건의 세부는 사실만 알아 두면 된다. 원인이 공개되면 내용이 바뀔 수 있다. 오래 가는 부분은 한도, 키 분리, 교체 주기라는 설계 습관이다. 지금 쓰는 AI 제공사 콘솔에서 키별 한도와 알림이 켜져 있는지 한 번 확인해 볼 만하다. Northflank를 쓰고 있다면 회사 안내대로 모든 비밀을 교체하고 사용량·청구 로그를 본다.</p>
+
+    <div class="source-row">
+      <a href="https://www.bleepingcomputer.com/news/security/northflank-security-breach-leads-to-abuse-of-customers-ai-api-keys/" target="_blank" rel="noopener">BleepingComputer 원문 보기 →</a>
+      <span class="domain">bleepingcomputer.com</span>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">3줄 요약</p>
+      <ol class="tri-summary">
+        <li>회사에 따르면 Northflank의 10월 30일 보안 사고로 고객의 AI API 키가 무단 사용됐고, 침입 경로는 공개되지 않았다.</li>
+        <li>회사는 모든 환경 변수가 복호화돼 비밀이 탈취됐다고 가정하고 비밀을 교체하라고 고객에게 안내했다.</li>
+        <li>Wiz 보고서에 따르면 10월 AI 개발 플랫폼 사고가 최소 9건이며, 두 사례에서 약 10만 달러가 청구됐다.</li>
+      </ol>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">용어 해설</p>
+      <dl class="glossary">
+        <dt>LLMjacking</dt>
+        <dd>탈취한 AI API 키로 피해자 계정의 모델을 무단 호출해 쓰고, 비용은 피해자에게 청구되게 하는 공격이다. Wiz가 붙인 이름이다.</dd>
+        <dt>자격 증명 교체</dt>
+        <dd>유출됐거나 의심되는 비밀번호와 API 키를 새 값으로 바꾸고 옛 값을 폐기하는 작업이다. 교체 뒤에는 훔친 옛 값이 통하지 않는다.</dd>
+      </dl>
+    </div>
+  </article>
+
+  <article class="item">
+    <div class="tag-row">
+      <span class="tag priority">RAG · 오늘의 보완</span>
+      <span class="tag">내부 설명</span>
+      <span class="tag">오래 가는 기초</span>
+    </div>
+
+    <h2 class="item-title">RAG의 검색 단계는 "뜻이 가까운 것"을 항상 돌려주는 일이다</h2>
+
+    <p class="section-label">WHAT</p>
+    <p>RAG에서 문서를 골라 오는 단계가 벡터 검색이다. 오늘은 이 단계를 열어 본다. 질문과 문서 조각을 각각 숫자 목록으로 바꿔 둔다. 이 숫자 목록이 임베딩이다.</p>
+    <p>숫자 목록은 지도 위의 좌표로 생각하면 된다. 뜻이 비슷한 글은 지도에서 가까운 곳에 놓인다. 질문의 좌표에서 가까운 문서 좌표를 찾는 일이 벡터 검색이다.</p>
+
+    <p class="section-label">WHY</p>
+    <p>이 단계를 모르면 RAG가 틀렸을 때 어디를 볼지 모른다. 모델이 틀렸는지, 검색이 틀렸는지가 갈리지 않기 때문이다. 수강생이 가장 자주 부딪히는 질문이기도 하다.</p>
+    <p>세 가지를 알면 대부분의 상황이 풀린다.</p>
+    <ul>
+      <li><b>단어가 달라도 찾는다.</b> "휴가 규정"이라고 물어도 "연차 신청 방법"이라고 쓰인 문서가 나온다.</li>
+      <li><b>글자 그대로 맞춰야 하는 것은 약하다.</b> 제품 모델명이나 사람 이름이 그렇다. 그래서 키워드 검색과 섞는 혼합 검색을 많이 쓴다.</li>
+      <li><b>가장 가까운 것을 "아마" 돌려준다.</b> 조각이 백만 개면 질문마다 백만 번 비교하기 어렵다. 그래서 후보만 빠르게 추리는 색인을 쓰고, 정확도를 조금 내주고 속도를 얻는다.</li>
+    </ul>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 640 200" role="img" aria-label="질문 좌표에서 가장 가까운 문서 조각 3개를 고르는 모습. 가까운 것이 없어도 3개를 돌려준다.">
+        <rect x="10" y="10" width="350" height="180" fill="none" stroke="currentColor" stroke-opacity="0.35"/>
+        <g fill="currentColor" fill-opacity="0.55">
+          <circle cx="50" cy="40" r="5"/><circle cx="95" cy="150" r="5"/><circle cx="310" cy="45" r="5"/>
+          <circle cx="330" cy="140" r="5"/><circle cx="60" cy="100" r="5"/><circle cx="280" cy="170" r="5"/>
+          <circle cx="240" cy="30" r="5"/><circle cx="130" cy="30" r="5"/><circle cx="200" cy="165" r="5"/>
+        </g>
+        <circle cx="180" cy="100" r="62" fill="none" stroke="currentColor" stroke-dasharray="4 4" stroke-opacity="0.6" class="accent"/>
+        <g class="accent" fill="currentColor">
+          <circle cx="150" cy="75" r="6"/><circle cx="215" cy="85" r="6"/><circle cx="165" cy="140" r="6"/>
+        </g>
+        <path d="M180 88 l3.5 8 8.5 0.8 -6.5 5.7 2 8.5 -7.5 -4.5 -7.5 4.5 2 -8.5 -6.5 -5.7 8.5 -0.8z" fill="currentColor"/>
+        <text x="192" y="118" font-size="12">질문</text>
+        <text x="20" y="196" font-size="11">문서 조각의 좌표</text>
+        <text x="385" y="55" font-size="13" class="accent" fill="currentColor">점선 안 3개 = 상위 k개 (k=3)</text>
+        <text x="385" y="85" font-size="12">→ 이 조각만 모델에게 넘어간다</text>
+        <text x="385" y="130" font-size="12">정답이 문서에 없어도</text>
+        <text x="385" y="150" font-size="12">가장 가까운 3개는 나온다</text>
+      </svg>
+      <figcaption>검색은 "답이 있는 조각"이 아니라 "가까운 조각"을 돌려준다. 가까움과 정답은 다른 말이다.</figcaption>
+    </figure>
+
+    <p class="section-label">FOR YOU</p>
+    <div class="for-you">
+      <p>당신은 RAG가 왜 필요한지, 어떤 정보에 맞는지는 이미 정확히 짚었다. 비어 있는 곳은 그 안쪽, 문서를 어떻게 골라 오는가다. 벡터 저장소를 직접 만져 본 경험도 아직 없다.</p>
+      <p>당신의 시스템에서 비슷한 장면이 있다. 이미 다룬 사건인지 찾을 때 글자가 같은지만 보면, 같은 사건을 다른 말로 쓴 기사를 놓친다. 뜻이 가까운지를 보면 그런 기사가 걸린다. 반대로 제품명이나 버전 이름은 글자 비교가 더 정확하다.</p>
+      <p>예측 과제를 하나 드린다. 사내 규정집으로 만든 RAG가 "해외 출장 식대 한도"를 엉뚱하게 답했다. 모델과 검색 중 어디를 먼저 의심하겠는가. 답은 검색이다. 모델에게 실제로 넘어간 조각을 먼저 읽으면 문제가 어느 단계인지 갈린다.</p>
+      <p>강의에서는 이렇게 말하면 된다. "벡터 검색은 뜻이 가까운 것을 항상 돌려준다. 틀린 답은 먼저 그 조각들을 읽는다."</p>
+    </div>
+
+    <p class="section-label">LEARN</p>
+    <p>다음 단계는 문서를 조각내는 방법과, 가져온 조각의 순서를 다시 매기는 일이다. 오래 가는 기초라서 지금 한 번 정리해 둘 가치가 있다. 작은 문서 몇 개로 직접 질문을 던져 보고 돌아온 조각을 읽어 보면 가장 빨리 감이 온다.</p>
+
+    <div class="addendum">
+      <p class="section-label">3줄 요약</p>
+      <ol class="tri-summary">
+        <li>벡터 검색은 질문과 문서 조각을 임베딩 벡터로 바꾸고, 방향이 가장 가까운 문서를 찾는 방식이다.</li>
+        <li>문서가 많을 때는 근사 색인으로 후보만 빠르게 찾으며, 그 대가로 정확도를 조금 내준다.</li>
+        <li>유사도 점수가 높아도 정답은 아니며, 가져올 개수를 정해야 하고 키워드 검색과 섞기도 한다.</li>
+      </ol>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">용어 해설</p>
+      <dl class="glossary">
+        <dt>코사인 유사도</dt>
+        <dd>두 벡터가 가리키는 방향이 얼마나 같은지 나타내는 값이다. 길이는 무시하고 방향만 비교하며, 1에 가까울수록 방향이 같다.</dd>
+        <dt>근사 최근접 이웃(ANN)</dt>
+        <dd>모든 문서 벡터를 하나씩 비교하지 않고 가까운 후보를 빠르게 찾는 방식이다. 속도를 얻는 대신 가장 가까운 항목을 가끔 놓친다.</dd>
+        <dt>top-k</dt>
+        <dd>유사도가 높은 순으로 줄 세워 위에서 k개만 가져오는 방식이다. k는 사람이 정한다.</dd>
+        <dt>혼합 검색</dt>
+        <dd>벡터 검색과 키워드 검색의 결과를 합쳐 순위를 매기는 방식이다. 뜻 중심 질문은 앞쪽이, 고유명사처럼 정확한 단어는 뒤쪽이 잘 찾는다.</dd>
+      </dl>
+    </div>
+  </article>
+
+  <section class="radar">
+    <p class="section-label">레이더</p>
+    <p class="radar-note">학습 대상이 아니라 <b>인지 대상</b>입니다. 훑고 지나가세요 — 나중에 필요한 순간에 &ldquo;그거 있었지&rdquo;가 나오게 하는 것이 목적입니다.</p>
+
+    <div class="radar-group">
+      <h3>내가 쓰는 도구</h3>
+      <ul class="radar-list">
+        <li>Claude Code 2.1.314(10/30) — 쓰기·편집 도구가 작업 폴더 밖 경로를 모든 권한 모드에서 거부하게 하는 설정이 생겼다. 20만 토큰 넘게 방치된 대화를 VS Code·데스크톱 Code 탭이 자동 요약하고, <code>claude -p</code>는 시작 오류 시 0이 아니라 1로 종료한다. <a href="https://github.com/anthropics/claude-code/releases" target="_blank" rel="noopener">릴리스 노트</a></li>
+        <li>Claude Code 2.1.316(10/31) — Opus 4.8의 Fast mode가 10월 30일부로 폐기 예고됐고 11월 30일에 제거된다. 이후엔 대체 없이 오류가 나며 Opus 5.5로 옮기라고 안내한다. <code>ultrathink</code> 키워드를 끄는 환경 변수와 서브에이전트 effort를 정하는 환경 변수도 추가됐다.</li>
+      </ul>
+    </div>
+
+    <div class="radar-group">
+      <h3>가격·정책</h3>
+      <ul class="radar-list">
+        <li>OpenAI — 상위 ChatGPT 요금제 사용량을 50% 줄이려던 계획이 사용자 반발로 철회되고 Pro 한도가 두 배로 늘었다는 보도(10/29, 헤드라인 기준, 본문 미확인).</li>
+        <li>Anthropic — 미국 연방조달청(GSA)과 협약을 확대해 정부 기관이 Claude 일부 제품을 40% 할인받는다(10/27, 회사 발표).</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer class="status">
+    <span>오늘 조사 후 신호 2건(뉴스 1 · 보완 1) · 레이더 4건 · 투자·소개성 보도는 폐기</span>
+    <span>Knowledge Agent v0.1</span>
+  </footer>
+
+</div>
