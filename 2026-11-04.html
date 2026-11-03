@@ -1,0 +1,531 @@
+<title>Knowledge Brief 2026-11-04</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,500;1,6..72,600&family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  :root {
+    --paper: #eef0f4;
+    --surface: #ffffff;
+    --ink: #131722;
+    --ink-soft: #5b6472;
+    --signal: #c97a1a;
+    --signal-deep: #8a5313;
+    --signal-soft: #f3e3cc;
+    --line: rgba(19, 23, 34, 0.12);
+    --line-strong: rgba(19, 23, 34, 0.22);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #0e1116;
+      --surface: #171b22;
+      --ink: #e7e9ee;
+      --ink-soft: #9aa3b2;
+      --signal: #f0b15c;
+      --signal-deep: #f5c685;
+      --signal-soft: rgba(240, 177, 92, 0.14);
+      --line: rgba(231, 233, 238, 0.14);
+      --line-strong: rgba(231, 233, 238, 0.24);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --paper: #0e1116;
+    --surface: #171b22;
+    --ink: #e7e9ee;
+    --ink-soft: #9aa3b2;
+    --signal: #f0b15c;
+    --signal-deep: #f5c685;
+    --signal-soft: rgba(240, 177, 92, 0.14);
+    --line: rgba(231, 233, 238, 0.14);
+    --line-strong: rgba(231, 233, 238, 0.24);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans KR', 'IBM Plex Sans', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 56px 24px 96px;
+  }
+
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--signal-deep);
+  }
+
+  header.masthead {
+    border-bottom: 1px solid var(--line-strong);
+    padding-bottom: 28px;
+    margin-bottom: 40px;
+  }
+
+  header.masthead .eyebrow {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  h1.headline {
+    font-family: 'Newsreader', Georgia, serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(32px, 6vw, 44px);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin: 14px 0 10px;
+    text-wrap: balance;
+  }
+
+  .masthead .subhead {
+    color: var(--ink-soft);
+    font-size: 15px;
+    max-width: 56ch;
+  }
+
+  .masthead .subhead b {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .masthead .listen {
+    margin-top: 20px;
+    padding: 14px 16px;
+    background: var(--signal-soft);
+    border-radius: 10px;
+    display: grid;
+    gap: 8px;
+  }
+
+  .masthead .listen audio { width: 100%; }
+
+  article.item {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 32px 32px 28px;
+    margin-bottom: 32px;
+  }
+
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  .tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+    border: 1px solid var(--line-strong);
+    color: var(--ink-soft);
+  }
+
+  .tag.priority {
+    border-color: var(--signal);
+    color: var(--signal-deep);
+    background: var(--signal-soft);
+  }
+
+  h2.item-title {
+    font-family: 'Newsreader', Georgia, serif;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 1.3;
+    margin: 0 0 18px;
+    text-wrap: balance;
+  }
+
+  .section-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin: 22px 0 8px;
+  }
+
+  .section-label:first-of-type { margin-top: 0; }
+
+  article.item p {
+    margin: 0 0 4px;
+    max-width: 62ch;
+  }
+
+  article.item .for-you {
+    padding: 14px 16px;
+    background: var(--signal-soft);
+    border-left: 2px solid var(--signal);
+    border-radius: 0 3px 3px 0;
+  }
+
+  figure.diagram {
+    margin: 26px 0 6px;
+    padding: 18px 6px 8px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  figure.diagram svg { width: 100%; height: auto; display: block; color: var(--ink-soft); }
+  figure.diagram .accent { color: var(--signal); }
+  figure.diagram text { font-family: 'IBM Plex Mono', monospace; fill: currentColor; }
+
+  figcaption {
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-top: 10px;
+  }
+
+  .source-row {
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .source-row a {
+    color: var(--ink);
+    text-decoration-color: var(--signal);
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 3px;
+  }
+
+  .source-row .domain {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+
+  .addendum {
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+  }
+
+  ol.tri-summary {
+    margin: 0;
+    padding-left: 1.3em;
+  }
+
+  ol.tri-summary li {
+    margin-bottom: 6px;
+    max-width: 62ch;
+  }
+
+  dl.glossary {
+    margin: 0;
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    column-gap: 14px;
+    row-gap: 10px;
+  }
+
+  dl.glossary dt {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--signal-deep);
+    white-space: nowrap;
+  }
+
+  dl.glossary dd {
+    margin: 0;
+    max-width: 56ch;
+    color: var(--ink-soft);
+  }
+
+  /* 레이더 — 인지 채널. 본 브리프(학습 채널)와 시각적으로 명확히 구분되어야 한다:
+     카드가 아니라 목록, 강조색 없음, 본문보다 작은 글씨. 훑고 지나가는 영역이다. */
+  section.radar {
+    margin-top: 40px;
+    padding-top: 26px;
+    border-top: 1px solid var(--line-strong);
+  }
+
+  section.radar > p.radar-note {
+    margin: 0 0 18px;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    max-width: 62ch;
+  }
+
+  .radar-group {
+    margin-bottom: 20px;
+  }
+
+  .radar-group h3 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 500;
+    margin: 0 0 8px;
+  }
+
+  ul.radar-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  ul.radar-list li {
+    position: relative;
+    padding-left: 16px;
+    margin-bottom: 7px;
+    font-size: 14.5px;
+    line-height: 1.6;
+    max-width: 66ch;
+    color: var(--ink);
+  }
+
+  ul.radar-list li::before {
+    content: "·";
+    position: absolute;
+    left: 3px;
+    color: var(--ink-soft);
+  }
+
+  ul.radar-list li a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid var(--line-strong);
+  }
+
+  ul.radar-list li a:hover { border-bottom-color: var(--signal); }
+
+  footer.status {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    border-top: 1px solid var(--line-strong);
+    padding-top: 18px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  @media (max-width: 480px) {
+    article.item { padding: 24px 20px; }
+    h1.headline { font-size: 30px; }
+  }
+</style>
+
+<div class="page">
+
+  <header class="masthead">
+    <div class="eyebrow">
+      <span>KNOWLEDGE BRIEF</span>
+      <span>2026-11-04 · 22:00</span>
+    </div>
+    <h1 class="headline">검사기가 넘어지면 통과시킬까, 멈출까</h1>
+    <p class="subhead">오늘 조사한 것 중 <b>지금 당신에게 학습 가치가 있다고 판단한 것</b>만 남겼습니다. 나머지는 이미 아는 내용이거나 가치가 낮아 걸러냈습니다.</p>
+  </header>
+
+  <article class="item">
+    <div class="tag-row">
+      <span class="tag priority">하네스 설계 · 오늘의 핵심</span>
+      <span class="tag">공식 릴리스 노트</span>
+      <span class="tag">계속 바뀌는 중</span>
+    </div>
+
+    <h2 class="item-title">Claude Code 2.1.317, 세 군데서 "검사가 실패하면?"에 답을 바꿨다</h2>
+
+    <p class="section-label">WHAT</p>
+    <p>Claude Code 2.1.317이 11월 3일 나왔다. 바뀐 항목은 80개가 넘는다. 그중 세 줄이 같은 질문을 다룬다. "검사하는 쪽이 실패하면 무엇이 일어나는가"다.</p>
+    <ul>
+      <li>에이전트 SDK의 훅 콜백에 <code>onFailure: "block"</code> 옵션이 생겼다. 켜면 콜백이 실패할 때 그 동작을 막는다. 릴리스 노트는 "실행시키는 대신 막는다"고 썼다.</li>
+      <li>자동 모드는 서버 쪽 안전 검사를 거친다. 중계 서버(게이트웨이)가 이 검사에 403이나 422로 답하면, 그동안 자동 모드는 매 턴 실패했다. 이번에 고쳤다.</li>
+      <li><code>claude -p</code>는 디스크가 꽉 차서 대화 기록을 못 써도 종료 코드 0으로 끝났다. 이제는 오류를 출력하고 1로 끝난다.</li>
+    </ul>
+    <p>첫 줄의 반대편이 중요하다. 옵션을 켜지 않으면 콜백이 실패해도 동작이 실행된다는 뜻으로 읽힌다. 다만 기본값은 노트에 직접 적혀 있지 않다. 명령줄 훅에는 같은 옵션이 10월 초에 먼저 들어왔다.</p>
+
+    <p class="section-label">WHY</p>
+    <p>보안 업계는 이 선택에 이름을 붙여 뒀다. 검사기가 고장 났을 때 통과시키면 fail-open, 막으면 fail-closed다. 둘 다 정답이 아니다. 내주는 것이 다를 뿐이다.</p>
+    <ul>
+      <li>fail-open은 안전을 내준다. 검사가 조용히 꺼져도 일은 돌아간다. 아무도 모른다.</li>
+      <li>fail-closed는 가용성을 내준다. 검사기가 아프면 일 전체가 멈춘다. 자동 모드가 매 턴 실패한 것이 이 모습이다.</li>
+    </ul>
+    <p>세 번째 변경은 결이 조금 다르다. 실패를 성공처럼 보고하던 문제다. 결과를 바깥에서 보는 쪽이 속는다. 검사기가 고장 났는데 고장 났다는 사실조차 안 보이는 셈이다.</p>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 640 200" role="img" aria-label="도구 호출이 검사기를 지날 때, 검사기가 정상이면 판정대로, 고장 나면 설정에 따라 실행되거나 멈춘다">
+        <defs>
+          <marker id="ah1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker>
+        </defs>
+        <rect x="10" y="80" width="130" height="40" rx="3" fill="none" stroke="currentColor"/>
+        <text x="75" y="105" font-size="13" text-anchor="middle">도구 호출 요청</text>
+        <line x1="140" y1="100" x2="190" y2="100" stroke="currentColor" marker-end="url(#ah1)"/>
+        <rect x="192" y="80" width="120" height="40" rx="3" fill="none" stroke="currentColor"/>
+        <text x="252" y="105" font-size="13" text-anchor="middle">검사기 (훅)</text>
+        <path d="M312,100 C350,100 350,30 390,30" fill="none" stroke="currentColor" marker-end="url(#ah1)"/>
+        <text x="396" y="34" font-size="12.5">검사기 정상 → 판정대로 허용·거부</text>
+        <g class="accent">
+          <path d="M312,100 L390,100" fill="none" stroke="currentColor" marker-end="url(#ah1)"/>
+          <text x="396" y="96" font-size="12.5">고장 + 열림(fail-open)</text>
+          <text x="396" y="113" font-size="12.5">→ 검사 없이 그대로 실행</text>
+          <path d="M312,100 C350,100 350,170 390,170" fill="none" stroke="currentColor" marker-end="url(#ah1)"/>
+          <text x="396" y="166" font-size="12.5">고장 + 닫힘(fail-closed)</text>
+          <text x="396" y="183" font-size="12.5">→ 멈춤, 일도 같이 멈춤</text>
+        </g>
+      </svg>
+      <figcaption>검사기가 정상일 때는 위치가 전부다. 검사기가 고장 났을 때는 어느 쪽으로 넘어지게 해 뒀는지가 전부다.</figcaption>
+    </figure>
+
+    <p class="section-label">FOR YOU</p>
+    <div class="for-you">
+      <p>당신은 강제 지점을 고를 때 두 가지를 본다. 통제받는 쪽이 그 지점을 고칠 수 없는가. 실제 실행이 반드시 그 지점을 지나가는가. 지난 9월 이 두 기준으로 OS 권한과 샌드박스를 골라냈다.</p>
+      <p>오늘 뉴스는 세 번째 질문을 더한다. 그 지점이 고장 나면 어떻게 되는가. 위치가 완벽해도 고장 시 통과라면 구멍이 생긴다. 훅이 예외를 던지는 순간, 그 훅은 없는 것과 같아진다.</p>
+      <p>이 질문에는 당신의 야간 브리프 규칙이 이미 답을 갖고 있다.</p>
+      <ul>
+        <li>"프로세스가 0으로 끝났다"는 성공 증거가 아니다.</li>
+        <li>영수증 기록 명령이 실패하면 바깥 작업을 시작하지 않는다.</li>
+        <li>결과를 확인할 수 없으면 성공도 실패도 아닌 "모름"으로 둔다.</li>
+      </ul>
+      <p>첫째는 오늘 고쳐진 <code>claude -p</code> 문제와 같은 모양이다. 둘째는 fail-closed 설계다. 셋째는 그 둘 사이의 세 번째 칸이다.</p>
+      <p>당신 시스템은 이 구분을 이미 쓰고 있다. 오늘은 거기에 업계 이름을 붙이는 날이다.</p>
+      <p>강의에서는 이렇게 말하면 된다. "안전장치를 달았다면, 그 장치가 고장 났을 때 일이 멈추는지 계속되는지도 정하세요."</p>
+    </div>
+
+    <p class="section-label">LEARN</p>
+    <p>fail-open과 fail-closed는 오래 가는 말이다. 보안, 네트워크, 결제 어디서나 같은 뜻으로 쓴다. 기억할 원칙은 하나다. 고장 시 동작을 기본값에 맡기지 말고 직접 고른다.</p>
+    <p>할 일도 하나다. 당신 하네스의 훅이나 검사 단계 하나를 골라 보라. 그 검사 코드가 예외를 던지면 다음 단계가 실행되는가. 바로 답이 안 나오면 그것 자체가 오늘의 발견이다.</p>
+
+    <div class="source-row">
+      <a href="https://github.com/anthropics/claude-code/releases" target="_blank" rel="noopener">Claude Code 릴리스 노트 원문 보기 →</a>
+      <span class="domain">github.com/anthropics/claude-code</span>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">3줄 요약</p>
+      <ol class="tri-summary">
+        <li>에이전트 SDK 훅 콜백에 <code>onFailure: "block"</code> 옵션이 생겨, 콜백이 실패하면 동작을 실행하지 않고 막을 수 있다.</li>
+        <li>게이트웨이가 서버 쪽 안전 검사에 403·422로 답하면 자동 모드가 매 턴 실패하던 문제가 고쳐졌다.</li>
+        <li>디스크가 꽉 차 기록을 못 써도 <code>claude -p</code>가 종료 코드 0으로 끝나던 문제가 고쳐져, 이제 오류를 내고 1로 끝난다.</li>
+      </ol>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">용어 해설</p>
+      <dl class="glossary">
+        <dt>fail-open / fail-closed</dt>
+        <dd>검사기가 고장 났을 때 통과시키는 설계가 fail-open, 막는 설계가 fail-closed다. 앞쪽은 안전을, 뒤쪽은 가용성을 잃을 위험이 있다.</dd>
+        <dt>가용성</dt>
+        <dd>시스템이 필요할 때 실제로 동작하는 정도다. 검사 실패 때마다 막으면 이 값이 떨어진다.</dd>
+        <dt>게이트웨이</dt>
+        <dd>요청을 받아 뒤쪽 실제 서버로 넘기고 응답을 돌려주는 중간 관문 서버다. 회사가 인증이나 사용량 관리를 여기서 한다.</dd>
+        <dt>403 / 422</dt>
+        <dd>둘 다 서버가 "받긴 했지만 처리하지 않겠다"고 답하는 상태 코드다. 403은 권한 없음, 422는 형식은 맞지만 내용을 처리할 수 없음이다.</dd>
+      </dl>
+    </div>
+  </article>
+
+  <article class="item">
+    <div class="tag-row">
+      <span class="tag priority">AI 코딩 에이전트 · 꼭 짚을 개념</span>
+      <span class="tag">개념 보완</span>
+      <span class="tag">계속 바뀌는 중</span>
+    </div>
+
+    <h2 class="item-title">에이전트는 돌아온 글자를 보고 다음 수를 고른다</h2>
+
+    <p class="section-label">왜 지금 이걸 다루는가</p>
+    <p>위 뉴스의 세 변경은 모두 같은 곳을 건드린다. 에이전트에게 돌아가는 결과 신호다. 에이전트는 그 신호를 보고 다음 행동을 고른다. 이 고리를 에이전트의 피드백 루프라고 부른다.</p>
+    <p>같은 릴리스에 이 고리를 직접 바꾼 줄이 하나 더 있다. Read 도구는 같은 파일을 다시 읽으면 "지난번과 같음"이라는 짧은 표시만 돌려줬다. 이제는 다시 읽어도 내용 전체를 돌려준다.</p>
+
+    <p class="section-label">FOR YOU</p>
+    <div class="for-you">
+      <p>당신은 툴 호출이 어떻게 움직이는지 이미 안다. 모델은 요청을 보내고, 실행은 로컬에서 일어난다. 오늘은 그 다음 장면을 본다. 실행 결과가 모델에게 어떻게 돌아가고, 모델은 그걸로 무엇을 하는가.</p>
+      <p>한 바퀴는 이렇게 돈다.</p>
+      <ol>
+        <li>모델이 다음 행동을 고른다. 파일 읽기, 명령 실행 같은 것이다.</li>
+        <li>하네스가 그것을 실제로 실행한다.</li>
+        <li>결과가 글자로 대화에 붙는다. 출력, 오류 메시지, 종료 코드다.</li>
+        <li>모델은 그 글자만 보고 다음 행동을 고른다. 다시 1번으로 간다.</li>
+      </ol>
+      <p>핵심은 4번이다. 모델은 세상을 직접 보지 못한다. 돌아온 글자가 모델이 아는 세상의 전부다. 그래서 루프의 품질은 모델 성능만큼 돌아오는 신호의 품질에 달려 있다.</p>
+      <p>신호가 나빠지는 모양은 셋이다.</p>
+      <ul>
+        <li>거짓 신호: 실패했는데 성공으로 돌아온다. 디스크가 찼는데 0으로 끝난 <code>claude -p</code>가 그렇다.</li>
+        <li>빈 신호: 결과 대신 표시만 돌아온다. "지난번과 같음"이 그렇다. 모델이 예전 내용을 이미 잊었다면 판단할 재료가 없다.</li>
+        <li>막힌 신호: 매번 같은 오류가 돌아온다. 자동 모드의 매 턴 실패가 그렇다. 모델은 같은 시도를 반복하거나 엉뚱하게 우회한다.</li>
+      </ul>
+      <p>지난 9월 야간 상태 기록 코드를 함께 읽을 때를 떠올려 보라. 당신은 "무엇이 잘못 설계됐나"는 바로 짚었다. 하지만 "실패하면 무엇이 깨지나"에서는 멈췄다.</p>
+      <p>피드백 루프는 그 연습에 딱 맞는 무대다. 신호 하나가 틀리면 다음 행동이 어떻게 틀어지는지 따라가면 된다.</p>
+      <p>예측해 보자. 테스트가 실패했는데 종료 코드 0이 돌아온다. 에이전트는 다음에 무엇을 할까. 답은 아래 LEARN에 있다.</p>
+    </div>
+
+    <p class="section-label">LEARN</p>
+    <p>답은 이렇다. 에이전트는 테스트가 통과했다고 믿고 다음 단계로 넘어간다. "다 됐다"고 보고할 수도 있다.</p>
+    <p>모델이 틀린 게 아니다. 받은 신호대로 정확히 움직였다.</p>
+    <p>그래서 에이전트가 "다 됐다"고 할 때 묻는 순서가 바뀐다. 모델이 똑똑했나보다 먼저, 모델이 무엇을 보고 그렇게 판단했나를 묻는다. 당신 하네스에서 도구가 돌려주는 결과 형식을 한 번 훑어보라. 실패가 실패로 보이는지가 첫 점검 항목이다.</p>
+    <p>강의용 한 문장. "에이전트는 눈이 없습니다. 도구가 돌려준 글자가 눈입니다."</p>
+
+    <div class="addendum">
+      <p class="section-label">3줄 요약</p>
+      <ol class="tri-summary">
+        <li>코딩 에이전트는 모델이 행동을 고르고, 하네스가 실행하고, 그 결과 글자를 보고 다음 행동을 고르는 루프로 움직인다.</li>
+        <li>모델은 세상을 직접 못 보므로 루프의 품질은 돌아오는 신호에 달렸고, 나쁜 신호는 거짓·빈·막힌 세 모양이다.</li>
+        <li>Claude Code 2.1.317은 다시 읽은 파일에 "지난번과 같음" 표시 대신 내용 전체를 돌려주도록 바꿨다.</li>
+      </ol>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">용어 해설</p>
+      <dl class="glossary">
+        <dt>stub(스텁)</dt>
+        <dd>진짜 내용 자리에 대신 넣는 짧은 자리표시다. 여기서는 다시 읽은 파일 대신 돌려주던 "지난번과 같음" 표시를 가리킨다.</dd>
+      </dl>
+    </div>
+  </article>
+
+  <section class="radar">
+    <p class="section-label">레이더</p>
+    <p class="radar-note">학습 대상이 아니라 <b>인지 대상</b>입니다. 훑고 지나가세요 — 나중에 필요한 순간에 &ldquo;그거 있었지&rdquo;가 나오게 하는 것이 목적입니다.</p>
+
+    <div class="radar-group">
+      <h3>내가 쓰는 도구</h3>
+      <ul class="radar-list">
+        <li>Claude Code 2.1.317(11/3) — 웹·셸 도구가 계정 이메일 주소를 네트워크로 보내기 전에 묻는다. <code>/schedule</code>은 새 클라우드 예약 작업에 요청하지 않은 커넥터가 붙으면 경고한다. <a href="https://github.com/anthropics/claude-code/releases" target="_blank" rel="noopener">릴리스 노트</a></li>
+        <li>Claude Code 2.1.317 — 관리자용 비용 보고 API가 생겼다. 지난 사용액을 개발자별·날짜별·조직 그룹별로 읽을 수 있다.</li>
+        <li>Codex CLI 0.166.0(10/29) — 네트워크만 점검하는 <code>codex doctor --network-only</code>가 생겼다. 안전 차단 사유 설명이 더 분명해졌고, 대화 기록을 키보드로 검색·선택할 수 있다. <a href="https://learn.chatgpt.com/docs/changelog" target="_blank" rel="noopener">변경 기록</a></li>
+      </ul>
+    </div>
+
+    <div class="radar-group">
+      <h3>보안</h3>
+      <ul class="radar-list">
+        <li>Google LLMjacking 보고(11/3) — 훔친 클라우드 키와 노출된 모델 주소로 AI 호출을 대신 돌린다. 그 접근권을 월 60달러 "무제한 요금제"로 되파는 중계 서비스까지 생겼고, 한 피해 조직에 누적 약 100만 달러가 청구됐다. 구글은 사용·지출 한도 설정을 권한다. <a href="https://www.bleepingcomputer.com/news/security/google-llmjacking-attacks-rack-up-1-million-in-cloud-ai-charges/" target="_blank" rel="noopener">기사</a></li>
+        <li>WorkOS 침해(10/30 발견) — 로그인·인증 인프라 회사의 영업용 내부 앱이 뚫려 고객 연락처와 영업·지원 대화 요약이 나갔다. 회사는 제품 데이터는 영향이 없다고 밝혔다. 공격에는 ARTEX 침투 도구가 쓰인 것으로 추정된다. <a href="https://www.bleepingcomputer.com/news/security/workos-says-attacker-used-artex-ai-to-breach-internal-sales-app/" target="_blank" rel="noopener">기사</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <footer class="status">
+    <span>오늘 조사 후 신호 2건(뉴스 1 · 보완 1) · 레이더 5건 · 이미 다룬 사건과 날짜 불명 소개 글은 폐기</span>
+    <span>Knowledge Agent v0.1</span>
+  </footer>
+
+</div>
