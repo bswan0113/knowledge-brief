@@ -1,0 +1,588 @@
+<!-- Knowledge Brief 2026-11-05 -->
+<title>Knowledge Brief 2026-11-05</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,500;1,6..72,600&family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  :root {
+    --paper: #eef0f4;
+    --surface: #ffffff;
+    --ink: #131722;
+    --ink-soft: #5b6472;
+    --signal: #c97a1a;
+    --signal-deep: #8a5313;
+    --signal-soft: #f3e3cc;
+    --line: rgba(19, 23, 34, 0.12);
+    --line-strong: rgba(19, 23, 34, 0.22);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #0e1116;
+      --surface: #171b22;
+      --ink: #e7e9ee;
+      --ink-soft: #9aa3b2;
+      --signal: #f0b15c;
+      --signal-deep: #f5c685;
+      --signal-soft: rgba(240, 177, 92, 0.14);
+      --line: rgba(231, 233, 238, 0.14);
+      --line-strong: rgba(231, 233, 238, 0.24);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --paper: #0e1116;
+    --surface: #171b22;
+    --ink: #e7e9ee;
+    --ink-soft: #9aa3b2;
+    --signal: #f0b15c;
+    --signal-deep: #f5c685;
+    --signal-soft: rgba(240, 177, 92, 0.14);
+    --line: rgba(231, 233, 238, 0.14);
+    --line-strong: rgba(231, 233, 238, 0.24);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans KR', 'IBM Plex Sans', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 56px 24px 96px;
+  }
+
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--signal-deep);
+  }
+
+  header.masthead {
+    border-bottom: 1px solid var(--line-strong);
+    padding-bottom: 28px;
+    margin-bottom: 40px;
+  }
+
+  header.masthead .eyebrow {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  h1.headline {
+    font-family: 'Newsreader', Georgia, serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(32px, 6vw, 44px);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin: 14px 0 10px;
+    text-wrap: balance;
+  }
+
+  .masthead .subhead {
+    color: var(--ink-soft);
+    font-size: 15px;
+    max-width: 56ch;
+  }
+
+  .masthead .subhead b {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .masthead .listen {
+    margin-top: 20px;
+    padding: 14px 16px;
+    background: var(--signal-soft);
+    border-radius: 10px;
+    display: grid;
+    gap: 8px;
+  }
+
+  .masthead .listen audio { width: 100%; }
+
+  article.item {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 32px 32px 28px;
+    margin-bottom: 32px;
+  }
+
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  .tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+    border: 1px solid var(--line-strong);
+    color: var(--ink-soft);
+  }
+
+  .tag.priority {
+    border-color: var(--signal);
+    color: var(--signal-deep);
+    background: var(--signal-soft);
+  }
+
+  h2.item-title {
+    font-family: 'Newsreader', Georgia, serif;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 1.3;
+    margin: 0 0 18px;
+    text-wrap: balance;
+  }
+
+  .section-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin: 22px 0 8px;
+  }
+
+  .section-label:first-of-type { margin-top: 0; }
+
+  article.item p {
+    margin: 0 0 4px;
+    max-width: 62ch;
+  }
+
+  article.item .for-you {
+    padding: 14px 16px;
+    background: var(--signal-soft);
+    border-left: 2px solid var(--signal);
+    border-radius: 0 3px 3px 0;
+  }
+
+  figure.diagram {
+    margin: 26px 0 6px;
+    padding: 18px 6px 8px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  figure.diagram svg { width: 100%; height: auto; display: block; color: var(--ink-soft); }
+  figure.diagram .accent { color: var(--signal); }
+  figure.diagram text { font-family: 'IBM Plex Mono', monospace; fill: currentColor; }
+
+  figcaption {
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-top: 10px;
+  }
+
+  .source-row {
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .source-row a {
+    color: var(--ink);
+    text-decoration-color: var(--signal);
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 3px;
+  }
+
+  .source-row .domain {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+
+  .addendum {
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+  }
+
+  ol.tri-summary {
+    margin: 0;
+    padding-left: 1.3em;
+  }
+
+  ol.tri-summary li {
+    margin-bottom: 6px;
+    max-width: 62ch;
+  }
+
+  dl.glossary {
+    margin: 0;
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    column-gap: 14px;
+    row-gap: 10px;
+  }
+
+  dl.glossary dt {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--signal-deep);
+    white-space: nowrap;
+  }
+
+  dl.glossary dd {
+    margin: 0;
+    max-width: 56ch;
+    color: var(--ink-soft);
+  }
+
+  section.radar {
+    margin-top: 40px;
+    padding-top: 26px;
+    border-top: 1px solid var(--line-strong);
+  }
+
+  section.radar > p.radar-note {
+    margin: 0 0 18px;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    max-width: 62ch;
+  }
+
+  .radar-group {
+    margin-bottom: 20px;
+  }
+
+  .radar-group h3 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 500;
+    margin: 0 0 8px;
+  }
+
+  ul.radar-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  ul.radar-list li {
+    position: relative;
+    padding-left: 16px;
+    margin-bottom: 7px;
+    font-size: 14.5px;
+    line-height: 1.6;
+    max-width: 66ch;
+    color: var(--ink);
+  }
+
+  ul.radar-list li::before {
+    content: "·";
+    position: absolute;
+    left: 3px;
+    color: var(--ink-soft);
+  }
+
+  ul.radar-list li a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid var(--line-strong);
+  }
+
+  ul.radar-list li a:hover { border-bottom-color: var(--signal); }
+
+  footer.status {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    border-top: 1px solid var(--line-strong);
+    padding-top: 18px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  @media (max-width: 480px) {
+    article.item { padding: 24px 20px; }
+    h1.headline { font-size: 30px; }
+  }
+</style>
+
+<div class="page">
+
+  <header class="masthead">
+    <div class="eyebrow">
+      <span>KNOWLEDGE BRIEF</span>
+      <span>2026-11-05 · 09:40</span>
+    </div>
+    <h1 class="headline">쿠키는 훔쳐도 열쇠는 못 훔치게: 로그인 뒤에 일어나는 인증</h1>
+    <p class="subhead">오늘 조사한 것 중 <b>지금 당신에게 학습 가치가 있다고 판단한 것</b>만 남겼습니다. 나머지는 이미 아는 내용이거나 가치가 낮아 걸러냈습니다.</p>
+  </header>
+
+  <article class="item">
+    <div class="tag-row">
+      <span class="tag priority">보안 · 강의에 바로 쓸 것</span>
+      <span class="tag">기술매체 + 공식 문서</span>
+      <span class="tag">계속 바뀌는 중</span>
+    </div>
+
+    <h2 class="item-title">Vercel이 로그인 쿠키를 기기에 묶었다: 훔친 쿠키가 다른 PC에서 멈추는 방식</h2>
+
+    <p class="section-label">WHAT</p>
+    <p>Vercel이 vercel.com 로그인에 기기 결합 세션(DBSC)을 단계적으로 켜고 있다. BleepingComputer가 2026년 11월 4일 보도했다. 세부 내용은 Vercel CTO 말테 우블의 X 게시물에서 나왔고, 공식 블로그 글은 아직 없다.</p>
+    <ul>
+      <li>지금은 macOS와 Windows의 Chrome에서만 작동한다.</li>
+      <li>OAuth 앱 연동의 예외 상황을 처리하려고 천천히 켜는 중이다.</li>
+      <li>Vercel CLI에는 비슷한 방식인 DPoP를 따로 적용하고 있다.</li>
+    </ul>
+
+    <p class="section-label">WHY</p>
+    <p>인포스틸러라는 악성코드는 브라우저에 저장된 세션 쿠키를 훔쳐 간다. 공격자는 그 쿠키를 자기 브라우저에 넣고 로그인된 상태로 들어간다. 비밀번호도 MFA도 다시 묻지 않는다. 로그인 검사는 이미 끝난 뒤이기 때문이다.</p>
+    <p>Vercel은 올해 4월 침해를 겪었다. 외부 업체 직원 계정이 뚫렸고, 공격자가 민감 표시가 없는 환경 변수를 열람했다. 배포 플랫폼 계정 하나가 고객의 비밀값으로 이어지는 구조다. 그래서 "쿠키가 새도 못 쓰게" 만드는 쪽에 투자하고 있다.</p>
+
+    <p class="section-label">어떻게 작동하나</p>
+    <ul>
+      <li>로그인할 때 브라우저가 키 한 쌍을 만든다. 개인키는 TPM 같은 보안 칩에 들어가고 밖으로 꺼낼 수 없다.</li>
+      <li>서버는 공개키만 받아 둔다. 그리고 수명이 짧은 쿠키를 내준다.</li>
+      <li>쿠키가 만료될 즈음 서버가 무작위 문제를 낸다. 브라우저는 칩 안의 개인키로 서명해 돌려준다.</li>
+      <li>서명이 맞으면 새 쿠키가 나온다. 맞지 않으면 세션이 끝난다.</li>
+    </ul>
+    <p>훔친 쿠키는 잠깐은 통한다. 하지만 갱신 시점이 오면 공격자 PC에는 서명할 키가 없다. 쿠키는 훔칠 수 있어도 키는 훔칠 수 없게 만든 것이다.</p>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 640 210" role="img" aria-label="사용자 PC는 칩 안의 키로 갱신 문제에 서명해 새 쿠키를 받고, 쿠키만 복사한 공격자 PC는 서명하지 못해 갱신에 실패한다">
+        <g fill="none" stroke="currentColor" stroke-width="1.3">
+          <rect x="14" y="20" width="170" height="72" rx="3"/>
+          <rect x="14" y="120" width="170" height="72" rx="3" stroke-dasharray="4 4"/>
+          <rect x="400" y="62" width="200" height="84" rx="3" style="stroke: var(--signal)"/>
+          <path d="M184 56 L400 92"/>
+          <path d="M184 156 L400 118" stroke-dasharray="4 4"/>
+        </g>
+        <g font-size="12.5" text-anchor="middle">
+          <text x="99" y="46">사용자 PC</text>
+          <text x="99" y="66">쿠키 + 칩 안의 키</text>
+          <text x="99" y="146">공격자 PC</text>
+          <text x="99" y="166">복사한 쿠키만</text>
+          <text x="500" y="92">서버 갱신 창구</text>
+          <text x="500" y="112">"이 문제에 서명해 봐"</text>
+          <text x="292" y="58" style="fill: var(--signal-deep)">서명 성공 → 새 쿠키</text>
+          <text x="292" y="168" style="fill: var(--signal-deep)">서명 불가 → 세션 종료</text>
+        </g>
+      </svg>
+      <figcaption>쿠키는 파일이라 복사된다. 갱신에 필요한 서명은 칩 안의 키로만 만들 수 있어서 복사본은 다음 갱신에서 멈춘다.</figcaption>
+    </figure>
+
+    <p class="section-label">막지 못하는 것</p>
+    <ul>
+      <li>훔친 쿠키가 만료되기 전까지의 짧은 시간.</li>
+      <li>사용자 PC 안에서 계속 도는 악성코드. 그 PC에서는 칩에 서명을 시킬 수 있다.</li>
+      <li>Chrome이 아닌 브라우저와 보안 칩을 쓸 수 없는 환경.</li>
+    </ul>
+    <p>Chrome 공식 문서도 "다른 기기로 옮겨 쓰는 것"을 막는다고만 말한다. 기기 위에서 도는 악성코드는 약속 범위 밖이다.</p>
+
+    <p class="section-label">FOR YOU</p>
+    <div class="for-you">
+      <p>이 원리는 당신이 이미 손으로 다뤄 본 것이다. 위엔에서 APNs 푸시 서버를 옮길 때 PKCS#11 클라이언트 인증서를 썼다. 그때 개인키는 하드웨어 안에 있었고, 연결할 때 서명만 밖으로 나왔다.</p>
+      <p>DBSC는 같은 방식을 브라우저 로그인 세션에 붙인 것이다. 바뀐 건 대상뿐이다. 서버끼리의 연결에 쓰던 "꺼낼 수 없는 키로 서명하기"를 사람의 로그인 상태에 쓴다.</p>
+      <p>당신이 세운 강제 지점의 두 조건으로도 읽힌다.</p>
+      <ul>
+        <li>쿠키는 PC의 파일이라 악성코드가 읽고 쓸 수 있다. 그래서 쿠키만으로는 강제 지점이 못 된다.</li>
+        <li>개인키는 칩 안에 있어 악성코드가 꺼낼 수 없다. 갱신 요청은 반드시 서버의 갱신 창구를 지난다. 두 조건이 다 맞는다.</li>
+      </ul>
+      <p>야간 브리프도 같은 질문을 받는다. 헤드리스 실행은 1년짜리 토큰을 텍스트 파일에서 읽는다. 이 토큰은 기기에 묶여 있지 않아서, 파일이 복사되면 다른 PC에서도 그대로 통한다.</p>
+      <p>AX 강의에서 "MFA 했으니 안전하다"는 말이 나오면 이 소식을 꺼내면 된다. 쿠키 탈취는 MFA가 끝난 뒤에 일어난다.</p>
+    </div>
+
+    <p class="section-label">LEARN</p>
+    <p>원리는 오래 간다. "가진 사람이면 통과"에서 "증명할 수 있어야 통과"로 가는 흐름이다. 반면 어떤 브라우저와 서비스가 지원하는지는 빠르게 바뀐다. 지원 목록은 외우지 말고 원리만 가져가면 된다.</p>
+    <p>더 볼 거리는 DPoP다. API 토큰을 기기 키에 묶는 표준이고, Vercel이 CLI에 쓰는 방식이다. 에이전트가 API 키를 들고 다니는 구조와 바로 닿아 있다. 동작 원리는 <a href="https://developer.chrome.com/blog/dbsc-windows-announcement" target="_blank" rel="noopener">Chrome 개발자 블로그</a>에 정리돼 있다.</p>
+
+    <div class="source-row">
+      <a href="https://www.bleepingcomputer.com/news/security/vercel-rolls-out-new-protection-against-stolen-session-cookie-attacks/" target="_blank" rel="noopener">BleepingComputer 원문 보기 →</a>
+      <span class="domain">bleepingcomputer.com</span>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">3줄 요약</p>
+      <ol class="tri-summary">
+        <li>Vercel이 인포스틸러 악성코드를 막으려고 vercel.com 로그인에 기기 결합 세션(DBSC)을 단계적으로 도입하고 있다.</li>
+        <li>CTO 말테 우블에 따르면 보안 칩 안의 개인키로 세션을 서명해 훔친 쿠키를 다른 기기에서 재사용할 수 없고, 지금은 macOS·Windows의 Chrome에서만 동작한다.</li>
+        <li>Vercel은 2026년 4월 외부 업체 직원 계정 침해로 내부 시스템이 뚫려 민감 표시 없는 환경 변수가 열람되는 사고를 겪었다.</li>
+      </ol>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">용어 해설</p>
+      <dl class="glossary">
+        <dt>DBSC</dt>
+        <dd>Device Bound Session Credentials. 세션 쿠키를 기기의 키 쌍에 묶어서, 쿠키만 훔쳐서는 다른 기기에서 계속 쓸 수 없게 만드는 방식이다.</dd>
+        <dt>DPoP</dt>
+        <dd>요청을 보낼 때마다 클라이언트의 개인키로 만든 증명을 함께 붙이는 방식이다. 토큰만 복사해서는 재사용할 수 없다.</dd>
+        <dt>TPM</dt>
+        <dd>PC에 들어가는 보안 칩이다. 칩 안에서 만든 키를 밖으로 꺼내지 못하게 보관하고, 서명은 칩 안에서만 한다. Mac에서는 Secure Enclave가 비슷한 역할을 한다.</dd>
+        <dt>App-Bound Encryption</dt>
+        <dd>Chrome이 저장된 쿠키를 암호화할 때 Chrome 자신에 묶어 두는 보호 기능이다. 다른 프로그램이 쿠키를 꺼내기 어렵게 한다.</dd>
+        <dt>인포스틸러</dt>
+        <dd>브라우저에 저장된 세션 쿠키와 비밀번호 같은 정보를 몰래 훔쳐 외부로 보내는 악성코드 종류다.</dd>
+      </dl>
+    </div>
+  </article>
+
+  <article class="item">
+    <div class="tag-row">
+      <span class="tag priority">보안 · 기초 보완</span>
+      <span class="tag">기초 개념 설명</span>
+      <span class="tag">오래 가는 기초</span>
+    </div>
+
+    <h2 class="item-title">로그인은 한 번, 인증은 매 요청마다: MFA가 지키는 구간과 못 지키는 구간</h2>
+
+    <p class="section-label">왜 지금 다루나</p>
+    <p>앞 소식의 공격자는 비밀번호도 MFA도 건드리지 않았다. 이게 어떻게 가능한지 보려면 인증이 언제 일어나는지부터 나눠야 한다. 그리고 인증을 아무리 강하게 해도 끝까지 남는 일이 인가라는 점도 같이 본다.</p>
+
+    <p class="section-label">인증은 두 번 일어난다</p>
+    <ul>
+      <li>로그인 순간의 인증. 비밀번호, MFA, 지문으로 "당신이 맞다"를 확인한다. 하루에 한 번쯤 일어난다.</li>
+      <li>그 뒤 매 요청의 인증. 서버는 사람을 다시 보지 않고 쿠키나 토큰만 본다. 클릭할 때마다 일어난다.</li>
+    </ul>
+    <p>첫 번째 검사가 끝나면 서버는 그 결과를 쿠키라는 증표로 바꿔 준다. 이후 서버가 믿는 것은 그 증표다. MFA를 아무리 강하게 걸어도 증표가 복사되면 두 번째 검사는 그대로 열린다. 이 공격을 세션 하이재킹이라고 부른다.</p>
+    <p>그래서 "로그인이 얼마나 강한가"만 물으면 부족하다. "로그인 결과를 담은 증표가 얼마나 복사하기 어려운가"를 따로 물어야 한다. 앞 소식의 기기 결합 세션이 바로 이 두 번째 질문에 대한 답이다.</p>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 640 180" role="img" aria-label="MFA는 로그인 순간 한 번만 지키고, 이후 요청들은 쿠키만 확인하므로 복사된 쿠키가 그 구간으로 들어온다">
+        <g fill="none" stroke="currentColor" stroke-width="1.3">
+          <rect x="14" y="40" width="140" height="62" rx="3" style="stroke: var(--signal)"/>
+          <path d="M154 71 L196 71"/>
+          <rect x="196" y="40" width="90" height="62" rx="3"/>
+          <path d="M286 71 L316 71"/>
+          <rect x="316" y="48" width="80" height="46" rx="3"/>
+          <rect x="412" y="48" width="80" height="46" rx="3"/>
+          <rect x="508" y="48" width="80" height="46" rx="3"/>
+          <path d="M452 150 L452 94" stroke-dasharray="4 4"/>
+        </g>
+        <g font-size="12.5" text-anchor="middle">
+          <text x="84" y="66">로그인</text>
+          <text x="84" y="86">비밀번호 + MFA</text>
+          <text x="241" y="66">쿠키</text>
+          <text x="241" y="86">발급</text>
+          <text x="356" y="76">요청</text>
+          <text x="452" y="76">요청</text>
+          <text x="548" y="76">요청</text>
+          <text x="84" y="128" style="fill: var(--signal-deep)">MFA가 지키는 곳</text>
+          <text x="452" y="168" style="fill: var(--signal-deep)">복사된 쿠키는 여기로 들어온다</text>
+          <text x="452" y="30">서버는 쿠키만 본다</text>
+        </g>
+      </svg>
+      <figcaption>MFA는 맨 왼쪽 한 칸만 지킨다. 오른쪽의 수많은 요청은 쿠키 하나로 통과하므로, 쿠키가 복사되면 MFA를 거치지 않고 들어온다.</figcaption>
+    </figure>
+
+    <p class="section-label">인가는 어디에 남나</p>
+    <p>인증은 "이 요청이 누구 것인가"까지만 답한다. 그 사람이 무엇을 해도 되는지는 인가가 정한다. 인증을 강하게 해도 인가가 넓으면 피해도 넓다.</p>
+    <ul>
+      <li>Vercel 4월 사고에서 공격자는 민감 표시가 없는 환경 변수를 볼 수 있었다. 이건 신원이 아니라 열람 범위의 문제다.</li>
+      <li>기기 결합 세션을 켜도, 사용자 PC 위의 악성코드는 정상 신원으로 요청한다. 그때 남는 방어선은 그 신원의 권한 크기뿐이다.</li>
+    </ul>
+
+    <p class="section-label">예측 과제</p>
+    <p>회사가 전 직원에게 MFA를 의무화했다. 그런데 한 직원 PC의 악성코드가 쿠키를 훔쳐 다른 곳에서 사내 위키에 접속했다. 다음 중 어느 대책이 이 사고를 막았을까? 답을 먼저 정한 뒤 아래를 보자.</p>
+    <ul>
+      <li>(가) MFA를 문자 인증에서 보안키로 바꾼다.</li>
+      <li>(나) 쿠키를 기기에 묶는다.</li>
+    </ul>
+    <p>답은 (나)다. (가)는 로그인 순간만 강하게 만든다. 공격자는 로그인 순간을 지나간 적이 없다.</p>
+    <p>단, 악성코드가 그 PC 안에서 직접 요청을 보냈다면 (나)도 못 막는다. 그때는 그 직원의 위키 권한이 얼마나 넓었는지가 피해를 정한다.</p>
+
+    <p class="section-label">FOR YOU</p>
+    <div class="for-you">
+      <p>서버에서 권한을 검증해야 한다는 판단은 당신에게 즉답이다. 프론트에서 버튼을 숨기는 걸 권한으로 치지 않는다는 것도 분명하다. 그건 인가 쪽 감각이다.</p>
+      <p>오늘 새로 붙일 것은 인증 쪽의 시간 축이다. 인증을 "로그인 화면" 한 장면으로 보면 쿠키 탈취가 설명되지 않는다. 로그인 장면과 그 뒤의 증표 확인을 두 개의 검사로 나누면 바로 설명된다.</p>
+      <ul>
+        <li>ME_HEAD와 각 하네스가 쓰는 토큰은 전부 두 번째 검사용 증표다. 로그인 장면이 아예 없다.</li>
+        <li>그래서 이 토큰들은 수명, 보관 위치, 권한 범위로만 지켜진다. 셋 중 무엇이 가장 약한지 하나씩 따져 볼 만하다.</li>
+        <li>AX 강의에서 "MFA 켰는데 왜 털렸나요"라는 질문이 나오면 위 그림 하나로 답할 수 있다.</li>
+      </ul>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">3줄 요약</p>
+      <ol class="tri-summary">
+        <li>인증은 로그인 순간(비밀번호, MFA, 지문)과 그 뒤 매 요청(서버가 쿠키나 토큰만 확인)의 두 시점에 일어난다.</li>
+        <li>MFA를 강하게 걸어도 증표가 복사되면 매 요청 검사는 열리므로, 기기 결합 세션처럼 증표를 복사하기 어렵게 만드는 방법이 따로 필요하다.</li>
+        <li>인가는 그 신원이 무엇을 해도 되는지 정해 피해 범위를 좌우하며, 악성코드가 PC 안에서 정상 신원으로 요청하면 남는 방어선은 권한의 크기다.</li>
+      </ol>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">용어 해설</p>
+      <dl class="glossary">
+        <dt>세션 하이재킹</dt>
+        <dd>로그인 뒤 서버가 믿는 세션 증표(쿠키 등)를 훔쳐 써서, 비밀번호 없이 로그인된 사용자 행세를 하는 공격이다.</dd>
+        <dt>보안키(FIDO2)</dt>
+        <dd>비밀번호 대신 공개키 암호로 로그인하는 국제 표준이다. USB 보안키 같은 하드웨어 키가 이 규격을 따르며, 로그인 순간을 강하게 만든다.</dd>
+        <dt>민감 표시 환경 변수</dt>
+        <dd>Vercel에서 값을 가려 두도록 '민감'으로 지정한 환경 변수다. 4월 사고에서는 이 지정이 없는 변수들이 열람됐다.</dd>
+      </dl>
+    </div>
+  </article>
+
+  <section class="radar">
+    <p class="section-label">레이더</p>
+    <p class="radar-note">학습 대상이 아니라 <b>인지 대상</b>입니다. 훑고 지나가세요 — 나중에 필요한 순간에 &ldquo;그거 있었지&rdquo;가 나오게 하는 것이 목적입니다.</p>
+
+    <div class="radar-group">
+      <h3>내가 쓰는 도구</h3>
+      <ul class="radar-list">
+        <li>Claude Code 2.1.318 — <code>claude auth status</code>와 <code>claude -p</code> 결과에 저장된 claude.ai 로그인의 만료일이 나온다. 텍스트 출력에서는 만료 10일 전부터 경고를 띄운다. <a href="https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md" target="_blank" rel="noopener">변경 기록</a></li>
+        <li>Claude Code 2.1.318 — IDE 터미널에서 시작해도 IDE 확장을 더는 자동 설치·업데이트하지 않는다. 바깥 터미널의 <code>/ide</code>나 편집기 확장 화면에서 설치한다.</li>
+        <li>Claude Code 2.1.318 — '플래그된 메시지에서 모델 전환'을 매번 묻도록 설정하면, 서브에이전트는 모델을 바꾸지 않고 멈춘다.</li>
+      </ul>
+    </div>
+
+    <div class="radar-group">
+      <h3>주변 생태계</h3>
+      <ul class="radar-list">
+        <li>Vercel Security Review(11/3 공개 베타) — 연결된 GitHub 저장소에 푸시할 때마다 변경 코드를 훑어 권한 검사 누락이나 비밀값 노출 같은 취약점을 찾고 수정안을 내는 기능. Pro·Enterprise 팀 대상이고 11월 10일까지 무료. <a href="https://vercel.com/changelog/vercel-security-review-public-beta" target="_blank" rel="noopener">공지</a></li>
+        <li>Vercel Workflow SDK(11/4) — 워크플로를 시작할 때 주문번호 같은 업무 ID를 키로 삼아, 같은 작업이 두 번 시작되면 두 번째를 거절한다. <a href="https://vercel.com/changelog/atomic-start-hooks-in-the-workflow-sdk" target="_blank" rel="noopener">공지</a></li>
+        <li>Vercel MCP(11/2) — MCP 클라이언트가 자기 정보를 담은 URL(Client ID Metadata Document)을 OAuth 클라이언트 ID로 내밀 수 있게 됐다.</li>
+      </ul>
+    </div>
+
+    <div class="radar-group">
+      <h3>보안 사고</h3>
+      <ul class="radar-list">
+        <li>DreamHost(11/4) — 웹호스팅 업체 DreamHost가 침해로 FTP 로그인 정보와 웹메일 세션이 노출됐다고 확인했다. 헤드라인 기준이며 본문은 확인하지 않았다.</li>
+        <li>mSecure(11/4) — 비밀번호 관리 앱 mSecure가 해킹 뒤 사용자들에게 비밀번호 재설정 경고를 보냈다. 헤드라인 기준이며 본문은 확인하지 않았다.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer class="status">
+    <span>오늘 조사 후 신호 1건 + 기초 보완 1건 전달 · 레이더 8건 · 투자·일반 취약점·날짜 불명 기사는 걸러냄</span>
+    <span>Knowledge Agent v0.1</span>
+  </footer>
+
+</div>
