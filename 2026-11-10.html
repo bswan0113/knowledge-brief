@@ -1,0 +1,597 @@
+<title>Knowledge Brief 2026-11-10</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,500;1,6..72,600&family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  :root {
+    --paper: #eef0f4;
+    --surface: #ffffff;
+    --ink: #131722;
+    --ink-soft: #5b6472;
+    --signal: #c97a1a;
+    --signal-deep: #8a5313;
+    --signal-soft: #f3e3cc;
+    --line: rgba(19, 23, 34, 0.12);
+    --line-strong: rgba(19, 23, 34, 0.22);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #0e1116;
+      --surface: #171b22;
+      --ink: #e7e9ee;
+      --ink-soft: #9aa3b2;
+      --signal: #f0b15c;
+      --signal-deep: #f5c685;
+      --signal-soft: rgba(240, 177, 92, 0.14);
+      --line: rgba(231, 233, 238, 0.14);
+      --line-strong: rgba(231, 233, 238, 0.24);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --paper: #0e1116;
+    --surface: #171b22;
+    --ink: #e7e9ee;
+    --ink-soft: #9aa3b2;
+    --signal: #f0b15c;
+    --signal-deep: #f5c685;
+    --signal-soft: rgba(240, 177, 92, 0.14);
+    --line: rgba(231, 233, 238, 0.14);
+    --line-strong: rgba(231, 233, 238, 0.24);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans KR', 'IBM Plex Sans', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 56px 24px 96px;
+  }
+
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--signal-deep);
+  }
+
+  header.masthead {
+    border-bottom: 1px solid var(--line-strong);
+    padding-bottom: 28px;
+    margin-bottom: 40px;
+  }
+
+  header.masthead .eyebrow {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  h1.headline {
+    font-family: 'Newsreader', Georgia, serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(32px, 6vw, 44px);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin: 14px 0 10px;
+    text-wrap: balance;
+  }
+
+  .masthead .subhead {
+    color: var(--ink-soft);
+    font-size: 15px;
+    max-width: 56ch;
+  }
+
+  .masthead .subhead b {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .masthead .listen {
+    margin-top: 20px;
+    padding: 14px 16px;
+    background: var(--signal-soft);
+    border-radius: 10px;
+    display: grid;
+    gap: 8px;
+  }
+
+  .masthead .listen audio { width: 100%; }
+
+  article.item {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 32px 32px 28px;
+    margin-bottom: 32px;
+  }
+
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  .tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+    border: 1px solid var(--line-strong);
+    color: var(--ink-soft);
+  }
+
+  .tag.priority {
+    border-color: var(--signal);
+    color: var(--signal-deep);
+    background: var(--signal-soft);
+  }
+
+  h2.item-title {
+    font-family: 'Newsreader', Georgia, serif;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 1.3;
+    margin: 0 0 18px;
+    text-wrap: balance;
+  }
+
+  .section-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin: 22px 0 8px;
+  }
+
+  .section-label:first-of-type { margin-top: 0; }
+
+  article.item p {
+    margin: 0 0 4px;
+    max-width: 62ch;
+  }
+
+  article.item .for-you {
+    padding: 14px 16px;
+    background: var(--signal-soft);
+    border-left: 2px solid var(--signal);
+    border-radius: 0 3px 3px 0;
+  }
+
+  figure.diagram {
+    margin: 26px 0 6px;
+    padding: 18px 6px 8px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  figure.diagram svg { width: 100%; height: auto; display: block; color: var(--ink-soft); }
+  figure.diagram .accent { color: var(--signal); }
+  figure.diagram text { font-family: 'IBM Plex Mono', monospace; fill: currentColor; }
+
+  figcaption {
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-top: 10px;
+  }
+
+  .source-row {
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .source-row a {
+    color: var(--ink);
+    text-decoration-color: var(--signal);
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 3px;
+  }
+
+  .source-row .domain {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+
+  .addendum {
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+  }
+
+  ol.tri-summary {
+    margin: 0;
+    padding-left: 1.3em;
+  }
+
+  ol.tri-summary li {
+    margin-bottom: 6px;
+    max-width: 62ch;
+  }
+
+  dl.glossary {
+    margin: 0;
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    column-gap: 14px;
+    row-gap: 10px;
+  }
+
+  dl.glossary dt {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--signal-deep);
+    white-space: nowrap;
+  }
+
+  dl.glossary dd {
+    margin: 0;
+    max-width: 56ch;
+    color: var(--ink-soft);
+  }
+
+  /* 레이더 — 인지 채널. 본 브리프(학습 채널)와 시각적으로 명확히 구분되어야 한다:
+     카드가 아니라 목록, 강조색 없음, 본문보다 작은 글씨. 훑고 지나가는 영역이다. */
+  section.radar {
+    margin-top: 40px;
+    padding-top: 26px;
+    border-top: 1px solid var(--line-strong);
+  }
+
+  section.radar > p.radar-note {
+    margin: 0 0 18px;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    max-width: 62ch;
+  }
+
+  .radar-group {
+    margin-bottom: 20px;
+  }
+
+  .radar-group h3 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 500;
+    margin: 0 0 8px;
+  }
+
+  ul.radar-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  ul.radar-list li {
+    position: relative;
+    padding-left: 16px;
+    margin-bottom: 7px;
+    font-size: 14.5px;
+    line-height: 1.6;
+    max-width: 66ch;
+    color: var(--ink);
+  }
+
+  ul.radar-list li::before {
+    content: "·";
+    position: absolute;
+    left: 3px;
+    color: var(--ink-soft);
+  }
+
+  ul.radar-list li a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid var(--line-strong);
+  }
+
+  ul.radar-list li a:hover { border-bottom-color: var(--signal); }
+
+  footer.status {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    border-top: 1px solid var(--line-strong);
+    padding-top: 18px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  @media (max-width: 480px) {
+    article.item { padding: 24px 20px; }
+    h1.headline { font-size: 30px; }
+  }
+</style>
+
+<div class="page">
+
+  <header class="masthead">
+    <div class="eyebrow">
+      <span>KNOWLEDGE BRIEF</span>
+      <span>2026-11-10 · 08:35</span>
+    </div>
+    <h1 class="headline">더 센 모델이 나온 날, 문서가 먼저 권한 건 평가였다</h1>
+    <p class="subhead">오늘 조사한 것 중 <b>지금 당신에게 학습 가치가 있다고 판단한 것</b>만 남겼습니다. 나머지는 이미 아는 내용이거나 가치가 낮아 걸러냈습니다.</p>
+  </header>
+
+  <article class="item">
+    <div class="tag-row">
+      <span class="tag priority">모델 선택 · 오늘의 핵심</span>
+      <span class="tag">공식 발표·공식 문서</span>
+      <span class="tag">빨리 바뀜</span>
+    </div>
+
+    <h2 class="item-title">Claude Fable 5.2 출시. 그런데 공식 문서는 "Opus부터 시작하라"고 쓴다</h2>
+
+    <p class="section-label">WHAT</p>
+    <p>Anthropic이 11월 9일 Claude Fable 5.2와 Mythos 5.2를 냈다. 둘은 성능이 같고, 받는 사람이 다르다.</p>
+    <ul>
+      <li><b>Fable 5.2</b>: 유료 플랜, API, AWS·Google Cloud·Microsoft Foundry에서 누구나 쓴다. 사이버·생물 분야 안전장치가 붙어 있다.</li>
+      <li><b>Mythos 5.2</b>: 사이버 보안·생명과학 검증 프로그램을 통과한 조직에만 열린다.</li>
+    </ul>
+    <p>Fable 5.2 가격은 100만 토큰당 입력 8달러, 출력 40달러다. 5.1보다 20% 싸졌다. 그래도 Opus 5.5(4달러·20달러)의 두 배다.</p>
+    <p>회사 발표 수치로는 차이가 크다. 실제 원격 업무를 흉내 낸 시험에서 Fable 5.2는 41.3%, Opus 5.5는 21.3%였다. 코딩 시험에서는 49.1% 대 45.5%로 격차가 작다.</p>
+
+    <p class="section-label">WHY</p>
+    <p>이번 발표에서 눈여겨볼 건 성능표보다 문서의 선택 규칙이다. 공식 문서는 이렇게 쓴다.</p>
+    <p><i>"대부분의 작업은 최신 Opus로 시작하라. Opus에서 effort를 올려도 평가 결과가 요구를 못 채울 때 Fable 5.2로 옮겨라."</i></p>
+    <p>즉 "제일 센 모델을 쓰면 된다"가 공식 답이 아니다. 더 비싼 모델로 갈지는 내 작업의 평가 결과가 정한다. 평가셋이 없으면 이 규칙은 적용할 수조차 없다.</p>
+    <p>두 번째로 볼 것은 거절이 오는 모양이다. 안전 분류기가 요청을 막으면 오류 코드가 오지 않는다. <b>HTTP 200 정상 응답</b>에 <code>stop_reason: "refusal"</code>이 담겨 온다.</p>
+    <p>막힌 요청은 다른 모델로 다시 보낼 수 있다. 서버가 대신 해 주는 방식(베타)도 있고, 내 코드가 재시도할 수도 있다. Fable 5.2의 대체 대상은 Opus 4.8과 Opus 5다. 대체 모델은 Fable이 앞서 한 사고 기록을 읽지 못한다.</p>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 640 230" role="img" aria-label="요청이 안전 분류기를 거쳐 통과하면 Fable이 답하고, 걸리면 HTTP 200 거절 응답이 온 뒤 대체 모델로 재시도되는 흐름">
+        <defs>
+          <marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker>
+        </defs>
+        <rect x="10" y="90" width="100" height="48" rx="3" fill="none" stroke="currentColor"/>
+        <text x="60" y="119" font-size="13" text-anchor="middle">요청</text>
+        <line x1="110" y1="114" x2="160" y2="114" stroke="currentColor" marker-end="url(#a1)"/>
+        <rect x="162" y="84" width="120" height="60" rx="3" fill="none" stroke="currentColor"/>
+        <text x="222" y="110" font-size="12.5" text-anchor="middle">안전 분류기</text>
+        <text x="222" y="128" font-size="11" text-anchor="middle">사이버·생물</text>
+        <line x1="282" y1="100" x2="350" y2="44" stroke="currentColor" marker-end="url(#a1)"/>
+        <text x="300" y="62" font-size="11">통과</text>
+        <rect x="352" y="20" width="270" height="46" rx="3" fill="none" stroke="currentColor"/>
+        <text x="487" y="48" font-size="12.5" text-anchor="middle">Fable 5.2가 답함</text>
+        <g class="accent">
+          <line x1="282" y1="128" x2="350" y2="176" stroke="currentColor" marker-end="url(#a1)"/>
+          <text x="296" y="172" font-size="11">걸림</text>
+          <rect x="352" y="150" width="270" height="62" rx="3" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <text x="487" y="174" font-size="12.5" text-anchor="middle">HTTP 200 + stop_reason "refusal"</text>
+          <text x="487" y="196" font-size="11" text-anchor="middle">→ Opus 4.8 / Opus 5로 재시도 (사고 기록은 버려짐)</text>
+        </g>
+      </svg>
+      <figcaption>거절은 통신 실패가 아니라 정상 응답 안에 담겨 온다. 상태 코드만 보면 두 갈래가 똑같이 "성공"으로 보인다.</figcaption>
+    </figure>
+
+    <p class="section-label">FOR YOU</p>
+    <div class="for-you">
+      <p>당신은 야간 브리프 시스템에 "프로세스 exit 0은 성공의 증거가 아니다"라는 규칙을 이미 넣어 두었다. 이번 거절 방식이 그 규칙의 API판이다. 통신은 성공했고, 일은 실패했다.</p>
+      <p>HTTP 상태 코드만 확인하는 코드는 이 거절을 성공으로 센다. 실패를 "어디서 났나"로만 나누면 이 경우가 안 보인다. "어떤 모양으로 왔나"로 나눠야 보인다.</p>
+      <ul>
+        <li>연결 자체가 안 됨</li>
+        <li>연결은 됐는데 응답이 없음</li>
+        <li>응답이 왔는데 오류 코드로 거절</li>
+        <li><b>응답이 정상 코드로 왔는데, 안에 거절이 담김</b> ← 이번 경우</li>
+      </ul>
+      <p>대체 재시도도 하네스 설계 문제다. 서버가 조용히 다른 모델로 다시 보내면, 결과물은 더 약한 모델이 쓴 것이 된다. 실행 기록에 "실제로 답한 모델"을 남기지 않으면 나중에 품질이 왜 흔들렸는지 추적할 수 없다.</p>
+      <p>문서에 하나 더 걸리는 대목이 있다. Fable 5.2는 문체 규칙을 매우 엄격하게 따른다고 한다. 문장 길이에 강한 상한을 걸면 글이 뚝뚝 끊길 수 있다는 경고다. 이 브리프에도 문장 길이 상한 규칙이 있으니, 모델을 바꿀 일이 생기면 먼저 확인할 지점이다.</p>
+      <p>AX 강의에서는 "제일 좋은 모델 쓰면 되죠?"라는 질문이 꼭 나온다. 이제 공식 문서를 근거로 답할 수 있다. 기본은 Opus이고, 평가로 부족함이 증명될 때만 올린다.</p>
+    </div>
+
+    <p class="section-label">LEARN</p>
+    <p>모델 이름과 가격은 몇 달이면 바뀐다. 외울 필요는 없다.</p>
+    <p>오래 가는 것은 두 가지다. 하나는 "모델 선택은 평가가 정한다"는 규칙이다. 다른 하나는 "정상 응답 안의 거절"이라는 실패 모양이다.</p>
+    <p>직접 API를 부르는 코드가 있다면 할 일이 하나 있다. 상태 코드와 함께 <code>stop_reason</code>을 확인하는지 보라.</p>
+
+    <div class="source-row">
+      <a href="https://platform.claude.com/docs/en/models/fable-5-2/whats-new-fable-5-2" target="_blank" rel="noopener">Claude 공식 문서: What's new in Fable 5.2 →</a>
+      <span class="domain">platform.claude.com</span>
+    </div>
+    <div class="source-row">
+      <a href="https://www.anthropic.com/claude/fable" target="_blank" rel="noopener">Anthropic 제품 페이지(발표·성능표) →</a>
+      <span class="domain">anthropic.com</span>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">3줄 요약</p>
+      <ol class="tri-summary">
+        <li>Anthropic은 11월 9일 Fable 5.2를 유료 플랜과 주요 클라우드에 일반 제공하고, Mythos 5.2는 검증 프로그램을 통과한 조직에만 열었다.</li>
+        <li>Fable 5.2 가격은 입력 100만 토큰당 8달러, 출력 40달러로 5.1보다 약 20% 내렸다.</li>
+        <li>회사 발표 기준 원격 업무 시험에서 Fable 5.2는 41.3%, Opus 5.5는 21.3%였고, 공식 문서는 대부분 작업을 Opus로 시작하라고 권한다.</li>
+      </ol>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">용어 해설</p>
+      <dl class="glossary">
+        <dt>적응형 사고</dt>
+        <dd>모델이 요청마다 얼마나 생각할지 스스로 정하는 방식이다. Fable 5.2에서는 끌 수 없고, effort 값으로 깊이만 조절한다.</dd>
+        <dt>사고 블록</dt>
+        <dd>응답 안에서 모델의 추론 과정을 담는 부분이다. 대체 모델은 이 블록을 읽지 못해 앞선 추론이 버려진다.</dd>
+        <dt>안전 분류기</dt>
+        <dd>요청이 안전 정책에 걸리는지 따로 판정하는 검사 장치다. 걸리면 응답의 stop_reason에 "refusal"이 담겨 온다.</dd>
+        <dt>무보존(ZDR)</dt>
+        <dd>요청과 응답 데이터를 저장하지 않는 계약 조건이다. Fable 5.2는 기본 30일 보존이 필수이고, 무보존은 별도 승인이 있어야 한다.</dd>
+      </dl>
+    </div>
+  </article>
+
+  <article class="item">
+    <div class="tag-row">
+      <span class="tag priority">LLM 원리 · 오늘의 보완</span>
+      <span class="tag">공식 문서 + 설명</span>
+      <span class="tag">오래 가는 기초</span>
+    </div>
+
+    <h2 class="item-title">temperature를 아예 못 넣게 됐다. 그 손잡이가 무엇을 돌리던 것인지 다시 본다</h2>
+
+    <p class="section-label">왜 지금 이걸 다루는지</p>
+    <p>Fable 5.2 문서를 따라가면 샘플링 설정 항목이 나온다. 최신 Claude 모델은 temperature, top_p, top_k를 기본값과 다르게 보내면 400 오류를 낸다. 10월 21일자 API 버전부터는 모든 모델이 세 값 중 하나만 넣어도 거부한다.</p>
+    <p>그런데 같은 문단에 작은 사실이 하나 더 있다. <b>top_p의 기본값이 1이 아니라 0.99</b>라는 것이다. 사용자가 아무것도 안 건드려도 후보를 자르는 단계는 늘 돌고 있다는 뜻이다.</p>
+    <p>손잡이는 사라졌지만 그 손잡이가 돌리던 장치는 그대로다. 강의에서 "temperature 낮추면 정확해져요"를 설명할 일도 여전히 생긴다. 그래서 장치를 한 번 정확히 그려 둔다.</p>
+
+    <p class="section-label">세 단계</p>
+    <p>모델이 다음 토큰 하나를 고를 때 순서는 이렇다.</p>
+    <ul>
+      <li><b>1. 분포 만들기</b>: 후보마다 점수를 내고 확률로 바꾼다. temperature는 여기서 작동한다. 분포를 평평하게 펴거나 뾰족하게 세운다. 후보는 하나도 없애지 않는다.</li>
+      <li><b>2. 자르기</b>: top-k나 top-p가 확률 낮은 후보를 명단에서 지운다. 후보 수가 실제로 줄어드는 건 이 단계뿐이다.</li>
+      <li><b>3. 추첨</b>: 남은 후보 중 하나를 확률대로 뽑는다. 이것이 좁은 뜻의 샘플링이다.</li>
+    </ul>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 640 210" role="img" aria-label="점수 다섯 개가 temperature로 재조정되어도 후보 수는 5개로 유지되고, top-p 단계에서만 후보가 줄어든 뒤 추첨되는 흐름">
+        <defs>
+          <marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker>
+        </defs>
+        <text x="20" y="22" font-size="12">① 분포 만들기 (temperature)</text>
+        <text x="250" y="22" font-size="12">② 자르기 (top-p 0.99)</text>
+        <text x="480" y="22" font-size="12">③ 추첨</text>
+        <!-- stage 1 bars T=1.0 -->
+        <rect x="30" y="50" width="22" height="120" fill="none" stroke="currentColor"/>
+        <rect x="60" y="143" width="22" height="27" fill="none" stroke="currentColor"/>
+        <rect x="90" y="160" width="22" height="10" fill="none" stroke="currentColor"/>
+        <rect x="120" y="167" width="22" height="3" fill="none" stroke="currentColor"/>
+        <rect x="150" y="169" width="22" height="1" fill="none" stroke="currentColor"/>
+        <text x="30" y="190" font-size="10.5">후보 5개 — 높이만 바뀜</text>
+        <line x1="200" y1="110" x2="240" y2="110" stroke="currentColor" marker-end="url(#a2)"/>
+        <!-- stage 2 -->
+        <rect x="255" y="50" width="22" height="120" fill="none" stroke="currentColor"/>
+        <rect x="285" y="143" width="22" height="27" fill="none" stroke="currentColor"/>
+        <rect x="315" y="160" width="22" height="10" fill="none" stroke="currentColor"/>
+        <rect x="345" y="167" width="22" height="3" fill="none" stroke="currentColor"/>
+        <g class="accent">
+          <line x1="372" y1="150" x2="398" y2="176" stroke="currentColor" stroke-width="1.6"/>
+          <line x1="398" y1="150" x2="372" y2="176" stroke="currentColor" stroke-width="1.6"/>
+          <text x="255" y="190" font-size="10.5">여기서만 후보가 줄어듦 (5→4)</text>
+        </g>
+        <line x1="425" y1="110" x2="465" y2="110" stroke="currentColor" marker-end="url(#a2)"/>
+        <!-- stage 3 -->
+        <circle cx="530" cy="105" r="34" fill="none" stroke="currentColor"/>
+        <text x="530" y="101" font-size="11" text-anchor="middle">확률대로</text>
+        <text x="530" y="117" font-size="11" text-anchor="middle">하나 뽑기</text>
+        <text x="480" y="190" font-size="10.5">같은 입력도 결과가 갈림</text>
+      </svg>
+      <figcaption>temperature는 막대 높이만 바꾸고, 막대를 지우는 건 top-p다. 기본값 0.99에서도 자르기 단계는 매번 돈다.</figcaption>
+    </figure>
+
+    <p class="section-label">숫자로 확인</p>
+    <p>점수 5개짜리 후보에 temperature만 바꿔 본 결과다. 후보 수는 세 경우 모두 5개 그대로다. 1등과 꼴찌의 확률 배율만 바뀐다.</p>
+    <ul>
+      <li>temperature 0.5: 1등 94.6%, 꼴찌 0.004%. 배율 약 2만 2천 배.</li>
+      <li>temperature 1.0: 1등 75.2%, 꼴찌 0.5%. 배율 148배.</li>
+      <li>temperature 2.0: 1등 50.6%, 꼴찌 4.2%. 배율 12배.</li>
+    </ul>
+    <p>꼴찌가 0.004%여도 0은 아니다. 화면에 0.00%로 찍힐 뿐이다. 반면 top-p 0.99를 걸면 상위 후보 확률을 더해 99%가 찰 때까지만 남긴다. 위 세 경우에 남는 후보는 2개, 4개, 5개다.</p>
+    <p>여기서 두 손잡이의 관계가 보인다. temperature가 분포를 뾰족하게 만들수록, 같은 top-p가 더 많이 자른다. 자르는 건 top-p지만, 얼마나 자를지는 temperature가 만든 분포에 달렸다.</p>
+
+    <p class="section-label">FOR YOU</p>
+    <div class="for-you">
+      <p>당신은 예전에 temperature가 "분포에 안 들어가는 부분을 잘라낸다"고 짐작했다. 그 자르는 동작은 실제로 있다. 다만 손잡이 이름이 top-p이고, 기본값 0.99로 지금도 매번 돌고 있다.</p>
+      <p>9월 저녁에 확률표로 "후보 수는 그대로, 배율만 변한다"는 걸 같이 확인했다. 오늘 추가된 건 두 손잡이가 한 줄로 이어진다는 그림이다. 펴고 세우는 단계 다음에 자르는 단계가 온다.</p>
+      <p>손잡이가 벤더 쪽으로 넘어갔다는 점도 당신이 익숙한 구도다. 설정이 사용자 손을 떠나 서버에서 고정됐다. 문서는 이유를 밝히지 않는다. 그러니 "왜 막았는지"는 추측으로 남겨 두는 게 맞다.</p>
+      <p>실무에서 바뀌는 건 이것이다. 예전에는 "temperature 0으로 고정하면 같은 답이 나온다"로 재현성을 확보하려 했다. 이제 그 방법이 막혔다. 출력이 흔들리는 걸 전제로 같은 입력을 여러 번 돌려 평균을 봐야 한다.</p>
+      <p>당신의 브리프 채점 실험에서 이미 본 현상이다. 같은 글을 두 번 채점하자 점수 셋 중 하나가 1점씩 움직였다. 그래서 3~5회 평균이 필요하다는 결론이 나왔다. 그 흔들림의 출처가 바로 이 3단계의 추첨이다.</p>
+    </div>
+
+    <p class="section-label">LEARN · 예측 과제</p>
+    <p>답을 보기 전에 먼저 예측해 보자. 위 숫자표의 temperature 1.0 분포에서, top-p를 0.99가 아니라 0.90으로 낮추면 후보는 몇 개 남을까?</p>
+    <p>힌트: 상위 후보 확률을 차례로 더해 90%가 처음 넘는 지점까지 남는다. (정답: 75.2 + 16.8 = 92.0이므로 2개)</p>
+    <p>이 계산이 바로 된다면 강의장에서 temperature와 top-p를 나란히 설명할 준비가 된 것이다.</p>
+
+    <div class="source-row">
+      <a href="https://platform.claude.com/docs/en/build-with-claude/thinking" target="_blank" rel="noopener">Claude 공식 문서: Thinking › Sampling parameters →</a>
+      <span class="domain">platform.claude.com</span>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">3줄 요약</p>
+      <ol class="tri-summary">
+        <li>최신 Claude 모델은 temperature·top_p·top_k를 기본값이 아닌 값으로 보내면 400 오류가 난다.</li>
+        <li>모델은 점수를 확률로 바꾸고 top-k·top-p로 후보를 자른 뒤 확률에 따라 하나를 뽑는다.</li>
+        <li>샘플링 설정을 고를 수 없으니 출력 흔들림은 반복 실행과 평가로 다뤄야 한다.</li>
+      </ol>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">용어 해설</p>
+      <dl class="glossary">
+        <dt>로짓</dt>
+        <dd>모델이 다음 토큰 후보마다 내는, 확률로 바꾸기 전의 원점수다. 음수나 큰 값도 가능하다.</dd>
+        <dt>소프트맥스</dt>
+        <dd>로짓을 합이 1인 확률 분포로 바꾸는 함수다. temperature는 이 계산 직전에 로짓을 나눠 분포를 펴거나 세운다.</dd>
+        <dt>top-p</dt>
+        <dd>확률 높은 후보부터 더해 합이 p에 닿을 때까지만 남기는 방식이다. nucleus sampling이라고도 부른다.</dd>
+        <dt>그리디 디코딩</dt>
+        <dd>매번 확률이 가장 높은 토큰 하나만 고르는 방식이다. 추첨이 없어 같은 입력이면 대체로 같은 결과가 나온다.</dd>
+      </dl>
+    </div>
+  </article>
+
+  <section class="radar">
+    <p class="section-label">레이더</p>
+    <p class="radar-note">학습 대상이 아니라 <b>인지 대상</b>입니다. 훑고 지나가세요 — 나중에 필요한 순간에 &ldquo;그거 있었지&rdquo;가 나오게 하는 것이 목적입니다.</p>
+
+    <div class="radar-group">
+      <h3>내가 쓰는 도구</h3>
+      <ul class="radar-list">
+        <li>Claude Code 2.1.321 — Fable 계열의 기본 모델이 Fable 5.2로 바뀌었다. <code>claude remote-control</code>에 <code>--settings</code> 옵션이 생겼고, MCP 로그인 토큰·샌드박스 권한 검사 관련 버그가 다수 고쳐졌다. <a href="https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md" target="_blank" rel="noopener">changelog</a></li>
+        <li>Claude API, Fable 5.2의 대화 이력 검사 — 앞선 시스템 프롬프트·도구·메시지를 고친 뒤 사고 블록을 다시 보내면 계정과 무관하게 400 오류가 난다. 이력은 덧붙이기만 해야 한다. Claude Code·Agent SDK를 쓰면 해당 없음. <a href="https://platform.claude.com/docs/en/models/fable-5-2/whats-new-fable-5-2" target="_blank" rel="noopener">문서</a></li>
+        <li>Claude API, Fable 5.2의 호출 제약 — 강제 도구 호출(<code>tool_choice</code> any·tool)은 400 오류다. 형식이 보장된 JSON이 필요하면 strict 도구 호출이나 JSON 출력 기능을 쓰라고 안내한다. 옛 컴퓨터 사용 도구(<code>computer_20251124</code>)도 Bedrock 외에서는 막혔다.</li>
+        <li>Fable 5.2 패스트 모드 — 같은 모델을 최대 2.5배 빠르게 돌리는 유료 옵션이다. 가격은 입력 16달러·출력 80달러로 기본의 두 배다. API와 Claude Code에서 쓸 수 있다.</li>
+      </ul>
+    </div>
+
+    <div class="radar-group">
+      <h3>주변 생태계</h3>
+      <ul class="radar-list">
+        <li>ChatGPT Images 2.6 — ChatGPT 안의 이미지 생성 모델 새 버전이 11월 4일 릴리스 노트에 올라왔다. 같은 날 "잠긴 대화(locked chats)" 기능도 언급됐다. 둘 다 세부 내용은 확인하지 못했다(릴리스 노트 제목 기준).</li>
+      </ul>
+    </div>
+
+    <div class="radar-group">
+      <h3>가격·정책·업계</h3>
+      <ul class="radar-list">
+        <li>Anthropic 상장 임박 보도 — CNBC는 빠르면 다음 주 상장, 목표 기업가치 1조~1.5조 달러로 보도했다. 9월까지 9개월 매출은 332억 4천만 달러로 공시됐다. <a href="https://www.cnbc.com/2026/11/09/anthropic-claude-fable-5-2-mythos-5-2.html" target="_blank" rel="noopener">CNBC</a></li>
+        <li>Fable 5.2의 데이터 보존 조건 — 안전 감시를 위해 30일 보존이 기본 필수다. 무보존(ZDR) 계약 고객은 별도 승인이 있어야 쓸 수 있다. 기업 고객 도입 상담에서 먼저 확인할 조건이다.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer class="status">
+    <span>오늘 조사 후 신호 1건 + 보완 1건 · 레이더 7건 · 출처 상충한 Anthropic 루머·날짜 불명 영상 모델 롤업·기수록 보안 기사는 폐기</span>
+    <span>Knowledge Agent v0.1</span>
+  </footer>
+
+</div>
