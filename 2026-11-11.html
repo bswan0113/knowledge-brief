@@ -1,0 +1,574 @@
+<title>Knowledge Brief 2026-11-11</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,500;1,6..72,600&family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  :root {
+    --paper: #eef0f4;
+    --surface: #ffffff;
+    --ink: #131722;
+    --ink-soft: #5b6472;
+    --signal: #c97a1a;
+    --signal-deep: #8a5313;
+    --signal-soft: #f3e3cc;
+    --line: rgba(19, 23, 34, 0.12);
+    --line-strong: rgba(19, 23, 34, 0.22);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #0e1116;
+      --surface: #171b22;
+      --ink: #e7e9ee;
+      --ink-soft: #9aa3b2;
+      --signal: #f0b15c;
+      --signal-deep: #f5c685;
+      --signal-soft: rgba(240, 177, 92, 0.14);
+      --line: rgba(231, 233, 238, 0.14);
+      --line-strong: rgba(231, 233, 238, 0.24);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --paper: #0e1116;
+    --surface: #171b22;
+    --ink: #e7e9ee;
+    --ink-soft: #9aa3b2;
+    --signal: #f0b15c;
+    --signal-deep: #f5c685;
+    --signal-soft: rgba(240, 177, 92, 0.14);
+    --line: rgba(231, 233, 238, 0.14);
+    --line-strong: rgba(231, 233, 238, 0.24);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans KR', 'IBM Plex Sans', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 56px 24px 96px;
+  }
+
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--signal-deep);
+  }
+
+  header.masthead {
+    border-bottom: 1px solid var(--line-strong);
+    padding-bottom: 28px;
+    margin-bottom: 40px;
+  }
+
+  header.masthead .eyebrow {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  h1.headline {
+    font-family: 'Newsreader', Georgia, serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(32px, 6vw, 44px);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin: 14px 0 10px;
+    text-wrap: balance;
+  }
+
+  .masthead .subhead {
+    color: var(--ink-soft);
+    font-size: 15px;
+    max-width: 56ch;
+  }
+
+  .masthead .subhead b {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .masthead .listen {
+    margin-top: 20px;
+    padding: 14px 16px;
+    background: var(--signal-soft);
+    border-radius: 10px;
+    display: grid;
+    gap: 8px;
+  }
+
+  .masthead .listen audio { width: 100%; }
+
+  article.item {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 32px 32px 28px;
+    margin-bottom: 32px;
+  }
+
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  .tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+    border: 1px solid var(--line-strong);
+    color: var(--ink-soft);
+  }
+
+  .tag.priority {
+    border-color: var(--signal);
+    color: var(--signal-deep);
+    background: var(--signal-soft);
+  }
+
+  h2.item-title {
+    font-family: 'Newsreader', Georgia, serif;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 1.3;
+    margin: 0 0 18px;
+    text-wrap: balance;
+  }
+
+  .section-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin: 22px 0 8px;
+  }
+
+  .section-label:first-of-type { margin-top: 0; }
+
+  article.item p {
+    margin: 0 0 4px;
+    max-width: 62ch;
+  }
+
+  article.item .for-you {
+    padding: 14px 16px;
+    background: var(--signal-soft);
+    border-left: 2px solid var(--signal);
+    border-radius: 0 3px 3px 0;
+  }
+
+  figure.diagram {
+    margin: 26px 0 6px;
+    padding: 18px 6px 8px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  figure.diagram svg { width: 100%; height: auto; display: block; color: var(--ink-soft); }
+  figure.diagram .accent { color: var(--signal); }
+  figure.diagram text { font-family: 'IBM Plex Mono', monospace; fill: currentColor; }
+
+  figcaption {
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-top: 10px;
+  }
+
+  .source-row {
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .source-row a {
+    color: var(--ink);
+    text-decoration-color: var(--signal);
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 3px;
+  }
+
+  .source-row .domain {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+
+  .addendum {
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+  }
+
+  ol.tri-summary {
+    margin: 0;
+    padding-left: 1.3em;
+  }
+
+  ol.tri-summary li {
+    margin-bottom: 6px;
+    max-width: 62ch;
+  }
+
+  dl.glossary {
+    margin: 0;
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    column-gap: 14px;
+    row-gap: 10px;
+  }
+
+  dl.glossary dt {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--signal-deep);
+    white-space: nowrap;
+  }
+
+  dl.glossary dd {
+    margin: 0;
+    max-width: 56ch;
+    color: var(--ink-soft);
+  }
+
+  /* 레이더 — 인지 채널. 본 브리프(학습 채널)와 시각적으로 명확히 구분되어야 한다:
+     카드가 아니라 목록, 강조색 없음, 본문보다 작은 글씨. 훑고 지나가는 영역이다. */
+  section.radar {
+    margin-top: 40px;
+    padding-top: 26px;
+    border-top: 1px solid var(--line-strong);
+  }
+
+  section.radar > p.radar-note {
+    margin: 0 0 18px;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    max-width: 62ch;
+  }
+
+  .radar-group {
+    margin-bottom: 20px;
+  }
+
+  .radar-group h3 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 500;
+    margin: 0 0 8px;
+  }
+
+  ul.radar-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  ul.radar-list li {
+    position: relative;
+    padding-left: 16px;
+    margin-bottom: 7px;
+    font-size: 14.5px;
+    line-height: 1.6;
+    max-width: 66ch;
+    color: var(--ink);
+  }
+
+  ul.radar-list li::before {
+    content: "·";
+    position: absolute;
+    left: 3px;
+    color: var(--ink-soft);
+  }
+
+  ul.radar-list li a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid var(--line-strong);
+  }
+
+  ul.radar-list li a:hover { border-bottom-color: var(--signal); }
+
+  footer.status {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    border-top: 1px solid var(--line-strong);
+    padding-top: 18px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  @media (max-width: 480px) {
+    article.item { padding: 24px 20px; }
+    h1.headline { font-size: 30px; }
+  }
+</style>
+
+
+<div class="page">
+
+  <header class="masthead">
+    <div class="eyebrow">
+      <span>KNOWLEDGE BRIEF</span>
+      <span>2026-11-11 · 02:35</span>
+    </div>
+    <h1 class="headline">키를 바꿔도, 들어온 길은 남아 있었다</h1>
+    <p class="subhead">오늘 조사한 것 중 <b>지금 당신에게 학습 가치가 있다고 판단한 것</b>만 남겼습니다. 나머지는 이미 아는 내용이거나 가치가 낮아 걸러냈습니다.</p>
+  </header>
+
+  <article class="item">
+    <div class="tag-row">
+      <span class="tag priority">보안 · 오늘의 핵심</span>
+      <span class="tag">회사 공지 + 보안 매체</span>
+      <span class="tag">계속 바뀌는 중</span>
+    </div>
+
+    <h2 class="item-title">Fireworks AI 두 번째 침해. 키를 다 바꾸는 사이, 공격자는 호스팅 업체를 통해 다시 들어왔다</h2>
+
+    <p class="section-label">WHAT</p>
+    <p>Fireworks AI는 오픈소스 모델을 API로 돌려 주는 추론 플랫폼이다. 이 회사가 11월 10일 두 번째 침해를 공개했다. 10월 초 첫 사고를 수습하던 중에 새 침입이 발견됐다.</p>
+    <ul>
+      <li><b>10월 초, 첫 사고</b>: 일부 고객 계정의 환경 변수가 털렸다. 그 안에 시크릿으로 저장된 API 키와 토큰이 있었다.</li>
+      <li><b>10월 23일</b>: Fireworks의 연구개발 머신을 맡아 돌리던 외부 클라우드 업체가 해킹당했다. 업체 이름은 공개되지 않았다.</li>
+      <li><b>10월 24일</b>: 공격자가 그 업체의 접근권으로 Fireworks 개발 머신에 들어가 작업을 돌렸다. Fireworks는 같은 날 탐지했다.</li>
+    </ul>
+    <p>두 번째 사고에서 새로 나간 것은 이렇다. 리소스 이름·설명 같은 메타데이터, 청구 주소와 결제 이력, 그리고 일부 고객의 학습 중이던 모델 가중치와 데이터셋이다. 카드 번호는 애초에 저장하지 않아 빠졌다.</p>
+    <p>회사는 내부 자격증명을 다시 교체했다. 허가되지 않은 네트워크 경로를 막고, 영향받은 시스템을 격리했다. 10월 25일 이후로는 고객용 플랫폼 접근 흔적이 더 없다고 밝혔다.</p>
+
+    <p class="section-label">WHY</p>
+    <p>이 사건은 "키를 바꾸면 끝난다"는 직관이 왜 틀리는지 순서대로 보여 준다. 키 교체는 <b>훔친 열쇠</b>를 무효로 만든다. 하지만 공격자가 <b>들어온 길</b>은 그대로 둔다.</p>
+    <p>Fireworks는 첫 사고 뒤 키를 폐기하고 교체했다. 그 작업 중에 공격자는 전혀 다른 길로 들어왔다. 회사 바깥, 머신을 맡긴 호스팅 업체 쪽 길이었다.</p>
+    <p>첫 사고 공지에도 같은 원리를 담은 문장이 있다. <i>"저장된 시크릿을 지우는 것만으로는 그 자격증명이 무효화되지 않는다."</i> 지우는 것과 무효화는 다른 일이다. 무효화는 그 키를 발급한 곳에서만 할 수 있다.</p>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 640 250" role="img" aria-label="첫 번째 침입 경로는 탈취된 키로, 키 교체로 막혔다. 두 번째 경로는 호스팅 업체를 거쳐 개발 머신으로 들어왔고, 키 교체와 무관했다.">
+        <defs>
+          <marker id="f1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker>
+        </defs>
+        <rect x="10" y="100" width="110" height="50" rx="3" fill="none" stroke="currentColor"/>
+        <text x="65" y="130" font-size="13" text-anchor="middle">공격자</text>
+        <line x1="120" y1="112" x2="300" y2="52" stroke="currentColor" marker-end="url(#f1)"/>
+        <text x="150" y="62" font-size="11">① 10월 초: 훔친 키</text>
+        <rect x="302" y="24" width="150" height="50" rx="3" fill="none" stroke="currentColor"/>
+        <text x="377" y="54" font-size="12.5" text-anchor="middle">고객 계정</text>
+        <line x1="462" y1="49" x2="500" y2="49" stroke="currentColor"/>
+        <text x="510" y="45" font-size="11">키 교체로</text>
+        <text x="510" y="60" font-size="11">막힘</text>
+        <line x1="478" y1="38" x2="492" y2="60" stroke="currentColor" stroke-width="1.6"/>
+        <line x1="492" y1="38" x2="478" y2="60" stroke="currentColor" stroke-width="1.6"/>
+        <g class="accent">
+          <line x1="120" y1="140" x2="200" y2="190" stroke="currentColor" marker-end="url(#f1)"/>
+          <text x="96" y="196" font-size="11">② 10월 23일</text>
+          <rect x="202" y="170" width="150" height="50" rx="3" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <text x="277" y="192" font-size="12.5" text-anchor="middle">외부 호스팅 업체</text>
+          <text x="277" y="209" font-size="11" text-anchor="middle">(회사 바깥)</text>
+          <line x1="352" y1="195" x2="430" y2="195" stroke="currentColor" marker-end="url(#f1)"/>
+          <text x="360" y="186" font-size="11">10월 24일</text>
+          <rect x="432" y="170" width="190" height="50" rx="3" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <text x="527" y="192" font-size="12.5" text-anchor="middle">Fireworks 개발 머신</text>
+          <text x="527" y="209" font-size="11" text-anchor="middle">가중치·데이터셋·청구 정보</text>
+        </g>
+        <text x="320" y="125" font-size="11" text-anchor="middle">키를 바꿔도 ②번 길은 그대로였다</text>
+      </svg>
+      <figcaption>키 교체는 ①번 길만 막는다. ②번 길은 키가 아니라 네트워크 경로였고, 회사 경계 밖에서 시작됐다.</figcaption>
+    </figure>
+
+    <p class="section-label">FOR YOU</p>
+    <div class="for-you">
+      <p>당신은 열흘 전 Northflank 사건에서 이미 한 가지를 정리했다. API 키는 들고 있는 사람이 곧 주인인 증표라서, 피해를 줄이는 장치는 키 바깥에 둬야 한다는 것이다. 오늘 사건은 그다음 질문이다. <b>사고가 난 뒤</b> 무엇부터 해야 하나.</p>
+      <p>순서를 두 단계로 나누면 보인다.</p>
+      <ul>
+        <li><b>열쇠 무효화</b>: 털린 키를 발급처에서 폐기하고 새로 받는다. 파일에서 지우는 건 무효화가 아니다.</li>
+        <li><b>길 막기</b>: 공격자가 어디로 들어왔는지 찾고 그 경로를 끊는다. 이걸 안 하면 새 키도 같은 길로 다시 털린다.</li>
+      </ul>
+      <p>당신의 야간 브리프 시스템에 그대로 대입할 수 있다. 이 PC에는 헤드리스 실행용 토큰 파일과 카카오 토큰 파일이 있다. PC가 털렸다면 파일 삭제는 의미가 없다.</p>
+      <p>토큰은 발급처에서 다시 발급받아야 한다. 카카오도 앱 연결을 끊어 기존 토큰을 무효로 만들어야 한다. 그다음에 "PC에 무엇이 들어왔나"를 따로 봐야 한다.</p>
+      <p>AX 강의에서도 바로 쓸 그림이다. 회사가 AI 플랫폼에 API 키를 맡기면 그 키는 플랫폼 보안의 영향권에 들어간다. 오늘 사례처럼 그 플랫폼이 머신을 맡긴 업체까지 포함된다. "우리 회사는 털린 적 없다"와 "우리 키는 안전하다"는 다른 문장이다.</p>
+    </div>
+
+    <p class="section-label">LEARN</p>
+    <p>업체 이름이나 수치는 외울 필요 없다. 남길 것은 두 가지다.</p>
+    <ul>
+      <li>지우기와 무효화는 다르다. 무효화는 발급처에서만 된다.</li>
+      <li>사고 대응은 "무엇이 나갔나"와 "어디로 들어왔나"를 따로 묻는다.</li>
+    </ul>
+    <p>"길 막기"는 결국 네트워크 경로의 문제다. Fireworks가 밝힌 "허가되지 않은 네트워크 경로 차단"이 구체적으로 어디서 일어나는지는 아래 보완 항목에서 이어 본다.</p>
+
+    <div class="source-row">
+      <a href="https://www.bleepingcomputer.com/news/security/fireworks-ai-discloses-new-breach-after-cloud-provider-hack/" target="_blank" rel="noopener">BleepingComputer: Fireworks AI discloses new breach after cloud provider hack →</a>
+      <span class="domain">bleepingcomputer.com</span>
+    </div>
+    <div class="source-row">
+      <a href="https://fireworks.ai/security/bulletins/october-2026-security-incident" target="_blank" rel="noopener">Fireworks 공식 보안 공지(10월 사고) →</a>
+      <span class="domain">fireworks.ai</span>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">3줄 요약</p>
+      <ol class="tri-summary">
+        <li>오픈소스 모델 추론 플랫폼 Fireworks AI가 외부 클라우드 업체의 보안 사고 여파로 두 번째 침해를 공개했다.</li>
+        <li>공격자는 10월 24일 개발 머신에 들어가 고객 데이터 피해를 더 냈고, 10월 25일 이후 고객용 플랫폼 접근 흔적은 없다고 회사는 밝혔다.</li>
+        <li>새로 노출된 것은 리소스 메타데이터, 청구 정보, 일부 고객의 미완성 모델 가중치와 데이터셋이며, 카드 번호는 저장하지 않아 빠졌다.</li>
+      </ol>
+    </div>
+    <div class="addendum">
+      <p class="section-label">용어 해설</p>
+      <dl class="glossary">
+        <dt>모델 가중치</dt>
+        <dd>학습으로 정해진 수치 파라미터의 묶음으로, 모델의 핵심 산출물이다. 학습 중이던 것이라도 고객이 시간과 비용을 들인 자산이다.</dd>
+        <dt>LLMjacking</dt>
+        <dd>훔친 클라우드 계정이나 API 키로 남의 돈으로 LLM을 호출하는 공격이다. 접근권을 되파는 금전 목적이 많다.</dd>
+        <dt>자격증명 폐기</dt>
+        <dd>발급처에서 키나 토큰을 무효로 만들어 더는 인증에 못 쓰게 하는 것이다. 저장소에서 값을 지우는 것과 달리, 이미 복사된 값도 막는다.</dd>
+      </dl>
+    </div>
+  </article>
+
+  <article class="item">
+    <div class="tag-row">
+      <span class="tag priority">네트워크 · 오늘의 보완</span>
+      <span class="tag">개념 설명</span>
+      <span class="tag">오래 가는 기초</span>
+    </div>
+
+    <h2 class="item-title">"네트워크 경로를 막았다"는 어디서 막는 걸까. 게이트웨이가 검문소인 이유</h2>
+
+    <p class="section-label">왜 지금 이걸 다루는지</p>
+    <p>침해 공지에는 거의 늘 "허가되지 않은 네트워크 경로를 차단했다"는 문장이 나온다. Fireworks 공지도 그렇다. 이 문장이 실제로 무슨 작업인지 그리려면 게이트웨이를 알아야 한다.</p>
+    <p>한 달쯤 전에 주소를 "동네와 번지"로 나눠 봤다. 같은 동네끼리는 직접 가고, 다른 동네로 가려면 게이트웨이를 거친다는 그림이었다. 오늘은 그 그림을 보안 쪽으로 뒤집어 본다.</p>
+
+    <p class="section-label">핵심 한 문장</p>
+    <p><b>동네를 건너는 통신은 반드시 게이트웨이를 지난다. 그래서 검문은 게이트웨이에 둔다.</b></p>
+    <p>게이트웨이는 동네의 출입구다. 다른 동네로 가는 모든 통신이 이 한 곳을 지난다. 그러니 여기에 "이 동네에서 저 동네로는 이 포트만 허용" 같은 규칙을 걸면 한 번에 다 걸린다. 공지 속 "경로 차단"은 대개 이런 규칙을 고치는 작업이다.</p>
+
+    <p class="section-label">그런데 뒤집으면</p>
+    <p>같은 동네 안의 통신은 게이트웨이를 거치지 않는다. 기기끼리 직접 주고받는다. 그러니 <b>게이트웨이 규칙으로는 같은 동네 안의 이동을 막을 수 없다.</b></p>
+    <p>공격자가 동네 안의 기기 하나를 차지하면, 같은 동네의 다른 기기에는 검문 없이 닿는다. 보안에서는 이걸 측면 이동이라고 부른다. 그래서 중요한 것들은 동네를 따로 나눠 둔다. 이게 네트워크 분리다.</p>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 640 260" role="img" aria-label="개발 동네 안에서는 장악된 기기가 옆 기기에 검문 없이 닿지만, 고객 서비스 동네로 가려면 게이트웨이 규칙을 지나야 한다">
+        <defs>
+          <marker id="g1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker>
+        </defs>
+        <rect x="10" y="30" width="250" height="200" rx="4" fill="none" stroke="currentColor" stroke-dasharray="4 3"/>
+        <text x="20" y="22" font-size="12">개발 동네 (10.0.1.x)</text>
+        <g class="accent">
+          <rect x="30" y="60" width="90" height="44" rx="3" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <text x="75" y="80" font-size="11.5" text-anchor="middle">장악된 기기</text>
+          <text x="75" y="96" font-size="10.5" text-anchor="middle">.11</text>
+          <line x1="120" y1="82" x2="150" y2="82" stroke="currentColor" marker-end="url(#g1)"/>
+          <text x="40" y="128" font-size="10.5">같은 동네: 검문 없이 직접</text>
+        </g>
+        <rect x="152" y="60" width="90" height="44" rx="3" fill="none" stroke="currentColor"/>
+        <text x="197" y="80" font-size="11.5" text-anchor="middle">옆 개발 머신</text>
+        <text x="197" y="96" font-size="10.5" text-anchor="middle">.12</text>
+        <rect x="30" y="160" width="90" height="44" rx="3" fill="none" stroke="currentColor"/>
+        <text x="75" y="186" font-size="11.5" text-anchor="middle">데이터셋</text>
+        <line x1="75" y1="104" x2="75" y2="158" stroke="currentColor" marker-end="url(#g1)"/>
+        <rect x="282" y="100" width="96" height="60" rx="3" fill="none" stroke="currentColor" stroke-width="1.6"/>
+        <text x="330" y="125" font-size="12" text-anchor="middle">게이트웨이</text>
+        <text x="330" y="143" font-size="10.5" text-anchor="middle">규칙 검사</text>
+        <line x1="242" y1="130" x2="280" y2="130" stroke="currentColor" marker-end="url(#g1)"/>
+        <rect x="400" y="30" width="230" height="200" rx="4" fill="none" stroke="currentColor" stroke-dasharray="4 3"/>
+        <text x="410" y="22" font-size="12">고객 서비스 동네 (10.0.2.x)</text>
+        <rect x="470" y="108" width="110" height="44" rx="3" fill="none" stroke="currentColor"/>
+        <text x="525" y="134" font-size="11.5" text-anchor="middle">고객용 플랫폼</text>
+        <line x1="378" y1="130" x2="430" y2="130" stroke="currentColor"/>
+        <line x1="438" y1="120" x2="456" y2="140" stroke="currentColor" stroke-width="1.6"/>
+        <line x1="456" y1="120" x2="438" y2="140" stroke="currentColor" stroke-width="1.6"/>
+        <text x="410" y="170" font-size="10.5">허가 안 된 경로: 차단</text>
+      </svg>
+      <figcaption>게이트웨이 규칙은 동네를 건너는 통신만 본다. 같은 동네 안의 이동은 이 규칙에 걸리지 않는다.</figcaption>
+    </figure>
+
+    <p class="section-label">FOR YOU</p>
+    <div class="for-you">
+      <p>당신은 강의장 와이파이 장애 때 "40대 중 1대만 안 된다면 공유 설비가 아니라 그 기기 문제"라고 스스로 좁혔다. 그때 같이 나왔던 말이 VLAN과 MAC 필터링이다. 오늘 그림으로 다시 읽을 수 있다.</p>
+      <ul>
+        <li><b>VLAN</b>: 물리적으로 한 망을 논리적으로 여러 동네로 쪼개는 기술이다. 쪼개면 동네 사이에 게이트웨이 검문이 생긴다.</li>
+        <li><b>MAC 필터링</b>: 동네에 들어오는 기기 자체를 고르는 규칙이다. 기기 하나만 막히는 장애가 바로 이 모양으로 생긴다.</li>
+      </ul>
+      <p>당시 게이트웨이 칸에 "뭘 넣으면 되느냐"고 물었다. 답은 "내 동네의 출입구 주소"다. 그 출입구가 바깥으로 가는 모든 통신이 지나는 한 점이다. 그래서 장애 진단에서도 보안에서도 첫 확인 지점이 된다.</p>
+      <p>당신의 하네스 설계와도 같은 구조다. 당신은 "강제는 반드시 지나가는 한 점에서 해야 한다"는 원칙을 이미 쓰고 있다. 게이트웨이는 네트워크에서 그 한 점이다. 그리고 그 한 점을 지나지 않는 경로, 즉 같은 동네 안의 이동은 그 강제가 닿지 않는다.</p>
+    </div>
+
+    <p class="section-label">LEARN · 예측 과제</p>
+    <p>답을 보기 전에 먼저 예측해 보자. 강의장 PC 40대가 모두 같은 와이파이, 같은 동네에 있다. 그중 한 대가 악성코드에 감염됐다. 공유기(게이트웨이)에 강력한 방화벽 규칙을 걸면 강사 PC가 보호될까?</p>
+    <p>힌트: 강사 PC도 같은 동네에 있다. 감염된 PC에서 강사 PC로 가는 통신은 게이트웨이를 지나는가?</p>
+    <p>(정답: 지나지 않으니 막지 못한다. 방법은 셋이다. 강사 PC를 다른 동네로 분리하거나, 각 PC에 방화벽을 켜거나, 무선 기기끼리 직접 통신을 막는 공유기 기능을 켠다.)</p>
+
+    <div class="addendum">
+      <p class="section-label">3줄 요약</p>
+      <ol class="tri-summary">
+        <li>침해 공지의 “허가되지 않은 네트워크 경로 차단”은 대개 게이트웨이 규칙을 고치는 작업이다.</li>
+        <li>같은 서브넷 안의 통신은 게이트웨이를 거치지 않아 그 규칙으로 막을 수 없고, 이것이 측면 이동의 통로가 된다.</li>
+        <li>그래서 중요한 시스템은 VLAN 등으로 네트워크를 나누고, 같은 서브넷 안은 기기별 방화벽이나 무선 기기 간 통신 차단으로 지킨다.</li>
+      </ol>
+    </div>
+    <div class="addendum">
+      <p class="section-label">용어 해설</p>
+      <dl class="glossary">
+        <dt>서브넷</dt>
+        <dd>본문에서 ‘동네’라고 부른 것의 정식 이름이다. 주소 앞부분이 같은 기기들이 한 서브넷에 속하고, 그 안에서는 게이트웨이 없이 직접 통신한다.</dd>
+        <dt>포트</dt>
+        <dd>한 기기 안에서 어느 프로그램이 통신을 받을지 가르는 번호다. 같은 주소라도 포트에 따라 웹, 원격 접속 등으로 갈린다.</dd>
+        <dt>클라이언트 격리</dt>
+        <dd>같은 와이파이에 붙은 기기끼리 직접 통신하지 못하게 막는 공유기 기능이다. 기기들은 바깥 인터넷으로만 나갈 수 있다.</dd>
+      </dl>
+    </div>
+  </article>
+
+  <section class="radar">
+    <p class="section-label">레이더</p>
+    <p class="radar-note">학습 대상이 아니라 <b>인지 대상</b>입니다. 훑고 지나가세요 — 나중에 필요한 순간에 &ldquo;그거 있었지&rdquo;가 나오게 하는 것이 목적입니다.</p>
+
+    <div class="radar-group">
+      <h3>내가 쓰는 도구</h3>
+      <ul class="radar-list">
+        <li>Claude Code 2.1.322 — Google Cloud Vertex AI에서도 패스트 모드를 쓸 수 있게 됐다(global·us·eu 리전). Vertex가 거부하면 일반 속도로 자동으로 돌아간다. <a href="https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md" target="_blank" rel="noopener">changelog</a></li>
+      </ul>
+    </div>
+
+    <div class="radar-group">
+      <h3>가격·정책·업계</h3>
+      <ul class="radar-list">
+        <li>Anthropic 상장 로드쇼 시작 — 11월 10일 Anthropic이 상장을 위한 투자자 설명회(로드쇼)를 시작했다고 공식 발표했다. 전날까지는 "임박" 보도였고, 이번에는 회사가 직접 밝혔다. <a href="https://www.anthropic.com/news" target="_blank" rel="noopener">Anthropic 뉴스</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <footer class="status">
+    <span>오늘 조사 후 신호 1건 + 보완 1건 · 레이더 2건 · 날짜를 확인할 수 없는 영상·이미지 도구 모음, 일정 불명 국내 에이전트 기사, 이미 다룬 보안 기사는 폐기</span>
+    <span>Knowledge Agent v0.1</span>
+  </footer>
+
+</div>
