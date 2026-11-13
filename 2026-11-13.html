@@ -1,0 +1,578 @@
+<title>Knowledge Brief 2026-11-13</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,500;1,6..72,600&family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  :root {
+    --paper: #eef0f4;
+    --surface: #ffffff;
+    --ink: #131722;
+    --ink-soft: #5b6472;
+    --signal: #c97a1a;
+    --signal-deep: #8a5313;
+    --signal-soft: #f3e3cc;
+    --line: rgba(19, 23, 34, 0.12);
+    --line-strong: rgba(19, 23, 34, 0.22);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #0e1116;
+      --surface: #171b22;
+      --ink: #e7e9ee;
+      --ink-soft: #9aa3b2;
+      --signal: #f0b15c;
+      --signal-deep: #f5c685;
+      --signal-soft: rgba(240, 177, 92, 0.14);
+      --line: rgba(231, 233, 238, 0.14);
+      --line-strong: rgba(231, 233, 238, 0.24);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --paper: #0e1116;
+    --surface: #171b22;
+    --ink: #e7e9ee;
+    --ink-soft: #9aa3b2;
+    --signal: #f0b15c;
+    --signal-deep: #f5c685;
+    --signal-soft: rgba(240, 177, 92, 0.14);
+    --line: rgba(231, 233, 238, 0.14);
+    --line-strong: rgba(231, 233, 238, 0.24);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans KR', 'IBM Plex Sans', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 56px 24px 96px;
+  }
+
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--signal-deep);
+  }
+
+  header.masthead {
+    border-bottom: 1px solid var(--line-strong);
+    padding-bottom: 28px;
+    margin-bottom: 40px;
+  }
+
+  header.masthead .eyebrow {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  h1.headline {
+    font-family: 'Newsreader', Georgia, serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(32px, 6vw, 44px);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin: 14px 0 10px;
+    text-wrap: balance;
+  }
+
+  .masthead .subhead {
+    color: var(--ink-soft);
+    font-size: 15px;
+    max-width: 56ch;
+  }
+
+  .masthead .subhead b {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .masthead .listen {
+    margin-top: 20px;
+    padding: 14px 16px;
+    background: var(--signal-soft);
+    border-radius: 10px;
+    display: grid;
+    gap: 8px;
+  }
+
+  .masthead .listen audio { width: 100%; }
+
+  article.item {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 32px 32px 28px;
+    margin-bottom: 32px;
+  }
+
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  .tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+    border: 1px solid var(--line-strong);
+    color: var(--ink-soft);
+  }
+
+  .tag.priority {
+    border-color: var(--signal);
+    color: var(--signal-deep);
+    background: var(--signal-soft);
+  }
+
+  h2.item-title {
+    font-family: 'Newsreader', Georgia, serif;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 1.3;
+    margin: 0 0 18px;
+    text-wrap: balance;
+  }
+
+  .section-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin: 22px 0 8px;
+  }
+
+  .section-label:first-of-type { margin-top: 0; }
+
+  article.item p {
+    margin: 0 0 4px;
+    max-width: 62ch;
+  }
+
+  article.item .for-you {
+    padding: 14px 16px;
+    background: var(--signal-soft);
+    border-left: 2px solid var(--signal);
+    border-radius: 0 3px 3px 0;
+  }
+
+  figure.diagram {
+    margin: 26px 0 6px;
+    padding: 18px 6px 8px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  figure.diagram svg { width: 100%; height: auto; display: block; color: var(--ink-soft); }
+  figure.diagram .accent { color: var(--signal); }
+  figure.diagram text { font-family: 'IBM Plex Mono', monospace; fill: currentColor; }
+
+  figcaption {
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-top: 10px;
+  }
+
+  .source-row {
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .source-row a {
+    color: var(--ink);
+    text-decoration-color: var(--signal);
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 3px;
+  }
+
+  .source-row .domain {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+
+  .addendum {
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+  }
+
+  ol.tri-summary {
+    margin: 0;
+    padding-left: 1.3em;
+  }
+
+  ol.tri-summary li {
+    margin-bottom: 6px;
+    max-width: 62ch;
+  }
+
+  dl.glossary {
+    margin: 0;
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    column-gap: 14px;
+    row-gap: 10px;
+  }
+
+  dl.glossary dt {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--signal-deep);
+    white-space: nowrap;
+  }
+
+  dl.glossary dd {
+    margin: 0;
+    max-width: 56ch;
+    color: var(--ink-soft);
+  }
+
+  /* 레이더 — 인지 채널. 본 브리프(학습 채널)와 시각적으로 명확히 구분되어야 한다:
+     카드가 아니라 목록, 강조색 없음, 본문보다 작은 글씨. 훑고 지나가는 영역이다. */
+  section.radar {
+    margin-top: 40px;
+    padding-top: 26px;
+    border-top: 1px solid var(--line-strong);
+  }
+
+  section.radar > p.radar-note {
+    margin: 0 0 18px;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    max-width: 62ch;
+  }
+
+  .radar-group {
+    margin-bottom: 20px;
+  }
+
+  .radar-group h3 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 500;
+    margin: 0 0 8px;
+  }
+
+  ul.radar-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  ul.radar-list li {
+    position: relative;
+    padding-left: 16px;
+    margin-bottom: 7px;
+    font-size: 14.5px;
+    line-height: 1.6;
+    max-width: 66ch;
+    color: var(--ink);
+  }
+
+  ul.radar-list li::before {
+    content: "·";
+    position: absolute;
+    left: 3px;
+    color: var(--ink-soft);
+  }
+
+  ul.radar-list li a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid var(--line-strong);
+  }
+
+  ul.radar-list li a:hover { border-bottom-color: var(--signal); }
+
+  footer.status {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    border-top: 1px solid var(--line-strong);
+    padding-top: 18px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  @media (max-width: 480px) {
+    article.item { padding: 24px 20px; }
+    h1.headline { font-size: 30px; }
+  }
+</style>
+
+<div class="page">
+
+  <header class="masthead">
+    <div class="eyebrow">
+      <span>KNOWLEDGE BRIEF</span>
+      <span>2026-11-13 · 22:00</span>
+    </div>
+    <h1 class="headline">검문소는 그대로인데, 검문받는 단위가 커졌다</h1>
+    <p class="subhead">오늘 조사한 것 중 <b>지금 당신에게 학습 가치가 있다고 판단한 것</b>만 남겼습니다. 나머지는 이미 아는 내용이거나 가치가 낮아 걸러냈습니다.</p>
+  </header>
+
+  <article class="item">
+    <div class="tag-row">
+      <span class="tag priority">하네스 설계 · 오늘의 핵심</span>
+      <span class="tag">공식 변경 기록 + 타사 문서</span>
+      <span class="tag">빨리 바뀜</span>
+    </div>
+
+    <h2 class="item-title">Claude Code에 Code Mode가 들어왔다. 도구를 하나씩 부르지 않고 스크립트로 한꺼번에 부른다</h2>
+
+    <p class="section-label">WHAT</p>
+    <p>Claude Code 2.1.323 변경 기록에 Code Mode가 실험 기능으로 추가됐다. 기본값은 꺼짐이고, 사용자가 직접 켜야 한다. 조직 단위로 끄는 방법도 따로 안내한다고 적혀 있다.</p>
+    <p>Code Mode에서 Claude는 도구를 하나씩 호출하지 않는다. 대신 여러 도구를 부르는 JavaScript를 직접 쓴다. 그 스크립트가 도구들을 차례로, 또는 동시에 호출한다.</p>
+    <p>이 방식은 Claude Code만의 것이 아니다. 같은 이름의 기능이 이미 여러 곳에 있다.</p>
+    <ul>
+      <li><b>Docker 에이전트</b>: 개별 도구를 감추고 스크립트 실행 도구 하나만 모델에게 보여 준다.</li>
+      <li><b>Vercel AI SDK</b>: 격리된 JavaScript 엔진에서 스크립트를 돌린다. 역시 실험 기능이다.</li>
+      <li><b>Codex 하네스</b>: 비슷한 Code Mode를 안정 기능으로 두고 있다고 타사 문서가 언급한다.</li>
+    </ul>
+    <p>단, 변경 기록이 가리키는 Claude Code 안내 문서는 오늘 열리지 않았다(404). 그래서 Claude Code에서 권한 검사가 어떤 단위로 걸리는지는 아직 확인하지 못했다.</p>
+
+    <p class="section-label">WHY</p>
+    <p>기존 방식은 한 걸음마다 모델을 거친다. 모델이 도구 하나를 부르고, 결과를 읽고, 다음 도구를 고른다. 열 단계짜리 일이면 모델 왕복이 열 번이다.</p>
+    <p>Code Mode는 이 열 번을 한 번으로 줄인다. Docker와 Vercel 문서가 꼽는 이점은 이렇다.</p>
+    <ul>
+      <li>서로 무관한 호출을 동시에 돌린다.</li>
+      <li>큰 결과는 스크립트 안에서 걸러 필요한 부분만 모델에게 넘긴다.</li>
+      <li>반복과 분기를 모델 대신 코드가 처리한다.</li>
+    </ul>
+    <p>대가는 검문 쪽에서 생긴다. Docker 문서는 승인이 스크립트 호출 자체에만 걸린다고 적는다. 스크립트 하나를 승인하면, 평소라면 확인을 묻거나 거부됐을 도구까지 허용한 셈이 된다는 경고도 붙였다.</p>
+    <p>Vercel은 반대로 막는다. 승인이 필요한 도구를 스크립트 안에서 부르면 실행하지 않고 거부한다. 같은 이름의 기능인데 검문 방식이 정반대다.</p>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 640 250" role="img" aria-label="위쪽 기존 방식에서는 도구 호출마다 검문을 거친다. 아래쪽 Code Mode에서는 검문이 스크립트 한 번에만 서고, 그 안의 도구 호출 세 개는 검문 없이 실행된 뒤 마지막 문자열만 모델에게 돌아간다.">
+        <defs>
+          <marker id="c1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker>
+        </defs>
+        <text x="10" y="20" font-size="12">기존: 호출마다 검문</text>
+        <rect x="10" y="34" width="70" height="40" rx="3" fill="none" stroke="currentColor"/>
+        <text x="45" y="59" font-size="12" text-anchor="middle">모델</text>
+        <line x1="80" y1="54" x2="118" y2="54" stroke="currentColor" marker-end="url(#c1)"/>
+        <rect class="accent" x="120" y="40" width="16" height="28" fill="currentColor"/>
+        <line x1="136" y1="54" x2="164" y2="54" stroke="currentColor" marker-end="url(#c1)"/>
+        <rect x="166" y="34" width="70" height="40" rx="3" fill="none" stroke="currentColor"/>
+        <text x="201" y="59" font-size="12" text-anchor="middle">도구 A</text>
+        <line x1="236" y1="54" x2="274" y2="54" stroke="currentColor" marker-end="url(#c1)"/>
+        <rect x="276" y="34" width="70" height="40" rx="3" fill="none" stroke="currentColor"/>
+        <text x="311" y="59" font-size="12" text-anchor="middle">모델</text>
+        <line x1="346" y1="54" x2="384" y2="54" stroke="currentColor" marker-end="url(#c1)"/>
+        <rect class="accent" x="386" y="40" width="16" height="28" fill="currentColor"/>
+        <line x1="402" y1="54" x2="430" y2="54" stroke="currentColor" marker-end="url(#c1)"/>
+        <rect x="432" y="34" width="70" height="40" rx="3" fill="none" stroke="currentColor"/>
+        <text x="467" y="59" font-size="12" text-anchor="middle">도구 B</text>
+        <text x="520" y="59" font-size="12">…</text>
+
+        <text x="10" y="120" font-size="12">Code Mode: 스크립트에만 검문</text>
+        <rect x="10" y="150" width="70" height="40" rx="3" fill="none" stroke="currentColor"/>
+        <text x="45" y="175" font-size="12" text-anchor="middle">모델</text>
+        <line x1="80" y1="170" x2="118" y2="170" stroke="currentColor" marker-end="url(#c1)"/>
+        <rect class="accent" x="120" y="156" width="16" height="28" fill="currentColor"/>
+        <line x1="136" y1="170" x2="164" y2="170" stroke="currentColor" marker-end="url(#c1)"/>
+        <rect x="166" y="134" width="300" height="80" rx="3" fill="none" stroke="currentColor" stroke-dasharray="4 3"/>
+        <text x="176" y="150" font-size="11">스크립트 (격리 실행)</text>
+        <rect x="180" y="160" width="80" height="34" rx="3" fill="none" stroke="currentColor"/>
+        <text x="220" y="182" font-size="12" text-anchor="middle">도구 A</text>
+        <rect x="274" y="160" width="80" height="34" rx="3" fill="none" stroke="currentColor"/>
+        <text x="314" y="182" font-size="12" text-anchor="middle">도구 B</text>
+        <rect x="368" y="160" width="80" height="34" rx="3" fill="none" stroke="currentColor"/>
+        <text x="408" y="182" font-size="12" text-anchor="middle">도구 C</text>
+        <line x1="466" y1="174" x2="534" y2="174" stroke="currentColor" marker-end="url(#c1)"/>
+        <rect x="536" y="154" width="94" height="40" rx="3" fill="none" stroke="currentColor"/>
+        <text x="583" y="172" font-size="11" text-anchor="middle">반환 문자열</text>
+        <text x="583" y="187" font-size="11" text-anchor="middle">하나만 모델로</text>
+        <rect class="accent" x="10" y="226" width="12" height="12" fill="currentColor"/>
+        <text x="30" y="236" font-size="11">= 권한 검사가 서는 자리 (Docker 문서 기준)</text>
+      </svg>
+      <figcaption>검문소의 위치는 같아도, 아래쪽 검문소는 도구 A·B·C를 따로 보지 않고 스크립트 전체를 한 번에 본다.</figcaption>
+    </figure>
+
+    <p class="section-label">FOR YOU</p>
+    <div class="for-you">
+      <p>당신은 강제 지점을 고를 때 이미 두 가지를 묻는다. 통제 대상이 그 지점을 고칠 수 있는가. 실제 실행이 그 지점을 반드시 지나가는가.</p>
+      <p>Code Mode는 세 번째 질문을 꺼낸다. 그 지점은 <b>무엇을 한 단위로 보고</b> 판정하는가.</p>
+      <p>스크립트 단위 검문은 앞의 두 조건을 다 통과할 수 있다. 모델은 샌드박스를 못 고치고, 모든 호출은 스크립트를 지난다. 그래도 검문이 스크립트 전체를 한 덩어리로 보면, 그 안의 삭제 호출 하나는 따로 심사받지 않는다.</p>
+      <p>이 모양은 당신에게 낯설지 않다. SQL 인젝션 문항에서 당신은 필터의 위치는 맞는데 그 자리의 규칙이 새는 경우를 따로 떼어 봤다. 이번엔 규칙의 빈틈이 아니라 규칙이 보는 단위가 문제다.</p>
+      <p>야간 브리프 하네스에도 같은 구조가 이미 있다.</p>
+      <ul>
+        <li>무인 실행은 허용 도구 목록으로 <code>Bash(python *)</code>를 연다.</li>
+        <li>이 규칙은 명령 문자열의 앞부분만 본다. 파이썬 스크립트가 안에서 무엇을 하든 통과한다.</li>
+        <li>그래서 실제로 일을 막는 건 허용 목록이 아니라, 그 스크립트가 무엇을 하도록 쓰였느냐다.</li>
+      </ul>
+      <p>AX 강의에서는 "한 번에 알아서 다 해 주면 더 좋은 것 아니냐"는 질문으로 돌아온다. 답은 승인 버튼 한 번이 허락하는 범위가 넓어진다는 것이다. 속도와 검문의 해상도를 맞바꾸는 거래로 설명하면 된다.</p>
+    </div>
+
+    <p class="section-label">LEARN</p>
+    <p>지금 켜 볼 기능은 아니다. 실험 기능이고 안내 문서도 아직 열리지 않는다. 사실만 알아 두고, 문서가 열리면 세 가지만 확인하면 된다.</p>
+    <ul>
+      <li>승인이 스크립트 단위인가, 안쪽 호출 단위인가.</li>
+      <li>거부 규칙이 스크립트 안의 호출에도 적용되는가.</li>
+      <li>스크립트가 중간에 실패하면 이미 실행된 호출은 어떻게 되는가.</li>
+    </ul>
+    <p>마지막 질문은 아래 두 번째 항목과 바로 이어진다.</p>
+
+    <div class="source-row">
+      <a href="https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md" target="_blank" rel="noopener">Claude Code 변경 기록 원문 보기 →</a>
+      <span class="domain">github.com/anthropics/claude-code</span>
+    </div>
+    <div class="source-row">
+      <a href="https://docs.docker.com/ai/docker-agent/features/code-mode/" target="_blank" rel="noopener">Docker 에이전트 Code Mode 문서 →</a>
+      <span class="domain">docs.docker.com</span>
+    </div>
+    <div class="source-row">
+      <a href="https://ai-sdk.dev/docs/ai-sdk-core/code-mode" target="_blank" rel="noopener">Vercel AI SDK Code Mode 문서 →</a>
+      <span class="domain">ai-sdk.dev</span>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">3줄 요약</p>
+      <ol class="tri-summary">
+        <li>Claude Code 2.1.323은 Claude가 JavaScript로 도구를 호출하는 실험 기능 Code Mode를 추가했고, 기본값은 꺼져 있으며 권한 검사 단위는 미확인이다.</li>
+        <li>Docker 문서에 따르면 Code Mode는 여러 호출을 한 턴에 묶고 결과를 걸러 토큰을 줄인다.</li>
+        <li>다만 Docker는 스크립트 하나의 승인이 막혔어야 할 도구까지 허용할 수 있다고 경고하고, Vercel AI SDK는 승인이 필요한 도구를 스크립트 안에서 거부한다.</li>
+      </ol>
+    </div>
+    <div class="addendum">
+      <p class="section-label">용어 해설</p>
+      <dl class="glossary">
+        <dt>격리된 JavaScript 엔진</dt>
+        <dd>호스트 프로그램과 메모리·파일 접근을 분리해 그 안에서만 코드를 돌리는 실행 환경이다. 밖의 자원에는 호스트가 명시적으로 열어 준 함수로만 닿는다.</dd>
+      </dl>
+    </div>
+  </article>
+
+  <article class="item">
+    <div class="tag-row">
+      <span class="tag priority">AI 코딩 에이전트 · 기초 보완</span>
+      <span class="tag">개념 설명</span>
+      <span class="tag">계속 바뀌는 중</span>
+    </div>
+
+    <h2 class="item-title">에이전트는 무엇을 보고 다음 행동을 고르나. 신호를 쓰는 쪽이 바뀌면 생기는 일</h2>
+
+    <p class="section-label">왜 지금 이걸 다루나</p>
+    <p>에이전트의 실행 루프는 단순하다. 행동하고, 결과 신호를 받고, 그 신호를 보고 다음 행동을 고른다. 그래서 에이전트의 판단은 신호의 품질을 넘지 못한다.</p>
+    <p>지금까지 그 신호는 하네스가 만들었다. 도구가 끝나면 하네스가 결과를 그대로 모델에게 돌려줬다. Code Mode는 이걸 바꾼다. 모델이 쓴 스크립트가 무엇을 돌려줄지 직접 고른다.</p>
+
+    <p class="section-label">무엇이 달라지나</p>
+    <p>Docker 문서는 이렇게 적는다. 스크립트 안의 중간 결과는 모델에게 가지 않는다. 스크립트가 마지막에 돌려주는 문자열 하나만 간다.</p>
+    <p>즉 모델이 다음 행동을 고를 근거를 모델 자신이 미리 정해 둔다. 이때 신호가 망가지는 모양은 세 가지다.</p>
+    <ul>
+      <li><b>삼킨 오류</b>: 스크립트가 예외를 잡고 "완료"만 돌려준다. 모델은 성공으로 읽는다.</li>
+      <li><b>버린 증거</b>: 큰 결과를 거르다가 판단에 필요한 줄까지 지운다. 모델은 없는 것으로 읽는다.</li>
+      <li><b>되돌아가지 않는 절반</b>: Docker 문서에 따르면 중간에 실패해도 이미 실행된 호출은 되돌리지 않는다. 모델이 처음부터 다시 돌리면 앞 단계가 두 번 실행된다.</li>
+    </ul>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 640 200" role="img" aria-label="실행 루프에서 행동, 결과, 신호, 판단이 원을 이룬다. 기존에는 하네스가 신호를 쓰고, Code Mode에서는 모델이 쓴 스크립트가 신호를 쓴다.">
+        <defs>
+          <marker id="c2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker>
+        </defs>
+        <rect x="20" y="70" width="100" height="44" rx="3" fill="none" stroke="currentColor"/>
+        <text x="70" y="97" font-size="12.5" text-anchor="middle">모델의 판단</text>
+        <line x1="120" y1="92" x2="178" y2="92" stroke="currentColor" marker-end="url(#c2)"/>
+        <rect x="180" y="70" width="100" height="44" rx="3" fill="none" stroke="currentColor"/>
+        <text x="230" y="97" font-size="12.5" text-anchor="middle">도구 실행</text>
+        <line x1="280" y1="92" x2="338" y2="92" stroke="currentColor" marker-end="url(#c2)"/>
+        <rect class="accent" x="340" y="64" width="130" height="56" rx="3" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="405" y="88" font-size="12.5" text-anchor="middle">결과 → 신호</text>
+        <text x="405" y="106" font-size="11" text-anchor="middle">누가 쓰나?</text>
+        <path d="M405,120 C405,175 70,175 70,116" fill="none" stroke="currentColor" marker-end="url(#c2)"/>
+        <text x="490" y="80" font-size="11">기존: 하네스가 원본 그대로</text>
+        <text x="490" y="104" font-size="11">Code Mode: 모델이 쓴</text>
+        <text x="490" y="120" font-size="11">스크립트가 골라서</text>
+        <text x="238" y="190" font-size="11" text-anchor="middle">다음 판단은 이 신호만큼만 정확하다</text>
+      </svg>
+      <figcaption>루프의 모양은 같다. 바뀐 것은 판단의 근거가 되는 신호를 누가 만드느냐다.</figcaption>
+    </figure>
+
+    <p class="section-label">FOR YOU</p>
+    <div class="for-you">
+      <p>이 원리는 당신이 이미 하네스에 박아 둔 규칙과 같다. 야간 브리프의 실행 규칙에는 "자연어 출력이나 종료 코드 0은 성공 증거가 아니다"라는 문장이 있다. 판정받는 쪽이 스스로 쓴 보고는 약한 증거라는 뜻이다.</p>
+      <p>Code Mode에서는 이 문제가 모델 안쪽으로 들어온다. 보고를 쓰는 쪽과 그 보고로 다음 행동을 고르는 쪽이 같다. 사람이 봐야 할 곳도 그래서 바뀐다.</p>
+      <ul>
+        <li>반환 문자열이 아니라 스크립트 원문을 읽는다. 예외를 잡는 부분이 무엇을 돌려주는지 본다.</li>
+        <li>안쪽 호출 하나하나의 기록을 본다. Docker는 화면에 안쪽 호출과 상태를 따로 보여 준다.</li>
+        <li>재시도 전에 이미 끝난 단계를 확인한다. 두 번 실행돼도 괜찮은 작업인지 먼저 묻는다.</li>
+      </ul>
+      <p>강의에서는 이렇게 바꿔 말할 수 있다. "에이전트가 '다 했어요'라고 하면, 그 말을 누가 썼는지부터 보세요."</p>
+    </div>
+
+    <p class="section-label">LEARN — 예측해 보기</p>
+    <p>Code Mode 에이전트에게 파일 20개 수정을 맡겼다. 스크립트는 13번째 파일에서 오류를 만났다. 그런데 예외를 잡고 "12 files updated"라는 문자열을 돌려줬다.</p>
+    <p>모델은 다음에 무엇을 할까? 그리고 당신은 어디를 열어 봐야 실패를 알아챌까? 답을 먼저 정하고 아래를 보자.</p>
+    <p>모델이 아는 건 "12개 수정"이라는 문장뿐이다. 20개 중 12개라는 사실을 스스로 대조하지 않으면 일이 끝났다고 판단할 수 있다. 실패의 흔적은 스크립트의 예외 처리 부분과 13번째 호출 기록에만 남는다.</p>
+  </article>
+
+  <section class="radar">
+    <p class="section-label">레이더</p>
+    <p class="radar-note">학습 대상이 아니라 <b>인지 대상</b>입니다. 훑고 지나가세요 — 나중에 필요한 순간에 &ldquo;그거 있었지&rdquo;가 나오게 하는 것이 목적입니다.</p>
+
+    <div class="radar-group">
+      <h3>내가 쓰는 도구</h3>
+      <ul class="radar-list">
+        <li>Claude Code 2.1.323 — 플러그인 설정에 지원하는 Claude Code 버전 범위를 적을 수 있다. 범위 밖이면 설치·업데이트·로드가 막히고, 범위에 맞는 최신 플러그인 버전을 고른다. <a href="https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md">변경 기록</a></li>
+        <li>Claude Code 2.1.323 — 헤드리스 실행(claude -p)과 SDK에서 훅이 오래 돌면 30초마다 진행 신호를 보낸다. 호스트가 멈춘 턴으로 오인해 끊는 문제를 막는다.</li>
+        <li>Claude Code 2.1.323 — 권한 구멍을 여럿 막았다. sudo·env로 감싼 명령도 거부·확인 규칙에 걸리고, 읽기 거부 경로에는 쓰기·수정도 막힌다. 자동 모드를 못 쓰면 더 느슨한 모드가 아니라 수동 모드로 내려간다.</li>
+        <li>Codex CLI 0.168.0·0.169.0(11/13) — 터미널에서 곁가지 대화를 탭 여러 개로 열고, 예전 작업을 검색할 수 있다. 사용자 지정 모델 제공자 설정, 음성 녹음 첨부, 터미널 알림도 추가됐다. <a href="https://learn.chatgpt.com/docs/changelog">변경 기록</a></li>
+      </ul>
+    </div>
+
+    <div class="radar-group">
+      <h3>주변 생태계</h3>
+      <ul class="radar-list">
+        <li>카카오 카나나 스페이스 — (이전에 한 번 소개, 이번에 일정 확정) 카카오톡 안에서 사용자 대신 과제를 처리하는 에이전트 AI. 11월 5일 실적 발표에서 12월 파일럿 시작을 밝혔다.</li>
+      </ul>
+    </div>
+
+    <div class="radar-group">
+      <h3>보안·장애</h3>
+      <ul class="radar-list">
+        <li>Apify 침해(11/9~10) — 웹 스크래핑·브라우저 자동화 플랫폼에 무단 접근이 있었다. API 토큰 교체, 세션 초기화, GitHub 등 외부 OAuth 연결 예방 해제를 했다. 이용자에게는 2단계 인증 재설정을 요구했다. <a href="https://www.bleepingcomputer.com/news/security/apify-rotates-api-tokens-prompts-2fa-resets-after-breach/">BleepingComputer</a></li>
+        <li>wfx-loot 캠페인(11/12 보고) — 탈취한 GitHub 계정 약 4,800개로 6만여 저장소의 쓰기 권한을 훑었다. GitHub Actions 워크플로와 npm 설치 훅에 자격 증명 탈취 스크립트를 심었다. 표적에는 OpenAI·Anthropic·Gemini·Cursor·Copilot 키도 들어 있다. <a href="https://www.bleepingcomputer.com/news/security/hackers-compromise-4-800-github-accounts-to-steal-cloud-credentials/">BleepingComputer</a></li>
+        <li>Microsoft 365 대규모 장애(11/12) — Outlook·Teams와 함께 Copilot도 전 세계에서 멈췄다. 업무 AI가 협업 도구 장애에 같이 묶인다는 사례다. <a href="https://www.bleepingcomputer.com/news/microsoft/massive-microsoft-365-outage-disrupts-outlook-teams-copilot-worldwide/">BleepingComputer</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <footer class="status">
+    <span>오늘 조사 후 1건 전달 + 기초 1건 · 레이더 8건 · 날짜 불명 영상 생성 롤업 등은 폐기</span>
+    <span>Knowledge Agent v0.1</span>
+  </footer>
+
+</div>
