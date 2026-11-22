@@ -1,0 +1,504 @@
+<title>Knowledge Brief 2026-11-22</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,500;1,6..72,600&family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  :root {
+    --paper: #eef0f4;
+    --surface: #ffffff;
+    --ink: #131722;
+    --ink-soft: #5b6472;
+    --signal: #c97a1a;
+    --signal-deep: #8a5313;
+    --signal-soft: #f3e3cc;
+    --line: rgba(19, 23, 34, 0.12);
+    --line-strong: rgba(19, 23, 34, 0.22);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #0e1116;
+      --surface: #171b22;
+      --ink: #e7e9ee;
+      --ink-soft: #9aa3b2;
+      --signal: #f0b15c;
+      --signal-deep: #f5c685;
+      --signal-soft: rgba(240, 177, 92, 0.14);
+      --line: rgba(231, 233, 238, 0.14);
+      --line-strong: rgba(231, 233, 238, 0.24);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --paper: #0e1116;
+    --surface: #171b22;
+    --ink: #e7e9ee;
+    --ink-soft: #9aa3b2;
+    --signal: #f0b15c;
+    --signal-deep: #f5c685;
+    --signal-soft: rgba(240, 177, 92, 0.14);
+    --line: rgba(231, 233, 238, 0.14);
+    --line-strong: rgba(231, 233, 238, 0.24);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans KR', 'IBM Plex Sans', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 56px 24px 96px;
+  }
+
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--signal-deep);
+  }
+
+  header.masthead {
+    border-bottom: 1px solid var(--line-strong);
+    padding-bottom: 28px;
+    margin-bottom: 40px;
+  }
+
+  header.masthead .eyebrow {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  h1.headline {
+    font-family: 'Newsreader', Georgia, serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(32px, 6vw, 44px);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin: 14px 0 10px;
+    text-wrap: balance;
+  }
+
+  .masthead .subhead {
+    color: var(--ink-soft);
+    font-size: 15px;
+    max-width: 56ch;
+  }
+
+  .masthead .subhead b {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .masthead .listen {
+    margin-top: 20px;
+    padding: 14px 16px;
+    background: var(--signal-soft);
+    border-radius: 10px;
+    display: grid;
+    gap: 8px;
+  }
+
+  .masthead .listen audio { width: 100%; }
+
+  article.item {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 32px 32px 28px;
+    margin-bottom: 32px;
+  }
+
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  .tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+    border: 1px solid var(--line-strong);
+    color: var(--ink-soft);
+  }
+
+  .tag.priority {
+    border-color: var(--signal);
+    color: var(--signal-deep);
+    background: var(--signal-soft);
+  }
+
+  h2.item-title {
+    font-family: 'Newsreader', Georgia, serif;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 1.3;
+    margin: 0 0 18px;
+    text-wrap: balance;
+  }
+
+  .section-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin: 22px 0 8px;
+  }
+
+  .section-label:first-of-type { margin-top: 0; }
+
+  article.item p {
+    margin: 0 0 4px;
+    max-width: 62ch;
+  }
+
+  article.item .for-you {
+    padding: 14px 16px;
+    background: var(--signal-soft);
+    border-left: 2px solid var(--signal);
+    border-radius: 0 3px 3px 0;
+  }
+
+  figure.diagram {
+    margin: 26px 0 6px;
+    padding: 18px 6px 8px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  figure.diagram svg { width: 100%; height: auto; display: block; color: var(--ink-soft); }
+  figure.diagram .accent { color: var(--signal); }
+  figure.diagram text { font-family: 'IBM Plex Mono', monospace; fill: currentColor; }
+
+  figcaption {
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-top: 10px;
+  }
+
+  .source-row {
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .source-row a {
+    color: var(--ink);
+    text-decoration-color: var(--signal);
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 3px;
+  }
+
+  .source-row .domain {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+
+  .addendum {
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+  }
+
+  ol.tri-summary {
+    margin: 0;
+    padding-left: 1.3em;
+  }
+
+  ol.tri-summary li {
+    margin-bottom: 6px;
+    max-width: 62ch;
+  }
+
+  dl.glossary {
+    margin: 0;
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    column-gap: 14px;
+    row-gap: 10px;
+  }
+
+  dl.glossary dt {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--signal-deep);
+    white-space: nowrap;
+  }
+
+  dl.glossary dd {
+    margin: 0;
+    max-width: 56ch;
+    color: var(--ink-soft);
+  }
+
+  /* 레이더 — 인지 채널. 본 브리프(학습 채널)와 시각적으로 명확히 구분되어야 한다:
+     카드가 아니라 목록, 강조색 없음, 본문보다 작은 글씨. 훑고 지나가는 영역이다. */
+  section.radar {
+    margin-top: 40px;
+    padding-top: 26px;
+    border-top: 1px solid var(--line-strong);
+  }
+
+  section.radar > p.radar-note {
+    margin: 0 0 18px;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    max-width: 62ch;
+  }
+
+  .radar-group {
+    margin-bottom: 20px;
+  }
+
+  .radar-group h3 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 500;
+    margin: 0 0 8px;
+  }
+
+  ul.radar-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  ul.radar-list li {
+    position: relative;
+    padding-left: 16px;
+    margin-bottom: 7px;
+    font-size: 14.5px;
+    line-height: 1.6;
+    max-width: 66ch;
+    color: var(--ink);
+  }
+
+  ul.radar-list li::before {
+    content: "·";
+    position: absolute;
+    left: 3px;
+    color: var(--ink-soft);
+  }
+
+  ul.radar-list li a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid var(--line-strong);
+  }
+
+  ul.radar-list li a:hover { border-bottom-color: var(--signal); }
+
+  footer.status {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    border-top: 1px solid var(--line-strong);
+    padding-top: 18px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  @media (max-width: 480px) {
+    article.item { padding: 24px 20px; }
+    h1.headline { font-size: 30px; }
+  }
+</style>
+
+<div class="page">
+
+  <header class="masthead">
+    <div class="eyebrow">
+      <span>KNOWLEDGE BRIEF</span>
+      <span>2026-11-22 · 22:00</span>
+    </div>
+    <h1 class="headline">에이전트는 열한 분 만에 구멍을 찾았고, 재시도는 확인부터 한다</h1>
+    <p class="subhead">오늘 조사한 것 중 <b>지금 당신에게 학습 가치가 있다고 판단한 것</b>만 남겼습니다. 나머지는 이미 아는 내용이거나 가치가 낮아 걸러냈습니다.</p>
+  </header>
+
+  <article class="item">
+    <div class="tag-row">
+      <span class="tag priority">보안 · 강의에 바로 쓸 것</span>
+      <span class="tag">기술매체 (아마존 조사 인용)</span>
+      <span class="tag">계속 바뀌는 중</span>
+    </div>
+
+    <h2 class="item-title">AI 침투 도구 Cairn의 에이전트가 처음 보는 결함을 찾아 11분 만에 서버 관리자 권한을 얻었다</h2>
+
+    <p class="section-label">WHAT</p>
+    <p>Amazon Threat Intelligence가 공격자의 AI 에이전트 활동 기록을 분석해 공개했습니다. 11월 20일 BleepingComputer가 보도했습니다.</p>
+    <p>Cairn은 원래 보안 점검용으로 만든 오픈소스 도구입니다. 여러 에이전트가 역할을 나눠 서버를 공격해 봅니다. 공격자가 이 도구를 인증 없이 인터넷에 열어 둬서 Amazon이 작업 기록을 볼 수 있었습니다.</p>
+    <ul>
+      <li>대상은 의료 영상에 라벨을 붙이는 오픈소스 앱 MONAI Label입니다.</li>
+      <li>에이전트는 파일을 서버 아무 위치에나 쓸 수 있는 결함을 찾았습니다.</li>
+      <li>API를 훑기 시작해서 실제로 뚫기까지 11분이 걸렸습니다.</li>
+      <li>파이썬이 시작될 때 자동 실행되는 파일에 원격 접속용 코드를 심어 관리자 권한을 얻었습니다.</li>
+      <li>운영자가 준 지시는 &ldquo;셸 접근을 얻어라&rdquo;가 전부였다고 합니다.</li>
+    </ul>
+    <p>전부 성공한 것은 아닙니다. Redis 서버에는 16시간, 148동작을 들였지만 실패했습니다. 대학 GPU 서버에는 6시간 동안 3만 건이 넘는 계정 조합을 넣었지만 역시 실패했습니다. MONAI Label 쪽은 11월 18일에 보안 업데이트를 냈습니다.</p>
+
+    <p class="section-label">WHY</p>
+    <p>핵심은 속도와 지시의 길이입니다. 사람이 쓴 한 줄 목표만으로 에이전트가 정찰과 공격까지 이어서 했다는 보고입니다.</p>
+    <p>다만 확정된 사실과 해석을 나눠야 합니다. &ldquo;에이전트가 스스로 새 결함을 찾았다&rdquo;는 부분은 Amazon이 공개된 로그를 읽고 내린 해석입니다. 독립 검증은 기사에 없습니다. 중국 연계 행위자라는 판단도 Amazon 스스로 &ldquo;보통 수준의 확신&rdquo;이라고 밝혔습니다.</p>
+    <p>공격 시기는 9월 8일에서 10일 사이였고, 주로 중국 밖 동아시아 교육기관이 대상이었다고 합니다.</p>
+
+    <p class="section-label">FOR YOU</p>
+    <div class="for-you">
+      <p>이번 주 내내 &ldquo;강제 지점&rdquo; 이야기를 했습니다. 통제는 통제 대상이 고칠 수 없는 곳에 있어야 하고, 실행이 반드시 지나는 길 위에 있어야 한다는 기준입니다. 이 사건은 그 기준을 공격 쪽에서 본 사례입니다.</p>
+      <p>MONAI Label의 결함은 파일을 쓰는 경로를 제대로 제한하지 못한 것입니다. 9월에 당신이 SQL 키워드 필터를 기각한 이유와 같은 뿌리입니다. 입력을 검사하는 층 하나에 기대면, 우회로를 찾는 속도가 빨라질수록 그 층이 먼저 무너집니다.</p>
+      <p>기사에서 막힌 두 시도도 있습니다. 왜 막혔는지는 기사에 없습니다. 그래서 &ldquo;방어가 잘 작동했다&rdquo;고 읽으면 안 됩니다. 3만 건 넘는 시도가 6시간 동안 계속 들어갔다는 사실만 남습니다.</p>
+      <p>당신의 시스템에 대입하면 질문은 둘입니다.</p>
+      <ul>
+        <li>인터넷에 열려 있는 내 서버나 자동화가 있는가?</li>
+        <li>한 줄 지시를 받은 에이전트가 11분 동안 붙어 있어도 버티게 하는 장치가, 앱 안의 검사 말고 한 층 아래에 있는가?</li>
+      </ul>
+      <p>강의에서는 &ldquo;AI에게 끝까지 해내라고 시키면 무슨 일이 생기나&rdquo;를 이 사건으로 보여 줄 수 있습니다. 단, 해석 부분은 Amazon의 주장이라고 밝히고 쓰셔야 합니다.</p>
+    </div>
+
+    <p class="section-label">LEARN</p>
+    <p>깊이 파고들 주제는 아닙니다. 사건 구조(한 줄 지시, 11분, 일부 실패)와 &ldquo;해석은 Amazon의 것&rdquo;이라는 단서만 기억해 두면 됩니다. 취약점의 세부 기술은 지금 학습 대상이 아닙니다.</p>
+
+    <div class="source-row">
+      <a href="https://www.bleepingcomputer.com/news/security/hackers-use-autonomous-ai-tool-cairn-to-find-zero-day-take-over-server/" target="_blank" rel="noopener">BleepingComputer 원문 보기 →</a>
+      <span class="domain">bleepingcomputer.com</span>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">3줄 요약</p>
+      <ol class="tri-summary">
+        <li>공격자가 오픈소스 멀티에이전트 침투 도구 Cairn을 인증 없이 공개해 두었고, Amazon이 이를 발견했다.</li>
+        <li>Amazon에 따르면 에이전트가 MONAI Label의 경로 탐색 제로데이를 찾아 11분 만에 관리자 권한을 얻었다. 자체 발견이라는 점은 독립 확인되지 않았다.</li>
+        <li>활동은 9월 8~10일 주로 중국 외 동아시아 교육기관을 겨냥했고, Redis와 대학 GPU 서버 대상 시도는 실패했다.</li>
+      </ol>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">용어 해설</p>
+      <dl class="glossary">
+        <dt>경로 탐색</dt>
+        <dd>파일 경로에 <code>../</code> 같은 문자열을 넣어, 허용된 폴더 밖의 파일에 접근하는 공격입니다. 입력 경로를 검증하지 않을 때 생깁니다.</dd>
+        <dt>리버스 셸</dt>
+        <dd>공격 대상 서버가 공격자 쪽으로 먼저 접속을 걸고, 그 연결로 공격자가 명령을 내리는 방식입니다. 들어오는 연결은 막혀도 나가는 연결은 열려 있는 경우가 많아 쓰입니다.</dd>
+        <dt>sitecustomize.py</dt>
+        <dd>파이썬이 시작될 때 자동으로 불러오는 파일입니다. 여기에 넣은 코드는 그 파이썬이 실행될 때마다 먼저 실행됩니다.</dd>
+      </dl>
+    </div>
+  </article>
+
+  <article class="item">
+    <div class="tag-row">
+      <span class="tag priority">장애 대응 · 오늘의 핵심</span>
+      <span class="tag">설계 원칙</span>
+      <span class="tag">오래 가는 기초</span>
+    </div>
+
+    <h2 class="item-title">호출이 실패하면 다시 해도 되는가: 재시도 전에 묻는 세 가지</h2>
+
+    <p class="section-label">왜 지금 다루는가</p>
+    <p>앞 항목에는 3만 건이 넘는 계정 조합이 6시간 동안 이어졌다는 대목이 있습니다. 그 숫자가 재시도라는 주제를 불러옵니다. 재시도는 호출하는 쪽의 습관이기도 하고, 받는 쪽의 방어 설계이기도 합니다.</p>
+
+    <p class="section-label">FOR YOU</p>
+    <div class="for-you">
+      <p>당신의 야간 자동화에는 이미 이 규칙이 있습니다. 요청은 보냈는데 응답을 못 받으면 성공도 실패도 아닌 &ldquo;결과 불명&rdquo;으로 적고 같은 요청을 다시 보내지 않습니다. 오늘 이야기는 그 규칙이 왜 맞는지를 일반 원리로 올려 보는 것입니다.</p>
+      <p>재시도 전에 던질 질문은 세 개입니다.</p>
+      <ul>
+        <li><b>두 번 보내도 결과가 같은가.</b> 파일을 읽는 일은 같습니다. 메시지를 보내는 일은 두 통이 갑니다. 이 성질을 멱등성이라고 부릅니다.</li>
+        <li><b>얼마나 기다렸다가 다시 하는가.</b> 1초, 2초, 4초처럼 간격을 두 배씩 늘리고(지수 백오프), 무작위 흔들림(지터)을 더하고, 최대 횟수를 정합니다.</li>
+        <li><b>서버가 멈추라고 했는가.</b> 서버가 너무 많이 왔다고 알리며 몇 초 뒤에 오라고 하면(429, Retry-After) 그 시간을 따릅니다.</li>
+      </ul>
+      <p>이 세 질문을 당신의 자동화에 대입해 보겠습니다.</p>
+      <ul>
+        <li>카카오 알림은 메시지이므로 멱등하지 않습니다. 응답이 없으면 다시 보내지 않고 &ldquo;결과 불명&rdquo;으로 두는 현재 방식이 맞습니다.</li>
+        <li>배포된 페이지가 열리는지 읽어 보는 확인은 몇 번 해도 같습니다. 15초 이상 간격을 두고 최대 5분까지 보는 현재 규칙이 그대로 지수 백오프의 단순한 형태입니다.</li>
+        <li>같은 자동화 안에서도 읽기는 재시도가 안전하고 쓰기는 확인이 먼저입니다. 그 구분이 이미 코드에 들어 있습니다.</li>
+      </ul>
+      <p>모두가 같은 순간에 재시도하면 복구 중인 서버로 요청이 몰립니다. 이것이 재시도 폭풍이고, 지터는 그 폭풍을 흩는 장치입니다.</p>
+    </div>
+
+    <p class="section-label">LEARN</p>
+    <p>예측 과제를 하나 드립니다. 외부 API가 429를 주면서 Retry-After 30초를 알려 줍니다. 호출하는 에이전트 10개가 동시에 같은 응답을 받았다면, 30초 뒤에 무슨 일이 생기겠습니까? 그것을 막으려면 어디에 무엇을 더해야 합니까? 답을 먼저 떠올려 보세요.</p>
+    <p>이 과제는 앞서 다룬 &ldquo;실패의 세 가지 모양&rdquo;의 다음 단계입니다. 실패 모양을 구분했다면, 이제 모양마다 다른 대응을 고릅니다.</p>
+
+    <div class="addendum">
+      <p class="section-label">3줄 요약</p>
+      <ol class="tri-summary">
+        <li>호출 실패 후 재시도할지는 설계 문제이며, 같은 요청을 반복해도 결과가 같은 멱등 작업에만 안전하다.</li>
+        <li>결제처럼 중복 실행되면 안 되는 작업은 결과를 먼저 조회한 뒤 재시도하고, 대기는 지수 백오프에 지터를 더해 최대 횟수를 둔다.</li>
+        <li>서버가 429나 Retry-After로 속도 제한을 알리면 그 시간을 따르며, 응답이 없는 &lsquo;결과 불명&rsquo;은 단순 실패와 구분해 다룬다.</li>
+      </ol>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">용어 해설</p>
+      <dl class="glossary">
+        <dt>지수 백오프</dt>
+        <dd>실패한 요청을 다시 보낼 때 대기 시간을 1초, 2초, 4초처럼 두 배씩 늘리는 방식입니다. 서버 부담이 쌓이지 않게 합니다.</dd>
+        <dt>지터</dt>
+        <dd>재시도 대기 시간에 무작위 값을 섞는 기법입니다. 여러 클라이언트가 같은 시점에 몰려 재시도하는 것을 막습니다.</dd>
+        <dt>재시도 폭풍</dt>
+        <dd>장애로 실패한 요청이 많은 클라이언트에서 동시에 반복되어 서버 부하가 급증하는 현상입니다. 복구 중인 서버를 다시 쓰러뜨리기도 합니다.</dd>
+        <dt>Retry-After</dt>
+        <dd>서버가 &ldquo;이 시간 뒤에 다시 요청하라&rdquo;고 알려 주는 HTTP 응답 헤더입니다. 429나 503 응답에서 자주 쓰입니다.</dd>
+        <dt>멱등</dt>
+        <dd>같은 요청을 여러 번 보내도 한 번 보낸 것과 결과가 같은 성질입니다. &ldquo;상태를 완료로 설정&rdquo;은 멱등하고, &ldquo;잔액에 1000원 더하기&rdquo;는 아닙니다.</dd>
+      </dl>
+    </div>
+  </article>
+
+  <section class="radar">
+    <p class="section-label">레이더</p>
+    <p class="radar-note">학습 대상이 아니라 <b>인지 대상</b>입니다. 훑고 지나가세요 — 나중에 필요한 순간에 &ldquo;그거 있었지&rdquo;가 나오게 하는 것이 목적입니다.</p>
+
+    <div class="radar-group">
+      <h3>내가 쓰는 도구</h3>
+      <ul class="radar-list">
+        <li>Claude Code 2.1.330 — 루트·홈·최상위 폴더를 겨냥한 <code>rm</code> 명령이 이제 더 넓게 승인을 묻고, 답할 사람이 없으면 거부한다.</li>
+        <li>Claude Code 2.1.330 — 반복 예약 작업과 <code>/loop</code>가 세션이 켜져 있는 동안 최대 30일까지 돈다(기존 7일). 이전에 만든 작업은 7일 그대로.</li>
+        <li>Claude Code 2.1.330 — <code>claude auth login</code> 뒤에 기업 관리자 콘솔의 조직 설정과 클라우드·게이트웨이 설정이 그대로 적용된다.</li>
+        <li>Claude Code 2.1.330 — 요청하면 차트를 그려 주는 내장 &ldquo;easel&rdquo; 모드가 추가됐다(유료·팀·기업 플랜, macOS·Linux, <code>/config</code>에서 끌 수 있음).</li>
+        <li>Claude Code 2.1.330 — 2.1.329에서 뺐던 &ldquo;max_tokens 한도 초과 시 자동 재시도&rdquo;를 되돌렸다. 출처는 GitHub 변경 기록 원문이며 날짜는 표기돼 있지 않다.</li>
+      </ul>
+    </div>
+
+    <div class="radar-group">
+      <h3>주변 생태계</h3>
+      <ul class="radar-list">
+        <li>NH농협은행 — 인수한 AI 업체 애자일소다와의 첫 협업으로 업무용 AI 에이전트 10종을 공개했다. 11월 5일 보도, 헤드라인 기준이며 세부 기능은 확인하지 못했다.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer class="status">
+    <span>오늘 조사 후 2건 전달 · 레이더 6건 · 날짜 불명 보안·영상 기사는 제외</span>
+    <span>Knowledge Agent v0.1</span>
+  </footer>
+
+</div>
