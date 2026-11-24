@@ -1,0 +1,448 @@
+<title>Knowledge Brief {{DATE}}</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,500;1,6..72,600&family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  :root {
+    --paper: #eef0f4;
+    --surface: #ffffff;
+    --ink: #131722;
+    --ink-soft: #5b6472;
+    --signal: #c97a1a;
+    --signal-deep: #8a5313;
+    --signal-soft: #f3e3cc;
+    --line: rgba(19, 23, 34, 0.12);
+    --line-strong: rgba(19, 23, 34, 0.22);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #0e1116;
+      --surface: #171b22;
+      --ink: #e7e9ee;
+      --ink-soft: #9aa3b2;
+      --signal: #f0b15c;
+      --signal-deep: #f5c685;
+      --signal-soft: rgba(240, 177, 92, 0.14);
+      --line: rgba(231, 233, 238, 0.14);
+      --line-strong: rgba(231, 233, 238, 0.24);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --paper: #0e1116;
+    --surface: #171b22;
+    --ink: #e7e9ee;
+    --ink-soft: #9aa3b2;
+    --signal: #f0b15c;
+    --signal-deep: #f5c685;
+    --signal-soft: rgba(240, 177, 92, 0.14);
+    --line: rgba(231, 233, 238, 0.14);
+    --line-strong: rgba(231, 233, 238, 0.24);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans KR', 'IBM Plex Sans', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 56px 24px 96px;
+  }
+
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--signal-deep);
+  }
+
+  header.masthead {
+    border-bottom: 1px solid var(--line-strong);
+    padding-bottom: 28px;
+    margin-bottom: 40px;
+  }
+
+  header.masthead .eyebrow {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  h1.headline {
+    font-family: 'Newsreader', Georgia, serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(32px, 6vw, 44px);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin: 14px 0 10px;
+    text-wrap: balance;
+  }
+
+  .masthead .subhead {
+    color: var(--ink-soft);
+    font-size: 15px;
+    max-width: 56ch;
+  }
+
+  .masthead .subhead b {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .masthead .listen {
+    margin-top: 20px;
+    padding: 14px 16px;
+    background: var(--signal-soft);
+    border-radius: 10px;
+    display: grid;
+    gap: 8px;
+  }
+
+  .masthead .listen audio { width: 100%; }
+
+  article.item {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 32px 32px 28px;
+    margin-bottom: 32px;
+  }
+
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  .tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+    border: 1px solid var(--line-strong);
+    color: var(--ink-soft);
+  }
+
+  .tag.priority {
+    border-color: var(--signal);
+    color: var(--signal-deep);
+    background: var(--signal-soft);
+  }
+
+  h2.item-title {
+    font-family: 'Newsreader', Georgia, serif;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 1.3;
+    margin: 0 0 18px;
+    text-wrap: balance;
+  }
+
+  .section-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin: 22px 0 8px;
+  }
+
+  .section-label:first-of-type { margin-top: 0; }
+
+  article.item p {
+    margin: 0 0 4px;
+    max-width: 62ch;
+  }
+
+  article.item .for-you {
+    padding: 14px 16px;
+    background: var(--signal-soft);
+    border-left: 2px solid var(--signal);
+    border-radius: 0 3px 3px 0;
+  }
+
+  figure.diagram {
+    margin: 26px 0 6px;
+    padding: 18px 6px 8px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  figure.diagram svg { width: 100%; height: auto; display: block; color: var(--ink-soft); }
+  figure.diagram .accent { color: var(--signal); }
+  figure.diagram text { font-family: 'IBM Plex Mono', monospace; fill: currentColor; }
+
+  figcaption {
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-top: 10px;
+  }
+
+  .source-row {
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .source-row a {
+    color: var(--ink);
+    text-decoration-color: var(--signal);
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 3px;
+  }
+
+  .source-row .domain {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+
+  .addendum {
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+  }
+
+  ol.tri-summary {
+    margin: 0;
+    padding-left: 1.3em;
+  }
+
+  ol.tri-summary li {
+    margin-bottom: 6px;
+    max-width: 62ch;
+  }
+
+  dl.glossary {
+    margin: 0;
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    column-gap: 14px;
+    row-gap: 10px;
+  }
+
+  dl.glossary dt {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--signal-deep);
+    white-space: nowrap;
+  }
+
+  dl.glossary dd {
+    margin: 0;
+    max-width: 56ch;
+    color: var(--ink-soft);
+  }
+
+  /* 레이더 — 인지 채널. 본 브리프(학습 채널)와 시각적으로 명확히 구분되어야 한다:
+     카드가 아니라 목록, 강조색 없음, 본문보다 작은 글씨. 훑고 지나가는 영역이다. */
+  section.radar {
+    margin-top: 40px;
+    padding-top: 26px;
+    border-top: 1px solid var(--line-strong);
+  }
+
+  section.radar > p.radar-note {
+    margin: 0 0 18px;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    max-width: 62ch;
+  }
+
+  .radar-group {
+    margin-bottom: 20px;
+  }
+
+  .radar-group h3 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 500;
+    margin: 0 0 8px;
+  }
+
+  ul.radar-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  ul.radar-list li {
+    position: relative;
+    padding-left: 16px;
+    margin-bottom: 7px;
+    font-size: 14.5px;
+    line-height: 1.6;
+    max-width: 66ch;
+    color: var(--ink);
+  }
+
+  ul.radar-list li::before {
+    content: "·";
+    position: absolute;
+    left: 3px;
+    color: var(--ink-soft);
+  }
+
+  ul.radar-list li a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid var(--line-strong);
+  }
+
+  ul.radar-list li a:hover { border-bottom-color: var(--signal); }
+
+  footer.status {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    border-top: 1px solid var(--line-strong);
+    padding-top: 18px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  @media (max-width: 480px) {
+    article.item { padding: 24px 20px; }
+    h1.headline { font-size: 30px; }
+  }
+</style>
+
+<div class="page">
+
+  <header class="masthead">
+    <div class="eyebrow">
+      <span>KNOWLEDGE BRIEF</span>
+      <span>2026-11-25 · 08:30</span>
+    </div>
+    <h1 class="headline">모델이 아는 것과 지금 보고 있는 것은 다른 저장소다</h1>
+    <p class="subhead">오늘 조사한 것 중 <b>지금 당신에게 학습 가치가 있다고 판단한 것</b>만 남겼습니다. 나머지는 이미 아는 내용이거나 가치가 낮아 걸러냈습니다.</p>
+  </header>
+
+  <article class="item">
+    <div class="tag-row">
+      <span class="tag priority">LLM 기초 · 강의에 바로 쓸 것</span>
+      <span class="tag">개념 설명</span>
+      <span class="tag">오래 가는 기초</span>
+    </div>
+
+    <h2 class="item-title">'잊었다'와 '학습했다'를 구분하는 두 저장소</h2>
+
+    <p class="section-label">왜 지금 이걸 다루나</p>
+    <p>당신의 야간 브리프 세션은 어젯밤 일을 기억하지 못합니다. 그래서 매번 이력 파일을 읽고 시작합니다. 이 구조가 오늘 주제를 가장 잘 보여주는 실물입니다.</p>
+    <p>수강생이 반복해서 묻는 질문 두 개도 같은 뿌리에서 나옵니다.</p>
+    <ul>
+      <li>"어제 알려준 걸 왜 또 잊어요?"</li>
+      <li>"회사 자료를 넣으면 AI가 그걸 학습하나요?"</li>
+    </ul>
+
+    <p class="section-label">핵심 구분</p>
+    <p>모델에는 '아는 것'이 두 종류 있습니다.</p>
+    <ul>
+      <li><b>가중치(파라미터)</b>: 학습이 끝나면 파일로 굳는 숫자들입니다. 대화가 바뀌어도 그대로이고, 사용자가 대화로 바꿀 수 없습니다.</li>
+      <li><b>컨텍스트</b>: 이번 호출에 함께 보낸 글 전체입니다. 시스템 지시, 이전 대화, 붙여 넣은 문서, 도구 결과가 들어갑니다. 호출이 끝나면 모델 쪽에는 남지 않습니다.</li>
+    </ul>
+    <p>대화가 이어지는 것처럼 보이는 건 앱이 이전 대화를 매번 다시 보내기 때문입니다. '메모리' 기능도 같은 방식입니다. 저장해 둔 요약을 다음 대화 맨 앞에 다시 붙입니다.</p>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 640 210" role="img" aria-label="모델 호출에는 고정된 가중치와 이번 호출에 실린 컨텍스트가 함께 들어가고, 답이 나간 뒤 컨텍스트는 모델 쪽에 남지 않는다">
+        <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="currentColor"/></marker></defs>
+        <rect x="16" y="24" width="200" height="56" rx="3" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <text x="116" y="48" font-size="13" text-anchor="middle">가중치</text>
+        <text x="116" y="66" font-size="11" text-anchor="middle">파일 · 호출 사이 불변</text>
+        <g class="accent"><rect x="16" y="120" width="200" height="56" rx="3" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <text x="116" y="144" font-size="13" text-anchor="middle">컨텍스트</text>
+        <text x="116" y="162" font-size="11" text-anchor="middle">이번 호출에 실린 글</text></g>
+        <rect x="290" y="62" width="110" height="76" rx="3" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <text x="345" y="106" font-size="14" text-anchor="middle">모델</text>
+        <rect x="480" y="72" width="144" height="56" rx="3" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <text x="552" y="106" font-size="13" text-anchor="middle">답변</text>
+        <line x1="216" y1="52" x2="288" y2="86" stroke="currentColor" stroke-width="1.5" marker-end="url(#ar)"/>
+        <line x1="216" y1="148" x2="288" y2="116" stroke="currentColor" stroke-width="1.5" marker-end="url(#ar)"/>
+        <line x1="400" y1="100" x2="478" y2="100" stroke="currentColor" stroke-width="1.5" marker-end="url(#ar)"/>
+        <text x="320" y="196" font-size="11" text-anchor="middle">호출이 끝나면 컨텍스트는 모델 쪽에 남지 않는다</text>
+      </svg>
+      <figcaption>가중치는 늘 같은 파일이고, 컨텍스트는 호출마다 새로 꾸린 글 묶음이다.</figcaption>
+    </figure>
+
+    <p class="section-label">자주 생기는 오해 둘</p>
+    <ul>
+      <li><b>대화를 많이 하면 AI가 똑똑해진다.</b> 대화 하나가 가중치를 바꾸지는 않습니다. 사업자가 대화 기록을 나중에 학습에 쓸지는 약관과 설정의 문제이고, 이건 별개입니다.</li>
+      <li><b>컨텍스트에 넣었으니 읽었을 것이다.</b> 한 번에 보낼 수 있는 양에는 상한이 있습니다. 길어지면 중간 내용을 놓치기도 합니다.</li>
+    </ul>
+
+    <p class="section-label">FOR YOU</p>
+    <div class="for-you">
+      <p>당신은 이미 이 구조 안에서 일하고 있습니다. 야간 브리프는 매번 새 세션입니다. 이전 실행을 아는 건 모델이 아니라 디스크에 남은 기록입니다.</p>
+      <p>그래서 시스템에서 무언가 빠졌을 때 세 가지를 순서대로 물으면 됩니다.</p>
+      <ul>
+        <li>그 정보는 가중치에 있나, 컨텍스트에 있나, 파일에 있나?</li>
+        <li>컨텍스트에 있다면 이번 호출에 실제로 실려 갔나?</li>
+        <li>실려 갔다면 모델이 쓸 만큼 눈에 띄는 자리에 있나?</li>
+      </ul>
+      <p>같은 기사가 또 나갔다면 먼저 의심할 곳은 두 번째 질문입니다. 이력이 길어 일부만 읽었거나, 읽은 뒤 요약에서 빠졌을 수 있습니다. 모델이 잊은 게 아니라 애초에 받지 못한 것입니다.</p>
+      <p>강의에서 "회사 자료를 넣으면 학습되나요?"를 받으면 셋으로 나눠 답할 수 있습니다.</p>
+      <ul>
+        <li>이번 답변에는 쓰입니다. 컨텍스트에 들어가기 때문입니다.</li>
+        <li>모델 자체는 대화로 바뀌지 않습니다. 가중치는 그대로입니다.</li>
+        <li>서비스가 기록을 보관하고 학습에 쓰는지는 계약과 설정을 따로 봐야 합니다.</li>
+      </ul>
+    </div>
+
+    <p class="section-label">LEARN</p>
+    <p>더 깊이 파기보다 이 구분을 입에 붙이는 것이 먼저입니다. 오래 가는 기초라 낡을 일이 거의 없습니다. 다음 단계는 컨텍스트가 가득 찰 때 무엇이 잘리고 무엇이 요약되는지입니다.</p>
+    <p>예측 과제 하나입니다. 새 채팅을 열었더니 어제 정한 말투를 모릅니다. 가장 먼저 확인할 것은 무엇일까요? 답은 그 지시가 이번 호출에 실렸는지입니다.</p>
+
+    <div class="addendum">
+      <p class="section-label">3줄 요약</p>
+      <ol class="tri-summary">
+        <li>모델이 아는 것은 학습으로 굳은 가중치와 이번 호출에 함께 보낸 컨텍스트 두 종류이며, 사용자가 대화로 가중치를 바꿀 수는 없다.</li>
+        <li>대화가 이어져 보이는 것은 앱이 이전 대화를 매번 다시 보내기 때문이고, 메모리 기능도 저장한 요약을 다음 대화 앞에 다시 붙이는 방식이다.</li>
+        <li>모델이 잊은 듯하면 가중치, 컨텍스트, 눈에 띄는 위치 순서로 확인하며, 대화 로그의 보관과 학습 사용은 약관과 설정의 문제로 따로 본다.</li>
+      </ol>
+    </div>
+
+    <div class="addendum">
+      <p class="section-label">용어 해설</p>
+      <dl class="glossary">
+        <dt>가중치(파라미터)</dt>
+        <dd>학습이 끝나 모델 파일에 굳은 수치 값들입니다. 호출할 때마다 달라지지 않고 모델이 가진 고정된 지식의 바탕이 됩니다.</dd>
+        <dt>컨텍스트 창</dt>
+        <dd>한 번의 호출에 함께 보낼 수 있는 입력 글의 최대 길이 한도입니다. 모델은 이 범위 안의 내용만 참조할 수 있습니다.</dd>
+        <dt>메모리 기능</dt>
+        <dd>저장해 둔 요약을 다음 대화 앞에 다시 붙이는 서비스 기능입니다. 모델이 스스로 기억하는 것은 아닙니다.</dd>
+      </dl>
+    </div>
+  </article>
+
+  <footer class="status">
+    <span>오늘 조사 후 신규 뉴스 0건 · 보충 1건 · 레이더 0건</span>
+    <span>Knowledge Agent v0.1</span>
+  </footer>
+
+</div>
